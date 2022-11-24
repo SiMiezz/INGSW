@@ -1,1 +1,7 @@
-ingsw
+1) Punto 3
+Ruoli nel software (Differenza tra amministratore e supervisore).
+Dovrebbero esserci AMMINISTRATORE/I, SUPERVISORE/I, ADDETTI ALLA SALA, ADDETTI ALLA CUCINA (ne mancano altri?)
+
+2) Punto 5
+Ci sono più ristoranti? O basta aggiungere una seconda lingua al menù?
+
