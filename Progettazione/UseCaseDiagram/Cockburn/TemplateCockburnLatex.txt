@@ -1,0 +1,30 @@
+\documentclass{article}
+
+
+\usepackage{multirow}
+
+
+\begin{table}[]
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Use Case \#}           & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Goal in Context}       & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Preconditions}         & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Success End Condition} & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Failed End Condition}  & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Primary Actor}         & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Trigger}               & \multicolumn{3}{l|}{}                            \\ \hline
+\multirow{2}{*}{\textbf{DESCRIPTION}}   & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \hline
+\multirow{2}{*}{\textbf{EXTENSIONS}}    & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \hline
+\multirow{2}{*}{\textbf{SUBVARIATIONS}} & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \hline
+\end{tabular}
+\end{table}
+
+
+
+
+\end{document}
+
