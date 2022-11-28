@@ -1,0 +1,29 @@
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[]
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Use Case \#02}                & \multicolumn{3}{l|}{Order Registration}                                                                                         \\ \hline
+\textbf{Goal in Context}              & \multicolumn{3}{l|}{Taking Order}                                                                                               \\ \hline
+\textbf{Preconditions}                & \multicolumn{3}{l|}{}                                                                                                           \\ \hline
+\textbf{Success End Condition}        & \multicolumn{3}{l|}{Order Sent}                                                                                                 \\ \hline
+\textbf{Failed End Condition}         & \multicolumn{3}{l|}{Order Unsent}                                                                                               \\ \hline
+\textbf{Primary Actor}                & \multicolumn{3}{l|}{Waiter}                                                                                                     \\ \hline
+\textbf{Trigger}                      & \multicolumn{3}{l|}{Waiter Opens "Create Order" Section}                                                                        \\ \hline
+\multirow{7}{*}{\textbf{DESCRIPTION}} & \multicolumn{1}{l|}{\textbf{Step n°}}     & \multicolumn{1}{l|}{\textbf{Actor}}    & \textbf{System}                            \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{1}                    & \multicolumn{1}{l|}{Insert Table ID}   &                                            \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{2}                    & \multicolumn{1}{l|}{Add Elements}      &                                            \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{3}                    & \multicolumn{1}{l|}{Confirm}           &                                            \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{4}                    & \multicolumn{1}{l|}{}                  & Checks Order                               \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{5}                    & \multicolumn{1}{l|}{}                  & Order Accepted                             \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{6}                    & \multicolumn{1}{l|}{}                  & Redirect to HomePage                       \\ \hline
+\multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}EXTENSIONS \#1\\ \\ "Order Refused"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Actor}} &
+  \textbf{System} \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{5.a}                  & \multicolumn{1}{l|}{}                  & Discard Order                              \\ \cline{2-4} 
+                                      & \multicolumn{1}{l|}{\multirow{3}{*}{6.a}} & \multicolumn{1}{l|}{\multirow{3}{*}{}} & \multirow{3}{*}{Redirect to Step 1 (Main)} \\
+                                      & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                  &                                            \\
+                                      & \multicolumn{1}{l|}{}                     & \multicolumn{1}{l|}{}                  &                                            \\ \hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,59 @@
+% Please add the following required packages to your document preamble:
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+\begin{table}[]
+\begin{tabular}{|l|lll|}
+\hline
+\textbf{Use Case \#01}         & \multicolumn{3}{l|}{Menu Management}                                                              \\ \hline
+\textbf{Goal in Context}       & \multicolumn{3}{l|}{Menu Management by Admin or Supervisor}                                       \\ \hline
+\textbf{Preconditions}         & \multicolumn{3}{l|}{}                                                                             \\ \hline
+\textbf{Success End Condition} & \multicolumn{3}{l|}{Successful Changes}                                                           \\ \hline
+\textbf{Failed End Condition}  & \multicolumn{3}{l|}{Unsuccessful Changes}                                                         \\ \hline
+\textbf{Primary Actor}         & \multicolumn{3}{l|}{Admin or Supervisor}                                                          \\ \hline
+\textbf{Trigger}               & \multicolumn{3}{l|}{Actor opens "Edit Menu" Section}                                              \\ \hline
+\multirow{7}{*}{\textbf{DESCRIPTION}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Admin or Supervisor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{1}   & \multicolumn{1}{l|}{Choose Action}           &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{2}   & \multicolumn{1}{l|}{}                        & Verify Changes          \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3}   & \multicolumn{1}{l|}{}                        & Changes Accepted        \\ \cline{2-4} 
+ &
+  \multicolumn{1}{l|}{\multirow{3}{*}{4}} &
+  \multicolumn{1}{l|}{\multirow{3}{*}{}} &
+  \multirow{3}{*}{Redirect to HomePage} \\
+                               & \multicolumn{1}{l|}{}    & \multicolumn{1}{l|}{}                        &                         \\
+                               & \multicolumn{1}{l|}{}    & \multicolumn{1}{l|}{}                        &                         \\ \hline
+\multirow{3}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}EXTENSIONS \#1\\ \\ "Changes Refused"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Admin or Supervisor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3.a} & \multicolumn{1}{l|}{}                        & Discard Changes         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4.a} & \multicolumn{1}{l|}{}                        & Return to Step 1 (Main) \\ \hline
+\multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}SUBVARIATION \#1\\ \\ "Add element"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Admin or Supervisor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{1}   & \multicolumn{1}{l|}{Choose Add Element}      &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{2}   & \multicolumn{1}{l|}{}                        & Open Insert Window      \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3}   & \multicolumn{1}{l|}{Insert Details}          &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4}   & \multicolumn{1}{l|}{}                        & Return to Step 2 (Main) \\ \hline
+\multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}SUBVARIATION \#2\\ \\ "Remove element"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Admin or Supervisor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{1}   & \multicolumn{1}{l|}{Choose Remove Element}   &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{2}   & \multicolumn{1}{l|}{}                        & Open Delete Window      \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3}   & \multicolumn{1}{l|}{Select Element}          &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4}   & \multicolumn{1}{l|}{}                        & Return to Step 2 (Main) \\ \hline
+\multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}SUBVARIATION \#3\\ \\ "Arrange elements"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Admin or Supervisor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{1}   & \multicolumn{1}{l|}{Choose Arrange Elements} &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{2}   & \multicolumn{1}{l|}{}                        & Open Arrange Window     \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3}   & \multicolumn{1}{l|}{Arrange Elements}        &                         \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4}   & \multicolumn{1}{l|}{}                        & Return to Step 2 (Main) \\ \hline
+\end{tabular}
+\end{table}

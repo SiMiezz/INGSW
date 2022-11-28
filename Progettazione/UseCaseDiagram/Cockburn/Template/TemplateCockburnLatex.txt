@@ -1,13 +1,9 @@
-\documentclass{article}
-
-
+% Please add the following required packages to your document preamble:
 \usepackage{multirow}
-
-
 \begin{table}[]
 \begin{tabular}{|l|lll|}
 \hline
-\textbf{Use Case \#}           & \multicolumn{3}{l|}{}                            \\ \hline
+\textbf{Use Case \#02}         & \multicolumn{3}{l|}{}                            \\ \hline
 \textbf{Goal in Context}       & \multicolumn{3}{l|}{}                            \\ \hline
 \textbf{Preconditions}         & \multicolumn{3}{l|}{}                            \\ \hline
 \textbf{Success End Condition} & \multicolumn{3}{l|}{}                            \\ \hline
@@ -19,12 +15,6 @@
 \multirow{2}{*}{\textbf{EXTENSIONS}}    & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
                                & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \hline
 \multirow{2}{*}{\textbf{SUBVARIATIONS}} & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \hline
+                               & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &  \\ \cline{2-4} 
 \end{tabular}
 \end{table}
-
-
-
-
-\end{document}
-
