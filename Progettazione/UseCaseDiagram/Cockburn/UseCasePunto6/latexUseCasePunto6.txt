@@ -5,7 +5,7 @@
 \hline
 \textbf{Use Case \#02}                & \multicolumn{3}{l|}{Order Registration}                                                                                         \\ \hline
 \textbf{Goal in Context}              & \multicolumn{3}{l|}{Taking Order}                                                                                               \\ \hline
-\textbf{Preconditions}                & \multicolumn{3}{l|}{}                                                                                                           \\ \hline
+\textbf{Preconditions}                & \multicolumn{3}{l|}{Waiter must be logged in}                                                                                   \\ \hline
 \textbf{Success End Condition}        & \multicolumn{3}{l|}{Order Sent}                                                                                                 \\ \hline
 \textbf{Failed End Condition}         & \multicolumn{3}{l|}{Order Unsent}                                                                                               \\ \hline
 \textbf{Primary Actor}                & \multicolumn{3}{l|}{Waiter}                                                                                                     \\ \hline
