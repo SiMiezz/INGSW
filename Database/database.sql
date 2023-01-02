@@ -233,7 +233,7 @@ CREATE TABLE `employee` (
   `name` varchar(20) NOT NULL,
   `surname` varchar(20) DEFAULT NULL,
   `salary` double DEFAULT NULL,
-  `job` enum('waiter','chef','supervisor') NOT NULL,
+  `job` enum('waiter','supervisor') NOT NULL,
   `restaurant_id` varchar(20) NOT NULL,
   PRIMARY KEY (`idEmployee`),
   KEY `restaurant_fk1_idx` (`restaurant_id`),
@@ -394,4 +394,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-30 13:07:07
+-- Dump completed on 2023-01-02 11:23:05
