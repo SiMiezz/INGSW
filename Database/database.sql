@@ -18,34 +18,6 @@ USE `ratatouille`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `admin`
---
-
-DROP TABLE IF EXISTS `admin`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `admin` (
-  `idAdmin` varchar(20) NOT NULL,
-  `pwd` varchar(20) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `surname` varchar(20) DEFAULT NULL,
-  `restaurant_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`idAdmin`),
-  KEY `restaurant_fk_idx` (`restaurant_id`),
-  CONSTRAINT `restaurant_fk` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `admin`
---
-
-LOCK TABLES `admin` WRITE;
-/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `allergen`
 --
 
@@ -65,30 +37,6 @@ CREATE TABLE `allergen` (
 LOCK TABLES `allergen` WRITE;
 /*!40000 ALTER TABLE `allergen` DISABLE KEYS */;
 /*!40000 ALTER TABLE `allergen` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `bill`
---
-
-DROP TABLE IF EXISTS `bill`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `bill` (
-  `total` double NOT NULL,
-  `table_id` int NOT NULL,
-  KEY `table_fk_idx` (`table_id`),
-  CONSTRAINT `table_fk` FOREIGN KEY (`table_id`) REFERENCES `table` (`idTable`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `bill`
---
-
-LOCK TABLES `bill` WRITE;
-/*!40000 ALTER TABLE `bill` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bill` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -221,36 +169,6 @@ LOCK TABLES `element` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `employee`
---
-
-DROP TABLE IF EXISTS `employee`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `employee` (
-  `idEmployee` varchar(20) NOT NULL,
-  `pwd` varchar(20) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  `surname` varchar(20) DEFAULT NULL,
-  `salary` double DEFAULT NULL,
-  `job` enum('waiter','supervisor') NOT NULL,
-  `restaurant_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`idEmployee`),
-  KEY `restaurant_fk1_idx` (`restaurant_id`),
-  CONSTRAINT `restaurant_fk1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `employee`
---
-
-LOCK TABLES `employee` WRITE;
-/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `menu`
 --
 
@@ -284,6 +202,7 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `idOrder` int NOT NULL AUTO_INCREMENT,
+  `date` date DEFAULT NULL,
   `price` double NOT NULL,
   `table_id` int NOT NULL,
   PRIMARY KEY (`idOrder`),
@@ -378,6 +297,36 @@ LOCK TABLES `table` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `idUser` varchar(20) NOT NULL,
+  `pwd` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `surname` varchar(20) DEFAULT NULL,
+  `salary` double DEFAULT NULL,
+  `job` enum('admin','waiter','supervisor') NOT NULL,
+  `restaurant_id` varchar(20) NOT NULL,
+  PRIMARY KEY (`idUser`),
+  KEY `restaurant_fk1_idx` (`restaurant_id`),
+  CONSTRAINT `restaurant_fk1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Dumping events for database 'ratatouille'
 --
 
@@ -394,4 +343,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-02 11:23:05
+-- Dump completed on 2023-01-03 16:22:03
