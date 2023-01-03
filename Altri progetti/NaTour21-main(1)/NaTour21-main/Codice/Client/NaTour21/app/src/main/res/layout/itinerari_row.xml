@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10sp"
+    android:id="@+id/mainLayoutItinerariRow">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/veryLightBlue">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textViewTitoloItinerarioCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titolo"
+                android:textColor="@color/grey"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewFineItinerarioCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                android:text="@string/puntoFineItinerariCard"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDeleteItinerarioCard"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewInizioItinerarioCard"
+                app:layout_constraintTop_toBottomOf="@+id/textViewInizioItinerarioCard" />
+
+            <TextView
+                android:id="@+id/textViewInizioItinerarioCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                android:text="@string/puntoInizioItinerariCard"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDeleteItinerarioCard"
+                app:layout_constraintHorizontal_bias="0.004"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitoloItinerarioCard" />
+
+            <TextView
+                android:id="@+id/textViewDifficultyItinerarioCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                android:text="@string/difficoltaItinerariCard"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDeleteItinerarioCard"
+                app:layout_constraintStart_toStartOf="@+id/textViewDurataItinerarioCard"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDurataItinerarioCard" />
+
+            <TextView
+                android:id="@+id/textViewDurataItinerarioCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="100dp"
+                android:text="@string/durataItinerariCard"
+                android:textColor="@color/grey"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintEnd_toStartOf="@+id/buttonDeleteItinerarioCard"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/textViewFineItinerarioCard"
+                app:layout_constraintTop_toBottomOf="@+id/textViewFineItinerarioCard" />
+
+            <ImageButton
+                android:id="@+id/buttonDeleteItinerarioCard"
+                android:layout_width="70sp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:backgroundTint="@color/veryLightBlue"
+                android:src="@drawable/ic_baseline_info_24"
+                app:cornerRadius="15sp"
+                app:iconGravity="start"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.957"
+                app:layout_constraintStart_toEndOf="@+id/textViewTitoloItinerarioCard"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/textViewUsernameProprietario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="17dp"
+                android:text="@string/username"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/buttonDeleteItinerarioCard"
+                app:layout_constraintTop_toBottomOf="@+id/buttonDeleteItinerarioCard" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

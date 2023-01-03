@@ -1,0 +1,22 @@
+Elenco API:
+
+OSM (Open Street Map):
+https://osmdroid.github.io/osmdroid/Home.html
+
+Wiki:
+https://wiki.openstreetmap.org/wiki/API_v0.6
+
+Repository:
+https://github.com/osmdroid/osmdroid
+https://github.com/MKergall/osmbonuspack
+
+---
+
+Google Maps:
+https://developers.google.com/maps/apis-by-platform
+
+https://developers.google.com/maps/documentation/android-sdk
+https://developers.google.com/maps/documentation/places/android-sdk
+
+Repository:
+https://github.com/googlemaps/

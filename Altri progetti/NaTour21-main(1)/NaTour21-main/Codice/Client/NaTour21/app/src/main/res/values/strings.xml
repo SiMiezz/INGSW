@@ -1,0 +1,181 @@
+<resources>
+
+    <!-- Varie stringhe generiche -->
+    <string name="slogan">Zaino, scarpe, NaTour, Trekking!</string>
+    <string name="app_name">NaTour21</string>
+    <string name="toolbar_title">NaTour21</string>
+    <string name="emailNonValida">Email inserita non valida.</string>
+
+    <!-- Login -->
+    <string name="login">Login</string>
+    <string name="loginWithFacebook">Login With Facebook</string>
+    <string name="loginWithGoogle">Login With Google</string>
+    <string name="registrati">Registrati</string>
+    <string name="skip">Skip as a Guest</string>
+
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="passwordErrata">Password errata.</string>
+
+    <string name="nonHaiAccount">Non hai ancora un account?</string>
+    <string name="passwordDimenticata">Password dimenticata?</string>
+
+    <string name="insertUsername">Inserisci il tuo username</string>
+    <string name="recuperaPasswordAD">Se l\'username inserito appartiene ad un account,\nverrà inviato un codice all\'email associata.</string>
+    <string name="recuperaPassword"> Recupera password</string>
+    <string name="caricamentoLogin">Caricamento Login . . .</string>
+    <string name="caricamento">Caricamento . . .</string>
+    <string name="invia">Invia</string>
+
+    <!-- Registrazione -->
+    <string name="inserisciFoto">Foto profilo</string>
+    <string name="nome">Nome</string>
+    <string name="cognome">Cognome</string>
+    <string name="terminiServizi">Accetta termini e servizi</string>
+
+    <string name="confermaPassword">Conferma password</string>
+    <string name="policyPassword">ATTENZIONE: La password deve contenere almeno 8 caratteri (A\-Z, a\-z, 0\-9 e caratteri speciali)</string>
+
+    <string name="erroreEmail">Email inserita non valida.</string>
+    <string name="erroreUsername">Username inserito non valido.</string>
+    <string name="errorePassword">Password inserita non valida.</string>
+    <string name="passwordNonCoincidono">Le password non coincidono.</string>
+    <string name="erroreNome">Inserire il nome.</string>
+    <string name="erroreCognome">Inserire il cognome.</string>
+    <string name="accettareTerminiServizi">Accettare termini e servizi per proseguire.</string>
+
+    <string name="continueRegistration">Continua registrazione</string>
+    <string name="completeSignUp">Completa registrazione</string>
+
+    <!-- Homepage -->
+    <string name="helloUser">Ciao Utente</string>
+    <string name="cerca">cerca</string>
+    <string name="collection">Collezioni</string>
+    <string name="home">Home Page</string>
+    <string name="profilo">Profilo</string>
+    <string name="aggiungi">Aggiungi itinerario</string>
+    <string name="pubblicaItinerario">Pubblica itinerario</string>
+    <string name="registraItinerario">Registra percorso</string>
+    <string name="preferiti">Preferiti</string>
+    <string name="logout">Logout</string>
+
+    <!-- Itinerari Card-->
+    <string name="puntoInizioItinerariCard">Inizio: </string>
+    <string name="puntoFineItinerariCard">Fine: </string>
+    <string name="durataItinerariCard">Durata: </string>
+    <string name="difficoltaItinerariCard">Difficoltà: </string>
+
+    <!-- Assistenza -->
+    <string name="from">From</string>
+    <string name="subject">Subject</string>
+    <string name="textHere">Text Here</string>
+    <string name="assistence">Assistenza</string>
+    <string name="emailExample">example@gmail.com</string>
+    <string name="help">Contattaci via email</string>
+    <string name="erroreClientEmail">Nessun client email installato.</string>
+    <string name="conferma">Conferma</string>
+    <string name="emailSupport">support.natour21@libero.it</string>
+    <string name="inviaEmailCon">Invia email con…</string>
+
+    <!-- Collezione -->
+    <string name="collezioni">Collezioni</string>
+    <string name="nomeCollezione">Nome Collezione</string>
+    <string name="eliminaCollezione">Elimina collezione</string>
+    <string name="nuovaCollezione">Nuova Collezione</string>
+    <string name="salva">Salva</string>
+
+    <!-- Profilo -->
+    <string name="questionDelete">Vuoi cancellare l\' account?</string>
+    <string name="cancellaAccount">Cancella account</string>
+    <string name="tracciatiPersonali">Tracciati personali</string>
+
+    <!-- Itinerario -->
+    <string name="informazioni">Informazioni</string>
+    <string name="galleria">Galleria</string>
+    <string name="camera">Camera</string>
+    <string name="aggiungiPercorso">AGGIUNGI PERCORSO</string>
+    <string name="titoloDettagliItinerario">Dettagli Itinerario</string>
+    <string name="applicato">Applicato</string>
+    <string name="eliminaUltimaTappa">Rimuovi ultima tappa</string>
+    <string name="eliminaUltimoIP">Rimuovi ultimo\n punto di interesse</string>
+    <string name="scegliCompilation">Scegli la compilation</string>
+
+    <string name="helpPubblicaItinerario">Costruire il percorso: toccare sulla mappa per inserire una tappa del vostro percorso.
+        \n\nIn seguito se si vuole eliminare l\'ultima tappa inserita cliccare su "Rimuovi ultima tappa."
+        \n\nSe si vuole eliminare il percorso che si sta costruendo e ricominciare dall\'inizio cliccare su "pulisci i campi".
+        \n\nRicorda che la distanza e la durata vengono inserite automaticamente dall\'app e non possono essere pubblicati percorsi che richiedono più di 23 ore e 59 minuti per essere percorsi.
+        \n\nInfine è possibile inserire punti di interesse tramite foto caricandole dalla galleria (ricorda di attivare i TAG EXIF).
+        \n\nBuon trekking!</string>
+
+    <string name="filters">Filtri:</string>
+    <string name="filterFinish">Arrive point…</string>
+    <string name="filterStart">Starter point…</string>
+    <string name="filterDistanza">Distanza (in km)…</string>
+    <string name="filterDurata">Durata:</string>
+    <string name="filterDifficulty">Difficoltà:</string>
+    <string name="filterAccessDisable">Accesso disabili:</string>
+    <string name="filterAreaGeografica">Città, provincia…</string>
+
+    <string name="puntoDiFine">Fine percorso: da calcolare.</string>
+    <string name="puntoDiInizio">Inizio percorso: da calcolare.</string>
+    <string name="titoloItinerario">Titolo…</string>
+    <string name="lunghezza">0.0KM</string>
+    <string name="descrizione">Descrizione…</string>
+    <string name="difficulty">Difficoltà:</string>
+    <string name="durata">hh:mm:ss</string>
+    <string name="accessibilitaDisabili">Accessibilità disabili:</string>
+    <string name="areaGeografica">Area Geografica: da calcolare.</string>
+    <string name="applica">Applica</string>
+    <string name="fromItinerario">Da: </string>
+    <string name="to">A: </string>
+    <string name="km">km</string>
+
+    <string-array name="filter_difficulty">
+        <item>E-Escursionistico</item>
+        <item>EE-Escursionisti Esperti</item>
+        <item>EEA-Escursionisti Esperti Attrezzati</item>
+        <item>EAI-Escursionisti in Ambiente Innevato</item>
+        <item>T-Turistico</item>
+        <item>Qualsiasi</item>
+    </string-array>
+    <string-array name="choose_difficulty">
+        <item>E-Escursionistico</item>
+        <item>EE-Escursionisti Esperti</item>
+        <item>EEA-Escursionisti Esperti Attrezzati</item>
+        <item>EAI-Escursionisti in Ambiente Innevato</item>
+        <item>T-Turistico</item>
+    </string-array>
+
+    <string name="Avvia">Avvia</string>
+    <string name="Pubblica">Pubblica</string>
+    <string name="Stop">Stop</string>
+    <string name="Annulla">Annulla</string>
+
+    <!-- Profile -->
+    <string name="usernameProfileTag">Username:</string>
+    <string name="nomeProfileTag">Nome:</string>
+    <string name="cognomeProfileTag">Cognome:</string>
+    <string name="emailProfileTag">Email:</string>
+
+    <!-- Stub -->
+    <string name="chat">Chat</string>
+    <string name="chatMessage">Coming soon…</string>
+    <string name="loremIpsum">"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        \nUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        \nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        \nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</string>
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="title_activity_fullscreen">Fullscreen Activity</string>
+    <string name="menu_home">Home</string>
+
+    <string name="title_activity_home_page">HomePageActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+</resources>

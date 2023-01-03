@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.natour21" >
+    <!-- User permission -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- Feature -->
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <!-- Query -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+
+    <application
+        android:name=".Utils.Other.NaTour21"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/app_logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.NaTour21"
+        android:usesCleartextTraffic="true" >
+        <activity
+            android:name=".View.Other.CollezioneActivity"
+            android:exported="true"
+            android:label=""
+            android:parentActivityName=".View.Other.HomePageActivity" />
+        <activity
+            android:name=".View.Other.NuovaCollezioneActivity"
+            android:exported="true"
+            android:parentActivityName=".View.Other.HomePageActivity" />
+        <activity
+            android:name=".View.Other.TracciatiPersonaliActivity"
+            android:exported="true"
+            android:label=""
+            android:parentActivityName=".View.Other.HomePageActivity" />
+        <activity
+            android:name=".View.Other.PubblicaItinerarioActivity"
+            android:exported="true"
+            android:label=""
+            android:parentActivityName=".View.Other.HomePageActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".View.Other.RegistraPercorsoActivity"
+            android:exported="true"
+            android:label=""
+            android:parentActivityName=".View.Other.HomePageActivity" />
+        <activity
+            android:name=".View.Other.DettagliItinerarioActivity"
+            android:exported="true"
+            android:label=""
+            android:parentActivityName=".View.Other.HomePageActivity" />
+        <activity
+            android:name=".View.Other.HomePageActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Crashliytics -->
+<!--        <meta-data-->
+<!--            android:name="firebase_crashlytics_collection_enabled"-->
+<!--            android:value="${crashlyticsCollectionEnabled}" />-->
+        <!-- Performace -->
+        <meta-data
+            android:name="firebase_performance_collection_enabled"
+            android:value="true" />
+        <!-- Performace -->
+        <meta-data
+            android:name="firebase_performance_logcat_enabled"
+            android:value="true" />
+
+        <!-- Google login -->
+        <!-- insert here google activity login -->
+
+        <!-- Meta login -->
+        <!-- insert here meta activity login -->
+
+        <!-- Amplify HostedUI -->
+        <activity
+            android:name="com.amplifyframework.auth.cognito.activities.HostedUIRedirectActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="natour" />
+            </intent-filter>
+        </activity>
+
+        <!-- Main -->
+        <activity
+            android:name=".View.MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <!-- SplashArt -->
+        <activity
+            android:name=".View.SplashScreen"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/SDKAndroid/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.1" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/drawable/gradient_background.xml" value="0.1125" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2203125" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_collezione.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_dettagli_itinerario.xml" value="0.22496371552975328" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_nuova_collezione.xml" value="0.2" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_popup_change_photo.xml" value="0.11865942028985507" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_pubblica_itinerario.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_registra_percorso.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/app_bar_home_page.xml" value="0.11865942028985507" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/collezioni_row.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/content_home_page.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_assistenza.xml" value="0.33" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_chat.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_collezioni.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_inser_profile_image.xml" value="0.11865942028985507" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_insert_profile_image.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_pagina_iniziale.xml" value="0.1" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_preferiti.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_profilo.xml" value="0.1" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_recupera_password.xml" value="0.18" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_collezione_row.xml" value="0.22" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_personali_row.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_row.xml" value="0.5" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/nav_header_home_page.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_aggiungi_interesting_point_registra_itinerario.xml" value="0.25" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_filters.xml" value="0.33" />
+        <entry key="..\:/Sandbox/Personal file/Progetti/Project/ProjectAndroid_INGSW/NaTour21/app/src/main/res/menu/activity_main_drawer.xml" value="0.20102564102564102" />
+        <entry key="..\:/Users/Luca/AppData/Local/Android/Sdk/platforms/android-31/data/res/layout/simple_spinner_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/drawable/cerca_plain_text_shape.xml" value="0.3828125" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/drawable/ic_baseline_question_mark_24.xml" value="0.3828125" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_collezione.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_dettagli_itinerario.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_home_page.xml" value="0.25" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_main.xml" value="0.21105072463768115" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_mock_upload_tappe.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_nuova_collezione.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_popup_change_photo.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_pubblica_itinerario.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_registra_percorso.xml" value="0.3654891304347826" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_splash_screen.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/activity_tracciati_personali.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/app_bar_home_page.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/collezioni_row.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/content_home_page.xml" value="0.25" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/content_main.xml" value="0.34782608695652173" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_assistenza.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_chat.xml" value="0.35260416666666666" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_collections.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_collezioni.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_inser_profile_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_insert_profile_image.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_loading_login.xml" value="0.3591485507246377" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_login.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_pagina_iniziale.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_preferiti.xml" value="0.3491847826086957" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_profilo.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_recupera_password.xml" value="0.33" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_registra_percorso.xml" value="0.3654891304347826" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_collezione_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_personali_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/itinerari_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/nav_header_home_page.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_aggiungi_interesting_point_registra_itinerario.xml" value="0.3654891304347826" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_filters.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_inserisci_in_compilation.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_loading.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/popup_loading_login.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/layout/spinner_item.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/Luca/Documents/GitHub/ProjectAndroid_INGSW/NaTour21/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>
