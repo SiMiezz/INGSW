@@ -1,4 +1,4 @@
-package com.ingsw.backend.DAO;
+package com.ingsw.backend.Connection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

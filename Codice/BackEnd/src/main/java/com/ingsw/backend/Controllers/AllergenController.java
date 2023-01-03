@@ -7,5 +7,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/allergen")
 public class AllergenController {
-    private AllergenDAO allergenDAO = new AllergenDAO();
+    private AllergenDAO allergenDAO;
+
+    public AllergenController(){
+        allergenDAO = new AllergenDAO();
+    }
+
 }

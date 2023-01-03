@@ -1,7 +1,6 @@
 package com.ingsw.backend.DTO;
 
-public class Employee{
-    private Double salary;
+public class User {
     private String id,pwd,name,surname;
 
     public String getId() {
@@ -34,13 +33,5 @@ public class Employee{
 
     public void setSurname(String surname) {
         this.surname = surname;
-    }
-
-    public Double getSalary() {
-        return salary;
-    }
-
-    public void setSalary(Double salary) {
-        this.salary = salary;
     }
 }
