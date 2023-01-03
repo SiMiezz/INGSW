@@ -1,16 +1,12 @@
 package com.ingsw.backend;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Ratatouille23Application {
+public class SpringApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Ratatouille23Application.class, args);
-
-
-
+		org.springframework.boot.SpringApplication.run(SpringApplication.class, args);
 	}
 
 }

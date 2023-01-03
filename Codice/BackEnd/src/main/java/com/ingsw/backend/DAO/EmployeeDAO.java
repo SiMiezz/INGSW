@@ -1,5 +1,5 @@
 package com.ingsw.backend.DAO;
 
-public class WaiterDAO {
+public class EmployeeDAO {
     //Connection conn = DatabaseConnection.getInstance().getConnection();
 }

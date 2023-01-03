@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ingsw</groupId>
-	<artifactId>Ratatouille23</artifactId>
+	<artifactId>backend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Ratatouille23</name>
 	<description>INGSW Project</description>
