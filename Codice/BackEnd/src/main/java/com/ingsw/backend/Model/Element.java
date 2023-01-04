@@ -1,6 +1,6 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
-import com.example.provaing.enumeration.Aliment_Type;
+import com.ingsw.backend.Enumerations.*;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -12,13 +12,11 @@ import java.util.List;
 @Table(name = "element")
 public class Element {
 
-    //forse ci vuole id numerico come pk???
-
     //PRIMARY KEY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Integer id;
+    private int id;
 
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
@@ -38,20 +36,20 @@ public class Element {
     private List<Allergen> allergenList = new ArrayList<>();
 
     //ATTRIBUTES
-    @Column(name = "name", length = 50, unique = true)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @Column(name = "description")
     private String description;
 
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private Double price;
 
-    @Column(name = "prepackaged")
+    @Column(name = "prepackaged", nullable = false)
     private boolean prePackaged;
 
-    @Column(name = "aliment_type")
-    private Aliment_Type alimentType;
+    @Column(name = "aliment_type", nullable = false)
+    private Aliment_Type aliment;
 
 
 
@@ -61,13 +59,13 @@ public class Element {
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type alimentType, Menu menu, Category category) {
+    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Menu menu, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.prePackaged = prePackaged;
-        this.alimentType = alimentType;
+        this.aliment = aliment;
         this.menu = menu;
         this.category = category;
     }
@@ -118,12 +116,12 @@ public class Element {
         this.prePackaged = prePackaged;
     }
 
-    public Aliment_Type getAlimentType() {
-        return alimentType;
+    public Aliment_Type getAliment() {
+        return aliment;
     }
 
-    public void setAlimentType(Aliment_Type alimentType) {
-        this.alimentType = alimentType;
+    public void setAliment(Aliment_Type aliment) {
+        this.aliment = aliment;
     }
 
     public Menu getMenu() {

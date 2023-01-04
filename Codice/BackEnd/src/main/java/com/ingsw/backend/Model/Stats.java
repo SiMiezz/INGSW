@@ -1,4 +1,4 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
 
@@ -13,7 +13,9 @@ public class Stats {
     private Integer id;
 
     //REFERENCES
-    //manca one to one con restaurant
+    @OneToOne(mappedBy = "stats", cascade = CascadeType.ALL)
+    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
+    private Restaurant restaurant;
 
 
 }

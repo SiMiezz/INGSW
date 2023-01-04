@@ -1,9 +1,10 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "restaurant")
@@ -21,12 +22,11 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Tables> tablesList = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "name", referencedColumnName = "qr_code")
+    @OneToOne(optional = true, mappedBy = "restaurant")
     private Menu menu;
 
-    //manca one to one con stats
-
+    @OneToOne(optional = true, mappedBy = "restaurant")
+    private Stats stats;
 
 
     //ATTRIBUTES
@@ -36,13 +36,13 @@ public class Restaurant {
     @Column(name = "locality", length = 50)
     private String locality;
 
-    @Column(name = "tables_number")
+    @Column(name = "tables", nullable = false)
     private int tables;
 
-    @Column(name = "seats_number")
+    @Column(name = "seats", nullable = false)
     private int seats;
 
-    @Column(name = "touristic")
+    @Column(name = "touristic", nullable = false)
     private boolean touristic;
 
 

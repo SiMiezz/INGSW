@@ -1,6 +1,6 @@
-package com.example.provaing.repository;
+package com.ingsw.backend.Repository;
 
-import com.example.provaing.model.Tables;
+import com.ingsw.backend.Model.Tables;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.example.provaing.repository;
+package com.ingsw.backend.Repository;
 
-import com.example.provaing.model.Menu;
+import com.ingsw.backend.Model.Menu;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

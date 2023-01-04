@@ -1,6 +1,6 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
-import com.example.provaing.enumeration.User_Type;
+import com.ingsw.backend.Enumerations.*;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -24,7 +24,7 @@ public class User {
 
 
     //ATTRIBUTES
-    @Column(name = "password", length = 50)
+    @Column(name = "password", length = 50, nullable = false)
     private String pwd;
 
     @Column(name = "name", length = 50)
@@ -33,8 +33,8 @@ public class User {
     @Column(name = "surname", length = 50)
     private String surname;
 
-    @Column(name = "user_type")
-    private User_Type userType;
+    @Column(name = "user_type", nullable = false)
+    private User_Type job;
 
 
 
@@ -45,20 +45,20 @@ public class User {
     public User() {
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type userType) {
+    public User(String id, String pwd, String name, String surname, User_Type job) {
         this.id = id;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
-        this.userType = userType;
+        this.job = job;
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type userType, Restaurant restaurant) {
+    public User(String id, String pwd, String name, String surname, User_Type job, Restaurant restaurant) {
         this.id = id;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
-        this.userType = userType;
+        this.job = job;
         this.restaurant = restaurant;
     }
 
@@ -100,12 +100,12 @@ public class User {
         this.surname = surname;
     }
 
-    public User_Type getEmployeeType() {
-        return userType;
+    public User_Type getJob() {
+        return job;
     }
 
-    public void setEmployeeType(User_Type userType) {
-        this.userType = userType;
+    public void setJob(User_Type job) {
+        this.job = job;
     }
 
     public Restaurant getRestaurant() {

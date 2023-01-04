@@ -1,4 +1,4 @@
-package com.example.provaing.enumeration;
+package com.ingsw.backend.Enumerations;
 
 public enum Aliment_Type {
     FOOD,

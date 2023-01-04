@@ -1,4 +1,4 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -22,7 +22,8 @@ public class Menu {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "menu")
+    @OneToOne(mappedBy = "menu", cascade = CascadeType.ALL)
+    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
     // -------------------------------------------------

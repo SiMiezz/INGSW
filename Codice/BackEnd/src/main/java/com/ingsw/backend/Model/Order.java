@@ -1,4 +1,4 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,7 +30,7 @@ public class Order {
     private List<Element> elementOrderList = new ArrayList<>();
 
     //ATTRIBUTES
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private double price;
 
     @Column(name = "date")
@@ -95,7 +95,7 @@ public class Order {
         return elementOrderList;
     }
 
-    public void setElementOrderListList(List<Element> elementOrderList) {
+    public void setElementOrderList(List<Element> elementOrderList) {
         this.elementOrderList = elementOrderList;
     }
 

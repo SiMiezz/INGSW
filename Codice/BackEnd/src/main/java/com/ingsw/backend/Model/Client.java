@@ -1,4 +1,4 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -8,7 +8,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "client")
 public class Client {
 
-    //PRIMARY KEY // da togliere?
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

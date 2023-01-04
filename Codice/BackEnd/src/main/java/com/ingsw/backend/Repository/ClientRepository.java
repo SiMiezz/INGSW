@@ -1,7 +1,6 @@
-package com.example.provaing.repository;
+package com.ingsw.backend.Repository;
 
-import com.example.provaing.model.Client;
-import com.example.provaing.model.User;
+import com.ingsw.backend.Model.Client;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,10 +1,8 @@
-package com.example.provaing.repository;
+package com.ingsw.backend.Repository;
 
-import com.example.provaing.model.User;
+import com.ingsw.backend.Model.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,Integer>{

@@ -1,4 +1,4 @@
-package com.example.provaing.model;
+package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
