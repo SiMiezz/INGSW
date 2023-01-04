@@ -85,55 +85,55 @@ LOCK TABLES `client` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `composto`
+-- Table structure for table `composed`
 --
 
-DROP TABLE IF EXISTS `composto`;
+DROP TABLE IF EXISTS `composed`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `composto` (
+CREATE TABLE `composed` (
   `order_id` int NOT NULL,
-  `element_id` varchar(20) NOT NULL,
+  `element_id` int NOT NULL,
   KEY `order_fk_idx` (`order_id`),
-  KEY `element_fk_idx` (`element_id`),
-  CONSTRAINT `element_fk` FOREIGN KEY (`element_id`) REFERENCES `element` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `element_fk1_idx` (`element_id`),
+  CONSTRAINT `element_fk1` FOREIGN KEY (`element_id`) REFERENCES `element` (`idElement`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`idOrder`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `composto`
+-- Dumping data for table `composed`
 --
 
-LOCK TABLES `composto` WRITE;
-/*!40000 ALTER TABLE `composto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `composto` ENABLE KEYS */;
+LOCK TABLES `composed` WRITE;
+/*!40000 ALTER TABLE `composed` DISABLE KEYS */;
+/*!40000 ALTER TABLE `composed` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `contiene`
+-- Table structure for table `contains`
 --
 
-DROP TABLE IF EXISTS `contiene`;
+DROP TABLE IF EXISTS `contains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `contiene` (
-  `element_id` varchar(20) NOT NULL,
+CREATE TABLE `contains` (
+  `element_id` int NOT NULL,
   `allergen_id` varchar(20) NOT NULL,
-  KEY `element_fk1_idx` (`element_id`),
   KEY `allergen_fk_idx` (`allergen_id`),
+  KEY `element_fk_idx` (`element_id`),
   CONSTRAINT `allergen_fk` FOREIGN KEY (`allergen_id`) REFERENCES `allergen` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `element_fk1` FOREIGN KEY (`element_id`) REFERENCES `element` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `element_fk` FOREIGN KEY (`element_id`) REFERENCES `element` (`idElement`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contiene`
+-- Dumping data for table `contains`
 --
 
-LOCK TABLES `contiene` WRITE;
-/*!40000 ALTER TABLE `contiene` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contiene` ENABLE KEYS */;
+LOCK TABLES `contains` WRITE;
+/*!40000 ALTER TABLE `contains` DISABLE KEYS */;
+/*!40000 ALTER TABLE `contains` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -144,6 +144,7 @@ DROP TABLE IF EXISTS `element`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `element` (
+  `idElement` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   `price` double NOT NULL,
   `description` varchar(100) DEFAULT NULL,
@@ -151,7 +152,7 @@ CREATE TABLE `element` (
   `aliment` enum('food','drink') NOT NULL,
   `menu_id` varchar(100) NOT NULL,
   `category_id` varchar(20) NOT NULL,
-  PRIMARY KEY (`name`),
+  PRIMARY KEY (`idElement`),
   KEY `menu_fk_idx` (`menu_id`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -230,10 +231,10 @@ DROP TABLE IF EXISTS `restaurant`;
 CREATE TABLE `restaurant` (
   `name` varchar(45) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
-  `locality` varchar(100) NOT NULL,
+  `locality` varchar(100) DEFAULT NULL,
   `tables` int NOT NULL,
   `seats` int NOT NULL,
-  `tourist` tinyint NOT NULL,
+  `touristic` tinyint NOT NULL,
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -343,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-03 16:22:03
+-- Dump completed on 2023-01-04 19:53:00
