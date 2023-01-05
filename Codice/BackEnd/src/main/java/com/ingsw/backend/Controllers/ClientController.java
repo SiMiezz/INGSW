@@ -1,6 +1,6 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Service.Class.ClientService;
+import com.ingsw.backend.Service.Interface.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,5 +12,5 @@ public class ClientController {
 
     @Autowired
     @Qualifier("mainClientService")
-    private ClientService clientService;
+    private IClientService clientService;
 }

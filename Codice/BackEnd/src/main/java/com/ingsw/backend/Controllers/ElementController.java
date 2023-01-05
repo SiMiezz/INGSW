@@ -1,6 +1,6 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Service.Class.ElementService;
+import com.ingsw.backend.Service.Interface.IElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,5 +12,5 @@ public class ElementController {
 
     @Autowired
     @Qualifier("mainElementService")
-    private ElementService elementService;
+    private IElementService elementService;
 }

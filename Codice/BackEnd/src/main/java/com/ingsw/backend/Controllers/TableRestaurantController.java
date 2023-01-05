@@ -1,6 +1,6 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Service.Class.TableRestaurantService;
+import com.ingsw.backend.Service.Interface.ITableRestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,5 +12,5 @@ public class TableRestaurantController {
 
     @Autowired
     @Qualifier("mainTableRestaurantService")
-    private TableRestaurantService tableRestaurantService;
+    private ITableRestaurantService tableRestaurantService;
 }

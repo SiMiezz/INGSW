@@ -1,6 +1,6 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Service.Class.AllergenService;
+import com.ingsw.backend.Service.Interface.IAllergenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +12,6 @@ public class AllergenController {
 
     @Autowired
     @Qualifier("mainAllergenService")
-    private AllergenService allergenService;
+    private IAllergenService allergenService;
 
 }

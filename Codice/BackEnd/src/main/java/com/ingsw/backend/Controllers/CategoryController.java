@@ -1,6 +1,6 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Service.Class.CategoryService;
+import com.ingsw.backend.Service.Interface.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,5 +12,5 @@ public class CategoryController {
 
     @Autowired
     @Qualifier("mainCategoryService")
-    private CategoryService categoryService;
+    private ICategoryService categoryService;
 }
