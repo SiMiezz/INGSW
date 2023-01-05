@@ -1,6 +1,6 @@
 package com.ingsw.backend.Model;
 
-import com.ingsw.backend.Enumerations.*;
+import com.ingsw.backend.Model.Enumerations.User_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
