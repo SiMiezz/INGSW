@@ -1,6 +1,7 @@
 package com.ingsw.backend.Model;
 
 import jakarta.persistence.*;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -16,8 +17,8 @@ public class Client {
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="tables_id", referencedColumnName = "id")
-    private Tables tables;
+    @JoinColumn(name="table_id", referencedColumnName = "id")
+    private TableRestaurant table;
 
     // -------------------------------------------------
 
@@ -44,12 +45,12 @@ public class Client {
         this.id = id;
     }
 
-    public Tables getTables() {
-        return tables;
+    public TableRestaurant getTable() {
+        return table;
     }
 
-    public void setTables(Tables tables) {
-        this.tables = tables;
+    public void setTables(TableRestaurant table) {
+        this.table = table;
     }
 
 

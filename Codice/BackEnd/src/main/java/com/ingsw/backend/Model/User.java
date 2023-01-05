@@ -12,7 +12,7 @@ public class User {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "id")
+    @Column(name = "idUser", length = 50)
     private String id;
 
 

@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="tablesRestaurant")
-public class Tables { //non può essere Table per notazione @Table che genera un errore
+@Table(name="tablerestaurant")
+public class TableRestaurant { //non può essere Table per notazione @Table che genera un errore
 
     //PRIMARY KEY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idTable")
     private int id;
 
 
@@ -25,10 +25,10 @@ public class Tables { //non può essere Table per notazione @Table che genera un
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
-    @OneToMany(mappedBy = "tables", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Client> clientList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "tables", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
 
@@ -40,10 +40,10 @@ public class Tables { //non può essere Table per notazione @Table che genera un
     // -------------------------------------------------
 
     //CONSTRUCTORS
-    public Tables() {
+    public TableRestaurant() {
     }
 
-    public Tables(int id, int seats, Restaurant restaurant) {
+    public TableRestaurant(int id, int seats, Restaurant restaurant) {
         this.id = id;
         this.seats = seats;
         this.restaurant = restaurant;

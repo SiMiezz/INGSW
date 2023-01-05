@@ -15,7 +15,7 @@ public class Element {
     //PRIMARY KEY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "idElement")
     private int id;
 
     //REFERENCES

@@ -19,7 +19,7 @@ public class Allergen {
 
     //REFERENCES
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "name_allergen"), inverseJoinColumns = @JoinColumn(name = "id_order"))
+    @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "allergen_name"), inverseJoinColumns = @JoinColumn(name = "element_id"))
     private List<Element> elementList = new ArrayList<>();
 
 

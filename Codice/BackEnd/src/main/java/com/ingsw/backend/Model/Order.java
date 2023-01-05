@@ -16,17 +16,17 @@ public class Order {
     //PRIMARY KEY
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // == auto_increment
-    @Column(name = "id")
+    @Column(name = "idOrder")
     private int id;
 
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="tables_id", referencedColumnName = "id")
-    private Tables tables;
+    @JoinColumn(name="table_id", referencedColumnName = "id")
+    private TableRestaurant table;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "id_order"), inverseJoinColumns = @JoinColumn(name = "id_element"))
+    @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "element_id"))
     private List<Element> elementOrderList = new ArrayList<>();
 
     //ATTRIBUTES
@@ -45,11 +45,11 @@ public class Order {
     public Order() {
     }
 
-    public Order(int id, double price, Date date, Tables tables) {
+    public Order(int id, double price, Date date, TableRestaurant table) {
         this.id = id;
         this.price = price;
         this.date = date;
-        this.tables = tables;
+        this.table = table;
     }
 
 
@@ -83,12 +83,12 @@ public class Order {
         this.date = date;
     }
 
-    public Tables getTables() {
-        return tables;
+    public TableRestaurant getTable() {
+        return table;
     }
 
-    public void setTables(Tables tables) {
-        this.tables = tables;
+    public void setTables(TableRestaurant table) {
+        this.table = table;
     }
 
     public List<Element> getElementOrderList() {

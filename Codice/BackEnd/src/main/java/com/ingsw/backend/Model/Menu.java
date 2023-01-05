@@ -12,7 +12,7 @@ public class Menu {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "qr_code")
+    @Column(name = "qrCode")
     private String qrCode;
 
     //REFERENCES

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Entity
 @Table(name = "restaurant")
@@ -12,7 +11,7 @@ public class Restaurant {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "name")
+    @Column(name = "name", length = 50)
     private String name;
 
     //REFERENCES
@@ -20,12 +19,12 @@ public class Restaurant {
     private List<User> userList = new ArrayList<>();                                        // restaurant è il nome dell'attributo dal lato dell'User
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Tables> tablesList = new ArrayList<>();
+    private List<TableRestaurant> tablesList = new ArrayList<>();
 
-    @OneToOne(optional = true, mappedBy = "restaurant")
+    @OneToOne(mappedBy = "restaurant")
     private Menu menu;
 
-    @OneToOne(optional = true, mappedBy = "restaurant")
+    @OneToOne(mappedBy = "restaurant")
     private Stats stats;
 
 
@@ -55,7 +54,7 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String description, String locality, int tables, int seats, boolean tourist) {
+    public Restaurant(String name, String description, String locality, int tables, int seats, boolean touristic) {
         this.name = name;
         this.description = description;
         this.locality = locality;
@@ -110,11 +109,11 @@ public class Restaurant {
         this.seats = seats;
     }
 
-    public boolean isTourist() {
+    public boolean isTouristic() {
         return touristic;
     }
 
-    public void setTourist(boolean tourist) {
+    public void setTouristic(boolean touristic) {
         this.touristic = touristic;
     }
 
@@ -126,11 +125,11 @@ public class Restaurant {
         this.userList = userList;
     }
 
-    public List<Tables> getTablesList() {
+    public List<TableRestaurant> getTablesList() {
         return tablesList;
     }
 
-    public void setTablesList(List<Tables> tablesList) {
+    public void setTablesList(List<TableRestaurant> tablesList) {
         this.tablesList = tablesList;
     }
 
