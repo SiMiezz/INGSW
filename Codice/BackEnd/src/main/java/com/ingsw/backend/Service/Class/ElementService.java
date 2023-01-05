@@ -5,7 +5,7 @@ import com.ingsw.backend.Service.Interface.IElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("mainElementService")
 public class ElementService implements IElementService {
 
     @Autowired

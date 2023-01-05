@@ -5,7 +5,7 @@ import com.ingsw.backend.Service.Interface.IClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
+@Service("mainClientService")
 public class ClientService implements IClientService {
 
     @Autowired
