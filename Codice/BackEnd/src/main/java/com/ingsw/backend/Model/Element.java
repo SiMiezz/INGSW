@@ -21,7 +21,7 @@ public class Element {
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="menu_code", referencedColumnName = "qr_code")
+    @JoinColumn(name="menu_code", referencedColumnName = "qrCode")
     private Menu menu;
 
     @ManyToOne(fetch =  FetchType.LAZY)

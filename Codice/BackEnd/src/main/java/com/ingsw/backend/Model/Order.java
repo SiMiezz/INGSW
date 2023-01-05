@@ -22,7 +22,7 @@ public class Order {
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="table_id", referencedColumnName = "id")
+    @JoinColumn(name="table_id", referencedColumnName = "idTable")
     private TableRestaurant table;
 
     @ManyToMany(fetch = FetchType.LAZY)

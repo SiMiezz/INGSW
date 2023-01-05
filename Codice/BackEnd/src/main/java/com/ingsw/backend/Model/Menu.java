@@ -22,7 +22,7 @@ public class Menu {
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
 
-    @OneToOne(mappedBy = "menu", cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 

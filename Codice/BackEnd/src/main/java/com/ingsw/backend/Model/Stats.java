@@ -14,7 +14,7 @@ public class Stats {
     private Integer id;
 
     //REFERENCES
-    @OneToOne(mappedBy = "stats", cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
