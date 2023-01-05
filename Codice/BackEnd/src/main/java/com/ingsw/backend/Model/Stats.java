@@ -18,5 +18,27 @@ public class Stats {
     @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
+    public Stats(Integer id, Restaurant restaurant) {
+        this.id = id;
+        this.restaurant = restaurant;
+    }
 
+    public Stats() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 }
