@@ -1,10 +1,12 @@
-package com.ingsw.frontend;
+package com.ingsw.frontend.Activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
+
+import com.ingsw.frontend.Fragment.FragmentLogin;
+import com.ingsw.frontend.R;
 
 public class MainActivity extends FragmentActivity {
 
