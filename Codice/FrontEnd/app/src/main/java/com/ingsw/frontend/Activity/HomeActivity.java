@@ -1,6 +1,8 @@
 package com.ingsw.frontend.Activity;
 
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +21,10 @@ public class HomeActivity extends FragmentActivity {
         setContentView(R.layout.activity_home);
 
         getSupportFragmentManager().beginTransaction().add(R.id.sectionbutton_container, new SectionButtonsFragment()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.restaurant_container, new RestaurantFragment()).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.logo_container, new LogoFragment()).commit();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -36,5 +40,11 @@ public class HomeActivity extends FragmentActivity {
                             | View.SYSTEM_UI_FLAG_FULLSCREEN
                             | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
         }
+    }
+
+    public void changeFragment(Fragment fragment){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.section_container, fragment);
+        transaction.commit();
     }
 }

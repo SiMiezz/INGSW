@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.ingsw.frontend.Activity.HomeActivity;
+import com.ingsw.frontend.Activity.MainActivity;
 import com.ingsw.frontend.R;
 
 /**
@@ -72,6 +74,9 @@ public class SectionButtonsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
+
     }
 
     @Override
@@ -92,7 +97,7 @@ public class SectionButtonsFragment extends Fragment {
        membersButton.setOnClickListener(membersButtonListener());
        kitchenButton.setOnClickListener(kitchenButtonListener());
 
-
+        restaurantButton = setButton(restaurantButton);
 
         return rootView;
     }
@@ -107,6 +112,8 @@ public class SectionButtonsFragment extends Fragment {
                 tablesButton = deselectButton(tablesButton);
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
+
+                ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
             }
         };
         return listener;
@@ -121,6 +128,8 @@ public class SectionButtonsFragment extends Fragment {
                 tablesButton = deselectButton(tablesButton);
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
+
+                ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
             }
         };
         return listener;
@@ -135,6 +144,8 @@ public class SectionButtonsFragment extends Fragment {
                 tablesButton = setButton(tablesButton);
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
+
+                ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
             }
         };
         return listener;
@@ -149,6 +160,8 @@ public class SectionButtonsFragment extends Fragment {
                 tablesButton = deselectButton(tablesButton);
                 membersButton = setButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
+
+                ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
             }
         };
         return listener;
@@ -163,6 +176,8 @@ public class SectionButtonsFragment extends Fragment {
                 tablesButton = deselectButton(tablesButton);
                 membersButton = deselectButton(membersButton);
                 kitchenButton = setButton(kitchenButton);
+
+                ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
             }
         };
         return listener;
