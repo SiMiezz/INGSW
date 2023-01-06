@@ -6,11 +6,13 @@ import android.view.View;
 import androidx.fragment.app.FragmentActivity;
 
 import com.ingsw.frontend.Fragment.FragmentLogin;
+import com.ingsw.frontend.Fragment.FragmentSectionButtons;
 import com.ingsw.frontend.R;
 
 public class MainActivity extends FragmentActivity {
 
     FragmentLogin fragmentLogin = new FragmentLogin();
+    FragmentSectionButtons fragmentSectionButtons = new FragmentSectionButtons();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,8 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
 
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, new FragmentLogin()).commit();
+
+        getSupportFragmentManager().beginTransaction().add(R.id.sectionbutton_container, new FragmentSectionButtons()).commit();
 
     }
 

@@ -10,7 +10,7 @@
 
 
     app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="25dp"
+    app:cardCornerRadius="15dp"
     app:strokeColor="@color/black"
     app:strokeWidth="2dp"
     tools:context=".Fragment.FragmentLogin"
