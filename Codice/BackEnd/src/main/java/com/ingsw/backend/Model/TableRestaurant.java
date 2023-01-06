@@ -16,7 +16,7 @@ public class TableRestaurant { //non può essere Table per notazione @Table che 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idTable")
-    private int id;
+    private Integer id;
 
 
     //REFERENCES

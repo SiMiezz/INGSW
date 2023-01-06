@@ -17,7 +17,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // == auto_increment
     @Column(name = "idOrder")
-    private int id;
+    private Integer id;
 
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)

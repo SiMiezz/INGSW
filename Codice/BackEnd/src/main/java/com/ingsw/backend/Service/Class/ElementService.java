@@ -23,7 +23,7 @@ public class ElementService implements IElementService {
     }
 
     @Override
-    public Boolean deleteById(int id){
+    public Boolean deleteById(Integer id){
         Optional<Element> optionalElement = elementRepository.findById(id);
 
         if(optionalElement.isEmpty()){

@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface IStatsService {
 
-    public Optional<Stats> getByRestaurant(Restaurant restaurant);
+    public Optional<Stats> getByRestaurantName(String name);
 }

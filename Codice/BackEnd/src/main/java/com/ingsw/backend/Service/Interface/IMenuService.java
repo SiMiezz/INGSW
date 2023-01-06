@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface IMenuService {
 
-    public Optional<Menu> getByRestaurant(Restaurant restaurant);
+    public Optional<Menu> getByRestaurantName(String name);
 }

@@ -16,7 +16,7 @@ public class Element {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idElement")
-    private int id;
+    private Integer id;
 
     //REFERENCES
     @ManyToOne(fetch =  FetchType.LAZY)
@@ -26,7 +26,7 @@ public class Element {
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="category_name", referencedColumnName = "name")
+    @JoinColumn(name="category_id", referencedColumnName = "idCategory")
     private Category category;
 
     @ManyToMany(mappedBy = "elementOrderList", fetch = FetchType.LAZY)

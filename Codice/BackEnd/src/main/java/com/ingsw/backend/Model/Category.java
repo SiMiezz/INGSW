@@ -14,8 +14,9 @@ public class Category {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "name", length = 50)
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idCategory")
+    private Integer id;
 
 
     //REFERENCES
@@ -27,22 +28,33 @@ public class Category {
     @JoinColumn(name="menu_code", referencedColumnName = "qrCode")
     private Menu menu;
 
-    // -------------------------------------------------
+    // ATTRIBUTES
+    @Column(name = "name", length = 50, nullable = false)
+    private String name;
 
     //CONSTRUCTORS
     public Category() {
     }
 
-    public Category(String name, Menu menu) {
-        this.name = name;
+    public Category(Integer id, Menu menu, String name) {
+        this.id = id;
         this.menu = menu;
+        this.name = name;
     }
-
 
     // -------------------------------------------------
 
 
     //GETTERS AND SETTERS
+
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

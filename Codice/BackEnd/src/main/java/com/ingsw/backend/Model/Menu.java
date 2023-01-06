@@ -23,7 +23,7 @@ public class Menu {
     private List<Category> categoryList = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "name")
     private Restaurant restaurant;
 
     // -------------------------------------------------

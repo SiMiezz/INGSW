@@ -23,7 +23,7 @@ public class ClientService implements IClientService {
     }
 
     @Override
-    public Boolean deleteById(int id){
+    public Boolean deleteById(Integer id){
         Optional<Client> optionalClient = clientRepository.findById(id);
 
         if(optionalClient.isEmpty()){
