@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface MenuRepository extends CrudRepository<Menu,String> {
 
-    public Optional<Menu> findByRestaurant(Restaurant restaurant);
+    public Optional<Menu> findByRestaurantName(String name);
 }

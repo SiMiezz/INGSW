@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface StatsRepository extends CrudRepository<Stats,Integer> {//da modificare (dipende da PK)
 
-    public Optional<Stats> findByRestaurant(Restaurant restaurant);
+    public Optional<Stats> findByRestaurantName(String name);
 }

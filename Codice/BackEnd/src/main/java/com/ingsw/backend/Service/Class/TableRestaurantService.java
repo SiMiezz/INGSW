@@ -1,6 +1,5 @@
 package com.ingsw.backend.Service.Class;
 
-import com.ingsw.backend.Model.Restaurant;
 import com.ingsw.backend.Model.TableRestaurant;
 import com.ingsw.backend.Repository.TableRestaurantRepository;
 import com.ingsw.backend.Service.Interface.ITableRestaurantService;
@@ -16,7 +15,7 @@ public class TableRestaurantService implements ITableRestaurantService {
     public TableRestaurantService(){}
 
     @Override
-    public Iterable<TableRestaurant> getByRestaurant(Restaurant restaurant){
-        return tableRestaurantRepository.findByRestaurant(restaurant);
+    public Iterable<TableRestaurant> getByRestaurantName(String name){
+        return tableRestaurantRepository.findByRestaurantName(name);
     }
 }

@@ -5,5 +5,5 @@ import com.ingsw.backend.Model.TableRestaurant;
 
 public interface ITableRestaurantService {
 
-    public Iterable<TableRestaurant> getByRestaurant(Restaurant restaurant);
+    public Iterable<TableRestaurant> getByRestaurantName(String name);
 }

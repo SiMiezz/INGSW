@@ -6,5 +6,5 @@ public interface IClientService {
 
     public Client create(Client client);
 
-    public Boolean deleteById(int id);
+    public Boolean deleteById(Integer id);
 }

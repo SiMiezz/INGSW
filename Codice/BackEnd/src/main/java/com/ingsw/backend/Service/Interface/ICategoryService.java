@@ -6,5 +6,5 @@ public interface ICategoryService {
 
     public Category create(Category category);
 
-    public Boolean deleteById(int id);
+    public Boolean deleteById(Integer id);
 }

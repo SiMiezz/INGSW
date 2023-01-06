@@ -23,7 +23,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public Boolean deleteById(int id){
+    public Boolean deleteById(Integer id){
         Optional<Category> optionalCategory = categoryRepository.findById(id);
 
         if(optionalCategory.isEmpty()){

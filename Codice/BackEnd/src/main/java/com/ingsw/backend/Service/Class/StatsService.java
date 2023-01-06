@@ -18,7 +18,7 @@ public class StatsService implements IStatsService {
     public StatsService(){}
 
     @Override
-    public Optional<Stats> getByRestaurant(Restaurant restaurant){
-        return statsRepository.findByRestaurant(restaurant);
+    public Optional<Stats> getByRestaurantName(String name){
+        return statsRepository.findByRestaurantName(name);
     }
 }

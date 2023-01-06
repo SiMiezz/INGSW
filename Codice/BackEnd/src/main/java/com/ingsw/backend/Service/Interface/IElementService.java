@@ -6,5 +6,5 @@ public interface IElementService {
 
     public Element create(Element element);
 
-    public Boolean deleteById(int id);
+    public Boolean deleteById(Integer id);
 }

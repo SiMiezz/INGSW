@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TableRestaurantRepository extends CrudRepository<TableRestaurant,Integer> {
 
-    public Iterable<TableRestaurant> findByRestaurant(Restaurant restaurant);
+    public Iterable<TableRestaurant> findByRestaurantName(String name);
 }

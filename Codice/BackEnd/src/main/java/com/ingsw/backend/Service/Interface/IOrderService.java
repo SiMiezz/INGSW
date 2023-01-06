@@ -6,5 +6,5 @@ public interface IOrderService {
 
     public Order create(Order order);
 
-    public boolean deleteById(int id);
+    public boolean deleteById(Integer id);
 }
