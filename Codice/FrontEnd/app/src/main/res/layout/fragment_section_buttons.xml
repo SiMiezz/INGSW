@@ -27,18 +27,19 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginVertical="20dp"
                 android:background="@drawable/shape_section_buttons"
-                android:drawableLeft="@drawable/icon_restaurant"
-                android:drawableRight="@drawable/icon_arrow"
+                android:drawableStart="@drawable/icon_restaurant"
+                android:drawableEnd="@drawable/icon_arrow"
                 android:drawablePadding="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:text="Restaurant"
-
                 android:textAlignment="textStart"
                 android:textAllCaps="false"
                 android:textColor="#787486"
                 android:textSize="23sp"
-                tools:ignore="RtlCompat" />
+                tools:ignore="RtlCompat">
+
+            </Button>
 
             <Button
                 android:id="@+id/menuButton"

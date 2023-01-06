@@ -1,6 +1,7 @@
 package com.ingsw.frontend.Fragment;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,8 +32,11 @@ public class SectionButtonsFragment extends Fragment {
 
     // **********************************************
 
-
-
+    private Button restaurantButton;
+    private Button menuButton;
+    private Button tablesButton;
+    private Button membersButton;
+    private Button kitchenButton;
 
     // ********************************************
 
@@ -76,16 +80,149 @@ public class SectionButtonsFragment extends Fragment {
         // Inflate the layout for this fragment
        View rootView = inflater.inflate(R.layout.fragment_section_buttons, container, false);
 
-        Button restaurantButton = (Button) rootView.findViewById(R.id.restaurantButton);
-        restaurantButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restaurantButton.setBackgroundColor(Color.parseColor("#787486"));
-                restaurantButton.setTextColor(Color.WHITE);
-            }
-        });
+       restaurantButton = (Button) rootView.findViewById(R.id.restaurantButton);
+       menuButton = (Button) rootView.findViewById(R.id.menuButton);
+       tablesButton = (Button) rootView.findViewById(R.id.tablesButton);
+       membersButton = (Button) rootView.findViewById(R.id.membersButton);
+       kitchenButton = (Button) rootView.findViewById(R.id.kitchenButton);
+
+       restaurantButton.setOnClickListener(restaurantButtonListener());
+       menuButton.setOnClickListener(menuButtonListener());
+       tablesButton.setOnClickListener(tablesButtonListener());
+       membersButton.setOnClickListener(membersButtonListener());
+       kitchenButton.setOnClickListener(kitchenButtonListener());
+
 
 
         return rootView;
     }
+
+
+    public View.OnClickListener restaurantButtonListener(){
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                restaurantButton = setButton(restaurantButton);
+                menuButton = deselectButton(menuButton);
+                tablesButton = deselectButton(tablesButton);
+                membersButton = deselectButton(membersButton);
+                kitchenButton = deselectButton(kitchenButton);
+            }
+        };
+        return listener;
+    }
+
+    public View.OnClickListener menuButtonListener(){
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                restaurantButton = deselectButton(restaurantButton);
+                menuButton = setButton(menuButton);
+                tablesButton = deselectButton(tablesButton);
+                membersButton = deselectButton(membersButton);
+                kitchenButton = deselectButton(kitchenButton);
+            }
+        };
+        return listener;
+    }
+
+    public View.OnClickListener tablesButtonListener(){
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                restaurantButton = deselectButton(restaurantButton);
+                menuButton = deselectButton(menuButton);
+                tablesButton = setButton(tablesButton);
+                membersButton = deselectButton(membersButton);
+                kitchenButton = deselectButton(kitchenButton);
+            }
+        };
+        return listener;
+    }
+
+    public View.OnClickListener membersButtonListener(){
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                restaurantButton = deselectButton(restaurantButton);
+                menuButton = deselectButton(menuButton);
+                tablesButton = deselectButton(tablesButton);
+                membersButton = setButton(membersButton);
+                kitchenButton = deselectButton(kitchenButton);
+            }
+        };
+        return listener;
+    }
+
+    public View.OnClickListener kitchenButtonListener(){
+        View.OnClickListener listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                restaurantButton = deselectButton(restaurantButton);
+                menuButton = deselectButton(menuButton);
+                tablesButton = deselectButton(tablesButton);
+                membersButton = deselectButton(membersButton);
+                kitchenButton = setButton(kitchenButton);
+            }
+        };
+        return listener;
+    }
+
+    public Button setButton(Button button){
+
+        Button newButton = button;
+
+        newButton.setSelected(true);
+        newButton.setBackgroundResource(R.drawable.shape_section_buttons_inverso);
+        newButton.setTextColor(Color.WHITE);
+
+        if(newButton.getText().equals("Restaurant")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_restaurant_inverso,0,R.drawable.icon_arrow_inverso, 0);
+        }
+        else if(newButton.getText().equals("Menu")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_menu_inverso,0,R.drawable.icon_arrow_inverso, 0);
+        }
+        else if(newButton.getText().equals("Tables")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_tables_inverso,0,R.drawable.icon_arrow_inverso, 0);
+        }
+        else if(newButton.getText().equals("Members")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_members_inverso,0,R.drawable.icon_arrow_inverso, 0);
+        }
+        else if(newButton.getText().equals("Kitchen")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_kitchen_inverso,0,R.drawable.icon_arrow_inverso, 0);
+        }
+
+        return newButton;
+    }
+
+    public Button deselectButton(Button button){
+
+        Button newButton = button;
+
+        newButton.setSelected(false);
+        newButton.setBackgroundResource(R.drawable.shape_section_buttons);
+        newButton.setTextColor(Color.parseColor("#787486"));
+
+        if(newButton.getText().equals("Restaurant")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_restaurant,0,R.drawable.icon_arrow, 0);
+        }
+        else if(newButton.getText().equals("Menu")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_menu,0,R.drawable.icon_arrow, 0);
+        }
+        else if(newButton.getText().equals("Tables")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_tables,0,R.drawable.icon_arrow, 0);
+        }
+        else if(newButton.getText().equals("Members")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_members,0,R.drawable.icon_arrow, 0);
+        }
+        else if(newButton.getText().equals("Kitchen")){
+            newButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_kitchen,0,R.drawable.icon_arrow, 0);
+        }
+
+        return newButton;
+
+    }
+
+
+
 }
