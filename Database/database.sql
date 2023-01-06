@@ -47,9 +47,10 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
+  `idCategory` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `menu_code` varchar(255) NOT NULL,
-  PRIMARY KEY (`name`),
+  PRIMARY KEY (`idCategory`),
   KEY `menu_fk2_idx` (`menu_code`),
   CONSTRAINT `menu_fk2` FOREIGN KEY (`menu_code`) REFERENCES `menu` (`qrCode`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -154,11 +155,11 @@ CREATE TABLE `element` (
   `prePackaged` tinyint NOT NULL,
   `aliment` enum('food','drink') NOT NULL,
   `menu_code` varchar(255) NOT NULL,
-  `category_name` varchar(50) NOT NULL,
+  `category_id` int NOT NULL,
   PRIMARY KEY (`idElement`),
   KEY `menu_fk_idx` (`menu_code`),
-  KEY `category_fk_idx` (`category_name`),
-  CONSTRAINT `category_fk` FOREIGN KEY (`category_name`) REFERENCES `category` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
+  KEY `category_fk_idx` (`category_id`),
+  CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_code`) REFERENCES `menu` (`qrCode`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -346,4 +347,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-05 10:39:01
+-- Dump completed on 2023-01-06 10:53:37
