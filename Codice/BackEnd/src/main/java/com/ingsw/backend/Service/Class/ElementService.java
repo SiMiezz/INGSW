@@ -6,6 +6,7 @@ import com.ingsw.backend.Service.Interface.IElementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service("mainElementService")
@@ -32,5 +33,10 @@ public class ElementService implements IElementService {
 
         elementRepository.delete(optionalElement.get());
         return true;
+    }
+
+    @Override
+    public List<Element> getByCategoryId(Integer id){
+        return elementRepository.findByCategoryId(id);
     }
 }

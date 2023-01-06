@@ -19,10 +19,6 @@ public class Element {
     private Integer id;
 
     //REFERENCES
-    @ManyToOne(fetch =  FetchType.LAZY)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="menu_code", referencedColumnName = "qrCode")
-    private Menu menu;
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -59,14 +55,13 @@ public class Element {
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Menu menu, Category category) {
+    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.prePackaged = prePackaged;
         this.aliment = aliment;
-        this.menu = menu;
         this.category = category;
     }
 
@@ -122,14 +117,6 @@ public class Element {
 
     public void setAliment(Aliment_Type aliment) {
         this.aliment = aliment;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
     }
 
     public Category getCategory() {

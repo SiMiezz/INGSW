@@ -16,8 +16,6 @@ public class Menu {
     private String qrCode;
 
     //REFERENCES
-    @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Element> elementList = new ArrayList<>();
 
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
@@ -49,14 +47,6 @@ public class Menu {
 
     public void setQrCode(String qrCode) {
         this.qrCode = qrCode;
-    }
-
-    public List<Element> getElementList() {
-        return elementList;
-    }
-
-    public void setElementList(List<Element> elementList) {
-        this.elementList = elementList;
     }
 
     public List<Category> getCategoryList() {

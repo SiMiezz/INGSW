@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 public class ElementController {
 
@@ -27,6 +29,11 @@ public class ElementController {
         if(!delete){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/element/{id}")
+    public List<Element> getByCategoryId(@PathVariable Integer id){
+        return elementService.getByCategoryId(id);
     }
 
 }
