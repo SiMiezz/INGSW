@@ -11,16 +11,12 @@ import android.view.View;
 
 public class LoginActivity extends FragmentActivity {
 
-    LoginFragment loginFragment = new LoginFragment();
-    SectionButtonsFragment sectionButtonsFragment = new SectionButtonsFragment();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         getSupportFragmentManager().beginTransaction().add(R.id.login_container, new LoginFragment()).commit();
-
 
     }
 
