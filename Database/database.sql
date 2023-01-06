@@ -154,13 +154,10 @@ CREATE TABLE `element` (
   `description` varchar(255) DEFAULT NULL,
   `prePackaged` tinyint NOT NULL,
   `aliment` enum('food','drink') NOT NULL,
-  `menu_code` varchar(255) NOT NULL,
   `category_id` int NOT NULL,
   PRIMARY KEY (`idElement`),
-  KEY `menu_fk_idx` (`menu_code`),
   KEY `category_fk_idx` (`category_id`),
-  CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `menu_fk` FOREIGN KEY (`menu_code`) REFERENCES `menu` (`qrCode`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -347,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-06 10:53:37
+-- Dump completed on 2023-01-06 22:52:53
