@@ -1,28 +1,29 @@
 package com.ingsw.frontend.Activity;
 
-import android.content.Intent;
+import androidx.fragment.app.FragmentActivity;
+
+import com.ingsw.frontend.Fragment.LoginFragment;
+import com.ingsw.frontend.Fragment.SectionButtonsFragment;
+import com.ingsw.frontend.R;
+
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.fragment.app.FragmentActivity;
+public class LoginActivity extends FragmentActivity {
 
-import com.ingsw.frontend.R;
-
-public class MainActivity extends FragmentActivity {
-
-
+    LoginFragment loginFragment = new LoginFragment();
+    SectionButtonsFragment sectionButtonsFragment = new SectionButtonsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
+        getSupportFragmentManager().beginTransaction().add(R.id.login_container, new LoginFragment()).commit();
+
 
     }
 
-    @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
         //This is used to hide/show 'Status Bar' & 'System Bar'. Swip bar to get it as visible.

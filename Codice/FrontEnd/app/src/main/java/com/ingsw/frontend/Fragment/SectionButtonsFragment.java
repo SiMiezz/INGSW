@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +14,10 @@ import com.ingsw.frontend.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FragmentSectionButtons#newInstance} factory method to
+ * Use the {@link SectionButtonsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FragmentSectionButtons extends Fragment {
+public class SectionButtonsFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -39,7 +38,7 @@ public class FragmentSectionButtons extends Fragment {
 
 
 
-    public FragmentSectionButtons() {
+    public SectionButtonsFragment() {
         // Required empty public constructor
     }
 
@@ -52,8 +51,8 @@ public class FragmentSectionButtons extends Fragment {
      * @return A new instance of fragment FragmentSectionButtons.
      */
     // TODO: Rename and change types and number of parameters
-    public static FragmentSectionButtons newInstance(String param1, String param2) {
-        FragmentSectionButtons fragment = new FragmentSectionButtons();
+    public static SectionButtonsFragment newInstance(String param1, String param2) {
+        SectionButtonsFragment fragment = new SectionButtonsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

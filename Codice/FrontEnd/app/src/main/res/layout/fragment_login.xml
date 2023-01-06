@@ -13,7 +13,7 @@
     app:cardCornerRadius="15dp"
     app:strokeColor="@color/black"
     app:strokeWidth="2dp"
-    tools:context=".Fragment.FragmentLogin"
+    tools:context=".Fragment.LoginFragment"
     tools:layout_editor_absoluteX="643dp"
     tools:layout_editor_absoluteY="653dp">
 
@@ -92,7 +92,7 @@
 
 
         <Button
-            android:id="@+id/button10"
+            android:id="@+id/loginButton"
             android:layout_width="350dp"
             android:layout_height="73dp"
             android:layout_gravity="center_horizontal"
