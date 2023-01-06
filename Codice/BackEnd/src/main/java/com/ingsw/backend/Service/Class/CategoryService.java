@@ -5,7 +5,7 @@ import com.ingsw.backend.Repository.CategoryRepository;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 import java.util.Optional;
 
 @Service("mainCategoryService")
@@ -32,5 +32,10 @@ public class CategoryService implements ICategoryService {
 
         categoryRepository.delete(optionalCategory.get());
         return true;
+    }
+
+    @Override
+    public List<Category> getByMenuQrCode(String menu){
+        return categoryRepository.findByMenuQrCode(menu);
     }
 }

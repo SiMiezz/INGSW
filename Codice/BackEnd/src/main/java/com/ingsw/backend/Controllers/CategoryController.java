@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import java.util.List;
 
 @RestController
 public class CategoryController {
@@ -28,4 +29,10 @@ public class CategoryController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
+
+    @GetMapping("/category/{code}")
+    public List<Category> getByMenuQrCode(@PathVariable String code){
+        return categoryService.getByMenuQrCode(code);
+    }
+
 }
