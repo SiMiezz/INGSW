@@ -49,10 +49,10 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `idCategory` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
-  `menu_code` varchar(255) NOT NULL,
+  `menu_id` int NOT NULL,
   PRIMARY KEY (`idCategory`),
-  KEY `menu_fk2_idx` (`menu_code`),
-  CONSTRAINT `menu_fk2` FOREIGN KEY (`menu_code`) REFERENCES `menu` (`qrCode`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `menu_fk_idx` (`menu_id`),
+  CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`idMenu`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -178,9 +178,10 @@ DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `menu` (
-  `qrCode` varchar(255) NOT NULL,
+  `idMenu` int NOT NULL AUTO_INCREMENT,
+  `qrCode` varchar(255) DEFAULT NULL,
   `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`qrCode`),
+  PRIMARY KEY (`idMenu`),
   KEY `restaurant_fk3_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk3` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -247,29 +248,6 @@ CREATE TABLE `restaurant` (
 LOCK TABLES `restaurant` WRITE;
 /*!40000 ALTER TABLE `restaurant` DISABLE KEYS */;
 /*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `stats`
---
-
-DROP TABLE IF EXISTS `stats`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `stats` (
-  `restaurant_name` varchar(50) NOT NULL,
-  KEY `restaurant_fk4_idx` (`restaurant_name`),
-  CONSTRAINT `restaurant_fk4` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `stats`
---
-
-LOCK TABLES `stats` WRITE;
-/*!40000 ALTER TABLE `stats` DISABLE KEYS */;
-/*!40000 ALTER TABLE `stats` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -344,4 +322,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-06 22:52:53
+-- Dump completed on 2023-01-07 18:19:14
