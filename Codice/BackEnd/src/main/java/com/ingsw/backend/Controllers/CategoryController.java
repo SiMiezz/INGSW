@@ -10,18 +10,19 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/category")
 public class CategoryController {
 
     @Autowired
     @Qualifier("mainCategoryService")
     private ICategoryService categoryService;
 
-    @PostMapping("/category")
+    @PostMapping("/")
     public Category create(@RequestBody Category category){
         return categoryService.create(category);
     }
 
-    @DeleteMapping("/category/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id){
         Boolean delete = categoryService.deleteById(id);
 
@@ -30,7 +31,7 @@ public class CategoryController {
         }
     }
 
-    @GetMapping("/category/{code}")
+    @GetMapping("/{code}")
     public List<Category> getByMenuQrCode(@PathVariable String code){
         return categoryService.getByMenuQrCode(code);
     }

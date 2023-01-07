@@ -11,18 +11,19 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/element")
 public class ElementController {
 
     @Autowired
     @Qualifier("mainElementService")
     private IElementService elementService;
 
-    @PostMapping("/element")
+    @PostMapping("/")
     public Element create(@RequestBody Element element){
         return elementService.create(element);
     }
 
-    @DeleteMapping("/element/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = elementService.deleteById(id);
 
@@ -31,7 +32,7 @@ public class ElementController {
         }
     }
 
-    @GetMapping("/element/{id}")
+    @GetMapping("/{id}")
     public List<Element> getByCategoryId(@PathVariable Integer id){
         return elementService.getByCategoryId(id);
     }

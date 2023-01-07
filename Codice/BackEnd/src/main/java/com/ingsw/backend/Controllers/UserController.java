@@ -12,18 +12,19 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     @Qualifier("mainUserService")
     private IUserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/")
     public User create(User user){
         return userService.create(user);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable String id){
         boolean delete = userService.deleteById(id);
 
@@ -32,12 +33,12 @@ public class UserController {
         }
     }
 
-    @GetMapping("/user/{name}")
+    @GetMapping("/{name}")
     public List<User> getByRestaurantName(@PathVariable String name){
         return userService.getByRestaurantName(name);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public User getById(@PathVariable String id){
         Optional<User> user = userService.getById(id);
 

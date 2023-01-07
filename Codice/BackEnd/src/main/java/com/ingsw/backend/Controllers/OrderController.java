@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
     @Qualifier("mainOrderService")
     private IOrderService orderService;
 
-    @PostMapping("/order")
+    @PostMapping("/")
     public Order create(@RequestBody Order order){
         return orderService.create(order);
     }
 
-    @DeleteMapping("/order/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = orderService.deleteById(id);
 

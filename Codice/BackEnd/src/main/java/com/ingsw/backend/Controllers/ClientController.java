@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
+@RequestMapping("/client")
 public class ClientController {
 
     @Autowired
     @Qualifier("mainClientService")
     private IClientService clientService;
 
-    @PostMapping("/client")
+    @PostMapping("/")
     public Client create(@RequestBody Client client){
         return clientService.create(client);
     }
 
-    @DeleteMapping("/client/{id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = clientService.deleteById(id);
 
