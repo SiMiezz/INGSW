@@ -11,6 +11,7 @@ import android.view.View;
 import com.ingsw.frontend.Fragment.LogoFragment;
 import com.ingsw.frontend.Fragment.RestaurantFragment;
 import com.ingsw.frontend.Fragment.SectionButtonsFragment;
+import com.ingsw.frontend.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
 public class HomeActivity extends FragmentActivity {
@@ -22,6 +23,7 @@ public class HomeActivity extends FragmentActivity {
 
         getSupportFragmentManager().beginTransaction().add(R.id.sectionbutton_container, new SectionButtonsFragment()).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.logo_container, new LogoFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.user_container, new UserFragment()).commit();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
 
