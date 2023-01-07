@@ -6,6 +6,7 @@ import com.ingsw.backend.Service.Interface.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service("mainUserService")
@@ -31,5 +32,15 @@ public class UserService implements IUserService {
 
         userRepository.delete(optionalUser.get());
         return true;
+    }
+
+    @Override
+    public List<User> getByRestaurantName(String name){
+        return userRepository.findByRestaurantName(name);
+    }
+
+    @Override
+    public Optional<User> getById(String id){
+        return userRepository.findById(id);
     }
 }
