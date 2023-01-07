@@ -1,7 +1,6 @@
 package com.ingsw.backend.Service.Class;
 
 import com.ingsw.backend.Model.Menu;
-import com.ingsw.backend.Model.Restaurant;
 import com.ingsw.backend.Repository.MenuRepository;
 import com.ingsw.backend.Service.Interface.IMenuService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,37 +1,61 @@
 package com.ingsw.backend.Model;
 
-import jakarta.persistence.*;
-import jakarta.persistence.Table;
+import java.util.Date;
 
-@Entity
-@Table(name = "stats")
 public class Stats {
 
-    //PRIMARY KEY
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
     //REFERENCES
-    @OneToOne
-    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
+    private Element element;
 
-    public Stats(Integer id, Restaurant restaurant) {
-        this.id = id;
+    // ATTRIBUTES
+    private Date from,to;
+    private int frequency;
+
+    //CONSTRUCTORS
+
+    public Stats(Restaurant restaurant, Date from, Date to, int frequency) {
         this.restaurant = restaurant;
+        this.from = from;
+        this.to = to;
+        this.frequency = frequency;
     }
 
     public Stats() {
     }
 
-    public Integer getId() {
-        return id;
+    //GETTERS AND SETTERS
+
+    public Element getElement() {
+        return element;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setElement(Element element) {
+        this.element = element;
+    }
+
+    public Date getFrom() {
+        return from;
+    }
+
+    public void setFrom(Date from) {
+        this.from = from;
+    }
+
+    public Date getTo() {
+        return to;
+    }
+
+    public void setTo(Date to) {
+        this.to = to;
+    }
+
+    public int getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
     }
 
     public Restaurant getRestaurant() {

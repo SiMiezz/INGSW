@@ -22,7 +22,7 @@ public class MenuController {
     private IMenuService menuService;
 
     @GetMapping("/{name}")
-    public Menu getByRestaurant(@PathVariable String name){
+    public Menu getByRestaurantName(@PathVariable String name){
         Optional<Menu> menu = menuService.getByRestaurantName(name);
 
         if(menu.isEmpty()){

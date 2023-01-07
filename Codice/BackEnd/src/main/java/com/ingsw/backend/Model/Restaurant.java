@@ -24,9 +24,6 @@ public class Restaurant {
     @OneToOne(mappedBy = "restaurant")
     private Menu menu;
 
-    @OneToOne(mappedBy = "restaurant")
-    private Stats stats;
-
 
     //ATTRIBUTES
     @Column(name = "description")

@@ -12,8 +12,8 @@ public class Menu {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "qrCode")
-    private String qrCode;
+    @Column(name = "idMenu")
+    private Integer id;
 
     //REFERENCES
 
@@ -21,25 +21,36 @@ public class Menu {
     private List<Category> categoryList = new ArrayList<>();
 
     @OneToOne
-    @JoinColumn(name = "restaurant_id", referencedColumnName = "name")
+    @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
-    // -------------------------------------------------
+    // ATTRIBUTES
+
+    @Column(name = "qrCode")
+    private String qrCode;
 
     //CONSTRUCTORS
     public Menu() {
     }
 
-    public Menu(String qrCode, Restaurant restaurant) {
-        this.qrCode = qrCode;
+    public Menu(Integer id, Restaurant restaurant, String qrCode) {
+        this.id = id;
         this.restaurant = restaurant;
+        this.qrCode = qrCode;
     }
-
 
     // -------------------------------------------------
 
 
     //GETTERS AND SETTERS
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getQrCode() {
         return qrCode;
