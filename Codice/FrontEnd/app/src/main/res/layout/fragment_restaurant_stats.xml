@@ -12,10 +12,10 @@
         android:layout_width="400dp"
         android:layout_height="511dp"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:background="#FFFFFF"
+        android:background="#F9F9F9"
         app:strokeColor="#787486"
         app:strokeWidth="1dp"
-        card_view:cardBackgroundColor="#fff"
+        card_view:cardBackgroundColor="#F9F9F9"
         app:cardCornerRadius="15dp">
 
     </com.google.android.material.card.MaterialCardView>
