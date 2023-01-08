@@ -32,7 +32,6 @@
                     android:layout_width="10dp"
                     android:layout_height="10dp"
                     android:background="@drawable/shape_circle"
-                    android:backgroundTint="#2C3CCE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.066"
@@ -55,10 +54,9 @@
                     app:layout_constraintVertical_bias="0.482" />
 
                 <View
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/icon_members_waiter"
-                    android:backgroundTint="#2C3CCE"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.921"

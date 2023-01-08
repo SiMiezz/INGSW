@@ -54,8 +54,8 @@
                     app:layout_constraintVertical_bias="0.480" />
 
                 <View
-                    android:layout_width="45dp"
-                    android:layout_height="45dp"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
                     android:background="@drawable/icon_tables_all"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
