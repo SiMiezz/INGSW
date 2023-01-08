@@ -14,14 +14,16 @@
         tools:targetApi="31">
         <activity
             android:name=".Activity.HomeActivity"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".Activity.LoginActivity"
-            android:exported="false">
+            android:exported="false"
+            android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -29,7 +31,7 @@
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
