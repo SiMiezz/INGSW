@@ -12,6 +12,7 @@ public class Menu {
 
     //PRIMARY KEY
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idMenu")
     private Integer id;
 

@@ -25,7 +25,7 @@ public class Category {
 
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="menu_id", referencedColumnName = "id")
+    @JoinColumn(name="menu_id", referencedColumnName = "idMenu")
     private Menu menu;
 
     // ATTRIBUTES
