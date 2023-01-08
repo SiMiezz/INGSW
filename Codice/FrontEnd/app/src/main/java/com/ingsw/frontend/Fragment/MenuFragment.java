@@ -3,6 +3,8 @@ package com.ingsw.frontend.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +57,13 @@ public class MenuFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.categories_menu_container, new MenuCategoriesFragment());
+        fragmentTransaction.replace(R.id.elements_menu_container, new MenuElementsFragment());
+        fragmentTransaction.commit();
     }
 
     @Override
