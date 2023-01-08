@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -8,17 +9,21 @@ import java.util.List;
 public class Menu {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idMenu")
     private Integer id;
 
     // ATTRIBUTES
+    @Expose
     @SerializedName("qrCode")
     private String qrCode;
 
     //REFERENCES
+    @Expose
     @SerializedName("category_List")
     private List<Category> categoryList = new ArrayList<>();
 
+    @Expose
     @SerializedName("restaurant_name")
     private Restaurant restaurant;
 

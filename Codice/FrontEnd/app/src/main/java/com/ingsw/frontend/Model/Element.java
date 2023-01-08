@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
@@ -9,32 +10,41 @@ import java.util.List;
 public class Element {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idElement")
     private Integer id;
 
     //ATTRIBUTES
+    @Expose
     @SerializedName("name")
     private String name;
 
+    @Expose
     @SerializedName("description")
     private String description;
 
+    @Expose
     @SerializedName("price")
     private Double price;
 
+    @Expose
     @SerializedName("prePackaged")
     private boolean prePackaged;
 
+    @Expose
     @SerializedName("aliment")
     private Aliment_Type aliment;
 
     //REFERENCES
+    @Expose
     @SerializedName("category_id")
     private Category category;
 
+    @Expose
     @SerializedName("order_List")
     private List<Order> orderList = new ArrayList<>();
 
+    @Expose
     @SerializedName("allergen_List")
     private List<Allergen> allergenList = new ArrayList<>();
 

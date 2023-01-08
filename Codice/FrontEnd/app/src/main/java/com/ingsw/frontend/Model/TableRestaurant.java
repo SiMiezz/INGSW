@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -8,20 +9,25 @@ import java.util.List;
 public class TableRestaurant {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idTable")
     private Integer id;
 
     //ATTRIBUTES
+    @Expose
     @SerializedName("seats")
     private int seats;
 
     //REFERENCES
+    @Expose
     @SerializedName("restaurant_name")
     private Restaurant restaurant;
 
+    @Expose
     @SerializedName("client_list")
     private List<Client> clientList = new ArrayList<>();
 
+    @Expose
     @SerializedName("order_list")
     private List<Order> orderList = new ArrayList<>();
 

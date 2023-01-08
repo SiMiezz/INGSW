@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -8,17 +9,21 @@ import java.util.List;
 public class Category {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idCategory")
     private Integer id;
 
     // ATTRIBUTES
+    @Expose
     @SerializedName("name")
     private String name;
 
     //REFERENCES
+    @Expose
     @SerializedName("element_List")
     private List<Element> elementList = new ArrayList<>();
 
+    @Expose
     @SerializedName("menu_id")
     private Menu menu;
 

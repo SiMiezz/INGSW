@@ -1,28 +1,35 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 
 public class User {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idUser")
     private String id;
 
     //ATTRIBUTES
+    @Expose
     @SerializedName("pwd")
     private String pwd;
 
+    @Expose
     @SerializedName("name")
     private String name;
 
+    @Expose
     @SerializedName("surname")
     private String surname;
 
+    @Expose
     @SerializedName("job")
     private User_Type job;
 
     //REFERENCES
+    @Expose
     @SerializedName("idUser")
     private Restaurant restaurant;
 

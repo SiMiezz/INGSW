@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
@@ -9,20 +10,25 @@ import java.util.List;
 public class Order {
 
     //PRIMARY KEY
+    @Expose
     @SerializedName("idOrder")
     private Integer id;
 
     //ATTRIBUTES
+    @Expose
     @SerializedName("price")
     private double price;
 
+    @Expose
     @SerializedName("date")
     private Date date;
 
     //REFERENCES
+    @Expose
     @SerializedName("table_id")
     private TableRestaurant table;
 
+    @Expose
     @SerializedName("elementOrder_List")
     private List<Element> elementOrderList = new ArrayList<>();
 

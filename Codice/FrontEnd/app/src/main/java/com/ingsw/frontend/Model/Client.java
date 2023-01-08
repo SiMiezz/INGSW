@@ -1,13 +1,16 @@
 package com.ingsw.frontend.Model;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Client {
 
     //PRIMARY KEY
+    @Expose
     private Integer id;
 
     //REFERENCES
+    @Expose
     @SerializedName("table_id")
     private TableRestaurant table;
 
