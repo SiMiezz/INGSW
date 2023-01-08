@@ -3,8 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.RestaurantStatsFragment"
-    android:background="@color/teal_700">
+    android:paddingBottom="50dp">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="400dp"
+        android:layout_height="511dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:background="#FFFFFF"
+        app:strokeColor="#787486"
+        app:strokeWidth="1dp"
+        card_view:cardBackgroundColor="#fff"
+        app:cardCornerRadius="15dp">
+
+    </com.google.android.material.card.MaterialCardView>
 
 
 
