@@ -9,8 +9,8 @@
     android:paddingBottom="50dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="400dp"
-        android:layout_height="511dp"
+        android:layout_width="450dp"
+        android:layout_height="550dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="#F9F9F9"
         app:strokeColor="#787486"

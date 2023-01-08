@@ -6,12 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragment.MenuCategoriesFragment"
-    android:paddingBottom="50dp"
-    android:paddingLeft="62dp">
+    android:paddingBottom="50dp">
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="248dp"
-        android:layout_height="511dp"
+        android:layout_width="250dp"
+        android:layout_height="550dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:background="#F9F9F9"
         app:cardCornerRadius="15dp"
@@ -20,7 +19,6 @@
         card_view:cardBackgroundColor="#F9F9F9">
 
     </com.google.android.material.card.MaterialCardView>
-
 
 
 </FrameLayout>
