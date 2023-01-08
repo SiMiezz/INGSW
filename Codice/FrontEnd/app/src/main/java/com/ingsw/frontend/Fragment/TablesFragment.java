@@ -3,6 +3,8 @@ package com.ingsw.frontend.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,6 +57,15 @@ public class TablesFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+        fragmentTransaction.replace(R.id.number_tables_container, new TablesNumberFragment());
+        fragmentTransaction.replace(R.id.all_tables_container, new TablesAllFragment());
+        fragmentTransaction.replace(R.id.selected_table_container, new TablesSelectedFragment());
+        fragmentTransaction.commit();
     }
 
     @Override

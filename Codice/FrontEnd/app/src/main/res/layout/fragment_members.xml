@@ -46,7 +46,40 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:id="@+id/admin_members_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25">
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/supervisors_members_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25">
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/waiters_members_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25">
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/chefs_members_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25">
+
+                </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
