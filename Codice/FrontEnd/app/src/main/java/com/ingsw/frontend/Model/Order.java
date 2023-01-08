@@ -1,4 +1,4 @@
-package com.ingsw.frontend.DAO.Interface.Model;
+package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.SerializedName;
 

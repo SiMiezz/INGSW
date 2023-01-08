@@ -1,4 +1,4 @@
-package com.ingsw.frontend.DAO.Interface.Model;
+package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -32,5 +32,13 @@ public class Allergen {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Element> getElementList() {
+        return elementList;
+    }
+
+    public void setElementList(List<Element> elementList) {
+        this.elementList = elementList;
     }
 }

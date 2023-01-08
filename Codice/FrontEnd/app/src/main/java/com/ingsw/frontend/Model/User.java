@@ -1,7 +1,7 @@
-package com.ingsw.frontend.DAO.Interface.Model;
+package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.DAO.Interface.Model.Enumerations.User_Type;
+import com.ingsw.frontend.Model.Enumerations.User_Type;
 
 public class User {
 

@@ -1,7 +1,7 @@
-package com.ingsw.frontend.DAO.Interface.Model;
+package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.DAO.Interface.Model.Enumerations.Aliment_Type;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.util.ArrayList;
 import java.util.List;
