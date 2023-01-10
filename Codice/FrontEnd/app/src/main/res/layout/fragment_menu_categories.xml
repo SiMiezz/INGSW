@@ -21,11 +21,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="63dp">
+                android:layout_height="63dp"
+                android:layout_weight="0.1">
 
                 <View
                     android:id="@+id/view"
@@ -77,54 +79,68 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <RelativeLayout
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"></View>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categories_listview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="420dp"
+                android:layout_weight="1"
+                android:divider="#787486"
+                android:dividerHeight="1dp" />
 
-                <ListView
-                    android:id="@+id/categories_listview"
-                    android:layout_width="match_parent"
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"></View>
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#787486"></View>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center_vertical"
+                android:layout_weight="0.1"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+
+                <ImageButton
+                    android:id="@+id/remove_category_button"
+                    android:layout_width="128.5dp"
                     android:layout_height="match_parent"
-                    android:divider="#787486"
-                    android:dividerHeight="1dp"/>
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white"
+                    android:src="@drawable/icon_minus"
+                    android:foreground="?android:attr/selectableItemBackground"/>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#787486" />
+
+                <ImageButton
+                    android:id="@+id/add_category_button"
+                    android:layout_width="128.5dp"
                     android:layout_height="match_parent"
-                    android:gravity="bottom|end"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:orientation="vertical">
+                    android:layout_gravity="center_vertical"
+                    android:background="@color/white"
+                    android:src="@drawable/icon_plus"
+                    android:foreground="?android:attr/selectableItemBackground"></ImageButton>
 
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/remove_button_listview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:backgroundTint="@android:color/holo_red_light"
-                        android:clickable="true"
-                        android:paddingTop="200dp"
-                        android:src="@drawable/icon_minus"
-                        card_view:elevation="4dp"
-                        tools:ignore="SpeakableTextPresentCheck" />
-
-                    <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        android:id="@+id/add_button_listview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/icon_plus"
-                        card_view:elevation="4dp"
-                        tools:ignore="SpeakableTextPresentCheck"
-                        android:backgroundTint="#4FDF24"/>
-
-
-                </LinearLayout>
-
-
-
-            </RelativeLayout>
+            </LinearLayout>
 
 
         </LinearLayout>
