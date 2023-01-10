@@ -4,10 +4,9 @@ import com.ingsw.backend.Model.Allergen;
 import com.ingsw.backend.Service.Interface.IAllergenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/allergen")
@@ -17,9 +16,14 @@ public class AllergenController {
     @Qualifier("mainAllergenService")
     private IAllergenService allergenService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Allergen create(@RequestBody Allergen allergen){
         return allergenService.create(allergen);
+    }
+
+    @GetMapping("/get")
+    public List<Allergen> getAll(){
+        return allergenService.getAll();
     }
 
 }

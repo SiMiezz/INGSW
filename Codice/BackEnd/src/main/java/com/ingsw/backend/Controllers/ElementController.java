@@ -18,12 +18,12 @@ public class ElementController {
     @Qualifier("mainElementService")
     private IElementService elementService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Element create(@RequestBody Element element){
         return elementService.create(element);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = elementService.deleteById(id);
 
@@ -32,7 +32,7 @@ public class ElementController {
         }
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public List<Element> getByCategoryId(@PathVariable Integer id){
         return elementService.getByCategoryId(id);
     }

@@ -16,12 +16,12 @@ public class ClientController {
     @Qualifier("mainClientService")
     private IClientService clientService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Client create(@RequestBody Client client){
         return clientService.create(client);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = clientService.deleteById(id);
 

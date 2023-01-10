@@ -17,21 +17,21 @@ public class CategoryController {
     @Qualifier("mainCategoryService")
     private ICategoryService categoryService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Category create(@RequestBody Category category){
         return categoryService.create(category);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Integer id){
-        Boolean delete = categoryService.deleteById(id);
+        boolean delete = categoryService.deleteById(id);
 
         if(!delete){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/{code}")
+    @GetMapping("/get/{code}")
     public List<Category> getByMenuQrCode(@PathVariable String code){
         return categoryService.getByMenuQrCode(code);
     }
