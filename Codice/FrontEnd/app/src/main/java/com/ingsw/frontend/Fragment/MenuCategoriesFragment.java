@@ -20,6 +20,7 @@ import com.ingsw.frontend.Adapter.CategoryAdapter;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -105,13 +106,31 @@ public class MenuCategoriesFragment extends Fragment {
 
         CategoryAdapter adapter = new CategoryAdapter(getContext(),arrayList);
 
-
-
         RecyclerView myView = (RecyclerView) rootView.findViewById(R.id.categories_listview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);
         myView.setAdapter(adapter);
+
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(CategoryAdapter.currentLayout == -1){
+                    CategoryAdapter.currentLayout = -2;
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(CategoryAdapter.currentLayout == -2){
+                    CategoryAdapter.currentLayout = -1;
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
 
 
 
