@@ -1,25 +1,22 @@
 package com.ingsw.frontend.Fragment;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.ingsw.frontend.Adapter.CategoryAdapter;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
@@ -41,9 +38,9 @@ public class MenuCategoriesFragment extends Fragment {
     private String mParam2;
 
 
-    RecyclerView recyclerView;
-    ArrayList<String> arrayList;
-    ArrayAdapter arrayAdapter;
+    private ArrayList<String> arrayList;
+    private ImageButton removeButton;
+    private ImageButton addButton;
 
 
     public MenuCategoriesFragment() {
@@ -84,29 +81,41 @@ public class MenuCategoriesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_menu_categories, container, false);
 
-//        RecyclerView recyclerView = rootView.findViewById(R.id.categories_listview);
-        ListView listView = rootView.findViewById(R.id.categories_listview);
-        FloatingActionButton addButton = rootView.findViewById(R.id.add_button_listview);
-        FloatingActionButton removeButton = rootView.findViewById(R.id.remove_button_listview);
+        /////////////////////////////////////////////
+
 
         arrayList = new ArrayList();
+        removeButton = rootView.findViewById(R.id.remove_category_button);
+        addButton = rootView.findViewById(R.id.add_category_button);
 
         arrayList.add("ciao");
         arrayList.add("miao");
-
-        arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_list_normal, arrayList);
-
-        listView.setAdapter(arrayAdapter);
-
-        removeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_list_selection, arrayList);
-                listView.setAdapter(arrayAdapter);
-            }
-        });
+        arrayList.add("ncsdjiaknvuc ewf cnc slkkzndqjai sa nc sknln kasakd vfdsc erdsc ");
+        arrayList.add("miao");
+        arrayList.add("CACCA");
+        arrayList.add("VBUICDSNWHA CBDJZ CZDJ");
+        arrayList.add("ciao");
+        arrayList.add("miao");
+        arrayList.add("ncsdjiaknvuc ewf cnc slkkzndqjai sa nc sknln kasakd vfdsc erdsc ");
+        arrayList.add("miao");
+        arrayList.add("CACCA");
+        arrayList.add("VBUICDSNWHA CBDJZ CZDJ");
 
 
+
+        CategoryAdapter adapter = new CategoryAdapter(getContext(),arrayList);
+
+
+
+        RecyclerView myView = (RecyclerView) rootView.findViewById(R.id.categories_listview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myView.setLayoutManager(linearLayoutManager);
+        myView.setAdapter(adapter);
+
+
+
+        /////////////////////////////////////////////
 
 
         return rootView;
