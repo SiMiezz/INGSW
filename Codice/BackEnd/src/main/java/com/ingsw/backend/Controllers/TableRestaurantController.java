@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/tablerestaurant")
 public class TableRestaurantController {
@@ -17,8 +19,8 @@ public class TableRestaurantController {
     @Qualifier("mainTableRestaurantService")
     private ITableRestaurantService tableRestaurantService;
 
-    @GetMapping("/{name}")
-    public Iterable<TableRestaurant> getByRestaurantName(@PathVariable String name){
+    @GetMapping("/get/{name}")
+    public List<TableRestaurant> getByRestaurantName(@PathVariable String name){
         return tableRestaurantService.getByRestaurantName(name);
     }
 }

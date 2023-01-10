@@ -5,6 +5,7 @@ import com.ingsw.backend.Repository.OrderRepository;
 import com.ingsw.backend.Service.Interface.IOrderService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service("mainOrderService")
@@ -29,5 +30,10 @@ public class OrderService implements IOrderService {
 
         orderRepository.delete(optionalOrder.get());
         return true;
+    }
+
+    @Override
+    public List<Order> getByTableRestaurantId(Integer id){
+        return orderRepository.findByTableRestaurantId(id);
     }
 }

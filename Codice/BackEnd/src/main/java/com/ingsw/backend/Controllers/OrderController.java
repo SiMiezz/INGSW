@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/order")
 public class OrderController {
@@ -16,17 +18,22 @@ public class OrderController {
     @Qualifier("mainOrderService")
     private IOrderService orderService;
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public Order create(@RequestBody Order order){
         return orderService.create(order);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Integer id){
         boolean delete = orderService.deleteById(id);
 
         if(!delete){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/get/{id}")
+    public List<Order> getByTableRestaurantId(@PathVariable Integer id){
+        return orderService.getByTableRestaurantId(id);
     }
 }

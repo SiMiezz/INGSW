@@ -21,7 +21,7 @@ public class MenuController {
     @Qualifier("mainMenuService")
     private IMenuService menuService;
 
-    @GetMapping("/{name}")
+    @GetMapping("/get/{name}")
     public Menu getByRestaurantName(@PathVariable String name){
         Optional<Menu> menu = menuService.getByRestaurantName(name);
 

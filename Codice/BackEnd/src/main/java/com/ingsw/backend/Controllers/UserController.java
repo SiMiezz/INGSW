@@ -19,12 +19,12 @@ public class UserController {
     @Qualifier("mainUserService")
     private IUserService userService;
 
-    @PostMapping("/")
-    public User create(User user){
+    @PostMapping("/create")
+    public User create(@RequestBody User user){
         return userService.create(user);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable String id){
         boolean delete = userService.deleteById(id);
 
@@ -33,12 +33,12 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/get/{name}")
     public List<User> getByRestaurantName(@PathVariable String name){
         return userService.getByRestaurantName(name);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public User getById(@PathVariable String id){
         Optional<User> user = userService.getById(id);
 

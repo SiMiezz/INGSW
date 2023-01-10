@@ -7,7 +7,7 @@ public interface ICategoryService {
 
     public Category create(Category category);
 
-    public Boolean deleteById(Integer id);
+    public boolean deleteById(Integer id);
 
     public List<Category> getByMenuQrCode(String menu);
 }
