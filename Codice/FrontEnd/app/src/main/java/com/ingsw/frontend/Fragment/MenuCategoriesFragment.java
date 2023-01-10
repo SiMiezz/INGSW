@@ -1,14 +1,28 @@
 package com.ingsw.frontend.Fragment;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,6 +39,12 @@ public class MenuCategoriesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+
+    RecyclerView recyclerView;
+    ArrayList<String> arrayList;
+    ArrayAdapter arrayAdapter;
+
 
     public MenuCategoriesFragment() {
         // Required empty public constructor
@@ -61,6 +81,33 @@ public class MenuCategoriesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_categories, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_menu_categories, container, false);
+
+//        RecyclerView recyclerView = rootView.findViewById(R.id.categories_listview);
+        ListView listView = rootView.findViewById(R.id.categories_listview);
+        FloatingActionButton addButton = rootView.findViewById(R.id.add_button_listview);
+        FloatingActionButton removeButton = rootView.findViewById(R.id.remove_button_listview);
+
+        arrayList = new ArrayList();
+
+        arrayList.add("ciao");
+        arrayList.add("miao");
+
+        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, arrayList);
+        listView.setAdapter(arrayAdapter);
+
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_multiple_choice, arrayList);
+                listView.setAdapter(arrayAdapter);
+            }
+        });
+        
+
+
+
+        return rootView;
     }
 }
