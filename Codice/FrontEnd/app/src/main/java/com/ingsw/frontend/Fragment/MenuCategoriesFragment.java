@@ -94,17 +94,18 @@ public class MenuCategoriesFragment extends Fragment {
         arrayList.add("ciao");
         arrayList.add("miao");
 
-        arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, arrayList);
+        arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_list_normal, arrayList);
+
         listView.setAdapter(arrayAdapter);
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_multiple_choice, arrayList);
+                arrayAdapter = new ArrayAdapter(getContext(), R.layout.row_list_selection, arrayList);
                 listView.setAdapter(arrayAdapter);
             }
         });
-        
+
 
 
 

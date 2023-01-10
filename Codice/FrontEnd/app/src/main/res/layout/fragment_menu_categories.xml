@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:divider="#787486"
-                    android:dividerHeight="1dp" />
+                    android:dividerHeight="1dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
