@@ -116,29 +116,65 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-
-                <ImageButton
-                    android:id="@+id/remove_category_button"
+                <FrameLayout
                     android:layout_width="128.5dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/white"
-                    android:src="@drawable/icon_minus"
-                    android:foreground="?android:attr/selectableItemBackground"/>
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/remove_category_button"
+                        android:layout_width="128.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_minus"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                    <ImageButton
+                        android:id="@+id/back_category_button"
+                        android:layout_width="128.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_back"
+                        android:visibility="invisible"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                </FrameLayout>
+
+
 
                 <View
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:background="#787486" />
 
-                <ImageButton
-                    android:id="@+id/add_category_button"
+                <FrameLayout
                     android:layout_width="128.5dp"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center_vertical"
-                    android:background="@color/white"
-                    android:src="@drawable/icon_plus"
-                    android:foreground="?android:attr/selectableItemBackground"></ImageButton>
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/add_category_button"
+                        android:layout_width="128.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_plus"
+                        android:foreground="?android:attr/selectableItemBackground"></ImageButton>
+
+                    <ImageButton
+                        android:id="@+id/confirm_category_button"
+                        android:layout_width="128.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_confirm"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:visibility="invisible"/>
+
+
+                </FrameLayout>
+
+
 
             </LinearLayout>
 

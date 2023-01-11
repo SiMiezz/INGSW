@@ -42,6 +42,8 @@ public class MenuCategoriesFragment extends Fragment {
     private ArrayList<String> arrayList;
     private ImageButton removeButton;
     private ImageButton addButton;
+    private ImageButton backButton;
+    private ImageButton confirmButton;
 
 
     public MenuCategoriesFragment() {
@@ -88,6 +90,8 @@ public class MenuCategoriesFragment extends Fragment {
         arrayList = new ArrayList();
         removeButton = rootView.findViewById(R.id.remove_category_button);
         addButton = rootView.findViewById(R.id.add_category_button);
+        backButton = rootView.findViewById(R.id.back_category_button);
+        confirmButton = rootView.findViewById(R.id.confirm_category_button);
 
         arrayList.add("ciao");
         arrayList.add("miao");
@@ -119,16 +123,43 @@ public class MenuCategoriesFragment extends Fragment {
                     CategoryAdapter.currentLayout = -2;
                     adapter.notifyDataSetChanged();
                 }
+
+                removeButton.setVisibility(View.INVISIBLE);
+                backButton.setVisibility(View.VISIBLE);
+
+                addButton.setVisibility(View.INVISIBLE);
+                confirmButton.setVisibility(View.VISIBLE);
             }
         });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(CategoryAdapter.currentLayout == -2){
                     CategoryAdapter.currentLayout = -1;
                     adapter.notifyDataSetChanged();
                 }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
