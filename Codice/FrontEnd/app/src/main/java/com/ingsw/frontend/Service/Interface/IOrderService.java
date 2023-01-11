@@ -1,8 +1,8 @@
-package com.ingsw.frontend.DAO.Interface;
+package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Order;
 
-public interface IOrderDAO {
+public interface IOrderService {
 
     void create(Order order);
 

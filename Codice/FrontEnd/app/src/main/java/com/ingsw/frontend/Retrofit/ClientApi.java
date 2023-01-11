@@ -2,17 +2,17 @@ package com.ingsw.frontend.Retrofit;
 
 import com.ingsw.frontend.Model.Client;
 
-import retrofit2.Call;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
-public interface ClientRetrofit {
+public interface ClientApi {
 
     @POST("/client/create")
-    Call<Client> create(@Body Client client);
+    Observable<Client> create(@Body Client client);
 
     @DELETE("/client/delete/{id}")
-    Call<Void> deleteById(@Path("id") Integer id);
+    Observable<Void> deleteById(@Path("id") Integer id);
 }

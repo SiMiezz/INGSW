@@ -1,8 +1,8 @@
-package com.ingsw.frontend.DAO.Interface;
+package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Client;
 
-public interface IClientDAO {
+public interface IClientService {
 
     void create(Client client);
 

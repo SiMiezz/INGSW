@@ -4,12 +4,12 @@ import com.ingsw.frontend.Model.TableRestaurant;
 
 import java.util.List;
 
-import retrofit2.Call;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
-public interface TableRestaurantRetrofit {
+public interface TableRestaurantApi {
 
     @GET("tablerestaurant/get/{name}")
-    Call<List<TableRestaurant>> getByRestaurantName(@Path("name") String name);
+    Observable<List<TableRestaurant>> getByRestaurantName(@Path("name") String name);
 }

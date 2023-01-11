@@ -4,16 +4,16 @@ import com.ingsw.frontend.Model.Allergen;
 
 import java.util.List;
 
-import retrofit2.Call;
+import io.reactivex.rxjava3.core.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface AllergenRetrofit {
+public interface AllergenApi {
 
     @POST("/allergen/create")
-    Call<Allergen> create(@Body Allergen allergen);
+    Observable<Allergen> create(@Body Allergen allergen);
 
     @GET("/get")
-    Call<List<Allergen>> getAll();
+    Observable<List<Allergen>> getAll();
 }

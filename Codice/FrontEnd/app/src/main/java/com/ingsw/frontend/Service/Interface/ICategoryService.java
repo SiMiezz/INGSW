@@ -1,8 +1,8 @@
-package com.ingsw.frontend.DAO.Interface;
+package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Category;
 
-public interface ICategoryDAO {
+public interface ICategoryService {
 
     void create(Category category);
 

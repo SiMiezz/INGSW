@@ -1,8 +1,8 @@
-package com.ingsw.frontend.DAO.Interface;
+package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Element;
 
-public interface IElementDAO {
+public interface IElementService {
 
     void create(Element element);
 

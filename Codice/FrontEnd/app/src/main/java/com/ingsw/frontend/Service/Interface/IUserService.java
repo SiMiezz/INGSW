@@ -1,8 +1,8 @@
-package com.ingsw.frontend.DAO.Interface;
+package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.User;
 
-public interface IUserDAO {
+public interface IUserService {
 
     void create(User user);
 
