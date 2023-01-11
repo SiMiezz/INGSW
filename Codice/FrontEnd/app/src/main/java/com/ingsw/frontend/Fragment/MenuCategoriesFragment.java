@@ -17,9 +17,12 @@ import android.widget.ListView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.Adapter.CategoryAdapter;
+import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -39,7 +42,7 @@ public class MenuCategoriesFragment extends Fragment {
     private String mParam2;
 
 
-    private ArrayList<String> arrayList;
+    private ArrayList<Category> arrayList;
     private ImageButton removeButton;
     private ImageButton addButton;
     private ImageButton backButton;
@@ -93,20 +96,10 @@ public class MenuCategoriesFragment extends Fragment {
         backButton = rootView.findViewById(R.id.back_category_button);
         confirmButton = rootView.findViewById(R.id.confirm_category_button);
 
-        arrayList.add("ciao");
-        arrayList.add("miao");
-        arrayList.add("ncsdjiaknvuc ewf cnc slkkzndqjai sa nc sknln kasakd vfdsc erdsc ");
-        arrayList.add("miao");
-        arrayList.add("CACCA");
-        arrayList.add("VBUICDSNWHA CBDJZ CZDJ");
-        arrayList.add("ciao");
-        arrayList.add("miao");
-        arrayList.add("ncsdjiaknvuc ewf cnc slkkzndqjai sa nc sknln kasakd vfdsc erdsc ");
-        arrayList.add("miao");
-        arrayList.add("CACCA");
-        arrayList.add("VBUICDSNWHA CBDJZ CZDJ");
-
-
+        for(int i = 0; i<5; i++){
+            arrayList.add(new Category());
+            arrayList.get(i).setName(arrayList.toString()+i);
+        }
 
         CategoryAdapter adapter = new CategoryAdapter(getContext(),arrayList);
 

@@ -3,12 +3,20 @@ package com.ingsw.frontend.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
+import com.ingsw.frontend.Adapter.ElementAdapter;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +37,12 @@ public class MenuElementsFragment extends Fragment {
     public MenuElementsFragment() {
         // Required empty public constructor
     }
+
+    ArrayList<Element> arrayList;
+    private ImageButton removeButton;
+    private ImageButton addButton;
+    private ImageButton backButton;
+    private ImageButton confirmButton;
 
     /**
      * Use this factory method to create a new instance of
@@ -61,6 +75,74 @@ public class MenuElementsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu_elements, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_menu_elements, container, false);
+        arrayList = new ArrayList<>();
+        removeButton = rootView.findViewById(R.id.remove_element_button);
+        addButton = rootView.findViewById(R.id.add_element_button);
+        backButton = rootView.findViewById(R.id.back_element_button);
+        confirmButton = rootView.findViewById(R.id.confirm_element_button);
+
+        for(int i = 0; i<10; i++){
+            arrayList.add(new Element());
+            arrayList.get(i).setName(arrayList.toString()+i);
+        }
+
+
+        ElementAdapter adapter = new ElementAdapter(getContext(),arrayList);
+
+        RecyclerView myView = (RecyclerView) rootView.findViewById(R.id.elements_listview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myView.setLayoutManager(linearLayoutManager);
+        myView.setAdapter(adapter);
+
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ElementAdapter.currentLayout == -1){
+                    ElementAdapter.currentLayout = -2;
+                    adapter.notifyDataSetChanged();
+                }
+
+                removeButton.setVisibility(View.INVISIBLE);
+                backButton.setVisibility(View.VISIBLE);
+
+                addButton.setVisibility(View.INVISIBLE);
+                confirmButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ElementAdapter.currentLayout == -2){
+                    ElementAdapter.currentLayout = -1;
+                    adapter.notifyDataSetChanged();
+                }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        return rootView;
     }
 }

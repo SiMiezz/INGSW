@@ -21,11 +21,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:weightSum="3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="63dp">
+                android:layout_height="63dp"
+                android:layout_weight="0.1">
 
                 <View
                     android:id="@+id/view"
@@ -76,6 +78,105 @@
                     app:layout_constraintVertical_bias="0.95" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/elements_listview"
+                android:layout_width="match_parent"
+                android:layout_height="420dp"
+                android:layout_weight="1"
+                android:divider="#787486"
+                android:dividerHeight="1dp" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#e5e5e5"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp" />
+
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#787486" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|center_vertical"
+                android:layout_weight="0.1"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <FrameLayout
+                    android:layout_width="324.5dp"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/remove_element_button"
+                        android:layout_width="324.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_minus"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                    <ImageButton
+                        android:id="@+id/back_element_button"
+                        android:layout_width="324.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_back"
+                        android:visibility="invisible"
+                        android:foreground="?android:attr/selectableItemBackground"/>
+
+                </FrameLayout>
+
+
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:background="#787486" />
+
+                <FrameLayout
+                    android:layout_width="324.5dp"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/add_element_button"
+                        android:layout_width="324.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_plus"
+                        android:foreground="?android:attr/selectableItemBackground"></ImageButton>
+
+                    <ImageButton
+                        android:id="@+id/confirm_element_button"
+                        android:layout_width="324.5dp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@color/white"
+                        android:src="@drawable/icon_confirm"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:visibility="invisible"/>
+
+
+                </FrameLayout>
+
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

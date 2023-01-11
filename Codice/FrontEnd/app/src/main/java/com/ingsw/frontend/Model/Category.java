@@ -71,4 +71,15 @@ public class Category {
     public void setMenu(Menu menu) {
         this.menu = menu;
     }
+
+
+    private Boolean checked = Boolean.valueOf(false);
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 }

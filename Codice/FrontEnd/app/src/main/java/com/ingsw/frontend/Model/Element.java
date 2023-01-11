@@ -135,4 +135,18 @@ public class Element {
     public void setAllergenList(List<Allergen> allergenList) {
         this.allergenList = allergenList;
     }
+
+
+
+
+
+    private Boolean checked = Boolean.valueOf(false);
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 }

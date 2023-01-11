@@ -84,7 +84,7 @@
                 android:layout_height="1dp"
                 android:background="#e5e5e5"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"></View>
+                android:layout_marginLeft="10dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories_listview"
@@ -99,13 +99,13 @@
                 android:layout_height="1dp"
                 android:background="#e5e5e5"
                 android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"></View>
+                android:layout_marginLeft="10dp" />
 
             <View
                 android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
-                android:background="#787486"></View>
+                android:background="#787486" />
 
             <LinearLayout
                 android:layout_width="match_parent"
