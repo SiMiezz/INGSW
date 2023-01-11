@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitService {
 
-    private Retrofit retrofit;
+    private static Retrofit retrofit;
 
     public RetrofitService() {
         initializeRetrofit();
@@ -20,7 +20,7 @@ public class RetrofitService {
                 .build();
     }
 
-    public Retrofit getRetrofit() {
+    public static Retrofit getRetrofit() {
         return retrofit;
     }
 }
