@@ -20,19 +20,16 @@ public class Category {
 
     //REFERENCES
     @Expose
-    @SerializedName("element_List")
-    private List<Element> elementList = new ArrayList<>();
-
-    @Expose
     @SerializedName("menu_id")
-    private Menu menu;
+    private Integer menuId;
 
     //CONSTRUCTORS
 
-    public Category(Integer id, String name, Menu menu) {
+
+    public Category(Integer id, String name, Integer menuId) {
         this.id = id;
         this.name = name;
-        this.menu = menu;
+        this.menuId = menuId;
     }
 
     public Category() {
@@ -56,22 +53,13 @@ public class Category {
         this.name = name;
     }
 
-    public List<Element> getElementList() {
-        return elementList;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public void setElementList(List<Element> elementList) {
-        this.elementList = elementList;
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
-
 
     private Boolean checked = Boolean.valueOf(false);
 

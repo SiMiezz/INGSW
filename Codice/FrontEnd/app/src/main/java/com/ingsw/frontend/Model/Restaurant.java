@@ -36,16 +36,8 @@ public class Restaurant {
 
     //REFERENCES
     @Expose
-    @SerializedName("user_List")
-    private List<User> userList = new ArrayList<>();
-
-    @Expose
-    @SerializedName("tables_List")
-    private List<TableRestaurant> tablesList = new ArrayList<>();
-
-    @Expose
     @SerializedName("menu_id")
-    private Menu menu;
+    private Integer menuId;
 
     //CONSTRUCTORS
     public Restaurant() {
@@ -110,27 +102,11 @@ public class Restaurant {
         this.touristic = touristic;
     }
 
-    public List<User> getUserList() {
-        return userList;
+    public Integer getMenuId() {
+        return menuId;
     }
 
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
-
-    public List<TableRestaurant> getTablesList() {
-        return tablesList;
-    }
-
-    public void setTablesList(List<TableRestaurant> tablesList) {
-        this.tablesList = tablesList;
-    }
-
-    public Menu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 }

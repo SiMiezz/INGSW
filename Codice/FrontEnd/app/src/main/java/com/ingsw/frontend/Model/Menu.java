@@ -20,21 +20,17 @@ public class Menu {
 
     //REFERENCES
     @Expose
-    @SerializedName("category_List")
-    private List<Category> categoryList = new ArrayList<>();
-
-    @Expose
     @SerializedName("restaurant_name")
-    private Restaurant restaurant;
+    private String restaurantName;
 
     //CONSTRUCTORS
     public Menu() {
     }
 
-    public Menu(Integer id, Restaurant restaurant, String qrCode) {
+    public Menu(Integer id, String qrCode, String restaurantName) {
         this.id = id;
-        this.restaurant = restaurant;
         this.qrCode = qrCode;
+        this.restaurantName = restaurantName;
     }
 
     //GETTERS AND SETTERS
@@ -55,19 +51,11 @@ public class Menu {
         this.qrCode = qrCode;
     }
 
-    public List<Category> getCategoryList() {
-        return categoryList;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }

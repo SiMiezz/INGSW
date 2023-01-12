@@ -12,6 +12,8 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.core.Single;
+import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -28,12 +30,12 @@ public class CategoryService implements ICategoryService {
         categoryApi.create(category)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Void>() {
+                .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull Void unused) {
+                    public void onSuccess(@NonNull Void unused) {
                         callback.returnResult(true);
                     }
 
@@ -41,9 +43,6 @@ public class CategoryService implements ICategoryService {
                     public void onError(@NonNull Throwable e) {
                         callback.returnError(e);
                     }
-
-                    @Override
-                    public void onComplete() {}
                 });
     }
 
@@ -52,12 +51,12 @@ public class CategoryService implements ICategoryService {
         categoryApi.deleteById(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Void>() {
+                .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull Void unused) {
+                    public void onSuccess(@NonNull Void unused) {
                         callback.returnResult(true);
                     }
 
@@ -65,9 +64,6 @@ public class CategoryService implements ICategoryService {
                     public void onError(@NonNull Throwable e) {
                         callback.returnError(e);
                     }
-
-                    @Override
-                    public void onComplete() {}
                 });
     }
 
@@ -76,22 +72,19 @@ public class CategoryService implements ICategoryService {
         categoryApi.getByMenuId(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Category>>() {
+                .subscribe(new SingleObserver<List<Category>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull List<Category> categories) {
-                        callback.returnResult(categories);
+                    public void onSuccess(@NonNull List<Category> categoryList) {
+                        callback.returnResult(categoryList);
                     }
 
                     @Override
                     public void onError(@NonNull Throwable e) {
                         callback.returnError(e);
                     }
-
-                    @Override
-                    public void onComplete() {}
                 });
     }
 }

@@ -13,11 +13,6 @@ public class Allergen {
     @SerializedName("name")
     private String name;
 
-    //REFERENCES
-    @Expose
-    @SerializedName("element_List")
-    private List<Element> elementList = new ArrayList<>();
-
     //CONSTRUCTORS
 
     public Allergen(String name) {
@@ -35,13 +30,5 @@ public class Allergen {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Element> getElementList() {
-        return elementList;
-    }
-
-    public void setElementList(List<Element> elementList) {
-        this.elementList = elementList;
     }
 }

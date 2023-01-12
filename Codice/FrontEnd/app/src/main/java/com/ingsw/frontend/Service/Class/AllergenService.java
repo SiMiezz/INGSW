@@ -11,6 +11,7 @@ import java.util.List;
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.Observer;
+import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -27,12 +28,12 @@ public class AllergenService implements IAllergenService {
         allergenApi.create(allergen)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Void>() {
+                .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull Void unused) {
+                    public void onSuccess(@NonNull Void unused) {
                         callback.returnResult(true);
                     }
 
@@ -40,9 +41,6 @@ public class AllergenService implements IAllergenService {
                     public void onError(@NonNull Throwable e) {
                         callback.returnError(e);
                     }
-
-                    @Override
-                    public void onComplete() {}
                 });
     }
 
@@ -51,12 +49,12 @@ public class AllergenService implements IAllergenService {
         allergenApi.getAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<List<Allergen>>() {
+                .subscribe(new SingleObserver<List<Allergen>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull List<Allergen> allergens) {
+                    public void onSuccess(@NonNull List<Allergen> allergens) {
                         callback.returnResult(allergens);
                     }
 
@@ -64,9 +62,6 @@ public class AllergenService implements IAllergenService {
                     public void onError(@NonNull Throwable e) {
                         callback.returnError(e);
                     }
-
-                    @Override
-                    public void onComplete() {}
                 });
     }
 

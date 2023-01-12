@@ -38,28 +38,20 @@ public class Element {
     //REFERENCES
     @Expose
     @SerializedName("category_id")
-    private Category category;
-
-    @Expose
-    @SerializedName("order_List")
-    private List<Order> orderList = new ArrayList<>();
-
-    @Expose
-    @SerializedName("allergen_List")
-    private List<Allergen> allergenList = new ArrayList<>();
+    private Integer categoryId;
 
     //CONSTRUCTORS
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Category category) {
+    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Integer categoryId) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.prePackaged = prePackaged;
         this.aliment = aliment;
-        this.category = category;
+        this.categoryId = categoryId;
     }
 
     //GETTERS AND SETTERS
@@ -112,33 +104,13 @@ public class Element {
         this.aliment = aliment;
     }
 
-    public Category getCategory() {
-        return category;
+    public Integer getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
-    }
-
-    public List<Allergen> getAllergenList() {
-        return allergenList;
-    }
-
-    public void setAllergenList(List<Allergen> allergenList) {
-        this.allergenList = allergenList;
-    }
-
-
-
-
 
     private Boolean checked = Boolean.valueOf(false);
 

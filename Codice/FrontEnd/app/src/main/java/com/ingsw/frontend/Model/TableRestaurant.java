@@ -21,24 +21,16 @@ public class TableRestaurant {
     //REFERENCES
     @Expose
     @SerializedName("restaurant_name")
-    private Restaurant restaurant;
-
-    @Expose
-    @SerializedName("client_list")
-    private List<Client> clientList = new ArrayList<>();
-
-    @Expose
-    @SerializedName("order_list")
-    private List<Order> orderList = new ArrayList<>();
+    private String restaurantName;
 
     //CONSTRUCTORS
     public TableRestaurant() {
     }
 
-    public TableRestaurant(int id, int seats, Restaurant restaurant) {
+    public TableRestaurant(Integer id, int seats, String restaurantName) {
         this.id = id;
         this.seats = seats;
-        this.restaurant = restaurant;
+        this.restaurantName = restaurantName;
     }
 
     //GETTERS AND SETTERS
@@ -59,27 +51,15 @@ public class TableRestaurant {
         this.seats = seats;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public List<Client> getClientList() {
-        return clientList;
-    }
-
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
-    }
-
-    public List<Order> getOrderList() {
-        return orderList;
-    }
-
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }

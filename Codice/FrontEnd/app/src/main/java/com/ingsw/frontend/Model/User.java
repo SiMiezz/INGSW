@@ -30,8 +30,8 @@ public class User {
 
     //REFERENCES
     @Expose
-    @SerializedName("idUser")
-    private Restaurant restaurant;
+    @SerializedName("restaurant_name")
+    private String restaurantName;
 
     //CONSTRUCTORS
     public User() {
@@ -45,13 +45,13 @@ public class User {
         this.job = job;
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type job, Restaurant restaurant) {
+    public User(String id, String pwd, String name, String surname, User_Type job, String restaurantName) {
         this.id = id;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
         this.job = job;
-        this.restaurant = restaurant;
+        this.restaurantName = restaurantName;
     }
 
     //GETTERS AND SETTERS
@@ -96,11 +96,11 @@ public class User {
         this.job = job;
     }
 
-    public Restaurant getRestaurant() {
-        return restaurant;
+    public String getRestaurantName() {
+        return restaurantName;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }

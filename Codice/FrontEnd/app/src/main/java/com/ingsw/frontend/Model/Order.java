@@ -26,21 +26,17 @@ public class Order {
     //REFERENCES
     @Expose
     @SerializedName("table_id")
-    private TableRestaurant table;
-
-    @Expose
-    @SerializedName("elementOrder_List")
-    private List<Element> elementOrderList = new ArrayList<>();
+    private Integer tableId;
 
     //CONSTRUCTORS
     public Order() {
     }
 
-    public Order(int id, double price, Date date, TableRestaurant table) {
+    public Order(Integer id, double price, Date date, Integer tableId) {
         this.id = id;
         this.price = price;
         this.date = date;
-        this.table = table;
+        this.tableId = tableId;
     }
 
     //GETTERS AND SETTERS
@@ -69,19 +65,15 @@ public class Order {
         this.date = date;
     }
 
-    public TableRestaurant getTable() {
-        return table;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setTables(TableRestaurant table) {
-        this.table = table;
+    public Integer getTableId() {
+        return tableId;
     }
 
-    public List<Element> getElementOrderList() {
-        return elementOrderList;
-    }
-
-    public void setElementOrderList(List<Element> elementOrderList) {
-        this.elementOrderList = elementOrderList;
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
     }
 }

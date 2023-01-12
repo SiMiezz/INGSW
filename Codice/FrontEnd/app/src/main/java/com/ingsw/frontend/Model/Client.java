@@ -12,16 +12,16 @@ public class Client {
     //REFERENCES
     @Expose
     @SerializedName("table_id")
-    private TableRestaurant table;
+    private Integer tableId;
 
     //CONSTRUCTORS
     public Client() {
 
     }
 
-    public Client(Integer id, TableRestaurant table) {
+    public Client(Integer id, Integer tableId) {
         this.id = id;
-        this.table = table;
+        this.tableId = tableId;
     }
 
     //GETTERS AND SETTERS
@@ -34,11 +34,11 @@ public class Client {
         this.id = id;
     }
 
-    public TableRestaurant getTable() {
-        return table;
+    public Integer getTableId() {
+        return tableId;
     }
 
-    public void setTables(TableRestaurant table) {
-        this.table = table;
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
     }
 }

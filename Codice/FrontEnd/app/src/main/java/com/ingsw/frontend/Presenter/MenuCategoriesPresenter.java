@@ -16,6 +16,7 @@ public class MenuCategoriesPresenter {
 
     public MenuCategoriesPresenter(MenuCategoriesFragment menuCategoriesFragment) {
         this.menuCategoriesFragment = menuCategoriesFragment;
+        categoryService = new CategoryService();
     }
     
 
@@ -35,7 +36,7 @@ public class MenuCategoriesPresenter {
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
         },id);
     }

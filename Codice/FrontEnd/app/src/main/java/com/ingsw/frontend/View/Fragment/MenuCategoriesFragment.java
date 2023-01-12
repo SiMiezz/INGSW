@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
@@ -34,6 +36,7 @@ public class MenuCategoriesFragment extends Fragment {
 
     private RecyclerView myView;
     private CategoryAdapter adapter;
+    private MenuCategoriesPresenter menuCategoriesPresenter;
 
 
     public MenuCategoriesFragment() {
@@ -80,6 +83,10 @@ public class MenuCategoriesFragment extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);
         myView.setAdapter(adapter);
+
+        menuCategoriesPresenter = new MenuCategoriesPresenter(this);
+
+        menuCategoriesPresenter.getByMenuId(1);
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
