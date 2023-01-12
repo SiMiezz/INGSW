@@ -1,4 +1,4 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
@@ -16,7 +16,6 @@ import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.

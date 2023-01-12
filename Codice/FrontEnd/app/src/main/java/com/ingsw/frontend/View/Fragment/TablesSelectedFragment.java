@@ -1,4 +1,4 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
@@ -12,10 +12,10 @@ import com.ingsw.frontend.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MembersChefsFragment#newInstance} factory method to
+ * Use the {@link TablesSelectedFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MembersChefsFragment extends Fragment {
+public class TablesSelectedFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +26,7 @@ public class MembersChefsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MembersChefsFragment() {
+    public TablesSelectedFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class MembersChefsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MembersChefsFragment.
+     * @return A new instance of fragment TablesSelectedFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MembersChefsFragment newInstance(String param1, String param2) {
-        MembersChefsFragment fragment = new MembersChefsFragment();
+    public static TablesSelectedFragment newInstance(String param1, String param2) {
+        TablesSelectedFragment fragment = new TablesSelectedFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class MembersChefsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_members_chefs, container, false);
+        return inflater.inflate(R.layout.fragment_tables_selected, container, false);
     }
 }

@@ -1,29 +1,20 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;
-import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.

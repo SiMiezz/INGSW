@@ -1,17 +1,16 @@
-package com.ingsw.frontend.Activity;
+package com.ingsw.frontend.View.Activity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.ingsw.frontend.Fragment.LogoFragment;
-import com.ingsw.frontend.Fragment.RestaurantFragment;
-import com.ingsw.frontend.Fragment.SectionButtonsFragment;
-import com.ingsw.frontend.Fragment.UserFragment;
+import com.ingsw.frontend.View.Fragment.LogoFragment;
+import com.ingsw.frontend.View.Fragment.RestaurantFragment;
+import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
+import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
 public class HomeActivity extends FragmentActivity {

@@ -1,7 +1,6 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.annotation.SuppressLint;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -13,7 +12,6 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupMenu;
 
 import com.ingsw.frontend.R;
 

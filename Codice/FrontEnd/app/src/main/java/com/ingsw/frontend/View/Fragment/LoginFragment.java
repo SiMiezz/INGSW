@@ -1,4 +1,4 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.ingsw.frontend.Activity.HomeActivity;
+import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
 
 /**

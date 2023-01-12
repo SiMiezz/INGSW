@@ -1,4 +1,4 @@
-package com.ingsw.frontend.Activity;
+package com.ingsw.frontend.View.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;

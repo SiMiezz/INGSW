@@ -1,8 +1,10 @@
-package com.ingsw.frontend.Fragment;
+package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,10 +14,10 @@ import com.ingsw.frontend.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link MembersSupervisorsFragment#newInstance} factory method to
+ * Use the {@link MenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MembersSupervisorsFragment extends Fragment {
+public class MenuFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,7 +28,7 @@ public class MembersSupervisorsFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public MembersSupervisorsFragment() {
+    public MenuFragment() {
         // Required empty public constructor
     }
 
@@ -36,11 +38,11 @@ public class MembersSupervisorsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MembersSupervisorsFragment.
+     * @return A new instance of fragment MenuFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MembersSupervisorsFragment newInstance(String param1, String param2) {
-        MembersSupervisorsFragment fragment = new MembersSupervisorsFragment();
+    public static MenuFragment newInstance(String param1, String param2) {
+        MenuFragment fragment = new MenuFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -55,12 +57,19 @@ public class MembersSupervisorsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.categories_menu_container, new MenuCategoriesFragment());
+        fragmentTransaction.replace(R.id.elements_menu_container, new MenuElementsFragment());
+        fragmentTransaction.commit();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_members_supervisors, container, false);
+        return inflater.inflate(R.layout.fragment_menu, container, false);
     }
 }

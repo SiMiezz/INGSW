@@ -13,7 +13,7 @@
     app:cardCornerRadius="15dp"
     app:strokeColor="@color/black"
     app:strokeWidth="2dp"
-    tools:context=".Fragment.LoginFragment"
+    tools:context=".View.Fragment.LoginFragment"
     tools:layout_editor_absoluteX="643dp"
     tools:layout_editor_absoluteY="653dp">
 

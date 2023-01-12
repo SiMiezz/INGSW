@@ -1,9 +1,8 @@
-package com.ingsw.frontend.Activity;
+package com.ingsw.frontend.View.Activity;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.ingsw.frontend.Fragment.LoginFragment;
-import com.ingsw.frontend.Fragment.SectionButtonsFragment;
+import com.ingsw.frontend.View.Fragment.LoginFragment;
 import com.ingsw.frontend.R;
 
 import android.os.Bundle;
