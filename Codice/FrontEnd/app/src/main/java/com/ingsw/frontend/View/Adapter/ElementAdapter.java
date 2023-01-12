@@ -73,6 +73,10 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         return currentLayout;
     }
 
+    public void setArrayList(ArrayList<Element> arrayList) {
+        this.arrayList = arrayList;
+    }
+
     public ArrayList<Element> getArrayList(){
         return arrayList;
     }
