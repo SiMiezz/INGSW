@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 public interface OrderApi {
 
     @POST("/order/create")
-    Observable<Order> create(@Body Order order);
+    Observable<Void> create(@Body Order order);
 
     @DELETE("order/delete/{id}")
     Observable<Void> deleteById(@Path("id") Integer id);

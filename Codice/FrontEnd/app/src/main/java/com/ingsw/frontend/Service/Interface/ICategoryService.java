@@ -1,12 +1,13 @@
 package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Service.Callback;
 
 public interface ICategoryService {
 
-    void create(Category category);
+    void create(Callback callback, Category category);
 
-    void deleteById(Integer id);
+    void deleteById(Callback callback, Integer id);
 
-    void getByMenuQrCode(String code);
+    void getByMenuQrCode(Callback callback, String code);
 }

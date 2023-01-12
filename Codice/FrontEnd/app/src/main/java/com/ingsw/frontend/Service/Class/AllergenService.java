@@ -27,13 +27,13 @@ public class AllergenService implements IAllergenService {
         allergenApi.create(allergen)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Observer<Allergen>() {
+                .subscribe(new Observer<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onNext(@NonNull Allergen allergen) {
-                        callback.returnResult(allergen);
+                    public void onNext(@NonNull Void unused) {
+                        callback.returnResult(true);
                     }
 
                     @Override

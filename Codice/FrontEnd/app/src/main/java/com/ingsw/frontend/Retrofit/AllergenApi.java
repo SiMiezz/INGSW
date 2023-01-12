@@ -12,7 +12,7 @@ import retrofit2.http.POST;
 public interface AllergenApi {
 
     @POST("/allergen/create")
-    Observable<Allergen> create(@Body Allergen allergen);
+    Observable<Void> create(@Body Allergen allergen);
 
     @GET("/get")
     Observable<List<Allergen>> getAll();
