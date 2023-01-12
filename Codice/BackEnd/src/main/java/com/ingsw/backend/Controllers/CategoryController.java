@@ -31,9 +31,9 @@ public class CategoryController {
         }
     }
 
-    @GetMapping("/get/{code}")
-    public List<Category> getByMenuQrCode(@PathVariable String code){
-        return categoryService.getByMenuQrCode(code);
+    @GetMapping("/get/{id}")
+    public List<Category> getByMenuId(@PathVariable Integer id){
+        return categoryService.getByMenuId(id);
     }
 
 }

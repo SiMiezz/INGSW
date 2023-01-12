@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category,Integer> {
 
-    public List<Category> findByMenuQrCode(String menu);
+    public List<Category> findByMenuId(Integer id);
 }

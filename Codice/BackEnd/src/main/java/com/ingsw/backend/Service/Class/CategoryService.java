@@ -35,7 +35,7 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public List<Category> getByMenuQrCode(String menu){
-        return categoryRepository.findByMenuQrCode(menu);
+    public List<Category> getByMenuId(Integer id){
+        return categoryRepository.findByMenuId(id);
     }
 }

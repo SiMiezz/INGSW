@@ -9,5 +9,5 @@ public interface ICategoryService {
 
     public boolean deleteById(Integer id);
 
-    public List<Category> getByMenuQrCode(String menu);
+    public List<Category> getByMenuId(Integer id);
 }
