@@ -81,6 +81,17 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         return arrayList;
     }
 
+    public void clearList(){
+        arrayList.clear();
+    }
+
+
+
+
+
+
+
+
     public class ElementHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
         private TextView textView;

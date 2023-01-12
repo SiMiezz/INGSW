@@ -87,6 +87,10 @@ public class MenuElementsFragment extends Fragment {
 
         adapter = new ElementAdapter(getContext(),arrayList);
         myView = rootView.findViewById(R.id.elements_listview);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myView.setLayoutManager(linearLayoutManager);
+        myView.setAdapter(adapter);
 
 
 
@@ -141,12 +145,8 @@ public class MenuElementsFragment extends Fragment {
     }
 
     public void loadElement(ArrayList<Element> elementList){
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(linearLayoutManager);
-
+        adapter.clearList();
         adapter.setArrayList(elementList);
-        myView.setAdapter(adapter);
-
+        adapter.notifyDataSetChanged();
     }
 }

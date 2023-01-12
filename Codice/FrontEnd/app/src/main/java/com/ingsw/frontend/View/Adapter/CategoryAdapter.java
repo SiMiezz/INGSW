@@ -81,6 +81,22 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         this.arrayList = arrayList;
     }
 
+    public void clearList(){
+        arrayList.clear();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
     public class CategoryHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
         private TextView textView;

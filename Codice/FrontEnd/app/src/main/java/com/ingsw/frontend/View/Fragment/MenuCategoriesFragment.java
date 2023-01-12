@@ -93,6 +93,10 @@ public class MenuCategoriesFragment extends Fragment {
 
         myView = rootView.findViewById(R.id.categories_listview);
         adapter = new CategoryAdapter(getContext(), new ArrayList<>());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myView.setLayoutManager(linearLayoutManager);
+        myView.setAdapter(adapter);
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -150,11 +154,8 @@ public class MenuCategoriesFragment extends Fragment {
     }
 
     public void loadCategory(ArrayList<Category> categoryList){
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(linearLayoutManager);
-
+        adapter.clearList();
         adapter.setArrayList(categoryList);
-        myView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 }
