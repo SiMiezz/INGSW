@@ -150,11 +150,11 @@ public class MenuCategoriesFragment extends Fragment {
     }
 
     public void loadCategory(ArrayList<Category> categoryList){
-        adapter.setArrayList(categoryList);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);
+
+        adapter.setArrayList(categoryList);
         myView.setAdapter(adapter);
     }
 }
