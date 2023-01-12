@@ -47,12 +47,12 @@ DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `category` (
-  `idCategory` int NOT NULL AUTO_INCREMENT,
+  `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `menu_id` int NOT NULL,
-  PRIMARY KEY (`idCategory`),
+  PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
-  CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`idMenu`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `client`;
 CREATE TABLE `client` (
   `table_id` int NOT NULL,
   KEY `table_fk2_idx` (`table_id`),
-  CONSTRAINT `table_fk2` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`idTable`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_fk2` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -101,8 +101,8 @@ CREATE TABLE `composed` (
   `element_id` int NOT NULL,
   KEY `order_fk_idx` (`order_id`),
   KEY `element_fk1_idx` (`element_id`),
-  CONSTRAINT `element_fk1` FOREIGN KEY (`element_id`) REFERENCES `element` (`idElement`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`idOrder`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `element_fk1` FOREIGN KEY (`element_id`) REFERENCES `element` (`id_element`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,7 +128,7 @@ CREATE TABLE `contains` (
   KEY `allergen_fk_idx` (`allergen_name`),
   KEY `element_fk_idx` (`element_id`),
   CONSTRAINT `allergen_fk` FOREIGN KEY (`allergen_name`) REFERENCES `allergen` (`name`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `element_fk` FOREIGN KEY (`element_id`) REFERENCES `element` (`idElement`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `element_fk` FOREIGN KEY (`element_id`) REFERENCES `element` (`id_element`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -149,16 +149,16 @@ DROP TABLE IF EXISTS `element`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `element` (
-  `idElement` int NOT NULL AUTO_INCREMENT,
+  `id_element` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `price` double NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `prePackaged` tinyint NOT NULL,
+  `prepackaged` tinyint NOT NULL,
   `aliment` enum('food','drink') NOT NULL,
   `category_id` int NOT NULL,
-  PRIMARY KEY (`idElement`),
+  PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
-  CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`idCategory`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,10 +179,10 @@ DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `menu` (
-  `idMenu` int NOT NULL AUTO_INCREMENT,
-  `qrCode` varchar(255) DEFAULT NULL,
+  `id_menu` int NOT NULL AUTO_INCREMENT,
+  `qrcode` varchar(255) DEFAULT NULL,
   `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`idMenu`),
+  PRIMARY KEY (`id_menu`),
   KEY `restaurant_fk3_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk3` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -206,13 +206,13 @@ DROP TABLE IF EXISTS `order`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
-  `idOrder` int NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
+  `id_order` int NOT NULL AUTO_INCREMENT,
+  `date` datetime NOT NULL,
   `price` double NOT NULL,
   `table_id` int NOT NULL,
-  PRIMARY KEY (`idOrder`),
+  PRIMARY KEY (`id_order`),
   KEY `table_fk1_idx` (`table_id`),
-  CONSTRAINT `table_fk1` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`idTable`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `table_fk1` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -261,10 +261,10 @@ DROP TABLE IF EXISTS `tablerestaurant`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tablerestaurant` (
-  `idTable` int NOT NULL AUTO_INCREMENT,
+  `id_table` int NOT NULL AUTO_INCREMENT,
   `seats` int NOT NULL,
   `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`idTable`),
+  PRIMARY KEY (`id_table`),
   KEY `restaurant_fk2_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk2` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -287,13 +287,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `idUser` varchar(50) NOT NULL,
+  `id_user` varchar(50) NOT NULL,
   `pwd` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) DEFAULT NULL,
   `job` enum('admin','waiter','supervisor') NOT NULL,
   `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`idUser`),
+  PRIMARY KEY (`id_user`),
   KEY `restaurant_fk1_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk1` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -325,4 +325,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-12 18:05:17
+-- Dump completed on 2023-01-13  0:18:42
