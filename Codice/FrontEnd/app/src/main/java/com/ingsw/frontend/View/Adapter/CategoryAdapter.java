@@ -28,6 +28,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         this.arrayList = arrayList;
     }
 
+    public ArrayList<Category> getArrayList(){
+        return arrayList;
+    }
+
+    public void setArrayList(ArrayList<Category> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    public void clearList(){
+        arrayList.clear();
+    }
+
+
+
+ // ***************************************************************************************
+
+
     @NonNull
     @Override
     public CategoryAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,27 +90,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return arrayList.size();
     }
 
-    public ArrayList<Category> getArrayList(){
-        return arrayList;
-    }
 
-    public void setArrayList(ArrayList<Category> arrayList) {
-        this.arrayList = arrayList;
-    }
-
-    public void clearList(){
-        arrayList.clear();
-    }
-
-
-
-
-
-
-
-
-
-
+    // ***************************************************************************************
 
 
 

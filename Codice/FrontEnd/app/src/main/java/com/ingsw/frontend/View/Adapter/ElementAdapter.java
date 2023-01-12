@@ -27,6 +27,21 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         this.arrayList = arrayList;
     }
 
+    public void setArrayList(ArrayList<Element> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    public ArrayList<Element> getArrayList(){
+        return arrayList;
+    }
+
+    public void clearList(){
+        arrayList.clear();
+    }
+
+
+    // ***************************************************************************************
+
     @NonNull
     @Override
     public ElementAdapter.ElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -73,24 +88,8 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         return currentLayout;
     }
 
-    public void setArrayList(ArrayList<Element> arrayList) {
-        this.arrayList = arrayList;
-    }
 
-    public ArrayList<Element> getArrayList(){
-        return arrayList;
-    }
-
-    public void clearList(){
-        arrayList.clear();
-    }
-
-
-
-
-
-
-
+    // ***************************************************************************************
 
     public class ElementHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
