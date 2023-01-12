@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.ingsw.frontend.Adapter.CategoryAdapter;
+import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +39,9 @@ public class MenuCategoriesFragment extends Fragment {
     private ImageButton addButton;
     private ImageButton backButton;
     private ImageButton confirmButton;
+
+    private RecyclerView myView;
+    private CategoryAdapter adapter;
 
 
     public MenuCategoriesFragment() {
@@ -87,18 +91,8 @@ public class MenuCategoriesFragment extends Fragment {
         backButton = rootView.findViewById(R.id.back_category_button);
         confirmButton = rootView.findViewById(R.id.confirm_category_button);
 
-        for(int i = 0; i<5; i++){
-            arrayList.add(new Category());
-            arrayList.get(i).setName(arrayList.toString()+i);
-        }
-
-        CategoryAdapter adapter = new CategoryAdapter(getContext(),arrayList);
-
-        RecyclerView myView = (RecyclerView) rootView.findViewById(R.id.categories_listview);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(linearLayoutManager);
-        myView.setAdapter(adapter);
+        myView = rootView.findViewById(R.id.categories_listview);
+        adapter = new CategoryAdapter(getContext(), new ArrayList<>());
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,5 +147,14 @@ public class MenuCategoriesFragment extends Fragment {
 
 
         return rootView;
+    }
+
+    public void loadCategory(ArrayList<Category> categoryList){
+        adapter.setArrayList(categoryList);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        myView.setLayoutManager(linearLayoutManager);
+        myView.setAdapter(adapter);
     }
 }

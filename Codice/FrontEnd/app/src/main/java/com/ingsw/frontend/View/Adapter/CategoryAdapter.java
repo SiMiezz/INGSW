@@ -1,54 +1,50 @@
-package com.ingsw.frontend.Adapter;
+package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
-import android.net.wifi.WifiManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
 
-public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementHolder> {
+public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
-    public ArrayList<Element> arrayList;
+    public ArrayList<Category> arrayList;
 
     private final int NORMAL_LAYOUT = -1;
     private final int SELECTION_LAYOUT=-2;
     public static int currentLayout = -1;
 
-    public ElementAdapter(Context context, ArrayList<Element> arrayList){
+
+    public CategoryAdapter(Context context, ArrayList<Category> arrayList){
         this.arrayList = arrayList;
     }
 
     @NonNull
     @Override
-    public ElementAdapter.ElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_normal, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
 
         if(getItemViewType(0) == -1)
-            return new ElementAdapter.ElementHolder(normalList);
+            return new CategoryHolder(normalList);
         else
-            return  new ElementAdapter.ElementHolder(selectionList);
+            return  new CategoryHolder(selectionList);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ElementAdapter.ElementHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
 
         holder.textView.setText(arrayList.get(position).getName());
-
         holder.checkBox.setChecked(false);
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
@@ -67,29 +63,34 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     }
 
     @Override
-    public int getItemCount() {
-        return arrayList.size();
-    }
-
-    @Override
     public int getItemViewType(int position){
 
         return currentLayout;
     }
 
-    public ArrayList<Element> getArrayList(){
+    @Override
+    public int getItemCount() {
+        return arrayList.size();
+    }
+
+    public ArrayList<Category> getArrayList(){
         return arrayList;
     }
 
-    public class ElementHolder extends RecyclerView.ViewHolder{
+    public void setArrayList(ArrayList<Category> arrayList) {
+        this.arrayList = arrayList;
+    }
+
+    public class CategoryHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
         private TextView textView;
 
 
-        public ElementHolder(@NonNull View itemView) {
+        public CategoryHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_cardview);
             checkBox = itemView.findViewById(R.id.checkbox_category);
+
         }
 
     }

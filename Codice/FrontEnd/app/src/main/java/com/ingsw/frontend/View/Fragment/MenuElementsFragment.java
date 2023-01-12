@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.ingsw.frontend.Adapter.ElementAdapter;
+import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 
