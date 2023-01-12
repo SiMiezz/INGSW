@@ -1,5 +1,6 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -17,7 +18,7 @@ public class Menu {
     private Integer id;
 
     //REFERENCES
-
+    @JsonManagedReference
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Category> categoryList = new ArrayList<>();
 
@@ -27,7 +28,7 @@ public class Menu {
 
     // ATTRIBUTES
 
-    @Column(name = "qrCode")
+    @Column(name = "qrcode")
     private String qrCode;
 
     //CONSTRUCTORS

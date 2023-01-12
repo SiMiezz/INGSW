@@ -1,5 +1,7 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -20,20 +22,23 @@ public class TableRestaurant { //non può essere Table per notazione @Table che 
 
 
     //REFERENCES
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
     private Restaurant restaurant;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Client> clientList = new ArrayList<>();
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
 
     //ATTRIBUTES
-    @Column(name = "seats_number")
+    @Column(name = "seats")
     private int seats;
 
 

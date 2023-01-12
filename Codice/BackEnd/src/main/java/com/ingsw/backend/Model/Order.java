@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -20,11 +22,13 @@ public class Order {
     private Integer id;
 
     //REFERENCES
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="table_id", referencedColumnName = "idTable")
     private TableRestaurant table;
 
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "element_id"))
     private List<Element> elementOrderList = new ArrayList<>();
@@ -33,7 +37,7 @@ public class Order {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "date")
+    @Column(name = "date", nullable = false)
     private Date date;
 
 

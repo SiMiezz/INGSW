@@ -1,5 +1,7 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -19,15 +21,17 @@ public class Element {
     private Integer id;
 
     //REFERENCES
-
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="category_id", referencedColumnName = "idCategory")
     private Category category;
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "elementOrderList", fetch = FetchType.LAZY)
     private List<Order> orderList = new ArrayList<>();
 
+    @JsonManagedReference
     @ManyToMany(mappedBy = "elementList", fetch = FetchType.LAZY)
     private List<Allergen> allergenList = new ArrayList<>();
 
@@ -44,7 +48,7 @@ public class Element {
     @Column(name = "prepackaged", nullable = false)
     private boolean prePackaged;
 
-    @Column(name = "aliment_type", nullable = false)
+    @Column(name = "aliment", nullable = false)
     private Aliment_Type aliment;
 
 

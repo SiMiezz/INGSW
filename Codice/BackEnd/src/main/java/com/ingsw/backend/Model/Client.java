@@ -1,5 +1,6 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -15,6 +16,7 @@ public class Client {
     private Integer id;
 
     //REFERENCES
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="table_id", referencedColumnName = "idTable")

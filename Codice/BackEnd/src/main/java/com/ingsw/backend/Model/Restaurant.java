@@ -1,5 +1,6 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
@@ -15,9 +16,11 @@ public class Restaurant {
     private String name;
 
     //REFERENCES
+    @JsonManagedReference
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)  //EAGER carica la lista automaticamente quando viene caricato un ristorante, LAZY no (meglio farlo a mano)
     private List<User> userList = new ArrayList<>();                                        // restaurant è il nome dell'attributo dal lato dell'User
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TableRestaurant> tablesList = new ArrayList<>();
 

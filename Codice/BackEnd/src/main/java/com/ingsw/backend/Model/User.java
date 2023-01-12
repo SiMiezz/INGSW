@@ -1,5 +1,6 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ingsw.backend.Model.Enumerations.User_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -17,6 +18,7 @@ public class User {
 
 
     //REFERENCES
+    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY) //foreign key
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name") //referencedColumn è la colonna della tabella ristorante a cui si fa riferimento
@@ -27,13 +29,13 @@ public class User {
     @Column(name = "password", length = 50, nullable = false)
     private String pwd;
 
-    @Column(name = "name", length = 50)
+    @Column(name = "name", length = 50, nullable = false)
     private String name;
 
     @Column(name = "surname", length = 50)
     private String surname;
 
-    @Column(name = "user_type", nullable = false)
+    @Column(name = "job", nullable = false)
     private User_Type job;
 
 
