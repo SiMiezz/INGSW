@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 public interface UserApi {
 
     @POST("/create")
-    Observable<User> create(@Body User user);
+    Observable<Void> create(@Body User user);
 
     @DELETE("/delete/{id}")
     Observable<Void> deleteById(@Path("id") String id);

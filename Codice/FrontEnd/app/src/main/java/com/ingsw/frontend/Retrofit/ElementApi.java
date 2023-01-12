@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 public interface ElementApi {
 
     @POST("/element/create")
-    Observable<Element> create(@Body Element element);
+    Observable<Void> create(@Body Element element);
 
     @DELETE("/element/delete/{id}")
     Observable<Void> deleteById(@Path("id") Integer id);

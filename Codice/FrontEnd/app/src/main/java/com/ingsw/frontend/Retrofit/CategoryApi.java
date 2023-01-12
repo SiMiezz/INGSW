@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 public interface CategoryApi {
 
     @POST("/category/create")
-    Observable<Category> create(@Body Category category);
+    Observable<Void> create(@Body Category category);
 
     @DELETE("/category/delete/{id}")
     Observable<Void> deleteById(@Path("id") Integer id);

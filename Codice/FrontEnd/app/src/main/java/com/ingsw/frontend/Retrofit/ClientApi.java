@@ -11,7 +11,7 @@ import retrofit2.http.Path;
 public interface ClientApi {
 
     @POST("/client/create")
-    Observable<Client> create(@Body Client client);
+    Observable<Void> create(@Body Client client);
 
     @DELETE("/client/delete/{id}")
     Observable<Void> deleteById(@Path("id") Integer id);

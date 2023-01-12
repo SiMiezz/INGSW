@@ -5,11 +5,11 @@ import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Retrofit.ElementApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
 
-public class ElemenService implements IElementService {
+public class ElementService implements IElementService {
 
     private ElementApi elementApi;
 
-    public ElemenService() {
+    public ElementService() {
         this.elementApi = RetrofitService.getRetrofit().create(ElementApi.class);
     }
 
