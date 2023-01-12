@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<Order,Integer> {
 
-    public List<Order> findByTableRestaurantId(Integer id);
+    //public List<Order> findByTablerestaurantId(Integer id);
 }

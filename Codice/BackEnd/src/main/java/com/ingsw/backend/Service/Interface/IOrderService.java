@@ -10,5 +10,5 @@ public interface IOrderService {
 
     public boolean deleteById(Integer id);
 
-    public List<Order> getByTableRestaurantId(Integer id);
+    //public List<Order> getByTablerestaurantId(Integer id);
 }

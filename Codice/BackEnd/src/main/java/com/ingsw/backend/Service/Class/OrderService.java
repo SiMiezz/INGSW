@@ -32,8 +32,8 @@ public class OrderService implements IOrderService {
         return true;
     }
 
-    @Override
-    public List<Order> getByTableRestaurantId(Integer id){
-        return orderRepository.findByTableRestaurantId(id);
-    }
+    //@Override
+    //public List<Order> getByTablerestaurantId(Integer id){
+        //return orderRepository.findByTablerestaurantId(id);
+    //}
 }

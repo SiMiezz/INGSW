@@ -32,8 +32,8 @@ public class OrderController {
         }
     }
 
-    @GetMapping("/get/{id}")
-    public List<Order> getByTableRestaurantId(@PathVariable Integer id){
-        return orderService.getByTableRestaurantId(id);
-    }
+    //@GetMapping("/get/{id}")
+    //public List<Order> getByTableRestaurantId(@PathVariable Integer id){
+        //return orderService.getByTablerestaurantId(id);
+    //}
 }
