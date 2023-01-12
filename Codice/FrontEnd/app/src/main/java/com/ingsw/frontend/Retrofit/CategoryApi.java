@@ -19,7 +19,7 @@ public interface CategoryApi {
     @DELETE("/category/delete/{id}")
     Observable<Void> deleteById(@Path("id") Integer id);
 
-    @GET("/category/get/{code}")
-    Observable<List<Category>> getByMenuQrCode(@Path("code") String code);
+    @GET("/category/get/{id}")
+    Observable<List<Category>> getByMenuId(@Path("id") Integer id);
 
 }

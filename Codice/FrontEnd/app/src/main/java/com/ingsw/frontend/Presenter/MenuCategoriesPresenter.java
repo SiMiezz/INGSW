@@ -24,8 +24,8 @@ public class MenuCategoriesPresenter {
         return menuCategoriesFragment;
     }
 
-    public void getByMenuQrCode(String code){
-        categoryService.getByMenuQrCode(new Callback(){
+    public void getByMenuId(Integer id){
+        categoryService.getByMenuId(new Callback(){
             @Override
             public void returnResult(Object o) {
                 ArrayList<Category> categoryList = (ArrayList<Category>) o;
@@ -37,7 +37,7 @@ public class MenuCategoriesPresenter {
             public void returnError(Throwable e) {
 
             }
-        },code);
+        },id);
     }
 
 }

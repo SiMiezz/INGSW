@@ -72,8 +72,8 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public void getByMenuQrCode(Callback callback, String code){
-        categoryApi.getByMenuQrCode(code)
+    public void getByMenuId(Callback callback, Integer id){
+        categoryApi.getByMenuId(id)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<List<Category>>() {

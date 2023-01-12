@@ -9,5 +9,5 @@ public interface ICategoryService {
 
     void deleteById(Callback callback, Integer id);
 
-    void getByMenuQrCode(Callback callback, String code);
+    void getByMenuId(Callback callback, Integer id);
 }
