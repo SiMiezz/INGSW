@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
@@ -30,7 +31,7 @@ public class MenuElementsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    ArrayList<Element> arrayList;
+    private ArrayList<Element> arrayList;
     private ImageButton removeButton;
     private ImageButton addButton;
     private ImageButton backButton;
@@ -38,6 +39,7 @@ public class MenuElementsFragment extends Fragment {
 
     private RecyclerView myView;
     private ElementAdapter adapter;
+    private MenuElementsPresenter menuElementsPresenter;
 
     public static MenuElementsFragment newInstance(String param1, String param2) {
         MenuElementsFragment fragment = new MenuElementsFragment();
@@ -62,14 +64,17 @@ public class MenuElementsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_menu_elements, container, false);
+
+
         arrayList = new ArrayList<>();
         removeButton = rootView.findViewById(R.id.remove_element_button);
         addButton = rootView.findViewById(R.id.add_element_button);
         backButton = rootView.findViewById(R.id.back_element_button);
         confirmButton = rootView.findViewById(R.id.confirm_element_button);
+        myView = rootView.findViewById(R.id.elements_listview);
 
         adapter = new ElementAdapter(getContext(),arrayList);
-        myView = rootView.findViewById(R.id.elements_listview);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);

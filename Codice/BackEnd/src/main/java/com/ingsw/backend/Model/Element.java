@@ -51,6 +51,7 @@ public class Element {
     @Column(name = "prepackaged", nullable = false)
     private boolean prePackaged;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "aliment", nullable = false)
     private Aliment_Type aliment;
 
