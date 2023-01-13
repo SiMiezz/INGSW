@@ -1,6 +1,8 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -9,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "menu")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Menu {
 
     //PRIMARY KEY

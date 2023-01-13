@@ -1,7 +1,9 @@
 package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -12,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "element")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Element {
 
     //PRIMARY KEY

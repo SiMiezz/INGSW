@@ -1,7 +1,9 @@
 package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -12,7 +14,8 @@ import java.util.List;
 
 @Entity
 @Table(name="tablerestaurant")
-public class TableRestaurant { //non può essere Table per notazione @Table che genera un errore
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
+public class TableRestaurant {
 
     //PRIMARY KEY
     @Id

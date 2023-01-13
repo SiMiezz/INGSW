@@ -1,6 +1,9 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerator;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -11,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "allergen")
+@JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "name")
 public class Allergen {
 
     //PRIMARY KEY

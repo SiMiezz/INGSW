@@ -5,7 +5,9 @@ import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -13,6 +15,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "order")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class Order {
 
     //PRIMARY KEY

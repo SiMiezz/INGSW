@@ -1,6 +1,8 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "restaurant")
+@JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "name")
 public class Restaurant {
 
     //PRIMARY KEY
