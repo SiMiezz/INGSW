@@ -287,13 +287,13 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `user` (
-  `id_user` varchar(50) NOT NULL,
-  `pwd` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `surname` varchar(50) DEFAULT NULL,
   `job` enum('admin','waiter','supervisor') NOT NULL,
   `restaurant_name` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_user`),
+  PRIMARY KEY (`email`),
   KEY `restaurant_fk1_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk1` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -305,6 +305,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-13  0:18:42
+-- Dump completed on 2023-01-13 20:13:34
