@@ -12,17 +12,17 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email", scope = Long.class)
 public class User {
 
     //PRIMARY KEY
     @Id
-    @Column(name = "idUser", length = 50)
-    private String id;
+    @Column(name = "email", length = 100)
+    private String email;
 
 
     //REFERENCES
-    @ManyToOne(fetch =  FetchType.LAZY) //foreign key
+    @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
     @JsonIdentityReference(alwaysAsId = true)
@@ -41,7 +41,7 @@ public class User {
     private String surname;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "job", columnDefinition = "ENUM('ADMIN', 'SUPERVISOR', 'WAITER')" , nullable = false)
+    @Column(name = "job", columnDefinition = "ENUM('admin', 'supervisor', 'waiter')" , nullable = false)
     private User_Type job;
 
 
@@ -53,21 +53,21 @@ public class User {
     public User() {
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type job) {
-        this.id = id;
+    public User(String email, Restaurant restaurant, String pwd, String name, String surname, User_Type job) {
+        this.email = email;
+        this.restaurant = restaurant;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
         this.job = job;
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type job, Restaurant restaurant) {
-        this.id = id;
+    public User(String email, String pwd, String name, String surname, User_Type job) {
+        this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
         this.job = job;
-        this.restaurant = restaurant;
     }
 
     // -------------------------------------------------
@@ -76,12 +76,12 @@ public class User {
     //GETTERS AND SETTERS
 
 
-    public String getId() {
-        return id;
+    public String getEmail() {
+        return email;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPwd() {

@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface TableRestaurantRepository extends CrudRepository<TableRestaurant,Integer> {
 
-    public List<TableRestaurant> findByRestaurantName(String name);
+    List<TableRestaurant> findByRestaurantName(String name);
 }

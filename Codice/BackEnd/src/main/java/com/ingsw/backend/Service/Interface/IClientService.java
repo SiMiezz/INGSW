@@ -4,7 +4,7 @@ import com.ingsw.backend.Model.Client;
 
 public interface IClientService {
 
-    public Client create(Client client);
+    Client create(Client client);
 
-    public Boolean deleteById(Integer id);
+    Boolean deleteById(Integer id);
 }

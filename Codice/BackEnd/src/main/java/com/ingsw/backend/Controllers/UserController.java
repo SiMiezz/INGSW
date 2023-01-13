@@ -24,23 +24,23 @@ public class UserController {
         return userService.create(user);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable String id){
-        boolean delete = userService.deleteById(id);
+    @DeleteMapping("/delete/{email}")
+    public void deleteByEmail(@PathVariable String email){
+        boolean delete = userService.deleteByEmail(email);
 
         if(!delete){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping("/get/{name}")
+    @GetMapping("/get/restaurant/{name}")
     public List<User> getByRestaurantName(@PathVariable String name){
         return userService.getByRestaurantName(name);
     }
 
-    @GetMapping("/get/{id}")
-    public User getById(@PathVariable String id){
-        Optional<User> user = userService.getById(id);
+    @GetMapping("/get/{email}/{pwd}")
+    public User getByEmailAndPassword(@PathVariable String email,@PathVariable String pwd){
+        Optional<User> user = userService.getByEmailAndPassword(email,pwd);
 
         if(user.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
@@ -48,4 +48,6 @@ public class UserController {
 
         return user.get();
     }
+
+
 }

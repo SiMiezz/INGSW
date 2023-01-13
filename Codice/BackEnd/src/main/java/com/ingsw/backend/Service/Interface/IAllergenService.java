@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IAllergenService {
 
-    public Allergen create(Allergen allergen);
+    Allergen create(Allergen allergen);
 
-    public List<Allergen> getAll();
+    List<Allergen> getAll();
 }

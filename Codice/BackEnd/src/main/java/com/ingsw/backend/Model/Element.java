@@ -29,7 +29,6 @@ public class Element {
     private Category category;
 
     @ManyToMany(mappedBy = "elementOrderList", fetch = FetchType.LAZY)
-    @JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     private List<Order> orderList = new ArrayList<>();
 
@@ -51,7 +50,7 @@ public class Element {
     @Column(name = "prepackaged", nullable = false)
     private boolean prePackaged;
 
-    @Column(name = "aliment", columnDefinition = "ENUM('FOOD', 'DRINK')", nullable = false)
+    @Column(name = "aliment", columnDefinition = "ENUM('food', 'drink')", nullable = false)
     @Enumerated(EnumType.STRING)
     private Aliment_Type aliment;
 

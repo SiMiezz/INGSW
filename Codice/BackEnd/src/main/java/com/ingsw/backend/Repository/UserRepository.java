@@ -5,9 +5,12 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends CrudRepository<User,String>{
 
-    public List<User> findByRestaurantName(String name);
+    List<User> findByRestaurantName(String name);
+
+    Optional<User> findByEmailAndPwd(String email, String pwd);
 }

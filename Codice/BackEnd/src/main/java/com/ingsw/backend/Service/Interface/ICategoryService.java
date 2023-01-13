@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ICategoryService {
 
-    public Category create(Category category);
+    Category create(Category category);
 
-    public boolean deleteById(Integer id);
+    boolean deleteById(Integer id);
 
-    public List<Category> getByMenuId(Integer id);
+    List<Category> getByMenuId(Integer id);
 }

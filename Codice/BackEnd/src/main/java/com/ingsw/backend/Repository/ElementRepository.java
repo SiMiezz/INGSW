@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface ElementRepository extends CrudRepository<Element,Integer> {
 
-    public List<Element> findByCategoryId(Integer id);
+    List<Element> findByCategoryId(Integer id);
 }

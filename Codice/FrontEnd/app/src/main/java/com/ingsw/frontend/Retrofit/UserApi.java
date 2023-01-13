@@ -13,15 +13,15 @@ import retrofit2.http.Path;
 
 public interface UserApi {
 
-    @POST("/create")
+    @POST("/user/create")
     Single<Void> create(@Body User user);
 
-    @DELETE("/delete/{id}")
-    Single<Void> deleteById(@Path("id") String id);
+    @DELETE("/user/delete/{email}")
+    Single<Void> deleteByEmail(@Path("email") String email);
 
-    @GET("/get/{name}")
+    @GET("/user/get/restaurant/{name}")
     Single<List<User>> getByRestaurantName(@Path("name") String name);
 
-    @GET("/get/{id}")
-    Single<User> getById(@Path("id") String id);
+    @GET("/user/get/{email}/{pwd}")
+    Single<User> getByEmailAndPassword(@Path("email") String email, @Path("pwd") String pwd);
 }

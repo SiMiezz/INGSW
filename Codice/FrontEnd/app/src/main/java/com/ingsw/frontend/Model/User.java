@@ -8,8 +8,8 @@ public class User {
 
     //PRIMARY KEY
     @Expose
-    @SerializedName("idUser")
-    private String id;
+    @SerializedName("email")
+    private String email;
 
     //ATTRIBUTES
     @Expose
@@ -37,16 +37,8 @@ public class User {
     public User() {
     }
 
-    public User(String id, String pwd, String name, String surname, User_Type job) {
-        this.id = id;
-        this.pwd = pwd;
-        this.name = name;
-        this.surname = surname;
-        this.job = job;
-    }
-
-    public User(String id, String pwd, String name, String surname, User_Type job, String restaurantName) {
-        this.id = id;
+    public User(String email, String pwd, String name, String surname, User_Type job, String restaurantName) {
+        this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
@@ -54,14 +46,22 @@ public class User {
         this.restaurantName = restaurantName;
     }
 
-    //GETTERS AND SETTERS
-
-    public String getId() {
-        return id;
+    public User(String email, String pwd, String name, String surname, User_Type job) {
+        this.email = email;
+        this.pwd = pwd;
+        this.name = name;
+        this.surname = surname;
+        this.job = job;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    //GETTERS AND SETTERS
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPwd() {

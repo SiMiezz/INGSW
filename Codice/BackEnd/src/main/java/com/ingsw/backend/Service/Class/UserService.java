@@ -23,8 +23,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Boolean deleteById(String id){
-        Optional<User> optionalUser = userRepository.findById(id);
+    public Boolean deleteByEmail(String email){
+        Optional<User> optionalUser = userRepository.findById(email);
 
         if(optionalUser.isEmpty()){
             return false;
@@ -40,7 +40,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<User> getById(String id){
-        return userRepository.findById(id);
+    public Optional<User> getByEmailAndPassword(String email,String pwd){
+        return userRepository.findByEmailAndPwd(email,pwd);
     }
 }

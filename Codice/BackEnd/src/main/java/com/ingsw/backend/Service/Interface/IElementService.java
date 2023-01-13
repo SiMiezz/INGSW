@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IElementService {
 
-    public Element create(Element element);
+    Element create(Element element);
 
-    public Boolean deleteById(Integer id);
+    Boolean deleteById(Integer id);
 
-    public List<Element> getByCategoryId(Integer id);
+    List<Element> getByCategoryId(Integer id);
 }

@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface CategoryRepository extends CrudRepository<Category,Integer> {
 
-    public List<Category> findByMenuId(Integer id);
+    List<Category> findByMenuId(Integer id);
 }

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ITableRestaurantService {
 
-    public List<TableRestaurant> getByRestaurantName(String name);
+    List<TableRestaurant> getByRestaurantName(String name);
 }

@@ -22,7 +22,6 @@ public class Allergen {
     //REFERENCES
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "allergen_name"), inverseJoinColumns = @JoinColumn(name = "element_id"))
-    @JsonIdentityReference(alwaysAsId = true)
     @JsonBackReference
     private List<Element> elementList = new ArrayList<>();
 

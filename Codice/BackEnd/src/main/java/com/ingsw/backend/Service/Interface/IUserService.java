@@ -7,11 +7,11 @@ import java.util.Optional;
 
 public interface IUserService {
 
-    public User create(User user);
+    User create(User user);
 
-    public Boolean deleteById(String id);
+    Boolean deleteByEmail(String email);
 
-    public List<User> getByRestaurantName(String name);
+    List<User> getByRestaurantName(String name);
 
-    public Optional<User> getById(String id);
+    Optional<User> getByEmailAndPassword(String email,String pwd);
 }

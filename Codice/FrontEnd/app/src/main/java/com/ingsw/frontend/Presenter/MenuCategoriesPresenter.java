@@ -13,6 +13,7 @@ public class MenuCategoriesPresenter {
     private final MenuCategoriesFragment menuCategoriesFragment;
     private CategoryService categoryService;
 
+    // CONSTRUCTOR
 
     public MenuCategoriesPresenter(MenuCategoriesFragment menuCategoriesFragment) {
         this.menuCategoriesFragment = menuCategoriesFragment;
@@ -21,6 +22,7 @@ public class MenuCategoriesPresenter {
     
 
     // GETTER AND SETTER
+
     public MenuCategoriesFragment getMenuCategoriesFragment() {
         return menuCategoriesFragment;
     }

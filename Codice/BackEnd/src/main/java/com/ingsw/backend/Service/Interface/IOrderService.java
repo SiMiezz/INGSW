@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface IOrderService {
 
-    public Order create(Order order);
+    Order create(Order order);
 
-    public boolean deleteById(Integer id);
+    boolean deleteById(Integer id);
 
     //public List<Order> getByTablerestaurantId(Integer id);
 }
