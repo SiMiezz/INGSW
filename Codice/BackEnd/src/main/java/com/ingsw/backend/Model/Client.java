@@ -1,6 +1,5 @@
 package com.ingsw.backend.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -20,7 +19,6 @@ public class Client {
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="table_id", referencedColumnName = "idTable")
-    @JsonIdentityReference(alwaysAsId = true)
     @JsonManagedReference
     private TableRestaurant table;
 

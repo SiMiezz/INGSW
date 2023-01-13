@@ -1,7 +1,9 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.ingsw.backend.Model.Enumerations.User_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -10,6 +12,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "user")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
 public class User {
 
     //PRIMARY KEY

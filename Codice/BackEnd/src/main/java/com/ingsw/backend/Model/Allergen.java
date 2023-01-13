@@ -11,6 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "allergen")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name", scope = Long.class)
 public class Allergen {
 
     //PRIMARY KEY
