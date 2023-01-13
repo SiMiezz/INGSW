@@ -38,6 +38,7 @@ public class User {
     @Column(name = "surname", length = 50)
     private String surname;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "job", nullable = false)
     private User_Type job;
 
