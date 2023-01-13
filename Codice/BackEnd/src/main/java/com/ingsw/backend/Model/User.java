@@ -1,8 +1,7 @@
 package com.ingsw.backend.Model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ingsw.backend.Model.Enumerations.User_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -11,7 +10,6 @@ import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "user")
-@JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "id")
 public class User {
 
     //PRIMARY KEY
@@ -24,7 +22,8 @@ public class User {
     @ManyToOne(fetch =  FetchType.LAZY) //foreign key
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
-    @JsonBackReference
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonManagedReference
     private Restaurant restaurant;
 
 

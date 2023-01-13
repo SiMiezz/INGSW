@@ -1,9 +1,8 @@
 package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
@@ -14,7 +13,6 @@ import java.util.List;
 
 @Entity
 @Table(name="tablerestaurant")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
 public class TableRestaurant {
 
     //PRIMARY KEY
@@ -28,15 +26,16 @@ public class TableRestaurant {
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
-    @JsonBackReference
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonManagedReference
     private Restaurant restaurant;
 
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Client> clientList = new ArrayList<>();
 
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Order> orderList = new ArrayList<>();
 
 

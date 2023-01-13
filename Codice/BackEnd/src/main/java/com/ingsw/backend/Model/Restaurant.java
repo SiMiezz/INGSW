@@ -1,16 +1,18 @@
 package com.ingsw.backend.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "restaurant")
-@JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "name")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "name", scope = Long.class)
 public class Restaurant {
 
     //PRIMARY KEY
@@ -20,14 +22,15 @@ public class Restaurant {
 
     //REFERENCES
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<User> userList = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<TableRestaurant> tablesList = new ArrayList<>();
 
     @OneToOne(mappedBy = "restaurant")
+    @JsonBackReference
     private Menu menu;
 
 

@@ -1,8 +1,6 @@
 package com.ingsw.backend.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 
@@ -11,8 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "menu")
-@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "id")
-public class Menu {
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
+public class Menu{
 
     //PRIMARY KEY
     @Id
@@ -22,11 +20,13 @@ public class Menu {
 
     //REFERENCES
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Category> categoryList = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "restaurant_name", referencedColumnName = "name")
+    @JsonIdentityReference(alwaysAsId = true)
+    @JsonManagedReference
     private Restaurant restaurant;
 
     // ATTRIBUTES

@@ -1,9 +1,6 @@
 package com.ingsw.backend.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerator;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -14,7 +11,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "allergen")
-@JsonIdentityInfo(generator = ObjectIdGenerators.StringIdGenerator.class, property = "name")
 public class Allergen {
 
     //PRIMARY KEY
@@ -25,6 +21,7 @@ public class Allergen {
     //REFERENCES
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "allergen_name"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    @JsonIdentityReference(alwaysAsId = true)
     @JsonManagedReference
     private List<Element> elementList = new ArrayList<>();
 
