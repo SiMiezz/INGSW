@@ -22,14 +22,14 @@ public class Category {
 
 
     //REFERENCES
-    @JsonManagedReference
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Element> elementList = new ArrayList<>();
 
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="menu_id", referencedColumnName = "idMenu")
+    @JsonBackReference
     private Menu menu;
 
     // ATTRIBUTES

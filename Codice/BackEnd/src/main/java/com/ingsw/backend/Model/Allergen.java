@@ -19,9 +19,9 @@ public class Allergen {
     private String name;
 
     //REFERENCES
-    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "allergen_name"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    @JsonManagedReference
     private List<Element> elementList = new ArrayList<>();
 
 

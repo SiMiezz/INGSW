@@ -18,8 +18,8 @@ public class Menu {
     private Integer id;
 
     //REFERENCES
-    @JsonManagedReference
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Category> categoryList = new ArrayList<>();
 
     @OneToOne

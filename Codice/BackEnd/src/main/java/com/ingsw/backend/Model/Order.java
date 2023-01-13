@@ -22,15 +22,15 @@ public class Order {
     private Integer id;
 
     //REFERENCES
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="table_id", referencedColumnName = "idTable")
+    @JsonBackReference
     private TableRestaurant table;
 
-    @JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    @JsonManagedReference
     private List<Element> elementOrderList = new ArrayList<>();
 
     //ATTRIBUTES

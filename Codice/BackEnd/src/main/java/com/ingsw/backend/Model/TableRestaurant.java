@@ -22,18 +22,18 @@ public class TableRestaurant { //non può essere Table per notazione @Table che 
 
 
     //REFERENCES
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="restaurant_name", referencedColumnName = "name")
+    @JsonBackReference
     private Restaurant restaurant;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Client> clientList = new ArrayList<>();
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Order> orderList = new ArrayList<>();
 
 

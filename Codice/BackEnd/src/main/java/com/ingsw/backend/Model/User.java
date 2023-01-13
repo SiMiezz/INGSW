@@ -8,7 +8,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name = "user")//cambio nome della tabella se necessario (altrimenti viene chiamata User)
+@Table(name = "user")
 public class User {
 
     //PRIMARY KEY
@@ -18,10 +18,10 @@ public class User {
 
 
     //REFERENCES
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY) //foreign key
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name="restaurant_name", referencedColumnName = "name") //referencedColumn è la colonna della tabella ristorante a cui si fa riferimento
+    @JoinColumn(name="restaurant_name", referencedColumnName = "name")
+    @JsonBackReference
     private Restaurant restaurant;
 
 

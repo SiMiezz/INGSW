@@ -16,10 +16,10 @@ public class Client {
     private Integer id;
 
     //REFERENCES
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="table_id", referencedColumnName = "idTable")
+    @JsonBackReference
     private TableRestaurant table;
 
     // -------------------------------------------------

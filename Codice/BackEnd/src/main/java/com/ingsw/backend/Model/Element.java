@@ -21,18 +21,18 @@ public class Element {
     private Integer id;
 
     //REFERENCES
-    @JsonBackReference
     @ManyToOne(fetch =  FetchType.LAZY)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="category_id", referencedColumnName = "idCategory")
+    @JsonBackReference
     private Category category;
 
-    @JsonManagedReference
     @ManyToMany(mappedBy = "elementOrderList", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Order> orderList = new ArrayList<>();
 
-    @JsonManagedReference
     @ManyToMany(mappedBy = "elementList", fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Allergen> allergenList = new ArrayList<>();
 
     //ATTRIBUTES
