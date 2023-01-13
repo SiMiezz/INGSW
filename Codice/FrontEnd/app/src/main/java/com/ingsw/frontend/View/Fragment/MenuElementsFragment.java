@@ -75,6 +75,9 @@ public class MenuElementsFragment extends Fragment {
 
         adapter = new ElementAdapter(getContext(),arrayList);
 
+        MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
+        menuElementsPresenter.getByCategoryId(1);
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);

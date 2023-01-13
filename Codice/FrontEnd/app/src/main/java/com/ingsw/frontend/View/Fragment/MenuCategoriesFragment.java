@@ -85,7 +85,6 @@ public class MenuCategoriesFragment extends Fragment {
         myView.setAdapter(adapter);
 
         menuCategoriesPresenter = new MenuCategoriesPresenter(this);
-
         menuCategoriesPresenter.getByMenuId(1);
 
         removeButton.setOnClickListener(new View.OnClickListener() {
