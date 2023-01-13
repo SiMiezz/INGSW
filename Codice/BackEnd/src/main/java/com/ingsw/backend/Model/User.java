@@ -41,7 +41,7 @@ public class User {
     private String surname;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "job", nullable = false)
+    @Column(name = "job", columnDefinition = "ENUM('ADMIN', 'SUPERVISOR', 'WAITER')" , nullable = false)
     private User_Type job;
 
 

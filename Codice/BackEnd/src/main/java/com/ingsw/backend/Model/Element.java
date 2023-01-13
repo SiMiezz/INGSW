@@ -1,9 +1,6 @@
 package com.ingsw.backend.Model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
@@ -33,7 +30,7 @@ public class Element {
 
     @ManyToMany(mappedBy = "elementOrderList", fetch = FetchType.LAZY)
     @JsonIdentityReference(alwaysAsId = true)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Order> orderList = new ArrayList<>();
 
     @ManyToMany(mappedBy = "elementList", fetch = FetchType.LAZY)
@@ -54,8 +51,8 @@ public class Element {
     @Column(name = "prepackaged", nullable = false)
     private boolean prePackaged;
 
+    @Column(name = "aliment", columnDefinition = "ENUM('FOOD', 'DRINK')", nullable = false)
     @Enumerated(EnumType.STRING)
-    @Column(name = "aliment", nullable = false)
     private Aliment_Type aliment;
 
 
@@ -155,6 +152,5 @@ public class Element {
     }
 
     // -------------------------------------------------
-
 
 }
