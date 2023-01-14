@@ -3,10 +3,11 @@ package com.ingsw.frontend.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TableRestaurant {
+public class TableRestaurant implements Serializable {
 
     //PRIMARY KEY
     @Expose
@@ -16,7 +17,7 @@ public class TableRestaurant {
     //ATTRIBUTES
     @Expose
     @SerializedName("seats")
-    private int seats;
+    private Integer seats;
 
     //REFERENCES
     @Expose
@@ -27,7 +28,7 @@ public class TableRestaurant {
     public TableRestaurant() {
     }
 
-    public TableRestaurant(Integer id, int seats, String restaurantName) {
+    public TableRestaurant(Integer id, Integer seats, String restaurantName) {
         this.id = id;
         this.seats = seats;
         this.restaurantName = restaurantName;
@@ -35,24 +36,20 @@ public class TableRestaurant {
 
     //GETTERS AND SETTERS
 
-    public int getId() {
+    public Integer getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getSeats() {
-        return seats;
-    }
-
-    public void setSeats(int seats) {
-        this.seats = seats;
     }
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getSeats() {
+        return seats;
+    }
+
+    public void setSeats(Integer seats) {
+        this.seats = seats;
     }
 
     public String getRestaurantName() {

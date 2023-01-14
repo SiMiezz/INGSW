@@ -4,7 +4,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
 
     //PRIMARY KEY
     @Expose

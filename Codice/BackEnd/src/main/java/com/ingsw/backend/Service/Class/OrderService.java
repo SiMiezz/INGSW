@@ -21,7 +21,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public boolean deleteById(Integer id){
+    public Boolean deleteById(Integer id){
         Optional<Order> optionalOrder = orderRepository.findById(id);
 
         if(optionalOrder.isEmpty()){

@@ -10,10 +10,12 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "user")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email", scope = Long.class)
-public class User {
+public class User implements Serializable {
 
     //PRIMARY KEY
     @Id

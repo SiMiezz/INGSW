@@ -1,18 +1,18 @@
 package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.*;
-import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "element")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
-public class Element {
+public class Element implements Serializable {
 
     //PRIMARY KEY
     @Id
@@ -48,13 +48,7 @@ public class Element {
     private Double price;
 
     @Column(name = "prepackaged", nullable = false)
-    private boolean prePackaged;
-
-    @Column(name = "aliment", columnDefinition = "ENUM('food', 'drink')", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Aliment_Type aliment;
-
-
+    private Boolean prePackaged;
 
     // -------------------------------------------------
 
@@ -62,13 +56,12 @@ public class Element {
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, boolean prePackaged, Aliment_Type aliment, Category category) {
+    public Element(Integer id, String name, String description, Double price, Boolean prePackaged, Category category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.prePackaged = prePackaged;
-        this.aliment = aliment;
         this.category = category;
     }
 
@@ -110,20 +103,12 @@ public class Element {
         this.price = price;
     }
 
-    public boolean isPrePackaged() {
+    public Boolean isPrePackaged() {
         return prePackaged;
     }
 
-    public void setPrePackaged(boolean prePackaged) {
+    public void setPrePackaged(Boolean prePackaged) {
         this.prePackaged = prePackaged;
-    }
-
-    public Aliment_Type getAliment() {
-        return aliment;
-    }
-
-    public void setAliment(Aliment_Type aliment) {
-        this.aliment = aliment;
     }
 
     public Category getCategory() {

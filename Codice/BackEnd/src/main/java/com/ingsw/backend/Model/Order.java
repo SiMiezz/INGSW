@@ -1,5 +1,6 @@
 package com.ingsw.backend.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,7 +14,7 @@ import org.hibernate.annotations.OnDeleteAction;
 @Entity
 @Table(name = "order")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
-public class Order {
+public class Order implements Serializable {
 
     //PRIMARY KEY
     @Id

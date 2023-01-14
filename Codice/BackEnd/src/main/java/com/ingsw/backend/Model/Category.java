@@ -1,18 +1,20 @@
 package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.*;
+import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "category")
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id", scope = Long.class)
-public class Category {
+public class Category implements Serializable {
 
     //PRIMARY KEY
     @Id
@@ -36,6 +38,10 @@ public class Category {
     // ATTRIBUTES
     @Column(name = "name", length = 50, nullable = false)
     private String name;
+
+    @Column(name = "aliment", columnDefinition = "ENUM('food', 'drink')", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Aliment_Type aliment;
 
     //CONSTRUCTORS
     public Category() {
@@ -83,6 +89,14 @@ public class Category {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public Aliment_Type getAliment() {
+        return aliment;
+    }
+
+    public void setAliment(Aliment_Type aliment) {
+        this.aliment = aliment;
     }
 
     // -------------------------------------------------

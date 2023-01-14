@@ -21,8 +21,4 @@ public interface ElementApi {
 
     @GET("/element/get/{id}")
     Single<List<Element>> getByCategoryId(@Path("id") Integer id);
-
-    @GET("/element/get/{restaurantName}/{idCategory}")
-    Single<List<Element>> getByCategoryAndRestaurantId(@Path("restaurantName") String restaurantName,
-                                                       @Path("idCategory") Integer idCategory);
 }

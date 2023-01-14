@@ -1,38 +1,30 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Menu implements Serializable {
+public class MenuDTO {
 
     //PRIMARY KEY
-    @Expose
-    @SerializedName("idMenu")
     private Integer id;
 
-    // ATTRIBUTES
-    @Expose
-    @SerializedName("qrCode")
-    private String qrCode;
-
     //REFERENCES
-    @Expose
-    @SerializedName("restaurant_name")
     private String restaurantName;
 
+    // ATTRIBUTES
+    private String qrCode;
+
     //CONSTRUCTORS
-    public Menu() {
+
+    public MenuDTO() {
     }
 
-    public Menu(Integer id, String qrCode, String restaurantName) {
+    public MenuDTO(Integer id, String restaurantName, String qrCode) {
         this.id = id;
-        this.qrCode = qrCode;
         this.restaurantName = restaurantName;
+        this.qrCode = qrCode;
     }
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
 

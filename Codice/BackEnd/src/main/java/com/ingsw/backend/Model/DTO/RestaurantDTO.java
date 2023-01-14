@@ -1,50 +1,29 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Restaurant implements Serializable {
+public class RestaurantDTO {
 
     //PRIMARY KEY
-    @Expose
-    @SerializedName("name")
     private String name;
 
     //ATTRIBUTES
-    @Expose
-    @SerializedName("description")
     private String description;
 
-    @Expose
-    @SerializedName("locality")
     private String locality;
 
-    @Expose
-    @SerializedName("tables")
-    private Integer tables;
+    private int tables;
 
-    @Expose
-    @SerializedName("seats")
-    private Integer seats;
+    private int seats;
 
-    @Expose
-    @SerializedName("touristic")
     private boolean touristic;
 
-    //REFERENCES
-    @Expose
-    @SerializedName("menu_id")
-    private Integer menuId;
+
+    // -------------------------------------------------
 
     //CONSTRUCTORS
-    public Restaurant() {
+    public RestaurantDTO() {
     }
 
-    public Restaurant(String name, String description, String locality, Integer tables, Integer seats, boolean touristic) {
+    public RestaurantDTO(String name, String description, String locality, int tables, int seats, boolean touristic) {
         this.name = name;
         this.description = description;
         this.locality = locality;
@@ -52,6 +31,10 @@ public class Restaurant implements Serializable {
         this.seats = seats;
         this.touristic = touristic;
     }
+
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
 
@@ -79,19 +62,19 @@ public class Restaurant implements Serializable {
         this.locality = locality;
     }
 
-    public Integer getTables() {
+    public int getTables() {
         return tables;
     }
 
-    public void setTables(Integer tables) {
+    public void setTables(int tables) {
         this.tables = tables;
     }
 
-    public Integer getSeats() {
+    public int getSeats() {
         return seats;
     }
 
-    public void setSeats(Integer seats) {
+    public void setSeats(int seats) {
         this.seats = seats;
     }
 
@@ -101,13 +84,5 @@ public class Restaurant implements Serializable {
 
     public void setTouristic(boolean touristic) {
         this.touristic = touristic;
-    }
-
-    public Integer getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
     }
 }

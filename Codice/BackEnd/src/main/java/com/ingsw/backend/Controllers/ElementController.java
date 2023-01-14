@@ -36,10 +36,4 @@ public class ElementController {
     public List<Element> getByCategoryId(@PathVariable Integer id){
         return elementService.getByCategoryId(id);
     }
-
-    @GetMapping("/get/{restaurantName}/{idCategory}")
-    public List<Element> getByCategoryAndRestaurantId(@PathVariable String restaurantName, @PathVariable Integer idCategory){
-        return elementService.getByCategoryIdAndRestaurantId(restaurantName, idCategory);
-    }
-
 }

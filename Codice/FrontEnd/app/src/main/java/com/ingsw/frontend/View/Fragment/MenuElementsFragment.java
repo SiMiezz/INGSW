@@ -39,7 +39,7 @@ public class MenuElementsFragment extends Fragment {
 
     private RecyclerView myView;
     private ElementAdapter adapter;
-    private MenuElementsPresenter menuElementsPresenter;
+    private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
     public static MenuElementsFragment newInstance(String param1, String param2) {
         MenuElementsFragment fragment = new MenuElementsFragment();
@@ -74,8 +74,6 @@ public class MenuElementsFragment extends Fragment {
         myView = rootView.findViewById(R.id.elements_listview);
 
         adapter = new ElementAdapter(getContext(),arrayList);
-
-        MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -133,10 +131,8 @@ public class MenuElementsFragment extends Fragment {
         return rootView;
     }
 
-    public void getElementFromClick(String restaurantName, Integer idCategory){
-        if(menuElementsPresenter != null)
-            menuElementsPresenter.getByCategoryId(idCategory);
-
+    public void getElementFromClick(Integer idCategory){
+        menuElementsPresenter.getByCategoryId(idCategory);
     }
 
     public void loadElement(ArrayList<Element> elementList){

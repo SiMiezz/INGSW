@@ -1,54 +1,40 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-public class Element implements Serializable {
+public class ElementDTO {
 
     //PRIMARY KEY
-    @Expose
-    @SerializedName("idElement")
     private Integer id;
 
-    //ATTRIBUTES
-    @Expose
-    @SerializedName("name")
-    private String name;
-
-    @Expose
-    @SerializedName("description")
-    private String description;
-
-    @Expose
-    @SerializedName("price")
-    private Double price;
-
-    @Expose
-    @SerializedName("prePackaged")
-    private Boolean prePackaged;
-
     //REFERENCES
-    @Expose
-    @SerializedName("category_id")
     private Integer categoryId;
 
+    //ATTRIBUTES
+    private String name;
+
+    private String description;
+
+    private Double price;
+
+    private Boolean prePackaged;
+
+    // -------------------------------------------------
+
     //CONSTRUCTORS
-    public Element() {
+
+    public ElementDTO() {
     }
 
-    public Element(Integer id, String name, String description, Double price, Boolean prePackaged, Integer categoryId) {
+    public ElementDTO(Integer id, Integer categoryId, String name, String description, Double price, Boolean prePackaged) {
         this.id = id;
+        this.categoryId = categoryId;
         this.name = name;
         this.description = description;
         this.price = price;
         this.prePackaged = prePackaged;
-        this.categoryId = categoryId;
     }
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
 
@@ -100,13 +86,7 @@ public class Element implements Serializable {
         this.categoryId = categoryId;
     }
 
-    private Boolean checked = Boolean.valueOf(false);
-
-    public Boolean getChecked() {
-        return checked;
-    }
-
-    public void setChecked(Boolean checked) {
-        this.checked = checked;
+    public Boolean getPrePackaged() {
+        return prePackaged;
     }
 }

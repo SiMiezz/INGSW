@@ -11,6 +11,4 @@ public interface IElementService {
     Boolean deleteById(Integer id);
 
     List<Element> getByCategoryId(Integer id);
-
-    List<Element> getByCategoryIdAndRestaurantId(String restaurantName, Integer idCategory);
 }

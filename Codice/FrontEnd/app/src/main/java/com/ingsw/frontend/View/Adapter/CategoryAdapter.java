@@ -90,10 +90,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    menuElementsFragment.getElementFromClick("rest", arrayList.get(holder.getAdapterPosition()).getId());
-                    Log.println(Log.ASSERT, "Rest", String.valueOf(arrayList.get(holder.getAdapterPosition()).getId()));
-                    Log.println(Log.ASSERT, "Rest", String.valueOf(arrayList.get(holder.getAdapterPosition()).getName()));
-                    Log.println(Log.ASSERT, "Rest", String.valueOf(arrayList.get(holder.getAdapterPosition()).getMenuId()));
+                    menuElementsFragment.getElementFromClick(arrayList.get(holder.getAdapterPosition()).getId());
+                    System.out.println(arrayList.get(holder.getAdapterPosition()).getId());
+                    System.out.println(arrayList.get(holder.getAdapterPosition()).getName());
+                    System.out.println(arrayList.get(holder.getAdapterPosition()).getAliment());
+                    System.out.println(arrayList.get(holder.getAdapterPosition()).getMenuId());
             }
         });
 

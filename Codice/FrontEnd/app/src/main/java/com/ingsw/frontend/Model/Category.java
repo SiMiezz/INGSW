@@ -2,11 +2,13 @@ package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Category {
+public class Category implements Serializable {
 
     //PRIMARY KEY
     @Expose
@@ -17,6 +19,10 @@ public class Category {
     @Expose
     @SerializedName("name")
     private String name;
+
+    @Expose
+    @SerializedName("aliment")
+    private Aliment_Type aliment;
 
     //REFERENCES
     @Expose
@@ -41,7 +47,7 @@ public class Category {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -51,6 +57,14 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Aliment_Type getAliment() {
+        return aliment;
+    }
+
+    public void setAliment(Aliment_Type aliment) {
+        this.aliment = aliment;
     }
 
     public Integer getMenuId() {
