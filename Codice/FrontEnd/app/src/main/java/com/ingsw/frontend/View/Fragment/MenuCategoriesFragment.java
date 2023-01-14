@@ -26,6 +26,7 @@ public class MenuCategoriesFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+    private MenuElementsFragment menuElementsFragment;
 
 
     private ArrayList<Category> arrayList;
@@ -41,6 +42,10 @@ public class MenuCategoriesFragment extends Fragment {
 
     public MenuCategoriesFragment() {
         // Required empty public constructor
+    }
+
+    public MenuCategoriesFragment(MenuElementsFragment menuElementsFragment){
+        this.menuElementsFragment = menuElementsFragment;
     }
 
     public static MenuCategoriesFragment newInstance(String param1, String param2) {
@@ -71,14 +76,14 @@ public class MenuCategoriesFragment extends Fragment {
         /////////////////////////////////////////////
 
 
-        arrayList = new ArrayList();
+        arrayList = new ArrayList<>();
         removeButton = rootView.findViewById(R.id.remove_category_button);
         addButton = rootView.findViewById(R.id.add_category_button);
         backButton = rootView.findViewById(R.id.back_category_button);
         confirmButton = rootView.findViewById(R.id.confirm_category_button);
 
         myView = rootView.findViewById(R.id.categories_listview);
-        adapter = new CategoryAdapter(getContext(), new ArrayList<>());
+        adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         myView.setLayoutManager(linearLayoutManager);

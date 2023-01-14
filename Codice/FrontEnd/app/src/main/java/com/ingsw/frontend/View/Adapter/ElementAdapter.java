@@ -1,18 +1,17 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
-
 import java.util.ArrayList;
 
 public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementHolder> {
@@ -46,7 +45,7 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     @Override
     public ElementAdapter.ElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_normal, parent,false);
+        View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_nonclickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
 
         if(getItemViewType(0) == -1)
@@ -75,6 +74,8 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         else
             holder.checkBox.setChecked(false);
 
+
+
     }
 
     @Override
@@ -94,7 +95,6 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     public class ElementHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
         private TextView textView;
-
 
         public ElementHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/row_clickable_item"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    card_view:cardCornerRadius="15dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
+    card_view:cardBackgroundColor="#fff"
+    android:foreground="?android:attr/selectableItemBackground"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@android:color/transparent"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/text_cardview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="15dp"
+        android:layout_weight="1"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+
+    <CheckBox
+        android:id="@+id/checkbox_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="invisible"
+        ></CheckBox>
+
+</androidx.cardview.widget.CardView>
+
+

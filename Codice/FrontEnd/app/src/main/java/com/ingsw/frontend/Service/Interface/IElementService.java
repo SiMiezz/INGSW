@@ -10,4 +10,6 @@ public interface IElementService {
     void deleteById(Callback callback, Integer id);
 
     void getByCategoryId(Callback callback, Integer id);
+
+    void getByCategoryAndRestaurantId(Callback callback, String restaurantName, Integer idCategory);
 }

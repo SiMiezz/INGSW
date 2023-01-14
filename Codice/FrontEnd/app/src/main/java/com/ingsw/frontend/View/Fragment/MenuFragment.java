@@ -20,6 +20,9 @@ public class MenuFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private MenuCategoriesFragment menuCategoriesFragment;
+    private MenuElementsFragment menuElementsFragment;
+
     public MenuFragment() {
         // Required empty public constructor
     }
@@ -44,8 +47,11 @@ public class MenuFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        fragmentTransaction.replace(R.id.categories_menu_container, new MenuCategoriesFragment());
-        fragmentTransaction.replace(R.id.elements_menu_container, new MenuElementsFragment());
+        menuElementsFragment = new MenuElementsFragment();
+        menuCategoriesFragment = new MenuCategoriesFragment(menuElementsFragment);
+
+        fragmentTransaction.replace(R.id.categories_menu_container, menuCategoriesFragment);
+        fragmentTransaction.replace(R.id.elements_menu_container, menuElementsFragment);
         fragmentTransaction.commit();
     }
 

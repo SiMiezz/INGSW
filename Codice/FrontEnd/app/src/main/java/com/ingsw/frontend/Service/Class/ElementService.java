@@ -48,4 +48,25 @@ public class ElementService implements IElementService {
                     }
                 });
     }
+
+    @Override
+    public void getByCategoryAndRestaurantId(Callback callback, String restaurantName, Integer idCategory){
+        elementApi.getByCategoryAndRestaurantId(restaurantName,idCategory)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<List<Element>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Element> elementList) {
+                        callback.returnResult(elementList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }

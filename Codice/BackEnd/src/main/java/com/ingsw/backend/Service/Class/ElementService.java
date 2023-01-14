@@ -39,4 +39,11 @@ public class ElementService implements IElementService {
     public List<Element> getByCategoryId(Integer id){
         return elementRepository.findByCategoryId(id);
     }
+
+    @Override
+    public List<Element> getByCategoryIdAndRestaurantId(String restaurantName, Integer idCategory) {
+        return elementRepository.findByCategoryIdAndRestaurantId(restaurantName, idCategory);
+    }
+
+
 }

@@ -37,4 +37,21 @@ public class MenuElementsPresenter {
             }
         },id);
     }
+
+    public void getByRestaurantAndCategoryId(String restaurantName, Integer idCategory) {
+        elementService.getByCategoryAndRestaurantId(new Callback(){
+            @Override
+            public void returnResult(Object o) {
+                ArrayList<Element> elementList = (ArrayList<Element>) o;
+
+                menuElementsFragment.loadElement(elementList);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },restaurantName,idCategory);
+
+    }
 }
