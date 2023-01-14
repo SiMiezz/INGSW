@@ -29,8 +29,8 @@ public class LoginPresenter {
         this.loginFragment = loginFragment;
     }
 
-    public void getByEmailAndPassword(String email, String pwd){
-        userService.getByEmailAndPassword(new Callback(){
+    public void checkUser(String email, String pwd){
+        userService.checkUser(new Callback(){
             @Override
             public void returnResult(Object o) {
                 Boolean res = (Boolean) o;

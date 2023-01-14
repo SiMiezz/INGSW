@@ -11,5 +11,5 @@ public interface IUserService {
 
     void getByRestaurantName(Callback callback, String name);
 
-    void getByEmailAndPassword(Callback callback, String email, String pwd);
+    void checkUser(Callback callback, String email, String pwd);
 }

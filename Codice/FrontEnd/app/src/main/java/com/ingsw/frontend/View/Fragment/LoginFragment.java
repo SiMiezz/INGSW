@@ -57,8 +57,8 @@ public class LoginFragment extends Fragment {
 
         LoginPresenter loginPresenter = new LoginPresenter(this);
 
-        emailView = (TextView) rootView.findViewById(R.id.editTextTextPersonName);
-        pwdView = (TextView) rootView.findViewById(R.id.editTextTextPassword);
+        emailView = (TextView) rootView.findViewById(R.id.editTextEmail);
+        pwdView = (TextView) rootView.findViewById(R.id.editTextPassword);
 
         Button loginButton = (Button) rootView.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -67,7 +67,9 @@ public class LoginFragment extends Fragment {
                 email = emailView.getText().toString();
                 pwd = pwdView.getText().toString();
 
-                loginPresenter.getByEmailAndPassword(email,pwd);
+                if(!(pwd.isEmpty() || email.isEmpty())){
+                    loginPresenter.checkUser(email,pwd);
+                }
             }
         });
 
@@ -80,7 +82,6 @@ public class LoginFragment extends Fragment {
             getActivity().startActivity(intent);
         }
         else{
-            emailView.setText("");
             pwdView.setText("");
         }
     }

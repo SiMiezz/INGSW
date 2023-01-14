@@ -1,8 +1,17 @@
 package com.ingsw.frontend.Service.Class;
 
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Interface.IMenuService;
 import com.ingsw.frontend.Retrofit.MenuApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.SingleObserver;
+import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MenuService implements IMenuService {
 
@@ -13,5 +22,23 @@ public class MenuService implements IMenuService {
     }
 
     @Override
-    public void getByRestaurantName(String name){}
+    public void getByRestaurantName(Callback callback, String name){
+        menuApi.getByRestaurantName(name)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<Menu>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Menu menu) {
+                        callback.returnResult(menu);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }

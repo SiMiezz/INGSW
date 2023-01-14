@@ -86,7 +86,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void getByEmailAndPassword(Callback callback, String email, String pwd){
+    public void checkUser(Callback callback, String email, String pwd){
         userApi.getByEmailAndPassword(email,pwd)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -101,6 +101,7 @@ public class UserService implements IUserService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
                         callback.returnResult(false);
                     }
                 });
