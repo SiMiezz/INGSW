@@ -49,6 +49,7 @@ DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
+  `aliment` enum('food','drink') NOT NULL,
   `menu_id` int NOT NULL,
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
@@ -62,7 +63,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi',1),(2,'secondi',1),(3,'contorni',1);
+INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,12 +155,11 @@ CREATE TABLE `element` (
   `price` double NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `prepackaged` tinyint NOT NULL,
-  `aliment` enum('food','drink') NOT NULL,
   `category_id` int NOT NULL,
   PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,6 +168,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
+INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -326,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-13 20:13:34
+-- Dump completed on 2023-01-15  0:56:49
