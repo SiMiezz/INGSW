@@ -1,6 +1,7 @@
 package com.ingsw.frontend.Retrofit;
 
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.util.List;
 
@@ -23,4 +24,6 @@ public interface CategoryApi {
     @GET("/category/get/{id}")
     Single<List<Category>> getByMenuId(@Path("id") Integer id);
 
+    @GET("/category/get/{id}/{aliment_type}")
+    Single<List<Category>> getByMenuIdAndAliment(@Path("id") Integer id,@Path("aliment_type") Aliment_Type aliment_type);
 }

@@ -2,6 +2,8 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -10,15 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.ingsw.frontend.Model.Menu;
+import com.google.android.material.tabs.TabLayout;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
-import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MenuCategoriesFragment extends Fragment {
 
@@ -35,8 +35,14 @@ public class MenuCategoriesFragment extends Fragment {
     private ImageButton addButton;
     private ImageButton backButton;
     private ImageButton confirmButton;
+    private TabLayout tabLayout;
 
-    private RecyclerView myView;
+    private RecyclerView foodView;
+    private RecyclerView drinkView;
+
+    private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
+    private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
+
     private CategoryAdapter adapter;
     private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
 
@@ -81,15 +87,19 @@ public class MenuCategoriesFragment extends Fragment {
         addButton = rootView.findViewById(R.id.add_category_button);
         backButton = rootView.findViewById(R.id.back_category_button);
         confirmButton = rootView.findViewById(R.id.confirm_category_button);
+        tabLayout = rootView.findViewById(R.id.tab_category);
 
-        myView = rootView.findViewById(R.id.categories_listview);
-        adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(linearLayoutManager);
-        myView.setAdapter(adapter);
+//        drinkView = rootView.findViewById(R.id.category_drink_listview);
 
-        menuCategoriesPresenter.getByMenuId(1);
+        menuCategoriesFoodFragment = new MenuCategoriesFoodFragment(this, menuElementsFragment);
+        menuCategoriesDrinkFragment = new MenuCategoriesDrinkFragment(this, menuElementsFragment);
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesFoodFragment);
+        fragmentTransaction.commit();
+
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +148,33 @@ public class MenuCategoriesFragment extends Fragment {
             }
         });
 
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener(){
+
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 0){
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesFoodFragment);
+                    fragmentTransaction.commit();
+                }
+                else{
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesDrinkFragment);
+                    fragmentTransaction.commit();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
 
 
         /////////////////////////////////////////////
@@ -146,9 +183,11 @@ public class MenuCategoriesFragment extends Fragment {
         return rootView;
     }
 
-    public void loadCategory(ArrayList<Category> categoryList){
-        adapter.clearList();
-        adapter.setArrayList(categoryList);
-        adapter.notifyDataSetChanged();
+    public MenuCategoriesFoodFragment getMenuCategoriesFoodFragment() {
+        return menuCategoriesFoodFragment;
+    }
+
+    public MenuCategoriesDrinkFragment getMenuCategoriesDrinkFragment(){
+        return menuCategoriesDrinkFragment;
     }
 }

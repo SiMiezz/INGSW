@@ -1,6 +1,7 @@
 package com.ingsw.frontend.Service.Class;
 
 import com.ingsw.frontend.Model.Allergen;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Interface.ICategoryService;
 import com.ingsw.frontend.Model.Category;
@@ -70,6 +71,26 @@ public class CategoryService implements ICategoryService {
     @Override
     public void getByMenuId(Callback callback, Integer id){
         categoryApi.getByMenuId(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<List<Category>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Category> categoryList) {
+                        callback.returnResult(categoryList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
+
+    public void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type) {
+        categoryApi.getByMenuIdAndAliment(id, aliment_type)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Category>>() {

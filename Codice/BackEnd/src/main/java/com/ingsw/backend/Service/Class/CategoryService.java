@@ -1,6 +1,7 @@
 package com.ingsw.backend.Service.Class;
 
 import com.ingsw.backend.Model.Category;
+import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import com.ingsw.backend.Repository.CategoryRepository;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,10 @@ public class CategoryService implements ICategoryService {
     @Override
     public List<Category> getByMenuId(Integer id){
         return categoryRepository.findByMenuId(id);
+    }
+
+    @Override
+    public List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type){
+        return categoryRepository.getCategoriesByMenuIdAndAliment(id, aliment_type);
     }
 }

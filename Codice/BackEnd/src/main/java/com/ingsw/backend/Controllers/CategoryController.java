@@ -2,6 +2,7 @@ package com.ingsw.backend.Controllers;
 
 import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.DTO.CategoryDTO;
+import com.ingsw.backend.Model.Enumerations.Aliment_Type;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -51,6 +52,21 @@ public class CategoryController {
         return categoryDTOS;
     }
 
+
+    @GetMapping("/get/{id}/{aliment_type}")
+    public List<CategoryDTO> getByMenuIdAndAliment(@PathVariable Integer id, @PathVariable Aliment_Type aliment_type){
+        List<Category> categoryList = categoryService.getByMenuIdAndAliment(id,aliment_type);
+
+        List<CategoryDTO> categoryDTOS = new ArrayList<CategoryDTO>();
+        for (Category category: categoryList) {
+            categoryDTOS.add(convertDTO(category));
+        }
+
+        return categoryDTOS;
+    }
+
+
+
     private CategoryDTO convertDTO(Category category) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -61,5 +77,6 @@ public class CategoryController {
         categoryDTO.setMenuId(menu_id);
         return categoryDTO;
     }
+
 
 }

@@ -86,13 +86,34 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/categories_listview"
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_category"
                 android:layout_width="match_parent"
-                android:layout_height="420dp"
-                android:layout_weight="1"
-                android:divider="#787486"
-                android:dividerHeight="1dp" />
+                android:layout_height="40dp"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                android:background="@color/white"
+                app:tabTextColor="@color/black">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Food" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Drink" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <FrameLayout
+                android:id="@+id/food_drink_container"
+                android:layout_width="match_parent"
+                android:layout_height="380dp">
+            </FrameLayout>
+
+
 
             <View
                 android:layout_width="wrap_content"
