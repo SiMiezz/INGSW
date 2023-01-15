@@ -1,62 +1,49 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.Model.Enumerations.User_Type;
+import com.ingsw.backend.Model.Enumerations.User_Type;
 
-import java.io.Serializable;
-
-public class User implements Serializable {
+public class UserDTO {
 
     //PRIMARY KEY
-    @Expose
-    @SerializedName("email")
     private String email;
 
-    //ATTRIBUTES
-    @Expose
-    @SerializedName("pwd")
-    private String pwd;
-
-    @Expose
-    @SerializedName("name")
-    private String name;
-
-    @Expose
-    @SerializedName("surname")
-    private String surname;
-
-    @Expose
-    @SerializedName("job")
-    private User_Type job;
 
     //REFERENCES
-    @Expose
-    @SerializedName("restaurantName")
     private String restaurantName;
 
+
+    //ATTRIBUTES
+    private String pwd;
+
+    private String name;
+
+    private String surname;
+
+    private User_Type job;
+
+
+
+    // -------------------------------------------------
+
+
     //CONSTRUCTORS
-    public User() {
+    public UserDTO() {
     }
 
-    public User(String email, String pwd, String name, String surname, User_Type job, String restaurantName) {
+    public UserDTO(String email, String restaurantName, String pwd, String name, String surname, User_Type job) {
         this.email = email;
-        this.pwd = pwd;
-        this.name = name;
-        this.surname = surname;
-        this.job = job;
         this.restaurantName = restaurantName;
-    }
-
-    public User(String email, String pwd, String name, String surname, User_Type job) {
-        this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.surname = surname;
         this.job = job;
     }
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
+
 
     public String getEmail() {
         return email;

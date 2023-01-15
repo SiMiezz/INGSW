@@ -35,11 +35,6 @@ public class Restaurant implements Serializable {
     @SerializedName("touristic")
     private boolean touristic;
 
-    //REFERENCES
-    @Expose
-    @SerializedName("menu_id")
-    private Integer menuId;
-
     //CONSTRUCTORS
     public Restaurant() {
     }
@@ -101,13 +96,5 @@ public class Restaurant implements Serializable {
 
     public void setTouristic(boolean touristic) {
         this.touristic = touristic;
-    }
-
-    public Integer getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
     }
 }

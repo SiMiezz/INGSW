@@ -1,52 +1,44 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-public class Order implements Serializable {
+public class OrderDTO {
 
     //PRIMARY KEY
-    @Expose
-    @SerializedName("id")
     private Integer id;
 
-    //ATTRIBUTES
-    @Expose
-    @SerializedName("price")
-    private double price;
-
-    @Expose
-    @SerializedName("date")
-    private Date date;
-
     //REFERENCES
-    @Expose
-    @SerializedName("tableId")
     private Integer tableId;
 
+    //ATTRIBUTES
+    private Double price;
+
+    private Date date;
+
+    // -------------------------------------------------
+
     //CONSTRUCTORS
-    public Order() {
+    public OrderDTO() {
     }
 
-    public Order(Integer id, double price, Date date, Integer tableId) {
+    public OrderDTO(Integer id, Integer tableId, Double price, Date date) {
         this.id = id;
+        this.tableId = tableId;
         this.price = price;
         this.date = date;
-        this.tableId = tableId;
     }
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -66,11 +58,19 @@ public class Order implements Serializable {
         this.date = date;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public Integer getTableId() {
         return tableId;
     }
 
     public void setTableId(Integer tableId) {
         this.tableId = tableId;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

@@ -52,9 +52,6 @@ public class Restaurant implements Serializable {
     private boolean touristic;
 
 
-
-
-
     // -------------------------------------------------
 
     //CONSTRUCTORS

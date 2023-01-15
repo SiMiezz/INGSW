@@ -12,7 +12,7 @@ public class Element implements Serializable {
 
     //PRIMARY KEY
     @Expose
-    @SerializedName("idElement")
+    @SerializedName("id")
     private Integer id;
 
     //ATTRIBUTES
@@ -34,7 +34,7 @@ public class Element implements Serializable {
 
     //REFERENCES
     @Expose
-    @SerializedName("category_id")
+    @SerializedName("categoryId")
     private Integer categoryId;
 
     //CONSTRUCTORS

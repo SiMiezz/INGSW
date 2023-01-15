@@ -12,7 +12,7 @@ public class Category implements Serializable {
 
     //PRIMARY KEY
     @Expose
-    @SerializedName("idCategory")
+    @SerializedName("id")
     private Integer id;
 
     // ATTRIBUTES
@@ -26,7 +26,7 @@ public class Category implements Serializable {
 
     //REFERENCES
     @Expose
-    @SerializedName("menu_id")
+    @SerializedName("menuId")
     private Integer menuId;
 
     //CONSTRUCTORS

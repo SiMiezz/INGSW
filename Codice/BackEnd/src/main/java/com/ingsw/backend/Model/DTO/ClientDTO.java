@@ -1,28 +1,27 @@
-package com.ingsw.frontend.Model;
+package com.ingsw.backend.Model.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+public class ClientDTO {
 
-public class Client {
-
-    //PRIMARY KEY
-    @Expose
     private Integer id;
 
     //REFERENCES
-    @Expose
-    @SerializedName("tableId")
     private Integer tableId;
 
+    // -------------------------------------------------
+
+
     //CONSTRUCTORS
-    public Client() {
+    public ClientDTO() {
 
     }
 
-    public Client(Integer id, Integer tableId) {
+    public ClientDTO(Integer id, Integer tableId) {
         this.id = id;
         this.tableId = tableId;
     }
+
+    // -------------------------------------------------
+
 
     //GETTERS AND SETTERS
 

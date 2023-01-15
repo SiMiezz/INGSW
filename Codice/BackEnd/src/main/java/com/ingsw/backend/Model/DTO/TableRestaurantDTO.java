@@ -1,25 +1,29 @@
 package com.ingsw.backend.Model.DTO;
 
-public class MenuDTO {
+public class TableRestaurantDTO {
 
     //PRIMARY KEY
     private Integer id;
 
+
     //REFERENCES
     private String restaurantName;
 
-    // ATTRIBUTES
-    private String qrCode;
+
+    //ATTRIBUTES
+    private int seats;
+
+
+    // -------------------------------------------------
 
     //CONSTRUCTORS
-
-    public MenuDTO() {
+    public TableRestaurantDTO() {
     }
 
-    public MenuDTO(Integer id, String restaurantName, String qrCode) {
+    public TableRestaurantDTO(Integer id, String restaurantName, int seats) {
         this.id = id;
         this.restaurantName = restaurantName;
-        this.qrCode = qrCode;
+        this.seats = seats;
     }
 
     // -------------------------------------------------
@@ -27,20 +31,24 @@ public class MenuDTO {
 
     //GETTERS AND SETTERS
 
-    public Integer getId() {
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSeats() {
+        return seats;
+    }
+
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
     }
 
     public String getRestaurantName() {
