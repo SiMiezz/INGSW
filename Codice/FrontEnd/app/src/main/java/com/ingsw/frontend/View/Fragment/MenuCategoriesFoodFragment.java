@@ -86,4 +86,9 @@ public class MenuCategoriesFoodFragment extends Fragment {
         adapter.setArrayList(categoryList);
         adapter.notifyDataSetChanged();
     }
+
+    public CategoryAdapter getAdapter(){
+        return adapter;
+    }
+
 }

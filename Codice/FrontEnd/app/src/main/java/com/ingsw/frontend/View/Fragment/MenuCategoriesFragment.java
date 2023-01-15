@@ -43,7 +43,6 @@ public class MenuCategoriesFragment extends Fragment {
     private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
     private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
 
-    private CategoryAdapter adapter;
     private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
 
     public MenuCategoriesFragment() {
@@ -106,7 +105,7 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(CategoryAdapter.currentLayout == -1){
                     CategoryAdapter.currentLayout = -2;
-                    adapter.notifyDataSetChanged();
+                    menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
                 }
 
                 removeButton.setVisibility(View.INVISIBLE);
@@ -122,7 +121,7 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(CategoryAdapter.currentLayout == -2){
                     CategoryAdapter.currentLayout = -1;
-                    adapter.notifyDataSetChanged();
+                    menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
                 }
 
                 backButton.setVisibility(View.INVISIBLE);
@@ -153,11 +152,13 @@ public class MenuCategoriesFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0){
+                    menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesFoodFragment);
                     fragmentTransaction.commit();
                 }
                 else{
+                    menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesDrinkFragment);
                     fragmentTransaction.commit();

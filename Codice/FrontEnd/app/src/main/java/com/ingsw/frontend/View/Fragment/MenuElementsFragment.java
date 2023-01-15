@@ -131,6 +131,10 @@ public class MenuElementsFragment extends Fragment {
         return rootView;
     }
 
+    public ElementAdapter getAdapter(){
+        return adapter;
+    }
+
     public void getElementFromClick(Integer idCategory){
         menuElementsPresenter.getByCategoryId(idCategory);
     }
@@ -140,5 +144,13 @@ public class MenuElementsFragment extends Fragment {
         adapter.setArrayList(elementList);
         adapter.notifyDataSetChanged();
     }
+
+    public void setEmptyList(){
+        adapter.clearList();
+        adapter.setArrayList(new ArrayList<>());
+        adapter.notifyDataSetChanged();
+    }
+
+
 
 }
