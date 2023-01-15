@@ -23,10 +23,48 @@ public class ElementService implements IElementService {
     }
 
     @Override
-    public void create(Callback callback, Element element){}
+    public void create(Callback callback, Element element){
+        elementApi.create(element)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<Void>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
 
     @Override
-    public void deleteById(Callback callback, Integer id){}
+    public void deleteById(Callback callback, Integer id){
+        elementApi.deleteById(id)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<Void>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Void unused) {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
 
     @Override
     public void getByCategoryId(Callback callback,Integer id){

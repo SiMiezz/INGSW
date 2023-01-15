@@ -42,7 +42,8 @@ public class CategoryService implements ICategoryService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        callback.returnError(e);
+                        System.out.println(e);
+                        callback.returnResult(false);
                     }
                 });
     }
@@ -63,7 +64,8 @@ public class CategoryService implements ICategoryService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        callback.returnError(e);
+                        System.out.println(e);
+                        callback.returnResult(false);
                     }
                 });
     }

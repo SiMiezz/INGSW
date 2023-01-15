@@ -38,7 +38,8 @@ public class UserService implements IUserService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        callback.returnError(e);
+                        System.out.println(e);
+                        callback.returnResult(false);
                     }
                 });
     }
@@ -59,7 +60,8 @@ public class UserService implements IUserService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
-                        callback.returnError(e);
+                        System.out.println(e);
+                        callback.returnResult(false);
                     }
                 });
     }

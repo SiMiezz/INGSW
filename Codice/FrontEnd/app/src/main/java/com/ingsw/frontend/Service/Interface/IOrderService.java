@@ -1,12 +1,13 @@
 package com.ingsw.frontend.Service.Interface;
 
 import com.ingsw.frontend.Model.Order;
+import com.ingsw.frontend.Service.Callback;
 
 public interface IOrderService {
 
-    void create(Order order);
+    void create(Callback callback,  Order order);
 
-    void deleteById(Integer id);
+    void deleteById(Callback callback, Integer id);
 
-    void getByTableRestaurantId(Integer id);
+    void getByTableRestaurantId(Callback callback, Integer id);
 }
