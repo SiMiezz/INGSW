@@ -112,6 +112,28 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void getUser(Callback callback, String email, String pwd){
+        userApi.getByEmailAndPassword(email,pwd)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<User>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull User user) {
+                        callback.returnResult(user);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
+
+
+    @Override
     public void getByRestaurantNameAndJob(Callback callback, String restaurant_name, User_Type job) {
         userApi.getByRestaurantNameAndJob(restaurant_name, job)
                 .observeOn(AndroidSchedulers.mainThread())
