@@ -51,8 +51,8 @@ public class CategoryService implements ICategoryService {
     @Override
     public void deleteById(Callback callback, Integer id){
         categoryApi.deleteById(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -73,8 +73,8 @@ public class CategoryService implements ICategoryService {
     @Override
     public void getByMenuId(Callback callback, Integer id){
         categoryApi.getByMenuId(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Category>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -93,8 +93,8 @@ public class CategoryService implements ICategoryService {
 
     public void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type) {
         categoryApi.getByMenuIdAndAliment(id, aliment_type)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Category>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

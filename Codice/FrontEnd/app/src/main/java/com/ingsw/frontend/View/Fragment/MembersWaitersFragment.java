@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.ingsw.frontend.Model.Enumerations.User_Type;
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
 import com.ingsw.frontend.R;
@@ -81,7 +84,11 @@ public class MembersWaitersFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(memberAdapter);
 
-        memberPresenter.getByRestaurantNameAndUserType("rest", User_Type.valueOf("waiter"));
+        Intent intent = getActivity().getIntent();
+
+        Restaurant restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+
+        memberPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("waiter"));
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override

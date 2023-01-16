@@ -25,8 +25,8 @@ public class ElementService implements IElementService {
     @Override
     public void create(Callback callback, Element element){
         elementApi.create(element)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -47,8 +47,8 @@ public class ElementService implements IElementService {
     @Override
     public void deleteById(Callback callback, Integer id){
         elementApi.deleteById(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -69,8 +69,8 @@ public class ElementService implements IElementService {
     @Override
     public void getByCategoryId(Callback callback,Integer id){
         elementApi.getByCategoryId(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Element>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

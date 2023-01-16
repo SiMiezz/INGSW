@@ -81,7 +81,11 @@ public class MenuCategoriesFoodFragment extends Fragment {
         foodView.setLayoutManager(linearLayoutManager);
         foodView.setAdapter(adapter);
 
-        menuCategoriesPresenter.getByMenuIdAndAliment(1, Aliment_Type.valueOf("food"));
+        Intent intent = getActivity().getIntent();
+
+        Menu menu = (Menu) intent.getSerializableExtra("menu");
+
+        menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("food"));
 
         return rootView;
     }

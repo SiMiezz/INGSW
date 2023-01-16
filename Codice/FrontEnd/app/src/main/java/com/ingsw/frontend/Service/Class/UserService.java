@@ -27,8 +27,8 @@ public class UserService implements IUserService {
     @Override
     public void create(Callback callback, User user){
         userApi.create(user)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -49,8 +49,8 @@ public class UserService implements IUserService {
     @Override
     public void deleteByEmail(Callback callback, String email){
         userApi.deleteByEmail(email)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -71,8 +71,8 @@ public class UserService implements IUserService {
     @Override
     public void getByRestaurantName(Callback callback, String name){
         userApi.getByRestaurantName(name)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<User>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -92,8 +92,8 @@ public class UserService implements IUserService {
     @Override
     public void checkUser(Callback callback, String email, String pwd){
         userApi.getByEmailAndPassword(email,pwd)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<User>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -114,8 +114,8 @@ public class UserService implements IUserService {
     @Override
     public void getUser(Callback callback, String email, String pwd){
         userApi.getByEmailAndPassword(email,pwd)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<User>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -136,8 +136,8 @@ public class UserService implements IUserService {
     @Override
     public void getByRestaurantNameAndJob(Callback callback, String restaurant_name, User_Type job) {
         userApi.getByRestaurantNameAndJob(restaurant_name, job)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<User>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

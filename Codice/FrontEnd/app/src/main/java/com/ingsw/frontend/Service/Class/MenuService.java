@@ -24,8 +24,8 @@ public class MenuService implements IMenuService {
     @Override
     public void getByRestaurantName(Callback callback, String name){
         menuApi.getByRestaurantName(name)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Menu>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

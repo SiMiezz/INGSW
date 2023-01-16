@@ -3,17 +3,24 @@ package com.ingsw.frontend.Presenter;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.RestaurantService;
+import com.ingsw.frontend.View.Activity.HomeActivity;
+import com.ingsw.frontend.View.Fragment.LoginFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
+import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 
 public class RestaurantPresenter {
 
     private RestaurantFragment restaurantFragment;
     private RestaurantService restaurantService;
 
+    private LoginFragment loginFragment;
+    private MenuPresenter menuPresenter;
+
     // CONSTRUCTOR
 
-    public RestaurantPresenter(RestaurantFragment restaurantFragment) {
-        this.restaurantFragment = restaurantFragment;
+    public RestaurantPresenter(LoginFragment loginFragment) {
+        this.loginFragment = loginFragment;
+        menuPresenter = new MenuPresenter(loginFragment);
         restaurantService = new RestaurantService();
     }
 
@@ -29,7 +36,8 @@ public class RestaurantPresenter {
             public void returnResult(Object o) {
                 Restaurant restaurant = (Restaurant) o;
 
-                restaurantFragment.loadRestaurant(restaurant);
+                loginFragment.loadRestaurant(restaurant);
+                menuPresenter.getByRestaurantName(restaurant.getName());
             }
 
             @Override

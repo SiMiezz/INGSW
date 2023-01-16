@@ -28,7 +28,6 @@ public class MenuFragment extends Fragment {
 
     private MenuElementsFragment menuElementsFragment = new MenuElementsFragment();
     private MenuCategoriesFragment menuCategoriesFragment = new MenuCategoriesFragment(menuElementsFragment);
-    private MenuPresenter menuPresenter = new MenuPresenter(this);
 
 
     private Intent intent;
@@ -57,12 +56,6 @@ public class MenuFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        intent = getActivity().getIntent();
-
-        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
-
-        menuPresenter.getByRestaurantName(restaurant.getName());
-
         fragmentTransaction.replace(R.id.categories_menu_container, menuCategoriesFragment);
         fragmentTransaction.replace(R.id.elements_menu_container, menuElementsFragment);
         fragmentTransaction.commit();
@@ -73,10 +66,5 @@ public class MenuFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_menu, container, false);
-    }
-
-    public void loadMenu(Menu menu){
-        intent = getActivity().getIntent();
-        intent.putExtra("menu",menu);
     }
 }

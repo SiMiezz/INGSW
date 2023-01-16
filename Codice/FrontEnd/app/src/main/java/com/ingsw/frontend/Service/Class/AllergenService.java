@@ -26,8 +26,8 @@ public class AllergenService implements IAllergenService {
     @Override
     public void create(Callback callback, Allergen allergen){
         allergenApi.create(allergen)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -48,8 +48,8 @@ public class AllergenService implements IAllergenService {
     @Override
     public void getAll(Callback callback){
         allergenApi.getAll()
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Allergen>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

@@ -47,8 +47,8 @@ public class OrderService implements IOrderService {
     @Override
     public void deleteById(Callback callback, Integer id){
         orderApi.deleteById(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
@@ -69,8 +69,8 @@ public class OrderService implements IOrderService {
     @Override
     public void getByTableRestaurantId(Callback callback, Integer id){
         orderApi.getByTableRestaurantId(id)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<List<Order>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

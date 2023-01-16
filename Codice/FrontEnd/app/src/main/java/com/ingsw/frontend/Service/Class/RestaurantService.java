@@ -26,8 +26,8 @@ public class RestaurantService implements IRestaurantService {
     @Override
     public void getByName(Callback callback, String name){
         restaurantApi.getByName(name)
+                .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
                 .subscribe(new SingleObserver<Restaurant>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}

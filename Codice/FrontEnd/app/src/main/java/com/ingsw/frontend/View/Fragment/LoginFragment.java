@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.LoginPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
@@ -29,6 +31,8 @@ public class LoginFragment extends Fragment {
     private TextView emailView,pwdView;
 
     private LoginPresenter loginPresenter;
+
+    private Intent intent;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -50,6 +54,8 @@ public class LoginFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        intent = new Intent(getActivity(), HomeActivity.class);
     }
 
     @Override
@@ -85,8 +91,15 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginSuccess(User user){
-        Intent intent = new Intent(getActivity(), HomeActivity.class);
         intent.putExtra("user",user);
+    }
+
+    public void loadRestaurant(Restaurant restaurant){
+        intent.putExtra("restaurant",restaurant);
+    }
+
+    public void loadMenu(Menu menu){
+        intent.putExtra("menu",menu);
         getActivity().startActivity(intent);
     }
 }
