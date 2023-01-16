@@ -41,9 +41,10 @@ public class MembersFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
 
         fragmentTransaction.replace(R.id.admin_members_container, new MembersAdminFragment());
         fragmentTransaction.replace(R.id.supervisors_members_container, new MembersSupervisorsFragment());

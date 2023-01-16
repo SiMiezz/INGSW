@@ -1,5 +1,7 @@
 package com.ingsw.frontend.Service.Class;
 
+import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Interface.IUserService;
 import com.ingsw.frontend.Model.User;
@@ -105,6 +107,27 @@ public class UserService implements IUserService {
                     public void onError(@NonNull Throwable e) {
                         System.out.println(e);
                         callback.returnResult(false);
+                    }
+                });
+    }
+
+    @Override
+    public void getByRestaurantNameAndJob(Callback callback, String restaurant_name, User_Type job) {
+        userApi.getByRestaurantNameAndJob(restaurant_name, job)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new SingleObserver<List<User>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<User> userList) {
+                        callback.returnResult(userList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
                     }
                 });
     }

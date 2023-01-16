@@ -1,9 +1,11 @@
 package com.ingsw.frontend.Retrofit;
 
+import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -24,4 +26,7 @@ public interface UserApi {
 
     @GET("/user/get/{email}/{pwd}")
     Single<User> getByEmailAndPassword(@Path("email") String email, @Path("pwd") String pwd);
+
+    @GET("/user/get/{restaurant_name}/{job}")
+    Single<List<User>> getByRestaurantNameAndJob(@Path("restaurant_name") String restaurant_name, @Path("job") User_Type job);
 }
