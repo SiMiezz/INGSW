@@ -5,6 +5,7 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.UserService;
 import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
+import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
 import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 
@@ -15,13 +16,15 @@ public class MembersPresenter {
     private final MembersAdminFragment membersAdminFragment;
     private final MembersSupervisorsFragment membersSupervisorsFragment;
     private final MembersWaitersFragment membersWaitersFragment;
+    private final MembersChefsFragment membersChefsFragment;
 
     private UserService userService;
 
-    public MembersPresenter(MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment) {
+    public MembersPresenter(MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
         this.membersAdminFragment = membersAdminFragment;
         this.membersSupervisorsFragment = membersSupervisorsFragment;
         this.membersWaitersFragment = membersWaitersFragment;
+        this.membersChefsFragment = membersChefsFragment;
         this.userService = new UserService();
     }
 
@@ -38,6 +41,9 @@ public class MembersPresenter {
                     membersSupervisorsFragment.loadUser(userArrayList);
                 else if(job == User_Type.valueOf("waiter"))
                     membersWaitersFragment.loadUser(userArrayList);
+                else if(job == User_Type.valueOf("chef"))
+                    membersChefsFragment.loadUser(userArrayList);
+
             }
 
             @Override

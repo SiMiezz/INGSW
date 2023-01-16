@@ -70,6 +70,7 @@ public class LoginFragment extends Fragment {
                 email = emailView.getText().toString();
                 pwd = pwdView.getText().toString();
 
+
                 if(!(pwd.isEmpty() || email.isEmpty())){
                     loginPresenter.checkUser(email,pwd);
                 }

@@ -56,7 +56,7 @@ public class CategoryController {
     public List<CategoryDTO> getByMenuIdAndAliment(@PathVariable Integer id, @PathVariable Aliment_Type aliment_type){
         List<Category> categoryList = categoryService.getByMenuIdAndAliment(id,aliment_type);
 
-        List<CategoryDTO> categoryDTOS = new ArrayList<CategoryDTO>();
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
         for (Category category: categoryList) {
             categoryDTOS.add(convertDTO(category));
         }
@@ -72,6 +72,7 @@ public class CategoryController {
 
         Integer menu_id = category.getMenu().getId();
         categoryDTO.setMenuId(menu_id);
+
         return categoryDTO;
     }
 

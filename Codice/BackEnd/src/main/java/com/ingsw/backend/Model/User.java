@@ -43,7 +43,7 @@ public class User implements Serializable {
     private String surname;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "job", columnDefinition = "ENUM('admin', 'supervisor', 'waiter')" , nullable = false)
+    @Column(name = "job", columnDefinition = "ENUM('admin', 'supervisor', 'waiter','chef')" , nullable = false)
     private User_Type job;
 
 

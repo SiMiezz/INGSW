@@ -8,5 +8,7 @@ public enum User_Type {
     @JsonProperty("supervisor")
     supervisor,
     @JsonProperty("waiter")
-    waiter
+    waiter,
+    @JsonProperty("chef")
+    chef
 }

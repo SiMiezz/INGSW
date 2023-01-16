@@ -74,7 +74,7 @@ public class MembersWaitersFragment extends Fragment {
 
         memberAdapter = new MemberAdapter(getContext(), userArrayList);
 
-        memberPresenter = new MembersPresenter(null, null, this);
+        memberPresenter = new MembersPresenter(null, null, this, null);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

@@ -1,5 +1,6 @@
 package com.ingsw.backend.Service.Class;
 
+import com.ingsw.backend.Model.Enumerations.User_Type;
 import com.ingsw.backend.Model.User;
 import com.ingsw.backend.Repository.UserRepository;
 import com.ingsw.backend.Service.Interface.IUserService;
@@ -42,5 +43,10 @@ public class UserService implements IUserService {
     @Override
     public Optional<User> getByEmailAndPassword(String email,String pwd){
         return userRepository.findByEmailAndPwd(email,pwd);
+    }
+
+    @Override
+    public List<User> getByRestaurantNameAndJob(String restaurant_name, User_Type job) {
+        return userRepository.findByRestaurantNameAndJob(restaurant_name, job);
     }
 }

@@ -3,6 +3,7 @@ package com.ingsw.backend.Controllers;
 import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.DTO.CategoryDTO;
 import com.ingsw.backend.Model.DTO.UserDTO;
+import com.ingsw.backend.Model.Enumerations.User_Type;
 import com.ingsw.backend.Model.User;
 import com.ingsw.backend.Service.Interface.IUserService;
 import org.modelmapper.ModelMapper;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,6 +61,19 @@ public class UserController {
         return userDTO;
     }
 
+    @GetMapping("/get/restaurant/{restaurant_name}/{job}")
+    public List<UserDTO> getByRestaurantNameAndJob(@PathVariable String restaurant_name,@PathVariable User_Type job){
+
+        List<User> userList = userService.getByRestaurantNameAndJob(restaurant_name,job);
+
+        List<UserDTO> userDTOS = new ArrayList<>();
+        for (User user : userList) {
+            userDTOS.add(convertDTO(user));
+        }
+
+        return userDTOS;
+    }
+
     private UserDTO convertDTO(User user) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -69,5 +84,8 @@ public class UserController {
         userDTO.setRestaurantName(restaurant_name);
         return userDTO;
     }
+
+
+
 
 }

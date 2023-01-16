@@ -74,7 +74,7 @@ public class MembersSupervisorsFragment extends Fragment {
 
         memberAdapter = new MemberAdapter(getContext(), userArrayList);
 
-        memberPresenter = new MembersPresenter(null, this, null);
+        memberPresenter = new MembersPresenter(null, this, null, null);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
