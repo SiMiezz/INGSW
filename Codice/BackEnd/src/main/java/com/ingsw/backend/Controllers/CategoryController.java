@@ -52,7 +52,6 @@ public class CategoryController {
         return categoryDTOS;
     }
 
-
     @GetMapping("/get/{id}/{aliment_type}")
     public List<CategoryDTO> getByMenuIdAndAliment(@PathVariable Integer id, @PathVariable Aliment_Type aliment_type){
         List<Category> categoryList = categoryService.getByMenuIdAndAliment(id,aliment_type);
@@ -65,8 +64,6 @@ public class CategoryController {
         return categoryDTOS;
     }
 
-
-
     private CategoryDTO convertDTO(Category category) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -77,6 +74,5 @@ public class CategoryController {
         categoryDTO.setMenuId(menu_id);
         return categoryDTO;
     }
-
 
 }

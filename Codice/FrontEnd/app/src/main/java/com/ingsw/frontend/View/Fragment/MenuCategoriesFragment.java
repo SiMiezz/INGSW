@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabLayout;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;

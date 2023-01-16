@@ -91,10 +91,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 @Override
                 public void onClick(View view) {
                     menuElementsFragment.getElementFromClick(arrayList.get(holder.getAdapterPosition()).getId());
-                    System.out.println(arrayList.get(holder.getAdapterPosition()).getId());
-                    System.out.println(arrayList.get(holder.getAdapterPosition()).getName());
-                    System.out.println(arrayList.get(holder.getAdapterPosition()).getAliment());
-                    System.out.println(arrayList.get(holder.getAdapterPosition()).getMenuId());
             }
         });
 

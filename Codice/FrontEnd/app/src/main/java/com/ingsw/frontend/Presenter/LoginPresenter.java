@@ -1,6 +1,7 @@
 package com.ingsw.frontend.Presenter;
 
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.UserService;
 import com.ingsw.frontend.View.Fragment.LoginFragment;
@@ -35,7 +36,28 @@ public class LoginPresenter {
             public void returnResult(Object o) {
                 Boolean res = (Boolean) o;
 
-                loginFragment.login(res);
+                if(res){
+                    getUser(email,pwd);
+                }
+                else{
+                    loginFragment.loginFail();
+                }
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },email,pwd);
+    }
+
+    public void getUser(String email, String pwd){
+        userService.getUser(new Callback(){
+            @Override
+            public void returnResult(Object o) {
+                User user = (User) o;
+
+                loginFragment.loginSuccess(user);
             }
 
             @Override

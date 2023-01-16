@@ -61,7 +61,7 @@ public class MenuCategoriesPresenter {
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
         }, id, aliment_type);
     }

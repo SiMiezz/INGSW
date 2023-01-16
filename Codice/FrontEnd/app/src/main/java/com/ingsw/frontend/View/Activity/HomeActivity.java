@@ -4,10 +4,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Model.User;
+import com.ingsw.frontend.Presenter.MenuPresenter;
+import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
+import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
@@ -25,7 +32,6 @@ public class HomeActivity extends FragmentActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.user_container, new UserFragment()).commit();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
-
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {

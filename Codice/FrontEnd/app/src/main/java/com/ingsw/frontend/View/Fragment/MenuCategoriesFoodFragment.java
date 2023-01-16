@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,9 @@ import android.view.ViewGroup;
 
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
+import com.ingsw.frontend.Model.Menu;
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
@@ -31,6 +35,8 @@ public class MenuCategoriesFoodFragment extends Fragment {
     private MenuCategoriesFragment menuCategoriesFragment;
     private CategoryAdapter adapter;
     private MenuCategoriesPresenter menuCategoriesPresenter;
+
+    private Menu menu;
 
     public MenuCategoriesFoodFragment() {
         // Required empty public constructor
@@ -75,7 +81,7 @@ public class MenuCategoriesFoodFragment extends Fragment {
         foodView.setLayoutManager(linearLayoutManager);
         foodView.setAdapter(adapter);
 
-        menuCategoriesPresenter.getByMenuIdAndAliment(1, Aliment_Type.valueOf("food"));
+        menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("food"));
 
         return rootView;
     }

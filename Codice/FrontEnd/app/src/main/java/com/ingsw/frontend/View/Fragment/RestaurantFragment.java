@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Model.User;
+import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.R;
 
 public class RestaurantFragment extends Fragment {
@@ -19,6 +23,11 @@ public class RestaurantFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private RestaurantPresenter restaurantPresenter = new RestaurantPresenter(this);
+
+    private Intent intent;
+    private User user;
 
     public RestaurantFragment() {
         // Required empty public constructor
@@ -44,13 +53,14 @@ public class RestaurantFragment extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+        intent = getActivity().getIntent();
+        user = (User) intent.getSerializableExtra("user");
+
+        restaurantPresenter.getByName(user.getRestaurantName());
 
         fragmentTransaction.replace(R.id.info_restaurant_container, new RestaurantInfoFragment());
         fragmentTransaction.replace(R.id.stats_restaurant_container, new RestaurantStatsFragment());
         fragmentTransaction.commit();
-
-
-
     }
 
     @Override
@@ -58,5 +68,10 @@ public class RestaurantFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_restaurant, container, false);
+    }
+
+    public void loadRestaurant(Restaurant restaurant){
+        intent = getActivity().getIntent();
+        intent.putExtra("restaurant",restaurant);
     }
 }

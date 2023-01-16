@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.LoginPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
@@ -26,6 +27,8 @@ public class LoginFragment extends Fragment {
     private String email,pwd;
 
     private TextView emailView,pwdView;
+
+    private LoginPresenter loginPresenter;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -55,10 +58,10 @@ public class LoginFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
 
-        LoginPresenter loginPresenter = new LoginPresenter(this);
-
         emailView = (TextView) rootView.findViewById(R.id.editTextEmail);
         pwdView = (TextView) rootView.findViewById(R.id.editTextPassword);
+
+        loginPresenter = new LoginPresenter(this);
 
         Button loginButton = (Button) rootView.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -76,13 +79,13 @@ public class LoginFragment extends Fragment {
         return rootView;
     }
 
-    public void login(Boolean res){
-        if(res){
-            Intent intent = new Intent(getActivity(), HomeActivity.class);
-            getActivity().startActivity(intent);
-        }
-        else{
-            pwdView.setText("");
-        }
+    public void loginFail(){
+        pwdView.setText("");
+    }
+
+    public void loginSuccess(User user){
+        Intent intent = new Intent(getActivity(), HomeActivity.class);
+        intent.putExtra("user",user);
+        getActivity().startActivity(intent);
     }
 }
