@@ -2,6 +2,7 @@ package com.ingsw.backend.Controllers;
 
 import com.ingsw.backend.Model.Order;
 import com.ingsw.backend.Service.Interface.IOrderService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class OrderController {
     @Autowired
     @Qualifier("mainOrderService")
     private IOrderService orderService;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping("/create")
     public Order create(@RequestBody Order order){
