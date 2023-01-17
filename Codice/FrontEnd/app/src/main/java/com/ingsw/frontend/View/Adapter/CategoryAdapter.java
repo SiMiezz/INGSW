@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
     public ArrayList<Category> arrayList;
-    private ArrayList<Category> selectedItemsArrayList;
+    private ArrayList<Category> selectedItemsArrayList = new ArrayList<>();
 
     private final int NORMAL_LAYOUT = -1;
     private final int SELECTION_LAYOUT=-2;
@@ -64,8 +64,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public CategoryAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        selectedItemsArrayList = new ArrayList<>();
-
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_clickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
 
@@ -81,28 +79,30 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.textView.setText(arrayList.get(position).getName());
         holder.checkBox.setChecked(false);
 
+        Category temp = arrayList.get(holder.getAdapterPosition());
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 arrayList.get(holder.getAdapterPosition()).setChecked(holder.checkBox.isChecked());
+
+                if(temp.getChecked() == true){
+                    Log.println(Log.ASSERT,"adapter","ifpositivo");
+                    selectedItemsArrayList.add(temp);
+                    Log.println(Log.ASSERT,"adapter",String.valueOf(selectedItemsArrayList.size()));
+                }
+                else if(temp.getChecked() == false && !(arrayList.contains(temp))){
+                    Log.println(Log.ASSERT,"adapter","ifnegativo");
+                    selectedItemsArrayList.remove(temp);
+                }
             }
         });
-
-        Category temp = arrayList.get(holder.getAdapterPosition());
 
 
         if(temp.getChecked() == true)
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);
-
-        if(temp.getChecked() == true)
-            if(!(arrayList.contains(temp)))
-                selectedItemsArrayList.add(temp);
-        else
-            if(!(arrayList.contains(temp)))
-                selectedItemsArrayList.remove(temp);
 
         if(holder.cardView != null)
             holder.cardView.setOnClickListener(new View.OnClickListener() {

@@ -23,17 +23,17 @@ public class CategoryService implements ICategoryService {
         return categoryRepository.save(category);
     }
 
-    @Override
-    public Boolean deleteById(Integer id){
-        Optional<Category> optionalCategory = categoryRepository.findById(id);
-
-        if(optionalCategory.isEmpty()){
-            return false;
-        }
-
-        categoryRepository.delete(optionalCategory.get());
-        return true;
-    }
+//    @Override
+//    public Boolean deleteById(Integer id){
+//        Optional<Category> optionalCategory = categoryRepository.findById(id);
+//
+//        if(optionalCategory.isEmpty()){
+//            return false;
+//        }
+//
+//        categoryRepository.delete(optionalCategory.get());
+//        return true;
+//    }
 
     @Override
     public List<Category> getByMenuId(Integer id){
@@ -43,5 +43,16 @@ public class CategoryService implements ICategoryService {
     @Override
     public List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type){
         return categoryRepository.getCategoriesByMenuIdAndAliment(id, aliment_type);
+    }
+
+    @Override
+    public boolean removeByCategoryId(Integer category_id){
+        try {
+            categoryRepository.deleteByCategoryId(category_id);
+            return true;
+        } catch (Exception e){
+            throw e;
+        }
+
     }
 }

@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,10 +104,9 @@ public class MenuCategoriesFoodFragment extends Fragment {
 
     public void removeSelectedItems() {
         ArrayList<Category> categories = adapter.getSelectedItemsArrayList();
-
         for (Category category: categories) {
-            menuCategoriesPresenter.deleteByMenuIdAndCategoryId(menu.getId(), category.getId());
-            adapter.getSelectedItemsArrayList().remove(category);
+            menuCategoriesPresenter.deleteByCategoryId(category.getId());
         }
     }
+
 }

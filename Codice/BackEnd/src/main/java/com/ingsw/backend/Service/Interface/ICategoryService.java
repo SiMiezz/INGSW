@@ -9,9 +9,12 @@ public interface ICategoryService {
 
     Category create(Category category);
 
-    Boolean deleteById(Integer id);
+//    Boolean deleteById(Integer id);
 
     List<Category> getByMenuId(Integer id);
 
     List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type);
+
+    boolean removeByCategoryId(Integer category_id);
+
 }
