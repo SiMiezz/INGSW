@@ -101,4 +101,12 @@ public class MenuCategoriesFoodFragment extends Fragment {
         return adapter;
     }
 
+    public void removeSelectedItems() {
+        ArrayList<Category> categories = adapter.getSelectedItemsArrayList();
+
+        for (Category category: categories) {
+            menuCategoriesPresenter.deleteByMenuIdAndCategoryId(menu.getId(), category.getId());
+            adapter.getSelectedItemsArrayList().remove(category);
+        }
+    }
 }

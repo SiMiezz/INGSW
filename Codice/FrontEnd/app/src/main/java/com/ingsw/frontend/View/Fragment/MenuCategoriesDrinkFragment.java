@@ -14,8 +14,6 @@ import android.view.ViewGroup;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Menu;
-import com.ingsw.frontend.Model.Restaurant;
-import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
@@ -102,4 +100,12 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         return adapter;
     }
 
+    public void removeSelectedItems() {
+        ArrayList<Category> categories = adapter.getSelectedItemsArrayList();
+
+        for (Category category: categories) {
+            menuCategoriesPresenter.deleteByMenuIdAndCategoryId(menu.getId(), category.getId());
+            adapter.getSelectedItemsArrayList().remove(category);
+        }
+    }
 }

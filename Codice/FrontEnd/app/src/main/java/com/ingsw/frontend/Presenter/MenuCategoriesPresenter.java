@@ -7,9 +7,6 @@ import com.ingsw.frontend.Service.Class.CategoryService;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import okhttp3.Call;
 
 public class MenuCategoriesPresenter {
 
@@ -66,4 +63,18 @@ public class MenuCategoriesPresenter {
         }, id, aliment_type);
     }
 
+    public void deleteByMenuIdAndCategoryId(Integer menuId, Integer categoryId) {
+        categoryService.removeByMenuIdAndCategoryId(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, menuId, categoryId);
+    }
 }

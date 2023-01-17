@@ -7,6 +7,7 @@ import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -26,4 +27,7 @@ public interface CategoryApi {
 
     @GET("/category/get/{id}/{aliment_type}")
     Single<List<Category>> getByMenuIdAndAliment(@Path("id") Integer id,@Path("aliment_type") Aliment_Type aliment_type);
+
+    @DELETE("/category/delete/{menu_id}/{category_id}")
+    Single<Response<Void>> deleteByMenuIdAndCategoryId(@Path("menu_id") Integer menu_id, @Path("category_id") Integer category_id);
 }

@@ -145,7 +145,12 @@ public class MenuCategoriesFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(tabLayout.getSelectedTabPosition() == 0){
+                    menuCategoriesFoodFragment.removeSelectedItems();
+                }
+                else if(tabLayout.getSelectedTabPosition() == 1){
+                    menuCategoriesDrinkFragment.removeSelectedItems();
+                }
             }
         });
 

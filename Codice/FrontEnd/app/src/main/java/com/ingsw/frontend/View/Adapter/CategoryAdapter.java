@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryHolder> {
 
     public ArrayList<Category> arrayList;
+    private ArrayList<Category> selectedItemsArrayList;
 
     private final int NORMAL_LAYOUT = -1;
     private final int SELECTION_LAYOUT=-2;
@@ -46,6 +47,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         arrayList.clear();
     }
 
+    public void setSelectedItemsArrayList(ArrayList<Category> selectedItemsArrayList) {
+        this.selectedItemsArrayList = selectedItemsArrayList;
+    }
+
+    public ArrayList<Category> getSelectedItemsArrayList() {
+        return selectedItemsArrayList;
+    }
+
 
 
  // ***************************************************************************************
@@ -54,6 +63,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @NonNull
     @Override
     public CategoryAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        selectedItemsArrayList = new ArrayList<>();
 
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_clickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
@@ -78,19 +89,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             }
         });
 
+        Category temp = arrayList.get(holder.getAdapterPosition());
 
-        if(arrayList.get(holder.getAdapterPosition()).getChecked() == true)
+
+        if(temp.getChecked() == true)
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);
 
-
+        if(temp.getChecked() == true)
+            if(!(arrayList.contains(temp)))
+                selectedItemsArrayList.add(temp);
+        else
+            if(!(arrayList.contains(temp)))
+                selectedItemsArrayList.remove(temp);
 
         if(holder.cardView != null)
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    menuElementsFragment.getElementFromClick(arrayList.get(holder.getAdapterPosition()).getId());
+                    menuElementsFragment.getElementFromClick(temp.getId());
             }
         });
 
@@ -106,6 +124,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public int getItemCount() {
         return arrayList.size();
     }
+
 
 
 

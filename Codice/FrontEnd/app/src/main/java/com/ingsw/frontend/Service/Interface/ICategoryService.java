@@ -12,5 +12,7 @@ public interface ICategoryService {
 
     void getByMenuId(Callback callback, Integer id);
 
-    public void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type);
+    void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type);
+
+    void removeByMenuIdAndCategoryId(Callback callback, Integer menuId, Integer categoryId);
 }

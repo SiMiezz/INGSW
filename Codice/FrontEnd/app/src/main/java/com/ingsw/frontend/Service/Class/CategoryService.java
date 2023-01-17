@@ -17,6 +17,7 @@ import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
+import retrofit2.Response;
 
 public class CategoryService implements ICategoryService {
 
@@ -109,5 +110,26 @@ public class CategoryService implements ICategoryService {
                         callback.returnError(e);
                     }
                 });
+    }
+
+    public void removeByMenuIdAndCategoryId(Callback callback, Integer menuId, Integer categoryId) {
+        categoryApi.deleteByMenuIdAndCategoryId(menuId, categoryId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Response<Void>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+                    @Override
+                    public void onSuccess(@NonNull Response<Void> voidResponse) {
+                        if(voidResponse.code()==200)
+                            callback.returnResult(true);
+                    }
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnResult(false);
+                        callback.returnError(e);
+                    }
+                });
+
     }
 }
