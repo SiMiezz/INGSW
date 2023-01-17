@@ -19,15 +19,12 @@ public interface CategoryApi {
     @POST("/category/create")
     Single<Void> create(@Body Category category);
 
-//    @DELETE("/category/delete/{id}")
-//    Single<Void> deleteById(@Path("id") Integer id);
-
     @GET("/category/get/{id}")
     Single<List<Category>> getByMenuId(@Path("id") Integer id);
 
     @GET("/category/get/{id}/{aliment_type}")
     Single<List<Category>> getByMenuIdAndAliment(@Path("id") Integer id,@Path("aliment_type") Aliment_Type aliment_type);
 
-    @DELETE("/category/delete/{category_id}")
-    Single<Response<Void>> deleteByCategoryId(@Path("category_id") Integer category_id);
+    @DELETE("/category/delete/{id}")
+    Single<Void> deleteById(@Path("id") Integer id);
 }

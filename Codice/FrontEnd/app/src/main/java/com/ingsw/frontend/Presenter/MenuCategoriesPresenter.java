@@ -63,18 +63,17 @@ public class MenuCategoriesPresenter {
         }, id, aliment_type);
     }
 
-    public void deleteByCategoryId(Integer categoryId) {
-        categoryService.removeByCategoryId(new Callback(){
+    public void deleteById(Integer id) {
+        categoryService.deleteById(new Callback(){
 
             @Override
             public void returnResult(Object o) {
-
             }
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
-        },categoryId);
+        },id);
     }
 }

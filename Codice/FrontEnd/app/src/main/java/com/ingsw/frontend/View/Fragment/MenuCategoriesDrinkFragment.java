@@ -103,7 +103,7 @@ public class MenuCategoriesDrinkFragment extends Fragment {
     public void removeSelectedItems() {
         ArrayList<Category> categories = adapter.getSelectedItemsArrayList();
         for (Category category: categories) {
-            menuCategoriesPresenter.deleteByCategoryId(category.getId());
+            menuCategoriesPresenter.deleteById(category.getId());
         }
     }
 }

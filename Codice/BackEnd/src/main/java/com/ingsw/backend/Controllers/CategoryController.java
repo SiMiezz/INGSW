@@ -31,20 +31,20 @@ public class CategoryController {
         return categoryService.create(category);
     }
 
-//    @DeleteMapping("/delete/{id}")
-//    public void deleteById(@PathVariable Integer id){
-//        boolean delete = categoryService.deleteById(id);
-//
-//        if(!delete){
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//        }
-//    }
+    @DeleteMapping("/delete/{id}")
+    public void deleteById(@PathVariable Integer id){
+        boolean delete = categoryService.deleteById(id);
+
+        if(!delete){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
 
     @GetMapping("/get/{id}")
     public List<CategoryDTO> getByMenuId(@PathVariable Integer id){
         List<Category> categoryList = categoryService.getByMenuId(id);
 
-        List<CategoryDTO> categoryDTOS = new ArrayList<CategoryDTO>();
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
         for (Category category: categoryList) {
             categoryDTOS.add(convertDTO(category));
         }
@@ -62,13 +62,6 @@ public class CategoryController {
         }
 
         return categoryDTOS;
-    }
-
-    @DeleteMapping("/delete/{category_id}")
-    public boolean removeByCategoryId(@PathVariable Integer category_id){
-        boolean result = categoryService.removeByCategoryId(category_id);
-
-        return result;
     }
 
     private CategoryDTO convertDTO(Category category) {

@@ -49,28 +49,6 @@ public class CategoryService implements ICategoryService {
                 });
     }
 
-//    @Override
-//    public void deleteById(Callback callback, Integer id){
-//        categoryApi.deleteById(id)
-//                .subscribeOn(Schedulers.newThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(new SingleObserver<Void>() {
-//                    @Override
-//                    public void onSubscribe(@NonNull Disposable d) {}
-//
-//                    @Override
-//                    public void onSuccess(@NonNull Void unused) {
-//                        callback.returnResult(true);
-//                    }
-//
-//                    @Override
-//                    public void onError(@NonNull Throwable e) {
-//                        System.out.println(e);
-//                        callback.returnResult(false);
-//                    }
-//                });
-//    }
-
     @Override
     public void getByMenuId(Callback callback, Integer id){
         categoryApi.getByMenuId(id)
@@ -112,24 +90,23 @@ public class CategoryService implements ICategoryService {
                 });
     }
 
-    public void removeByCategoryId(Callback callback, Integer categoryId) {
-        categoryApi.deleteByCategoryId(categoryId)
+    public void deleteById(Callback callback, Integer id) {
+        categoryApi.deleteById(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Response<Void>>() {
+                .subscribe(new SingleObserver<Void>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
+
                     @Override
-                    public void onSuccess(@NonNull Response<Void> voidResponse) {
-                        if(voidResponse.code()==200)
-                            callback.returnResult(true);
+                    public void onSuccess(@NonNull Void unused) {
+                        callback.returnResult(true);
                     }
+
                     @Override
                     public void onError(@NonNull Throwable e) {
                         callback.returnResult(false);
-                        callback.returnError(e);
                     }
                 });
-
     }
 }
