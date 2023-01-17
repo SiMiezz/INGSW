@@ -1,6 +1,7 @@
 package com.ingsw.frontend.View.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.view.menu.MenuBuilder;
@@ -12,7 +13,10 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 
 public class UserFragment extends Fragment {
@@ -25,7 +29,6 @@ public class UserFragment extends Fragment {
 
 
     private Button arrowButton;
-
 
     public UserFragment() {
         // Required empty public constructor
@@ -57,6 +60,25 @@ public class UserFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_user, container, false);
 
         arrowButton = (Button) rootView.findViewById(R.id.arrowButton);
+        TextView userView = (TextView) rootView.findViewById(R.id.TextUser);
+        ImageView imageView = (ImageView) rootView.findViewById(R.id.ImageUser);
+
+        Intent intent = getActivity().getIntent();
+
+        User user = (User) intent.getSerializableExtra("user");
+
+        userView.setText(user.getName() + ", " + user.getSurname());
+
+        switch(user.getJob().toString()){
+            case "admin":
+                imageView.setImageResource(R.drawable.icon_members_admin);
+            case "supervisor":
+                imageView.setImageResource(R.drawable.icon_members_supervisor);
+            case "waiter":
+                imageView.setImageResource(R.drawable.icon_members_waiter);
+            case "chef":
+                imageView.setImageResource(R.drawable.icon_members_chef);
+        }
 
         arrowButton.setOnClickListener(arrowButtonOListener());
 
@@ -83,6 +105,5 @@ public class UserFragment extends Fragment {
 
         return listener;
     }
-
 
 }
