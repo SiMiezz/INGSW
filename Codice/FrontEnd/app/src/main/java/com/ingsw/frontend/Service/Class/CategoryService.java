@@ -49,27 +49,27 @@ public class CategoryService implements ICategoryService {
                 });
     }
 
-    @Override
-    public void deleteById(Callback callback, Integer id){
-        categoryApi.deleteById(id)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Void>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {}
-
-                    @Override
-                    public void onSuccess(@NonNull Void unused) {
-                        callback.returnResult(true);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        System.out.println(e);
-                        callback.returnResult(false);
-                    }
-                });
-    }
+//    @Override
+//    public void deleteById(Callback callback, Integer id){
+//        categoryApi.deleteById(id)
+//                .subscribeOn(Schedulers.newThread())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new SingleObserver<Void>() {
+//                    @Override
+//                    public void onSubscribe(@NonNull Disposable d) {}
+//
+//                    @Override
+//                    public void onSuccess(@NonNull Void unused) {
+//                        callback.returnResult(true);
+//                    }
+//
+//                    @Override
+//                    public void onError(@NonNull Throwable e) {
+//                        System.out.println(e);
+//                        callback.returnResult(false);
+//                    }
+//                });
+//    }
 
     @Override
     public void getByMenuId(Callback callback, Integer id){
@@ -112,8 +112,8 @@ public class CategoryService implements ICategoryService {
                 });
     }
 
-    public void removeByMenuIdAndCategoryId(Callback callback, Integer menuId, Integer categoryId) {
-        categoryApi.deleteByMenuIdAndCategoryId(menuId, categoryId)
+    public void removeByCategoryId(Callback callback, Integer categoryId) {
+        categoryApi.deleteByCategoryId(categoryId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Response<Void>>() {

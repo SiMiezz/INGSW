@@ -52,7 +52,7 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,7 +61,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1);
+INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(4,'unodrink','drink',1),(5,'duedrink','drink',1),(6,'tredrink','drink',1),(7,'quattrodrink','drink',1),(8,'cinquedrink','drink',1),(9,'unofood','food',1),(10,'duefood','food',1),(11,'trefood','food',1),(12,'quattrofood','food',1),(13,'cinquefood','food',1),(14,'seifood','food',1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-16 17:05:10
+-- Dump completed on 2023-01-17 16:29:10

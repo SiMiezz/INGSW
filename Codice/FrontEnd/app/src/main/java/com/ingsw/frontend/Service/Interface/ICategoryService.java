@@ -8,11 +8,11 @@ public interface ICategoryService {
 
     void create(Callback callback, Category category);
 
-    void deleteById(Callback callback, Integer id);
+//    void deleteById(Callback callback, Integer id);
 
     void getByMenuId(Callback callback, Integer id);
 
     void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type);
 
-    void removeByMenuIdAndCategoryId(Callback callback, Integer menuId, Integer categoryId);
+    void removeByCategoryId(Callback callback, Integer categoryId);
 }
