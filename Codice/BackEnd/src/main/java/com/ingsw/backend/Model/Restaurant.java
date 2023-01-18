@@ -2,7 +2,6 @@ package com.ingsw.backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
@@ -39,14 +38,8 @@ public class Restaurant implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "locality", length = 50)
+    @Column(name = "locality", length = 50, nullable = false)
     private String locality;
-
-    @Column(name = "tables", nullable = false)
-    private int tables;
-
-    @Column(name = "seats", nullable = false)
-    private int seats;
 
     @Column(name = "touristic", nullable = false)
     private boolean touristic;
@@ -58,12 +51,10 @@ public class Restaurant implements Serializable {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String description, String locality, int tables, int seats, boolean touristic) {
+    public Restaurant(String name, String description, String locality, boolean touristic) {
         this.name = name;
         this.description = description;
         this.locality = locality;
-        this.tables = tables;
-        this.seats = seats;
         this.touristic = touristic;
     }
 
@@ -95,22 +86,6 @@ public class Restaurant implements Serializable {
 
     public void setLocality(String locality) {
         this.locality = locality;
-    }
-
-    public int getTables() {
-        return tables;
-    }
-
-    public void setTables(int tables) {
-        this.tables = tables;
-    }
-
-    public int getSeats() {
-        return seats;
-    }
-
-    public void setSeats(int seats) {
-        this.seats = seats;
     }
 
     public boolean isTouristic() {

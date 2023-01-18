@@ -10,10 +10,6 @@ public class RestaurantDTO {
 
     private String locality;
 
-    private int tables;
-
-    private int seats;
-
     private boolean touristic;
 
 
@@ -23,12 +19,10 @@ public class RestaurantDTO {
     public RestaurantDTO() {
     }
 
-    public RestaurantDTO(String name, String description, String locality, int tables, int seats, boolean touristic) {
+    public RestaurantDTO(String name, String description, String locality, boolean touristic) {
         this.name = name;
         this.description = description;
         this.locality = locality;
-        this.tables = tables;
-        this.seats = seats;
         this.touristic = touristic;
     }
 
@@ -60,22 +54,6 @@ public class RestaurantDTO {
 
     public void setLocality(String locality) {
         this.locality = locality;
-    }
-
-    public int getTables() {
-        return tables;
-    }
-
-    public void setTables(int tables) {
-        this.tables = tables;
-    }
-
-    public int getSeats() {
-        return seats;
-    }
-
-    public void setSeats(int seats) {
-        this.seats = seats;
     }
 
     public boolean isTouristic() {
