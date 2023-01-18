@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.31, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: ratatouille
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -157,7 +157,7 @@ CREATE TABLE `element` (
   PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2);
+INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2),(4,'uno',40,'unodesc',1,4),(5,'due',50,'duedesc',1,8),(6,'tre',80,'tredesc',0,11),(7,'quattro',40,'quattrodesc',1,7),(8,'cinque',40,'cinquedesc',1,7),(9,'sei',40,'seidesc',1,7);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -317,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-17 16:29:10
+-- Dump completed on 2023-01-18 12:32:50
