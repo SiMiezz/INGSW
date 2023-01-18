@@ -54,7 +54,7 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +63,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(4,'unodrink','drink',1),(5,'duedrink','drink',1),(6,'tredrink','drink',1),(7,'quattrodrink','drink',1),(8,'cinquedrink','drink',1),(9,'unofood','food',1),(10,'duefood','food',1),(11,'trefood','food',1),(12,'quattrofood','food',1),(13,'cinquefood','food',1),(14,'seifood','food',1);
+INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(15,'alcolici','drink',1),(16,'analcolici','drink',1),(17,'nervine','drink',1),(18,'antipasti','food',1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `element` (
   PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +168,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2);
+INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2),(4,'mozzarella',10,'bufala',1,18),(5,'prosciutto',5,'parma',1,18),(6,'vino',15,'bianco',1,15),(7,'birra',3,'peroni',1,15),(8,'fanta',2,'lemon',1,16),(9,'zucchine',3,'grigliate',0,3);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,10 +236,8 @@ DROP TABLE IF EXISTS `restaurant`;
 CREATE TABLE `restaurant` (
   `name` varchar(50) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `locality` varchar(50) DEFAULT NULL,
-  `tables` int NOT NULL,
-  `seats` int NOT NULL,
-  `touristic` tinyint NOT NULL,
+  `locality` varchar(50) NOT NULL,
+  `touristic` tinyint NOT NULL DEFAULT '0',
   PRIMARY KEY (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -250,7 +248,7 @@ CREATE TABLE `restaurant` (
 
 LOCK TABLES `restaurant` WRITE;
 /*!40000 ALTER TABLE `restaurant` DISABLE KEYS */;
-INSERT INTO `restaurant` VALUES ('rest','ristorante','italia',4,12,0),('risto','pizzeria','napoli',8,20,1);
+INSERT INTO `restaurant` VALUES ('rest','ristorante','italia',0),('risto','pizzeria','napoli',1);
 /*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -346,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-18 17:13:26
+-- Dump completed on 2023-01-18 18:21:02
