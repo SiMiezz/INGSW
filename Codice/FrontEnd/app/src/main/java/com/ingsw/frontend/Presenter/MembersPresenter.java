@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Presenter;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Service.Callback;
@@ -51,5 +52,19 @@ public class MembersPresenter {
 
             }
         }, restaurantName, job);
+    }
+
+    public void deleteById(String email) {
+        userService.deleteByEmail(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },email);
     }
 }

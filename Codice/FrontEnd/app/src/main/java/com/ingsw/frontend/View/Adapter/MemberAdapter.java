@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 
@@ -18,12 +19,37 @@ import java.util.ArrayList;
 public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHolder>{
 
     private ArrayList<User> userArrayList;
+    public ArrayList<User> selectedItemsArrayList = new ArrayList<>();
+
     public static int currentLayout = -1;
 
     public MemberAdapter(Context context, ArrayList<User> userArrayList){
         this.userArrayList = userArrayList;
     }
 
+    public ArrayList<User> getUserArrayList() {
+        return userArrayList;
+    }
+
+    public void setUserArrayList(ArrayList<User> userArrayList) {
+        this.userArrayList = userArrayList;
+    }
+
+    public ArrayList<User> getSelectedItemsArrayList() {
+        return selectedItemsArrayList;
+    }
+
+    public void setSelectedItemsArrayList(ArrayList<User> selectedItemsArrayList) {
+        this.selectedItemsArrayList = selectedItemsArrayList;
+    }
+
+    public static int getCurrentLayout() {
+        return currentLayout;
+    }
+
+    public static void setCurrentLayout(int currentLayout) {
+        MemberAdapter.currentLayout = currentLayout;
+    }
 
     @NonNull
     @Override
@@ -44,15 +70,24 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHold
 
         holder.checkBox.setChecked(false);
 
+        User temp = userArrayList.get(holder.getAdapterPosition());
+
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                userArrayList.get(holder.getAdapterPosition()).setChecked(holder.checkBox.isChecked());
+                temp.setChecked(holder.checkBox.isChecked());
+
+                if(temp.getChecked() == true){
+                    selectedItemsArrayList.add(temp);
+                }
+                else if(temp.getChecked() == false && !(userArrayList.contains(temp))){
+                    selectedItemsArrayList.remove(temp);
+                }
             }
         });
 
 
-        if(userArrayList.get(holder.getAdapterPosition()).getChecked() == true)
+        if(temp.getChecked() == true)
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);

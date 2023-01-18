@@ -133,7 +133,7 @@ public class MembersSupervisorsFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                removeSelectedItems();
             }
         });
 
@@ -145,5 +145,12 @@ public class MembersSupervisorsFragment extends Fragment {
         memberAdapter.clearList();
         memberAdapter.setArrayList(userList);
         memberAdapter.notifyDataSetChanged();
+    }
+
+    public void removeSelectedItems() {
+        ArrayList<User> users = memberAdapter.getSelectedItemsArrayList();
+        for (User user: users) {
+            memberPresenter.deleteById(user.getEmail());
+        }
     }
 }

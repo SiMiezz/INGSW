@@ -23,8 +23,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public ArrayList<Category> arrayList;
     private ArrayList<Category> selectedItemsArrayList = new ArrayList<>();
 
-    private final int NORMAL_LAYOUT = -1;
-    private final int SELECTION_LAYOUT=-2;
     public static int currentLayout = -1;
 
     private MenuElementsFragment menuElementsFragment;

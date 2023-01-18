@@ -21,8 +21,6 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     public ArrayList<Element> arrayList;
     public ArrayList<Element> selectedItemsArrayList = new ArrayList<>();
 
-    private final int NORMAL_LAYOUT = -1;
-    private final int SELECTION_LAYOUT=-2;
     public static int currentLayout = -1;
 
     public ElementAdapter(Context context, ArrayList<Element> arrayList){

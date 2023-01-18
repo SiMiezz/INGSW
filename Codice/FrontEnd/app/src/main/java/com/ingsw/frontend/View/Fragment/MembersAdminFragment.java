@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.Menu;
@@ -138,7 +139,7 @@ public class MembersAdminFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                removeSelectedItems();
             }
         });
 
@@ -153,5 +154,12 @@ public class MembersAdminFragment extends Fragment {
         memberAdapter.clearList();
         memberAdapter.setArrayList(userList);
         memberAdapter.notifyDataSetChanged();
+    }
+
+    public void removeSelectedItems() {
+        ArrayList<User> users = memberAdapter.getSelectedItemsArrayList();
+        for (User user: users) {
+            memberPresenter.deleteById(user.getEmail());
+        }
     }
 }
