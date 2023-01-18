@@ -30,12 +30,12 @@
 
             <TextView
                 android:id="@+id/TextUser"
-                android:layout_width="wrap_content"
+                android:layout_width="170dp"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal|center_vertical"
                 android:text="Name, Surname"
                 android:textColor="@color/black"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"></TextView>
 
@@ -53,6 +53,7 @@
                         android:id="@+id/ImageUser"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:gravity="right"
                         android:src="@drawable/adl"
                         android:scaleType="centerCrop"/>

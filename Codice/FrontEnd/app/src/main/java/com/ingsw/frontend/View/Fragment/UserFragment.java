@@ -7,9 +7,13 @@ import android.os.Bundle;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -18,6 +22,7 @@ import android.widget.TextView;
 
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Activity.LoginActivity;
 
 public class UserFragment extends Fragment {
 
@@ -29,6 +34,8 @@ public class UserFragment extends Fragment {
 
 
     private Button arrowButton;
+    private TextView userView;
+    private ImageView imageView;
 
     public UserFragment() {
         // Required empty public constructor
@@ -60,27 +67,17 @@ public class UserFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_user, container, false);
 
         arrowButton = (Button) rootView.findViewById(R.id.arrowButton);
-        TextView userView = (TextView) rootView.findViewById(R.id.TextUser);
-        ImageView imageView = (ImageView) rootView.findViewById(R.id.ImageUser);
+        userView = (TextView) rootView.findViewById(R.id.TextUser);
+        imageView = (ImageView) rootView.findViewById(R.id.ImageUser);
 
         Intent intent = getActivity().getIntent();
 
         User user = (User) intent.getSerializableExtra("user");
 
-        userView.setText(user.getName() + ", " + user.getSurname());
-
-        switch(user.getJob().toString()){
-            case "admin":
-                imageView.setImageResource(R.drawable.icon_members_admin);
-            case "supervisor":
-                imageView.setImageResource(R.drawable.icon_members_supervisor);
-            case "waiter":
-                imageView.setImageResource(R.drawable.icon_members_waiter);
-            case "chef":
-                imageView.setImageResource(R.drawable.icon_members_chef);
-        }
+        loadUser(user);
 
         arrowButton.setOnClickListener(arrowButtonOListener());
+
 
         return rootView;
     }
@@ -100,10 +97,41 @@ public class UserFragment extends Fragment {
                 optionsMenu.setForceShowIcon(true);
                 optionsMenu.show();
 
+                MenuItem menuItem = (MenuItem) menuBuilder.getItem(1);
+
+                menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        Intent intent = new Intent(getActivity(), LoginActivity.class);
+                        getActivity().startActivity(intent);
+                        return true;
+                    }
+                });
+
             }
+
         };
 
         return listener;
+    }
+
+    public void loadUser(User user){
+        userView.setText(user.getName() + ", " + user.getSurname());
+
+        switch(user.getJob().toString()){
+            case "admin":
+                imageView.setImageResource(R.drawable.icon_members_admin);
+                break;
+            case "supervisor":
+                imageView.setImageResource(R.drawable.icon_members_supervisor);
+                break;
+            case "waiter":
+                imageView.setImageResource(R.drawable.icon_members_waiter);
+                break;
+            case "chef":
+                imageView.setImageResource(R.drawable.icon_members_chef);
+                break;
+        }
     }
 
 }
