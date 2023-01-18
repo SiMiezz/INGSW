@@ -66,7 +66,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHold
     @Override
     public void onBindViewHolder(@NonNull MemberAdapter.MemberHolder holder, int position) {
 
-        holder.textView.setText(userArrayList.get(position).getName());
+        holder.textView.setText(userArrayList.get(position).getName().toUpperCase());
 
         holder.checkBox.setChecked(false);
 

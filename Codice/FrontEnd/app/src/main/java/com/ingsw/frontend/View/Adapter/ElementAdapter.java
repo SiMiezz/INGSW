@@ -1,17 +1,14 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 import java.util.ArrayList;
@@ -46,8 +43,8 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     @Override
     public ElementAdapter.ElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_nonclickable, parent,false);
-        View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
+        View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_nonclickable_element, parent,false);
+        View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection_element, parent,false);
 
         if(getItemViewType(0) == -1)
             return new ElementAdapter.ElementHolder(normalList);
@@ -58,7 +55,15 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     @Override
     public void onBindViewHolder(@NonNull ElementAdapter.ElementHolder holder, int position) {
 
-        holder.textView.setText(arrayList.get(position).getName());
+//        holder.textView.setText(arrayList.get(position).getName());
+
+        holder.name.setText(arrayList.get(position).getName().toUpperCase());
+        holder.description.setText(arrayList.get(position).getDescription());
+        holder.price.setText(String.valueOf(arrayList.get(position).getPrice()));
+        if(arrayList.get(position).isPrePackaged())
+            holder.prepackaged.setText("Yes");
+        else
+            holder.prepackaged.setText("No");
 
         holder.checkBox.setChecked(false);
 
@@ -108,12 +113,20 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
 
     public class ElementHolder extends RecyclerView.ViewHolder{
         private CheckBox checkBox;
-        private TextView textView;
+        private TextView name;
+        private TextView description;
+        private TextView price;
+        private TextView prepackaged;
 
         public ElementHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.text_cardview);
+//            textView = itemView.findViewById(R.id.text_cardview);
             checkBox = itemView.findViewById(R.id.checkbox_category);
+            name = itemView.findViewById(R.id.element_name_cardview);
+            description = itemView.findViewById(R.id.element_description_cardview);
+            price = itemView.findViewById(R.id.element_price_cardview);
+            prepackaged = itemView.findViewById(R.id.element_prepackaged_cardview);
+
         }
 
     }

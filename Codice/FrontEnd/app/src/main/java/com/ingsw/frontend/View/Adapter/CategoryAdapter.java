@@ -74,7 +74,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
 
-        holder.textView.setText(arrayList.get(position).getName());
+        holder.textView.setText(arrayList.get(position).getName().toUpperCase());
         holder.checkBox.setChecked(false);
 
         Category temp = arrayList.get(holder.getAdapterPosition());
