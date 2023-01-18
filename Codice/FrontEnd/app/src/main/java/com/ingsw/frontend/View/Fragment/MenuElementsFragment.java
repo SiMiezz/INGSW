@@ -124,7 +124,7 @@ public class MenuElementsFragment extends Fragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                removeSelectedItems();
             }
         });
 
@@ -149,6 +149,13 @@ public class MenuElementsFragment extends Fragment {
         adapter.clearList();
         adapter.setArrayList(new ArrayList<>());
         adapter.notifyDataSetChanged();
+    }
+
+    public void removeSelectedItems() {
+        ArrayList<Element> elements = adapter.getSelectedItemsArrayList();
+        for (Element element: elements) {
+            menuElementsPresenter.deleteById(element.getId());
+        }
     }
 
 

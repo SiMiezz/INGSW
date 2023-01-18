@@ -108,7 +108,10 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(CategoryAdapter.currentLayout == -1){
                     CategoryAdapter.currentLayout = -2;
-                    menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
+                    if(menuCategoriesFoodFragment.getAdapter() != null)
+                        menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
+                    if(menuCategoriesDrinkFragment.getAdapter() != null)
+                        menuCategoriesDrinkFragment.getAdapter().notifyDataSetChanged();
                 }
 
                 removeButton.setVisibility(View.INVISIBLE);
@@ -124,7 +127,10 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(CategoryAdapter.currentLayout == -2){
                     CategoryAdapter.currentLayout = -1;
-                    menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
+                    if(menuCategoriesFoodFragment.getAdapter() != null)
+                        menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
+                    if(menuCategoriesDrinkFragment.getAdapter() != null)
+                        menuCategoriesDrinkFragment.getAdapter().notifyDataSetChanged();
                 }
 
                 backButton.setVisibility(View.INVISIBLE);

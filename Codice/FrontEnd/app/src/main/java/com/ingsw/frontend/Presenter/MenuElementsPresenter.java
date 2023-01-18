@@ -27,8 +27,21 @@ public class MenuElementsPresenter {
             @Override
             public void returnResult(Object o) {
                 ArrayList<Element> elementList = (ArrayList<Element>) o;
-
                 menuElementsFragment.loadElement(elementList);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },id);
+    }
+
+    public void deleteById(Integer id) {
+        elementService.deleteById(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
             }
 
             @Override

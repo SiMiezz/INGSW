@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementHolder> {
 
     public ArrayList<Element> arrayList;
+    public ArrayList<Element> selectedItemsArrayList = new ArrayList<>();
 
     private final int NORMAL_LAYOUT = -1;
     private final int SELECTION_LAYOUT=-2;
@@ -61,15 +64,24 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
 
         holder.checkBox.setChecked(false);
 
+        Element temp = arrayList.get(holder.getAdapterPosition());
+
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arrayList.get(holder.getAdapterPosition()).setChecked(holder.checkBox.isChecked());
+                temp.setChecked(holder.checkBox.isChecked());
+
+                if(temp.getChecked() == true){
+                    selectedItemsArrayList.add(temp);
+                }
+                else if(temp.getChecked() == false && !(arrayList.contains(temp))){
+                    selectedItemsArrayList.remove(temp);
+                }
             }
         });
 
 
-        if(arrayList.get(holder.getAdapterPosition()).getChecked() == true)
+        if(temp.getChecked() == true)
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);
@@ -87,6 +99,10 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
     public int getItemViewType(int position){
 
         return currentLayout;
+    }
+
+    public ArrayList<Element> getSelectedItemsArrayList() {
+        return selectedItemsArrayList;
     }
 
 

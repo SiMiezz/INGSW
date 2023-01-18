@@ -84,15 +84,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                arrayList.get(holder.getAdapterPosition()).setChecked(holder.checkBox.isChecked());
+               temp.setChecked(holder.checkBox.isChecked());
 
                 if(temp.getChecked() == true){
-                    Log.println(Log.ASSERT,"adapter","ifpositivo");
                     selectedItemsArrayList.add(temp);
-                    Log.println(Log.ASSERT,"adapter",String.valueOf(selectedItemsArrayList.size()));
                 }
                 else if(temp.getChecked() == false && !(arrayList.contains(temp))){
-                    Log.println(Log.ASSERT,"adapter","ifnegativo");
                     selectedItemsArrayList.remove(temp);
                 }
             }

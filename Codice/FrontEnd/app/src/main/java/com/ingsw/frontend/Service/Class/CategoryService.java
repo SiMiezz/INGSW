@@ -105,6 +105,7 @@ public class CategoryService implements ICategoryService {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
                         callback.returnResult(false);
                     }
                 });
