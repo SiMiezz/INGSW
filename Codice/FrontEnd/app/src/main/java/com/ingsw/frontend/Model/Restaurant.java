@@ -24,14 +24,6 @@ public class Restaurant implements Serializable {
     private String locality;
 
     @Expose
-    @SerializedName("tables")
-    private Integer tables;
-
-    @Expose
-    @SerializedName("seats")
-    private Integer seats;
-
-    @Expose
     @SerializedName("touristic")
     private boolean touristic;
 
@@ -39,12 +31,10 @@ public class Restaurant implements Serializable {
     public Restaurant() {
     }
 
-    public Restaurant(String name, String description, String locality, Integer tables, Integer seats, boolean touristic) {
+    public Restaurant(String name, String description, String locality, boolean touristic) {
         this.name = name;
         this.description = description;
         this.locality = locality;
-        this.tables = tables;
-        this.seats = seats;
         this.touristic = touristic;
     }
 
@@ -72,22 +62,6 @@ public class Restaurant implements Serializable {
 
     public void setLocality(String locality) {
         this.locality = locality;
-    }
-
-    public Integer getTables() {
-        return tables;
-    }
-
-    public void setTables(Integer tables) {
-        this.tables = tables;
-    }
-
-    public Integer getSeats() {
-        return seats;
-    }
-
-    public void setSeats(Integer seats) {
-        this.seats = seats;
     }
 
     public boolean isTouristic() {
