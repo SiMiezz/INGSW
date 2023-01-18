@@ -17,6 +17,7 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.LoginPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Dialog.LoginDialog;
 
 public class LoginFragment extends Fragment {
 
@@ -86,7 +87,13 @@ public class LoginFragment extends Fragment {
         return rootView;
     }
 
+    public void openDialog(){
+        LoginDialog dialog = new LoginDialog();
+        dialog.show(getActivity().getSupportFragmentManager(), "Login");
+    }
+
     public void loginFail(){
+        openDialog();
         pwdView.setText("");
     }
 
