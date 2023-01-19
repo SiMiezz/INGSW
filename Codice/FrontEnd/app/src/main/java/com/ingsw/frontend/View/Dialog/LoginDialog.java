@@ -4,10 +4,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+
+import com.ingsw.frontend.R;
 
 public class LoginDialog extends AppCompatDialogFragment {
 
@@ -15,9 +18,10 @@ public class LoginDialog extends AppCompatDialogFragment {
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Attenzione")
-                .setMessage("Dati errati")
-                .setPositiveButton("Riprova", new DialogInterface.OnClickListener() {
+        LayoutInflater inflater = getActivity().getLayoutInflater();
+
+        builder.setView(inflater.inflate(R.layout.login_layout, null))
+                .setPositiveButton("riprova", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
@@ -25,5 +29,13 @@ public class LoginDialog extends AppCompatDialogFragment {
                 });
 
         return builder.create();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getDialog().getWindow().getAttributes().width=650;
+        getDialog().getWindow().setAttributes(
+                getDialog().getWindow().getAttributes());
     }
 }
