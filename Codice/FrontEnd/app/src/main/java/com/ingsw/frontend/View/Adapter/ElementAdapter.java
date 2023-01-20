@@ -59,7 +59,7 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
 
         holder.name.setText(arrayList.get(position).getName().toUpperCase());
         holder.description.setText(arrayList.get(position).getDescription());
-        holder.price.setText("€ "+ qString.valueOf(arrayList.get(position).getPrice()));
+        holder.price.setText("€ " + String.valueOf(arrayList.get(position).getPrice()));
         if(arrayList.get(position).isPrePackaged())
             holder.prepackaged.setText("Yes");
         else
