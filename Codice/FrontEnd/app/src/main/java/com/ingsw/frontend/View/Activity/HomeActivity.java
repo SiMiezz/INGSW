@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
@@ -15,6 +16,7 @@ import com.ingsw.frontend.Presenter.MenuPresenter;
 import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.View.Dialog.ElementDialog;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
+import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
@@ -57,10 +59,11 @@ public class HomeActivity extends FragmentActivity implements ElementDialog.Elem
     }
 
     @Override
-    public void createElement(String name, String description, Double price, Boolean prepackaged) {
-        System.out.println(name);
-        System.out.println(description);
-        System.out.println(price);
-        System.out.println(prepackaged);
+    public void createElement(String name, String description, Double price, Boolean prepackaged,Integer idCategory) {
+        Element element = new Element(name,description,price,prepackaged,idCategory);
+
+        MenuElementsFragment menuElementsFragment = new MenuElementsFragment();
+
+        menuElementsFragment.createElement(element);
     }
 }

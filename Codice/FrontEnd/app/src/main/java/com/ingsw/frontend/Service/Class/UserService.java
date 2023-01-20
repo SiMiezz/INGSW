@@ -12,6 +12,7 @@ import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -29,12 +30,12 @@ public class UserService implements IUserService {
         userApi.create(user)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Void>() {
+                .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onSuccess(@NonNull Void unused) {
+                    public void onComplete() {
                         callback.returnResult(true);
                     }
 
@@ -51,12 +52,12 @@ public class UserService implements IUserService {
         userApi.deleteByEmail(email)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Void>() {
+                .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onSuccess(@NonNull Void unused) {
+                    public void onComplete() {
                         callback.returnResult(true);
                     }
 

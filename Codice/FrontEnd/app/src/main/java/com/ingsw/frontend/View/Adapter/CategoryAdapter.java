@@ -103,6 +103,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    menuElementsFragment.setCategoryId(temp.getId());
                     menuElementsFragment.getElementFromClick(temp.getId());
             }
         });

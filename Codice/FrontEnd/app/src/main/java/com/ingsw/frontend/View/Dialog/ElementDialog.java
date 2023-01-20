@@ -21,8 +21,13 @@ public class ElementDialog extends AppCompatDialogFragment {
     private EditText editTextprice;
     private EditText editTextdescription;
     private CheckBox checkBoxprepackaged;
+    private Integer idCategory;
 
     private ElementDialogListener elementDialogListener;
+
+    public ElementDialog(Integer idCategory) {
+        this.idCategory = idCategory;
+    }
 
     @NonNull
     @Override
@@ -47,7 +52,7 @@ public class ElementDialog extends AppCompatDialogFragment {
                         Double price = Double.parseDouble(editTextprice.getText().toString());
                         Boolean prepackaged = checkBoxprepackaged.isChecked();
 
-                        elementDialogListener.createElement(name,description,price,prepackaged);
+                        elementDialogListener.createElement(name,description,price,prepackaged,idCategory);
                     }
                 });
 
@@ -81,6 +86,6 @@ public class ElementDialog extends AppCompatDialogFragment {
     }
 
     public interface ElementDialogListener{
-        void createElement(String name,String description,Double price,Boolean prepackaged);
+        void createElement(String name,String description,Double price,Boolean prepackaged,Integer idCategory);
     }
 }

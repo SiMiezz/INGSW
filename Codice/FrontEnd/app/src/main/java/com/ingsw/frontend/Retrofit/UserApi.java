@@ -16,10 +16,10 @@ import retrofit2.http.Path;
 public interface UserApi {
 
     @POST("/user/create")
-    Single<Void> create(@Body User user);
+    Completable create(@Body User user);
 
     @DELETE("/user/delete/{email}")
-    Single<Void> deleteByEmail(@Path("email") String email);
+    Completable deleteByEmail(@Path("email") String email);
 
     @GET("/user/get/restaurant/{name}")
     Single<List<User>> getByRestaurantName(@Path("name") String name);

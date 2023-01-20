@@ -43,6 +43,16 @@ public class MenuElementsFragment extends Fragment {
     private ElementAdapter adapter;
     private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
+    private Integer categoryId;
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
     public static MenuElementsFragment newInstance(String param1, String param2) {
         MenuElementsFragment fragment = new MenuElementsFragment();
         Bundle args = new Bundle();
@@ -119,7 +129,9 @@ public class MenuElementsFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog();
+                if(getCategoryId()!=null){
+                    openDialog(getCategoryId());
+                }
             }
         });
 
@@ -160,8 +172,12 @@ public class MenuElementsFragment extends Fragment {
         }
     }
 
-    public void openDialog(){
-        ElementDialog elementDialog = new ElementDialog();
+    public void createElement(Element element){
+        menuElementsPresenter.create(element);
+    }
+
+    public void openDialog(Integer idCategory){
+        ElementDialog elementDialog = new ElementDialog(idCategory);
         elementDialog.show(requireActivity().getSupportFragmentManager(),"Element");
     }
 }

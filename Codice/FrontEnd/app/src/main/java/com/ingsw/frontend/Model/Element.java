@@ -41,8 +41,8 @@ public class Element implements Serializable {
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, Boolean prePackaged, Integer categoryId) {
-        this.id = id;
+    public Element(String name, String description, Double price, Boolean prePackaged, Integer categoryId) {
+        super();
         this.name = name;
         this.description = description;
         this.price = price;

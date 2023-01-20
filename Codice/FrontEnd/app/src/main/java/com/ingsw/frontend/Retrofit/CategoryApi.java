@@ -5,6 +5,7 @@ import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.Response;
@@ -17,7 +18,7 @@ import retrofit2.http.Path;
 public interface CategoryApi {
 
     @POST("/category/create")
-    Single<Void> create(@Body Category category);
+    Completable create(@Body Category category);
 
     @GET("/category/get/{id}")
     Single<List<Category>> getByMenuId(@Path("id") Integer id);
@@ -26,5 +27,5 @@ public interface CategoryApi {
     Single<List<Category>> getByMenuIdAndAliment(@Path("id") Integer id,@Path("aliment_type") Aliment_Type aliment_type);
 
     @DELETE("/category/delete/{id}")
-    Single<Void> deleteById(@Path("id") Integer id);
+    Completable deleteById(@Path("id") Integer id);
 }

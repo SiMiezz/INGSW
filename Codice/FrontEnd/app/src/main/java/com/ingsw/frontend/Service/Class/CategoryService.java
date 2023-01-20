@@ -12,6 +12,7 @@ import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
+import io.reactivex.rxjava3.core.CompletableObserver;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.core.SingleObserver;
@@ -32,12 +33,12 @@ public class CategoryService implements ICategoryService {
         categoryApi.create(category)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new SingleObserver<Void>() {
+                .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onSuccess(@NonNull Void unused) {
+                    public void onComplete() {
                         callback.returnResult(true);
                     }
 
@@ -94,12 +95,12 @@ public class CategoryService implements ICategoryService {
         categoryApi.deleteById(id)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<Void>() {
+                .subscribe(new CompletableObserver() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {}
 
                     @Override
-                    public void onSuccess(@NonNull Void unused) {
+                    public void onComplete() {
                         callback.returnResult(true);
                     }
 

@@ -50,4 +50,17 @@ public class MenuElementsPresenter {
             }
         },id);
     }
+
+    public void create(Element element){
+        elementService.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },element);
+    }
 }
