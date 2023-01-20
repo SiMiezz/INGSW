@@ -5,13 +5,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    card_view:cardCornerRadius="15dp"
+    card_view:cardCornerRadius="5dp"
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="5dp"
-    card_view:cardBackgroundColor="#fff"
+    card_view:cardBackgroundColor="@color/white"
     android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
     >
 
     <TextView

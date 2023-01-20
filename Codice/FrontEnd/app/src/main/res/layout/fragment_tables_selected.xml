@@ -77,6 +77,88 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Number of People :"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="25dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:src="@drawable/icon_editpassword" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="Orders"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="300dp"
+                android:layout_height="285dp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/shape_section_buttons"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="5dp"
+                app:strokeColor="#787486"
+                app:strokeWidth="1dp" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/selected_table_order_listview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:divider="#787486"
+                        android:dividerHeight="1dp"/>
+
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/libera_occupa_button"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:backgroundTint="@color/white"
+                android:textColor="@color/black"
+                android:text="Libera/Occupa"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                app:strokeColor="#787486"
+                app:strokeWidth="1dp"
+                app:cornerRadius="5dp"/>
+
+
+
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

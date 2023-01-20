@@ -202,7 +202,7 @@
                     <View
                         android:layout_width="130dp"
                         android:layout_height="2dp"
-                        android:background="#2C3CCE"
+                        android:background="#FF3954"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
