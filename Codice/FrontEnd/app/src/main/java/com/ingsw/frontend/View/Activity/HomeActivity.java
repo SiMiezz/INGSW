@@ -13,6 +13,7 @@ import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuPresenter;
 import com.ingsw.frontend.Presenter.RestaurantPresenter;
+import com.ingsw.frontend.View.Dialog.ElementDialog;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
 import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
@@ -20,7 +21,7 @@ import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
-public class HomeActivity extends FragmentActivity {
+public class HomeActivity extends FragmentActivity implements ElementDialog.ElementDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,5 +54,13 @@ public class HomeActivity extends FragmentActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.section_container, fragment);
         transaction.commit();
+    }
+
+    @Override
+    public void createElement(String name, String description, Double price, Boolean prepackaged) {
+        System.out.println(name);
+        System.out.println(description);
+        System.out.println(price);
+        System.out.println(prepackaged);
     }
 }

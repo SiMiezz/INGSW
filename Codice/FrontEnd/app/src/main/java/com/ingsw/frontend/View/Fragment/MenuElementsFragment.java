@@ -16,8 +16,10 @@ import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Dialog.ElementDialog;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MenuElementsFragment extends Fragment {
 
@@ -117,7 +119,7 @@ public class MenuElementsFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openDialog();
             }
         });
 
@@ -158,6 +160,8 @@ public class MenuElementsFragment extends Fragment {
         }
     }
 
-
-
+    public void openDialog(){
+        ElementDialog elementDialog = new ElementDialog();
+        elementDialog.show(requireActivity().getSupportFragmentManager(),"Element");
+    }
 }
