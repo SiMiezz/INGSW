@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IElementService {
 
-    Element create(Element element);
+    void create(Element element);
 
     Boolean deleteById(Integer id);
 

@@ -19,8 +19,8 @@ public class ElementService implements IElementService {
     }
 
     @Override
-    public Element create(Element element){
-        return elementRepository.save(element);
+    public void create(Element element){
+        elementRepository.save(element);
     }
 
     @Override

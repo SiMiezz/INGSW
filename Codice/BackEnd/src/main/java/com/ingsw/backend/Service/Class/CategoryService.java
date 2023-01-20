@@ -41,6 +41,11 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public Optional<Category> getById(Integer id){
+        return categoryRepository.findById(id);
+    }
+
+    @Override
     public List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type){
         return categoryRepository.getCategoriesByMenuIdAndAliment(id, aliment_type);
     }
