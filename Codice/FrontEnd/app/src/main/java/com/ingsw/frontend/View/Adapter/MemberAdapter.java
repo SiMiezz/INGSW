@@ -21,7 +21,7 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHold
     private ArrayList<User> userArrayList;
     public ArrayList<User> selectedItemsArrayList = new ArrayList<>();
 
-    public static int currentLayout = -1;
+    public int currentLayout = -1;
 
     public MemberAdapter(Context context, ArrayList<User> userArrayList){
         this.userArrayList = userArrayList;
@@ -43,13 +43,15 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHold
         this.selectedItemsArrayList = selectedItemsArrayList;
     }
 
-    public static int getCurrentLayout() {
+    public int getCurrentLayout() {
         return currentLayout;
     }
 
-    public static void setCurrentLayout(int currentLayout) {
-        MemberAdapter.currentLayout = currentLayout;
+    public void setCurrentLayout(int currentLayout) {
+        this.currentLayout = currentLayout;
     }
+
+
 
     @NonNull
     @Override

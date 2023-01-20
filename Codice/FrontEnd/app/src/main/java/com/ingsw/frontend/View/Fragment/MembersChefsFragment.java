@@ -93,8 +93,9 @@ public class MembersChefsFragment extends Fragment {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(MemberAdapter.currentLayout == -1){
-                    MemberAdapter.currentLayout = -2;
+
+                if(memberAdapter.getCurrentLayout() == -1){
+                    memberAdapter.setCurrentLayout(-2);
                     memberAdapter.notifyDataSetChanged();
                 }
 
@@ -109,8 +110,8 @@ public class MembersChefsFragment extends Fragment {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(MemberAdapter.currentLayout == -2){
-                    MemberAdapter.currentLayout = -1;
+                if(memberAdapter.getCurrentLayout() == -2){
+                    memberAdapter.setCurrentLayout(-1);
                     memberAdapter.notifyDataSetChanged();
                 }
 
