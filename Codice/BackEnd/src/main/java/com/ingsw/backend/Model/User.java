@@ -33,7 +33,7 @@ public class User implements Serializable {
 
 
     //ATTRIBUTES
-    @Column(name = "password", length = 50, nullable = false)
+    @Column(name = "password", columnDefinition="varchar(50) default 'defpwd'", nullable = false)
     private String pwd;
 
     @Column(name = "name", length = 50, nullable = false)
@@ -45,8 +45,6 @@ public class User implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "job", columnDefinition = "ENUM('admin', 'supervisor', 'waiter','chef')" , nullable = false)
     private User_Type job;
-
-
 
     // -------------------------------------------------
 
