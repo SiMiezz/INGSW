@@ -19,10 +19,13 @@ import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
+import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
+import com.ingsw.frontend.View.Dialog.ElementDialog;
+import com.ingsw.frontend.View.Dialog.UserDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +47,11 @@ public class MembersAdminFragment extends Fragment {
     private ArrayList<User> userArrayList;
     private RecyclerView recyclerView;
     private MembersPresenter memberPresenter;
+
+    private Intent intent;
+    private Restaurant restaurant;
+
+    private UserPresenter userPresenter = new UserPresenter(this);
 
     public MembersAdminFragment() {
         // Required empty public constructor
@@ -89,9 +97,9 @@ public class MembersAdminFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(memberAdapter);
 
-        Intent intent = getActivity().getIntent();
+        intent = getActivity().getIntent();
 
-        Restaurant restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
         memberPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("admin"));
 
@@ -135,7 +143,7 @@ public class MembersAdminFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openDialog(User_Type.valueOf("admin"),restaurant.getName());
             }
         });
 
@@ -164,5 +172,14 @@ public class MembersAdminFragment extends Fragment {
         for (User user: users) {
             memberPresenter.deleteById(user.getEmail());
         }
+    }
+
+    public void createUser(User user){
+        userPresenter.create(user);
+    }
+
+    public void openDialog(User_Type job, String restaurant){
+        UserDialog userDialog = new UserDialog(job,restaurant);
+        userDialog.show(requireActivity().getSupportFragmentManager(),"User");
     }
 }

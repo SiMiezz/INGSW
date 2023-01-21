@@ -17,8 +17,10 @@ import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
+import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
+import com.ingsw.frontend.View.Dialog.UserDialog;
 
 import java.util.ArrayList;
 
@@ -39,6 +41,11 @@ public class MembersWaitersFragment extends Fragment {
     private ArrayList<User> userArrayList;
     private RecyclerView recyclerView;
     private MembersPresenter memberPresenter;
+
+    private Intent intent;
+    private Restaurant restaurant;
+
+    private UserPresenter userPresenter = new UserPresenter(this);
 
     public MembersWaitersFragment() {
         // Required empty public constructor
@@ -84,9 +91,9 @@ public class MembersWaitersFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(memberAdapter);
 
-        Intent intent = getActivity().getIntent();
+        intent = getActivity().getIntent();
 
-        Restaurant restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
         memberPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("waiter"));
 
@@ -126,7 +133,7 @@ public class MembersWaitersFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openDialog(User_Type.valueOf("waiter"),restaurant.getName());
             }
         });
 
@@ -153,5 +160,14 @@ public class MembersWaitersFragment extends Fragment {
         for (User user: users) {
             memberPresenter.deleteById(user.getEmail());
         }
+    }
+
+    public void createUser(User user){
+        userPresenter.create(user);
+    }
+
+    public void openDialog(User_Type job, String restaurant){
+        UserDialog userDialog = new UserDialog(job,restaurant);
+        userDialog.show(requireActivity().getSupportFragmentManager(),"User");
     }
 }

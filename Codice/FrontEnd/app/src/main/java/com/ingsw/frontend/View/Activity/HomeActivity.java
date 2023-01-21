@@ -9,13 +9,19 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuPresenter;
 import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.View.Dialog.ElementDialog;
+import com.ingsw.frontend.View.Dialog.UserDialog;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
+import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
+import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
+import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
+import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
@@ -23,7 +29,7 @@ import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
-public class HomeActivity extends FragmentActivity implements ElementDialog.ElementDialogListener {
+public class HomeActivity extends FragmentActivity implements ElementDialog.ElementDialogListener, UserDialog.UserDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,5 +71,29 @@ public class HomeActivity extends FragmentActivity implements ElementDialog.Elem
         MenuElementsFragment menuElementsFragment = new MenuElementsFragment();
 
         menuElementsFragment.createElement(element);
+    }
+
+    @Override
+    public void createUser(String name, String surname, String email, User_Type job, String restaurant) {
+        User user = new User(email,name,surname,job,restaurant);
+
+        switch(job.toString()){
+            case "admin":
+                MembersAdminFragment membersAdminFragment = new MembersAdminFragment();
+                membersAdminFragment.createUser(user);
+                break;
+            case "supervisor":
+                MembersSupervisorsFragment membersSupervisorsFragment = new MembersSupervisorsFragment();
+                membersSupervisorsFragment.createUser(user);
+                break;
+            case "waiter":
+                MembersWaitersFragment membersWaitersFragment = new MembersWaitersFragment();
+                membersWaitersFragment.createUser(user);
+                break;
+            case "chef":
+                MembersChefsFragment membersChefsFragment = new MembersChefsFragment();
+                membersChefsFragment.createUser(user);
+                break;
+        }
     }
 }
