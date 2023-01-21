@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface ICategoryService {
 
-    Category create(Category category);
+    void create(Category category);
 
     boolean deleteById(Integer id);
 

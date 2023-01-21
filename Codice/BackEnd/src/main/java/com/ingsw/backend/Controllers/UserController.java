@@ -1,10 +1,10 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Model.Category;
-import com.ingsw.backend.Model.DTO.CategoryDTO;
 import com.ingsw.backend.Model.DTO.UserDTO;
 import com.ingsw.backend.Model.Enumerations.User_Type;
+import com.ingsw.backend.Model.Restaurant;
 import com.ingsw.backend.Model.User;
+import com.ingsw.backend.Service.Interface.IRestaurantService;
 import com.ingsw.backend.Service.Interface.IUserService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -27,11 +27,17 @@ public class UserController {
     private IUserService userService;
 
     @Autowired
+    @Qualifier("mainRestaurantService")
+    private IRestaurantService restaurantService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @PostMapping("/create")
-    public User create(@RequestBody User user){
-        return userService.create(user);
+    public void create(@RequestBody UserDTO userDTO){
+        User user = this.convertEntity(userDTO);
+
+        userService.create(user);
     }
 
     @DeleteMapping("/delete/{email}")
@@ -85,7 +91,21 @@ public class UserController {
         return userDTO;
     }
 
+    private User convertEntity(UserDTO userDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        User user = new User();
+        user = modelMapper.map(userDTO, User.class);
 
+        //Mapping
+        String name = userDTO.getRestaurantName();
+        Optional<Restaurant> restaurantOptional = this.restaurantService.getByName(name);
 
+        if(!restaurantOptional.isEmpty()){
+            user.setRestaurant(restaurantOptional.get());
+        }
+
+        return user;
+    }
 
 }

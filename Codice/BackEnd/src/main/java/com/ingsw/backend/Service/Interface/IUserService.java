@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface IUserService {
 
-    User create(User user);
+    void create(User user);
 
     Boolean deleteByEmail(String email);
 

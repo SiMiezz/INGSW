@@ -21,4 +21,9 @@ public class MenuService implements IMenuService {
     public Optional<Menu> getByRestaurantName(String name){
         return menuRepository.findByRestaurantName(name);
     }
+
+    @Override
+    public Optional<Menu> getById(Integer id){
+        return menuRepository.findById(id);
+    }
 }

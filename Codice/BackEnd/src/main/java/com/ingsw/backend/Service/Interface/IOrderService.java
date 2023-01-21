@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IOrderService {
 
-    Order create(Order order);
+    void create(Order order);
 
     Boolean deleteById(Integer id);
 

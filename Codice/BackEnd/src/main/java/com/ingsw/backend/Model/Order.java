@@ -44,8 +44,6 @@ public class Order implements Serializable {
     private Date date;
 
 
-
-
     // -------------------------------------------------
 
     //CONSTRUCTORS
@@ -94,7 +92,7 @@ public class Order implements Serializable {
         return table;
     }
 
-    public void setTables(TableRestaurant table) {
+    public void setTable(TableRestaurant table) {
         this.table = table;
     }
 

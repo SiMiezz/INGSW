@@ -3,7 +3,9 @@ package com.ingsw.backend.Controllers;
 import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.DTO.CategoryDTO;
 import com.ingsw.backend.Model.Enumerations.Aliment_Type;
+import com.ingsw.backend.Model.Menu;
 import com.ingsw.backend.Service.Interface.ICategoryService;
+import com.ingsw.backend.Service.Interface.IMenuService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/category")
@@ -24,11 +27,17 @@ public class CategoryController {
     private ICategoryService categoryService;
 
     @Autowired
+    @Qualifier("mainMenuService")
+    private IMenuService menuService;
+
+    @Autowired
     private ModelMapper modelMapper;
 
     @PostMapping("/create")
-    public Category create(@RequestBody Category category){
-        return categoryService.create(category);
+    public void create(@RequestBody CategoryDTO categoryDTO){
+        Category category = this.convertEntity(categoryDTO);
+
+        categoryService.create(category);
     }
 
     @DeleteMapping("/delete/{id}")
@@ -74,6 +83,23 @@ public class CategoryController {
         categoryDTO.setMenuId(menu_id);
 
         return categoryDTO;
+    }
+
+    private Category convertEntity(CategoryDTO categoryDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        Category category = new Category();
+        category = modelMapper.map(categoryDTO, Category.class);
+
+        //Mapping
+        Integer id = categoryDTO.getMenuId();
+        Optional<Menu> menuOptional = this.menuService.getById(id);
+
+        if(!menuOptional.isEmpty()){
+            category.setMenu(menuOptional.get());
+        }
+
+        return category;
     }
 
 }

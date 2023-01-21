@@ -16,8 +16,8 @@ public class OrderService implements IOrderService {
     public OrderService(){}
 
     @Override
-    public Order create(Order order){
-        return orderRepository.save(order);
+    public void create(Order order){
+        orderRepository.save(order);
     }
 
     @Override
