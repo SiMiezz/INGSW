@@ -33,6 +33,13 @@ public class UserController {
     @Autowired
     private ModelMapper modelMapper;
 
+    @PutMapping("/update")
+    public void update(@RequestBody UserDTO userDTO){
+        User user = this.convertEntity(userDTO);
+
+        userService.update(user);
+    }
+
     @PostMapping("/create")
     public void create(@RequestBody UserDTO userDTO){
         User user = this.convertEntity(userDTO);

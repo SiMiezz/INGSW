@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.R;
 
-public class LoginDialog extends AppCompatDialogFragment {
+public class LoginFailDialog extends AppCompatDialogFragment {
 
     @NonNull
     @Override
@@ -21,7 +21,7 @@ public class LoginDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View view = inflater.inflate(R.layout.login_layout, null);
+        View view = inflater.inflate(R.layout.login_fail_layout, null);
 
         builder.setView(view)
                 .setPositiveButton("Riprova", new DialogInterface.OnClickListener() {

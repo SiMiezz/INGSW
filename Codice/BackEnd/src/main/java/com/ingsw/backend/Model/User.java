@@ -33,7 +33,7 @@ public class User implements Serializable {
 
 
     //ATTRIBUTES
-    @Column(name = "password",length = 50,nullable = false, insertable = false)
+    @Column(name = "password",length = 50,nullable = false)
     private String pwd;
 
     @Column(name = "name", length = 50, nullable = false)

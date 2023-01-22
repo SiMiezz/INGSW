@@ -1,8 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -19,8 +17,7 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.LoginPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
-import com.ingsw.frontend.View.Activity.LoginActivity;
-import com.ingsw.frontend.View.Dialog.LoginDialog;
+import com.ingsw.frontend.View.Dialog.LoginFailDialog;
 
 public class LoginFragment extends Fragment {
 
@@ -91,7 +88,7 @@ public class LoginFragment extends Fragment {
     }
 
     public void openDialog(){
-        LoginDialog dialog = new LoginDialog();
+        LoginFailDialog dialog = new LoginFailDialog();
         dialog.show(requireActivity().getSupportFragmentManager(), "Login");
     }
 

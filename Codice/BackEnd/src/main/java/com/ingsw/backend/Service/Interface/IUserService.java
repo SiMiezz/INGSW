@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface IUserService {
 
+    void update(User user);
+
     void create(User user);
 
     Boolean deleteByEmail(String email);

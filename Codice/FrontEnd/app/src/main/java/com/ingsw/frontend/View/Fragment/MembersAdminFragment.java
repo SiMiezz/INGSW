@@ -12,24 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.ingsw.frontend.Model.Element;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
-import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
 import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.HomeActivity;
-import com.ingsw.frontend.View.Adapter.CategoryAdapter;
-import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
-import com.ingsw.frontend.View.Dialog.ElementDialog;
-import com.ingsw.frontend.View.Dialog.UserDialog;
+import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MembersAdminFragment extends Fragment {
 
@@ -182,7 +175,7 @@ public class MembersAdminFragment extends Fragment {
     }
 
     public void openDialog(User_Type job, String restaurant){
-        UserDialog userDialog = new UserDialog(job,restaurant);
-        userDialog.show(requireActivity().getSupportFragmentManager(),"User");
+        UserCreateDialog userCreateDialog = new UserCreateDialog(job,restaurant);
+        userCreateDialog.show(requireActivity().getSupportFragmentManager(),"UserCreate");
     }
 }

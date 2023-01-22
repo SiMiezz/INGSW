@@ -19,6 +19,11 @@ public class UserService implements IUserService {
     public UserService(){}
 
     @Override
+    public void update(User user){
+        userRepository.save(user);
+    }
+
+    @Override
     public void create(User user){
         userRepository.save(user);
     }

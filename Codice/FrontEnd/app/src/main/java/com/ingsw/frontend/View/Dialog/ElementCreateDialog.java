@@ -7,27 +7,26 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
-import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.R;
 
-public class UserDialog extends AppCompatDialogFragment {
+public class ElementCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
-    private EditText editTextsurname;
-    private EditText editTextemail;
-    private User_Type job;
-    private String nameRestaurant;
+    private EditText editTextprice;
+    private EditText editTextdescription;
+    private CheckBox checkBoxprepackaged;
+    private Integer idCategory;
 
-    private UserDialogListener userDialogListener;
+    private ElementDialogListener elementDialogListener;
 
-    public UserDialog(User_Type job, String nameRestaurant) {
-        this.job = job;
-        this.nameRestaurant = nameRestaurant;
+    public ElementCreateDialog(Integer idCategory) {
+        this.idCategory = idCategory;
     }
 
     @NonNull
@@ -36,7 +35,7 @@ public class UserDialog extends AppCompatDialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater inflater = getActivity().getLayoutInflater();
 
-        View view = inflater.inflate(R.layout.user_layout, null);
+        View view = inflater.inflate(R.layout.element_create_layout, null);
 
         builder.setView(view)
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -49,16 +48,20 @@ public class UserDialog extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String name = editTextname.getText().toString();
-                        String surname = editTextsurname.getText().toString();
-                        String email = editTextemail.getText().toString();
+                        String description = editTextdescription.getText().toString();
+                        Double price = Double.parseDouble(editTextprice.getText().toString());
+                        Boolean prepackaged = checkBoxprepackaged.isChecked();
 
-                        userDialogListener.createUser(name,surname,email,job,nameRestaurant);
+                        if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
+                            elementDialogListener.createElement(name,description,price,prepackaged,idCategory);
+                        }
                     }
                 });
 
-        editTextname = view.findViewById(R.id.edit_user_name);
-        editTextsurname = view.findViewById(R.id.edit_user_surname);
-        editTextemail = view.findViewById(R.id.edit_user_email);
+        editTextname = view.findViewById(R.id.edit_name);
+        editTextprice = view.findViewById(R.id.edit_price);
+        editTextdescription = view.findViewById(R.id.edit_description);
+        checkBoxprepackaged = view.findViewById(R.id.checkbox_prepackaged);
 
         return builder.create();
     }
@@ -68,11 +71,12 @@ public class UserDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try{
-            userDialogListener = (UserDialogListener) context;
+            elementDialogListener = (ElementDialogListener) context;
         }
         catch(ClassCastException e){
             throw new ClassCastException(context.toString());
         }
+
     }
 
     @Override
@@ -83,7 +87,7 @@ public class UserDialog extends AppCompatDialogFragment {
                 getDialog().getWindow().getAttributes());
     }
 
-    public interface UserDialogListener{
-        void createUser(String name,String surname,String email,User_Type job,String restaurant);
+    public interface ElementDialogListener{
+        void createElement(String name,String description,Double price,Boolean prepackaged,Integer idCategory);
     }
 }

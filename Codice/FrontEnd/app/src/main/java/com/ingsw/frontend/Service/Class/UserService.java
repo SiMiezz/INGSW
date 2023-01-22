@@ -26,6 +26,28 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public void update(Callback callback, User user) {
+        userApi.update(user)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
+    @Override
     public void create(Callback callback, User user){
         userApi.create(user)
                 .subscribeOn(Schedulers.newThread())

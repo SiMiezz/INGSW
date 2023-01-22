@@ -21,8 +21,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ingsw.frontend.Model.User;
+import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.LoginActivity;
+import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
+import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
 
 public class UserFragment extends Fragment {
 
@@ -36,6 +39,11 @@ public class UserFragment extends Fragment {
     private Button arrowButton;
     private TextView userView;
     private ImageView imageView;
+
+    private Intent intent;
+    private User user;
+
+    private UserPresenter userPresenter = new UserPresenter(this);
 
     public UserFragment() {
         // Required empty public constructor
@@ -70,9 +78,9 @@ public class UserFragment extends Fragment {
         userView = (TextView) rootView.findViewById(R.id.TextUser);
         imageView = (ImageView) rootView.findViewById(R.id.ImageUser);
 
-        Intent intent = getActivity().getIntent();
+        intent = getActivity().getIntent();
 
-        User user = (User) intent.getSerializableExtra("user");
+        user = (User) intent.getSerializableExtra("user");
 
         loadUser(user);
 
@@ -97,13 +105,23 @@ public class UserFragment extends Fragment {
                 optionsMenu.setForceShowIcon(true);
                 optionsMenu.show();
 
-                MenuItem menuItem = (MenuItem) menuBuilder.getItem(1);
+                MenuItem menuItemLogout = (MenuItem) menuBuilder.getItem(1);
 
-                menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                menuItemLogout.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         Intent intent = new Intent(getActivity(), LoginActivity.class);
                         getActivity().startActivity(intent);
+                        return true;
+                    }
+                });
+
+                MenuItem menuItemReset = (MenuItem) menuBuilder.getItem(0);
+
+                menuItemReset.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        openDialog(user);
                         return true;
                     }
                 });
@@ -132,6 +150,15 @@ public class UserFragment extends Fragment {
                 imageView.setImageResource(R.drawable.icon_members_chef);
                 break;
         }
+    }
+
+    public void updateUser(User user){
+        userPresenter.update(user);
+    }
+
+    public void openDialog(User user){
+        UserUpdateDialog userUpdateDialog = new UserUpdateDialog(user);
+        userUpdateDialog.show(requireActivity().getSupportFragmentManager(),"UserUpdate");
     }
 
 }

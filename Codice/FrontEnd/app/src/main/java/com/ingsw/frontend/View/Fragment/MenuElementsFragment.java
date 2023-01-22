@@ -2,7 +2,6 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,17 +12,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
-import com.ingsw.frontend.View.Dialog.ElementDialog;
+import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class MenuElementsFragment extends Fragment {
 
@@ -197,7 +194,7 @@ public class MenuElementsFragment extends Fragment {
     }
 
     public void openDialog(Integer idCategory){
-        ElementDialog elementDialog = new ElementDialog(idCategory);
-        elementDialog.show(requireActivity().getSupportFragmentManager(),"Element");
+        ElementCreateDialog elementCreateDialog = new ElementCreateDialog(idCategory);
+        elementCreateDialog.show(requireActivity().getSupportFragmentManager(),"Element");
     }
 }

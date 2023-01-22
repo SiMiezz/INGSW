@@ -6,6 +6,8 @@ import com.ingsw.frontend.Service.Callback;
 
 public interface IUserService {
 
+    void update(Callback callback, User user);
+
     void create(Callback callback, User user);
 
     void deleteByEmail(Callback callback, String email);

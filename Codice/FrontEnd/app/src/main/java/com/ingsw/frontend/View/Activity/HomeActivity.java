@@ -4,32 +4,27 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
-import com.ingsw.frontend.Model.Menu;
-import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
-import com.ingsw.frontend.Presenter.MenuPresenter;
-import com.ingsw.frontend.Presenter.RestaurantPresenter;
-import com.ingsw.frontend.View.Dialog.ElementDialog;
-import com.ingsw.frontend.View.Dialog.UserDialog;
+import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
+import com.ingsw.frontend.View.Dialog.UserCreateDialog;
+import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
 import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
 import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
 import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
-import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
-public class HomeActivity extends FragmentActivity implements ElementDialog.ElementDialogListener, UserDialog.UserDialogListener {
+public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +69,8 @@ public class HomeActivity extends FragmentActivity implements ElementDialog.Elem
     }
 
     @Override
-    public void createUser(String name, String surname, String email, User_Type job, String restaurant) {
-        User user = new User(email,name,surname,job,restaurant);
+    public void createUser(String email, String pwd, String name, String surname, User_Type job, String restaurant) {
+        User user = new User(email,pwd,name,surname,job,restaurant);
 
         switch(job.toString()){
             case "admin":
@@ -95,5 +90,12 @@ public class HomeActivity extends FragmentActivity implements ElementDialog.Elem
                 membersChefsFragment.createUser(user);
                 break;
         }
+    }
+
+    @Override
+    public void updateUser(User user) {
+        UserFragment userFragment = new UserFragment();
+
+        userFragment.updateUser(user);
     }
 }
