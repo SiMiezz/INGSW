@@ -146,7 +146,7 @@ public class MenuElementsFragment extends Fragment {
 
 
                 ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
-                
+
 
                 ElementAdapter.currentLayout = -1;
 

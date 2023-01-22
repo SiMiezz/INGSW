@@ -21,6 +21,7 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
 import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
@@ -151,6 +152,8 @@ public class MembersAdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 removeSelectedItems();
+                ((HomeActivity)getActivity()).changeFragment(new UserFragment());
+                memberAdapter.setCurrentLayout(-1);
             }
         });
 

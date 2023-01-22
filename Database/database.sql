@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ratatouille` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `ratatouille`;
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: ratatouille
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,7 +52,7 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -63,7 +61,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(15,'alcolici','drink',1),(16,'analcolici','drink',1),(17,'nervine','drink',1),(18,'antipasti','food',1);
+INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(15,'alcolici','drink',1),(16,'analcolici','drink',1),(17,'nervine','drink',1),(18,'antipasti','food',1),(19,'aaa','food',1),(20,'bbb','food',1),(21,'ccc','food',1),(22,'ddd','food',1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +157,7 @@ CREATE TABLE `element` (
   PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -168,7 +166,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2),(4,'mozzarella',10,'bufala',1,18),(5,'prosciutto',5,'parma',1,18),(6,'vino',15,'bianco',1,15),(7,'birra',3,'peroni',1,15),(8,'fanta',2,'lemon',1,16),(9,'zucchine',3,'grigliate',0,3);
+INSERT INTO `element` VALUES (1,'pasta',10,'asciutta',0,1),(2,'carne',20,'scottona',0,2),(3,'pesce',30,'spada',0,2),(4,'mozzarella',10,'bufala',1,18),(5,'prosciutto',5,'parma',1,18),(6,'vino',15,'bianco',1,15),(7,'birra',3,'peroni',1,15),(8,'fanta',2,'lemon',1,16),(9,'zucchine',3,'grigliate',0,3),(10,'aaa',15.99,'aaadesc',1,19),(11,'bbb',15.99,'bbbdesc',0,19),(12,'ccc',149.99,'cccdesc',0,20),(13,'ddd',13.99,'ddddesc',1,20);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,25 +249,6 @@ LOCK TABLES `restaurant` WRITE;
 INSERT INTO `restaurant` VALUES ('rest','ristorante','italia',0),('risto','pizzeria','napoli',1);
 /*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `restaurant_AFTER_INSERT` AFTER INSERT ON `restaurant` FOR EACH ROW BEGIN
-
-INSERT INTO menu (restaurant_name) VALUES(NEW.name);
-
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `tablerestaurant`
@@ -326,14 +305,6 @@ LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('mario','defpwd','mario','francese','waiter','risto'),('renato','ok','renato','antuneri','chef','risto'),('sup','ok','sergy','dimy','supervisor','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'ratatouille'
---
-
---
--- Dumping routines for database 'ratatouille'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -344,4 +315,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-18 18:21:02
+-- Dump completed on 2023-01-22 17:00:04
