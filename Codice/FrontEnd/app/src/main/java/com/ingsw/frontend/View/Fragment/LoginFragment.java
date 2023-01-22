@@ -14,7 +14,7 @@ import android.widget.TextView;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
-import com.ingsw.frontend.Presenter.LoginPresenter;
+import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Dialog.LoginFailDialog;
@@ -31,7 +31,7 @@ public class LoginFragment extends Fragment {
 
     private TextView emailView,pwdView;
 
-    private LoginPresenter loginPresenter;
+    private UserPresenter userPresenter = new UserPresenter(this);
 
     private Intent intent;
 
@@ -68,8 +68,6 @@ public class LoginFragment extends Fragment {
         emailView = (TextView) rootView.findViewById(R.id.editTextEmail);
         pwdView = (TextView) rootView.findViewById(R.id.editTextPassword);
 
-        loginPresenter = new LoginPresenter(this);
-
         Button loginButton = (Button) rootView.findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +77,7 @@ public class LoginFragment extends Fragment {
 
 
                 if(!(pwd.isEmpty() || email.isEmpty())){
-                    loginPresenter.checkUser(email,pwd);
+                    userPresenter.checkUser(email,pwd);
                 }
             }
         });
