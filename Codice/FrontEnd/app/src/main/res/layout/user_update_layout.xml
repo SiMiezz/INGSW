@@ -3,12 +3,19 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10sp">
+    android:padding="15sp">
 
     <TextView
         android:text="RESET PASSWORD"
         android:textSize="20sp"
         android:textColor="#ff0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="Enter password*"
+        android:textSize="15sp"
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

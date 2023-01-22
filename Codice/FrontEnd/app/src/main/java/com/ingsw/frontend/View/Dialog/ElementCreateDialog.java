@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
@@ -32,38 +33,37 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
         View view = inflater.inflate(R.layout.element_create_layout, null);
 
-        builder.setView(view)
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setView(view)
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Ok", null)
+                .show();
 
-                    }
-                })
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String name = editTextname.getText().toString();
-                        String description = editTextdescription.getText().toString();
-                        Double price = Double.parseDouble(editTextprice.getText().toString());
-                        Boolean prepackaged = checkBoxprepackaged.isChecked();
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
+                    String name = editTextname.getText().toString();
+                    String description = editTextdescription.getText().toString();
+                    Boolean prepackaged = checkBoxprepackaged.isChecked();
+                    Double price = Double.parseDouble(editTextprice.getText().toString());
 
-                        if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
-                            elementDialogListener.createElement(name,description,price,prepackaged,idCategory);
-                        }
-                    }
-                });
+                    elementDialogListener.createElement(name,description,price,prepackaged,idCategory);
+                    dialog.dismiss();
+                }
+            }
+        });
 
         editTextname = view.findViewById(R.id.edit_name);
         editTextprice = view.findViewById(R.id.edit_price);
         editTextdescription = view.findViewById(R.id.edit_description);
         checkBoxprepackaged = view.findViewById(R.id.checkbox_prepackaged);
 
-        return builder.create();
+        return dialog;
     }
 
     @Override

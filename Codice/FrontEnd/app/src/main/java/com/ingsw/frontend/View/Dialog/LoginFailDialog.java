@@ -18,20 +18,15 @@ public class LoginFailDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
         View view = inflater.inflate(R.layout.login_fail_layout, null);
 
-        builder.setView(view)
-                .setPositiveButton("Riprova", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setView(view)
+                .setPositiveButton("Riprova",null)
+                .show();
 
-                    }
-                });
-
-        return builder.create();
+        return dialog;
     }
 
     @Override

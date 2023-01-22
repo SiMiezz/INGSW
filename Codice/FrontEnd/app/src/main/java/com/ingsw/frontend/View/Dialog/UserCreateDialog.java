@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
@@ -33,37 +34,36 @@ public class UserCreateDialog extends AppCompatDialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), AlertDialog.THEME_HOLO_LIGHT);
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
         View view = inflater.inflate(R.layout.user_create_layout, null);
 
-        builder.setView(view)
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
+        AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setView(view)
+                .setNegativeButton("Cancel", null)
+                .setPositiveButton("Ok", null)
+                .show();
 
-                    }
-                })
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        String name = editTextname.getText().toString();
-                        String surname = editTextsurname.getText().toString();
-                        String email = editTextemail.getText().toString();
-                        String pwd = "defpwd";
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!(editTextname.getText().toString().isEmpty() || editTextemail.getText().toString().isEmpty())){
+                    String name = editTextname.getText().toString();
+                    String surname = editTextsurname.getText().toString();
+                    String email = editTextemail.getText().toString();
+                    String pwd = "defpwd";
 
-                        if(!(editTextname.getText().toString().isEmpty() || editTextemail.getText().toString().isEmpty())){
-                            userCreateDialogListener.createUser(email,pwd,name,surname,job,nameRestaurant);
-                        }
-                    }
-                });
+                    userCreateDialogListener.createUser(email,pwd,name,surname,job,nameRestaurant);
+                    dialog.dismiss();
+                }
+            }
+        });
 
         editTextname = view.findViewById(R.id.edit_user_name);
         editTextsurname = view.findViewById(R.id.edit_user_surname);
         editTextemail = view.findViewById(R.id.edit_user_email);
 
-        return builder.create();
+        return dialog;
     }
 
     @Override
