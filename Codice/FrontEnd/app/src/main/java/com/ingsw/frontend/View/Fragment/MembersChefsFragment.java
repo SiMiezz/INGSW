@@ -19,6 +19,7 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MembersPresenter;
 import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
 import com.ingsw.frontend.View.Dialog.UserDialog;
 
@@ -142,6 +143,8 @@ public class MembersChefsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 removeSelectedItems();
+                ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
+                memberAdapter.setCurrentLayout(-1);
             }
         });
 

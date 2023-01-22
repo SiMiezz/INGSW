@@ -152,7 +152,7 @@ public class MembersAdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 removeSelectedItems();
-                ((HomeActivity)getActivity()).changeFragment(new UserFragment());
+                ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
                 memberAdapter.setCurrentLayout(-1);
             }
         });
