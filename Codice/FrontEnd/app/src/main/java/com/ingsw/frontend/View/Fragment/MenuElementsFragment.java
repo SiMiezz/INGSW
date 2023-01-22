@@ -2,10 +2,12 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import android.widget.ImageButton;
 
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Presenter.MenuElementsPresenter;
+import com.ingsw.frontend.View.Activity.HomeActivity;
+import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
@@ -139,6 +143,22 @@ public class MenuElementsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 removeSelectedItems();
+
+
+                ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                
+
+                ElementAdapter.currentLayout = -1;
+
+                getElementFromClick(CategoryAdapter.currentId); // dovrebbe funzionare ma non aggiorna (il valore stampato è corretto)
+                Log.println(Log.ASSERT, "boh", String.valueOf(CategoryAdapter.currentId));
+//                getElementFromClick(20);         il numero passato così funziona invece
+//                                                 (a meno che il numero passato non sia
+//                                                 esattamente l'id della category cliccata),
+//                                                 dopo due ore ancora devo capire perchè.
+
+
+                adapter.notifyDataSetChanged();
             }
         });
 

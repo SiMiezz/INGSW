@@ -24,6 +24,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     private ArrayList<Category> selectedItemsArrayList = new ArrayList<>();
 
     public static int currentLayout = -1;
+    public static Integer currentId;
 
     private MenuElementsFragment menuElementsFragment;
 
@@ -61,6 +62,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @NonNull
     @Override
     public CategoryAdapter.CategoryHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+        currentId = -1;
 
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_clickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
@@ -103,6 +106,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Log.println(Log.ASSERT,"bbb", String.valueOf(temp.getId()));
+                    currentId = temp.getId();
                     menuElementsFragment.setCategoryId(temp.getId());
                     menuElementsFragment.getElementFromClick(temp.getId());
             }

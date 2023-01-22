@@ -17,6 +17,7 @@ import android.widget.ImageButton;
 import com.google.android.material.tabs.TabLayout;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
+import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
@@ -154,10 +155,13 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(tabLayout.getSelectedTabPosition() == 0){
                     menuCategoriesFoodFragment.removeSelectedItems();
-
+                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    CategoryAdapter.currentLayout = -1;
                 }
                 else if(tabLayout.getSelectedTabPosition() == 1){
                     menuCategoriesDrinkFragment.removeSelectedItems();
+                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    CategoryAdapter.currentLayout = -1;
                 }
             }
         });
