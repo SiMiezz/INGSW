@@ -1,10 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `ratatouille` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `ratatouille`;
--- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: ratatouille
 -- ------------------------------------------------------
--- Server version	8.0.31
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -266,7 +264,7 @@ CREATE TABLE `tablerestaurant` (
   PRIMARY KEY (`id_table`),
   KEY `restaurant_fk2_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk2` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -275,6 +273,7 @@ CREATE TABLE `tablerestaurant` (
 
 LOCK TABLES `tablerestaurant` WRITE;
 /*!40000 ALTER TABLE `tablerestaurant` DISABLE KEYS */;
+INSERT INTO `tablerestaurant` VALUES (1,2,'rest'),(2,6,'rest'),(3,4,'rest'),(4,8,'rest'),(5,10,'rest'),(6,4,'rest'),(7,2,'rest'),(8,6,'rest');
 /*!40000 ALTER TABLE `tablerestaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,17 +303,9 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('mario','defpwd','mario','francese','waiter','risto'),('renato','ok','renato','antuneri','chef','risto'),('sup1','defpwd','cop','meme','supervisor','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
+INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','defpwd','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('sup1','defpwd','cop','meme','supervisor','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'ratatouille'
---
-
---
--- Dumping routines for database 'ratatouille'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -325,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-22 19:50:01
+-- Dump completed on 2023-01-23 13:26:04
