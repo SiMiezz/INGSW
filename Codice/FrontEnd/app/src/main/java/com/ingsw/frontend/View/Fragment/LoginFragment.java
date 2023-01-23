@@ -87,7 +87,7 @@ public class LoginFragment extends Fragment {
 
     public void openDialog(){
         LoginFailDialog dialog = new LoginFailDialog();
-        dialog.show(requireActivity().getSupportFragmentManager(), "Login");
+        dialog.show(requireActivity().getSupportFragmentManager(), "LoginFail");
     }
 
     public void loginFail(){

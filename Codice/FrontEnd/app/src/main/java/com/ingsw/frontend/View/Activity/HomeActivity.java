@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -31,6 +32,14 @@ import com.ingsw.frontend.R;
 
 public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener {
 
+    private static final String defaultPwd = "defpwd";
+    private Intent intent;
+    private User user;
+
+    public static String getDefaultPwd(){
+        return defaultPwd;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +49,12 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         getSupportFragmentManager().beginTransaction().add(R.id.logo_container, new LogoFragment()).commit();
         getSupportFragmentManager().beginTransaction().add(R.id.user_container, new UserFragment()).commit();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+        intent = getIntent();
+        user = (User) intent.getSerializableExtra("user");
+
+        if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+            getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+        }
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -102,6 +116,9 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         UserFragment userFragment = new UserFragment();
 
         userFragment.updateUser(user);
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        this.startActivity(intent);
     }
 
 

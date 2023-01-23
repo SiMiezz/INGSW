@@ -25,6 +25,10 @@ public class UserPresenter {
 
     // CONSTRUCTORS
 
+    public UserPresenter() {
+        userService = new UserService();
+    }
+
     public UserPresenter(LoginFragment loginFragment) {
         this.loginFragment = loginFragment;
         restaurantPresenter = new RestaurantPresenter(loginFragment);

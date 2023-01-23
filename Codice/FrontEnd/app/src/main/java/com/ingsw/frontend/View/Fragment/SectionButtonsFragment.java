@@ -16,6 +16,8 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Dialog.LoginDefaultDialog;
+import com.ingsw.frontend.View.Dialog.LoginFailDialog;
 
 public class SectionButtonsFragment extends Fragment {
 
@@ -36,7 +38,8 @@ public class SectionButtonsFragment extends Fragment {
 
     // ********************************************
 
-
+    private Intent intent;
+    private User user;
 
     public SectionButtonsFragment() {
         // Required empty public constructor
@@ -78,11 +81,23 @@ public class SectionButtonsFragment extends Fragment {
        membersButton.setOnClickListener(membersButtonListener());
        kitchenButton.setOnClickListener(kitchenButtonListener());
 
-        restaurantButton = setButton(restaurantButton);
+       intent = getActivity().getIntent();
+       user = (User) intent.getSerializableExtra("user");
 
-        return rootView;
+       if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+           restaurantButton = setButton(restaurantButton);
+       }
+       else{
+           openDialog();
+       }
+
+       return rootView;
     }
 
+    public void openDialog(){
+        LoginDefaultDialog dialog = new LoginDefaultDialog();
+        dialog.show(requireActivity().getSupportFragmentManager(), "LoginDefault");
+    }
 
     public View.OnClickListener restaurantButtonListener(){
         View.OnClickListener listener = new View.OnClickListener(){
@@ -94,7 +109,9 @@ public class SectionButtonsFragment extends Fragment {
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
 
-                ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
+                if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+                    ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
+                }
             }
         };
         return listener;
@@ -110,7 +127,9 @@ public class SectionButtonsFragment extends Fragment {
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
 
-                ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                }
             }
         };
         return listener;
@@ -126,7 +145,9 @@ public class SectionButtonsFragment extends Fragment {
                 membersButton = deselectButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
 
-                ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
+                if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+                    ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
+                }
             }
         };
         return listener;
@@ -142,7 +163,9 @@ public class SectionButtonsFragment extends Fragment {
                 membersButton = setButton(membersButton);
                 kitchenButton = deselectButton(kitchenButton);
 
-                ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
+                if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+                    ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
+                }
             }
         };
         return listener;
@@ -158,7 +181,9 @@ public class SectionButtonsFragment extends Fragment {
                 membersButton = deselectButton(membersButton);
                 kitchenButton = setButton(kitchenButton);
 
-                ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
+                if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+                    ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
+                }
             }
         };
         return listener;
