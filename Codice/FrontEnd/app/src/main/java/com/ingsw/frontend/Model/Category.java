@@ -31,10 +31,9 @@ public class Category implements Serializable {
 
     //CONSTRUCTORS
 
-
-    public Category(Integer id, String name, Integer menuId) {
-        this.id = id;
+    public Category(String name, Aliment_Type aliment, Integer menuId) {
         this.name = name;
+        this.aliment = aliment;
         this.menuId = menuId;
     }
 

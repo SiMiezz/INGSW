@@ -4,13 +4,17 @@ import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.CategoryService;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
 
 import java.util.ArrayList;
 
 public class MenuCategoriesPresenter {
 
-    private final MenuCategoriesFragment menuCategoriesFragment;
+    private MenuCategoriesFragment menuCategoriesFragment;
+    private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
+    private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
     private CategoryService categoryService;
 
     // CONSTRUCTOR
@@ -19,7 +23,16 @@ public class MenuCategoriesPresenter {
         this.menuCategoriesFragment = menuCategoriesFragment;
         categoryService = new CategoryService();
     }
-    
+
+    public MenuCategoriesPresenter(MenuCategoriesFoodFragment menuCategoriesFoodFragment) {
+        this.menuCategoriesFoodFragment = menuCategoriesFoodFragment;
+        categoryService = new CategoryService();
+    }
+
+    public MenuCategoriesPresenter(MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
+        this.menuCategoriesDrinkFragment = menuCategoriesDrinkFragment;
+        categoryService = new CategoryService();
+    }
 
     // GETTER AND SETTER
 
@@ -33,7 +46,7 @@ public class MenuCategoriesPresenter {
             public void returnResult(Object o) {
                 ArrayList<Category> categoryList = (ArrayList<Category>) o;
 
-                menuCategoriesFragment.getMenuCategoriesFoodFragment().loadCategory(categoryList);
+                menuCategoriesFoodFragment.loadCategory(categoryList);
             }
 
             @Override
@@ -51,9 +64,9 @@ public class MenuCategoriesPresenter {
                 ArrayList<Category> categoryArrayList = (ArrayList<Category>) o;
 
                 if(aliment_type == Aliment_Type.valueOf("food"))
-                    menuCategoriesFragment.getMenuCategoriesFoodFragment().loadCategory(categoryArrayList);
+                    menuCategoriesFoodFragment.loadCategory(categoryArrayList);
                 else
-                    menuCategoriesFragment.getMenuCategoriesDrinkFragment().loadCategory(categoryArrayList);
+                    menuCategoriesDrinkFragment.loadCategory(categoryArrayList);
             }
 
             @Override
@@ -75,5 +88,18 @@ public class MenuCategoriesPresenter {
                 System.out.println(e);
             }
         },id);
+    }
+
+    public void create(Category category){
+        categoryService.create(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },category);
     }
 }

@@ -7,9 +7,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
 
+import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
+import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
@@ -18,13 +21,15 @@ import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
 import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
 import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
-public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener {
+public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,5 +102,22 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         UserFragment userFragment = new UserFragment();
 
         userFragment.updateUser(user);
+    }
+
+
+    @Override
+    public void createElement(String name, Aliment_Type aliment,Integer idMenu) {
+        Category category = new Category(name,aliment,idMenu);
+
+        switch(aliment.toString()){
+            case "food":
+                MenuCategoriesFoodFragment menuCategoriesFoodFragment = new MenuCategoriesFoodFragment();
+                menuCategoriesFoodFragment.createCategory(category);
+                break;
+            case "drink":
+                MenuCategoriesDrinkFragment menuCategoriesDrinkFragment = new MenuCategoriesDrinkFragment();
+                menuCategoriesDrinkFragment.createCategory(category);
+                break;
+        }
     }
 }

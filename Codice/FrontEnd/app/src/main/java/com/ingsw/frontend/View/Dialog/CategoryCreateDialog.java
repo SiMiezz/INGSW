@@ -7,33 +7,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
 
-public class ElementCreateDialog extends AppCompatDialogFragment {
+public class CategoryCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
-    private EditText editTextprice;
-    private EditText editTextdescription;
-    private CheckBox checkBoxprepackaged;
-    private Integer idCategory;
+    private Aliment_Type aliment;
+    private Integer idMenu;
 
-    private ElementCreateDialogListener elementCreateDialogListener;
+    private CategoryCreateDialogListener categoryCreateDialogListener;
 
-    public ElementCreateDialog(Integer idCategory) {
-        this.idCategory = idCategory;
+    public CategoryCreateDialog(Aliment_Type aliment, Integer idMenu) {
+        this.aliment = aliment;
+        this.idMenu = idMenu;
     }
 
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.element_create_layout, null);
+        View view = inflater.inflate(R.layout.category_create_layout, null);
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
@@ -45,22 +44,16 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
+                if(!editTextname.getText().toString().isEmpty()){
                     String name = editTextname.getText().toString();
-                    String description = editTextdescription.getText().toString();
-                    Boolean prepackaged = checkBoxprepackaged.isChecked();
-                    Double price = Double.parseDouble(editTextprice.getText().toString());
 
-                    elementCreateDialogListener.createElement(name,description,price,prepackaged,idCategory);
+                    categoryCreateDialogListener.createElement(name,aliment,idMenu);
                     dialog.dismiss();
                 }
             }
         });
 
-        editTextname = view.findViewById(R.id.edit_element_name);
-        editTextprice = view.findViewById(R.id.edit_element_price);
-        editTextdescription = view.findViewById(R.id.edit_element_description);
-        checkBoxprepackaged = view.findViewById(R.id.checkbox_prepackaged);
+        editTextname = view.findViewById(R.id.edit_category_name);
 
         return dialog;
     }
@@ -70,23 +63,22 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try{
-            elementCreateDialogListener = (ElementCreateDialogListener) context;
+            categoryCreateDialogListener = (CategoryCreateDialog.CategoryCreateDialogListener) context;
         }
         catch(ClassCastException e){
             throw new ClassCastException(context.toString());
         }
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=1000;
+        getDialog().getWindow().getAttributes().width=650;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
 
-    public interface ElementCreateDialogListener {
-        void createElement(String name,String description,Double price,Boolean prepackaged,Integer idCategory);
+    public interface CategoryCreateDialogListener{
+        void createElement(String name, Aliment_Type aliment,Integer idMenu);
     }
 }

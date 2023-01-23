@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
+import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
+import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
 
@@ -33,8 +36,9 @@ public class MenuCategoriesDrinkFragment extends Fragment {
     private MenuElementsFragment menuElementsFragment;
     private MenuCategoriesFragment menuCategoriesFragment;
     private CategoryAdapter adapter;
-    private MenuCategoriesPresenter menuCategoriesPresenter;
+    private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
 
+    private Intent intent;
     private Menu menu;
 
     public MenuCategoriesDrinkFragment() {
@@ -70,8 +74,6 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_menu_categories_drink, container, false);
 
-        menuCategoriesPresenter = new MenuCategoriesPresenter(menuCategoriesFragment);
-
         drinkView = rootView.findViewById(R.id.category_drink_listview);
 
         adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
@@ -81,9 +83,9 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         drinkView.setLayoutManager(linearLayoutManager);
         drinkView.setAdapter(adapter);
 
-        Intent intent = getActivity().getIntent();
+        intent = getActivity().getIntent();
 
-        Menu menu = (Menu) intent.getSerializableExtra("menu");
+        menu = (Menu) intent.getSerializableExtra("menu");
 
         menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("drink"));
 
@@ -105,5 +107,14 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         for (Category category: categories) {
             menuCategoriesPresenter.deleteById(category.getId());
         }
+    }
+
+    public void createCategory(Category category){
+        menuCategoriesPresenter.create(category);
+    }
+
+    public void openDialog(){
+        CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(Aliment_Type.valueOf("drink"),menu.getId());
+        categoryCreateDialog.show(requireActivity().getSupportFragmentManager(),"Category");
     }
 }

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import com.google.android.material.tabs.TabLayout;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
@@ -146,7 +147,16 @@ public class MenuCategoriesFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(tabLayout.getSelectedTabPosition() == 0){
+                    menuCategoriesFoodFragment.openDialog();
+                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    CategoryAdapter.currentLayout = -1;
+                }
+                else if(tabLayout.getSelectedTabPosition() == 1){
+                    menuCategoriesDrinkFragment.openDialog();
+                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    CategoryAdapter.currentLayout = -1;
+                }
             }
         });
 

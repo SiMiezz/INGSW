@@ -6,14 +6,14 @@
     android:padding="15sp">
 
     <TextView
-        android:text="RESET PASSWORD"
+        android:text="CREATE CATEGORY"
         android:textSize="20sp"
         android:textColor="#ff0000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:text="Enter password*"
+        android:text="Enter name*"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
@@ -21,11 +21,11 @@
         android:paddingLeft="5sp"/>
 
     <EditText
-        android:id="@+id/edit_user_pwd"
+        android:id="@+id/edit_category_name"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:hint="Password" />
+        android:hint="Name" />
 
 </LinearLayout>
