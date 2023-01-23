@@ -1,14 +1,23 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Model.TableRestaurant;
+import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Adapter.TableRestaurantAdapter;
+
+import java.util.ArrayList;
 
 public class TablesAllFragment extends Fragment {
 
@@ -17,6 +26,15 @@ public class TablesAllFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private TableRestaurantAdapter tableRestaurantAdapter;
+    private ArrayList<TableRestaurant> tableRestaurantArrayList;
+    private RecyclerView recyclerView;
+
+    private Intent intent;
+    private Restaurant restaurant;
+
+    private TableRestaurantPresenter tableRestaurantPresenter;
 
     public TablesAllFragment() {
         // Required empty public constructor
@@ -44,6 +62,34 @@ public class TablesAllFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tables_all, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tables_all, container, false);
+
+        tableRestaurantArrayList = new ArrayList<>();
+
+        recyclerView = rootView.findViewById(R.id.tables_listview);
+
+        tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList);
+        tableRestaurantPresenter = new TableRestaurantPresenter(this);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(tableRestaurantAdapter);
+
+        intent = getActivity().getIntent();
+
+        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+
+        tableRestaurantPresenter.getByRestaurantName(restaurant.getName());
+
+        return rootView;
+    }
+
+
+
+    public void loadTableRestaurant(ArrayList<TableRestaurant> tableRestaurantArrayList){
+//        tableAdapter.clearList();
+//        tableAdapter.setArrayList(tableRestaurantArrayList);
+//        tableAdapter.notifyDataSetChanged();
     }
 }
