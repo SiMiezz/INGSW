@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
+
+import org.w3c.dom.Text;
 
 public class TablesNumberFragment extends Fragment {
 
@@ -17,6 +23,14 @@ public class TablesNumberFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private TextView totalNumber;
+    private TextView freeNumber;
+    private TextView occupiedNumber;
+
+    private TableRestaurantPresenter tableRestaurantPresenter;
+    private Intent intent;
+    private Restaurant restaurant;
 
     public TablesNumberFragment() {
         // Required empty public constructor
@@ -44,6 +58,30 @@ public class TablesNumberFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tables_number, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tables_number, container, false);
+
+        totalNumber = rootView.findViewById(R.id.total_number_tables);
+        freeNumber = rootView.findViewById(R.id.free_number_tables);
+        occupiedNumber = rootView.findViewById(R.id.occupied_number_tables);
+
+        tableRestaurantPresenter = new TableRestaurantPresenter(null,this);
+
+        intent = getActivity().getIntent();
+
+        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
+
+        countTables(restaurant.getName());
+
+        return rootView;
+    }
+
+    public void setTotalNumber(Integer total) {
+        totalNumber.setText(String.valueOf(total));
+    }
+
+    public void countTables(String restaurantName){
+        tableRestaurantPresenter.countTotalTableByRestaurantName(restaurantName);
+        // da fare tableRestaurantPresenter.countFreeTableByRestaurantName(restaurantName);
+        // da fare tableRestaurantPresenter.countOccupiedTableByRestaurantName(restaurantName);
     }
 }
