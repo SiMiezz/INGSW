@@ -17,6 +17,7 @@ import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
+import com.ingsw.frontend.View.Fragment.KitchenFragment;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
 import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
 import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
@@ -24,9 +25,12 @@ import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
+import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
+import com.ingsw.frontend.View.Fragment.TablesFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 import com.ingsw.frontend.R;
 
@@ -53,7 +57,20 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         user = (User) intent.getSerializableExtra("user");
 
         if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-            getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+            switch (user.getJob().toString()){
+                case "admin":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+                    break;
+                case "supervisor":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new MenuFragment()).commit();
+                    break;
+                case "waiter":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new TablesFragment()).commit();
+                    break;
+                case "chef":
+                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new KitchenFragment()).commit();
+                    break;
+            }
         }
     }
 
@@ -123,7 +140,7 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
 
     @Override
-    public void createElement(String name, Aliment_Type aliment,Integer idMenu) {
+    public void createCategory(String name, Aliment_Type aliment,Integer idMenu) {
         Category category = new Category(name,aliment,idMenu);
 
         switch(aliment.toString()){

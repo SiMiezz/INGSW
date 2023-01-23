@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
+import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 public class CategoryCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
@@ -47,7 +49,7 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
                 if(!editTextname.getText().toString().isEmpty()){
                     String name = editTextname.getText().toString();
 
-                    categoryCreateDialogListener.createElement(name,aliment,idMenu);
+                    categoryCreateDialogListener.createCategory(name,aliment,idMenu);
                     dialog.dismiss();
                 }
             }
@@ -79,6 +81,6 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface CategoryCreateDialogListener{
-        void createElement(String name, Aliment_Type aliment,Integer idMenu);
+        void createCategory(String name, Aliment_Type aliment, Integer idMenu);
     }
 }

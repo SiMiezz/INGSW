@@ -117,5 +117,4 @@ public class MenuCategoriesFoodFragment extends Fragment {
         CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(Aliment_Type.valueOf("food"),menu.getId());
         categoryCreateDialog.show(requireActivity().getSupportFragmentManager(),"Category");
     }
-
 }

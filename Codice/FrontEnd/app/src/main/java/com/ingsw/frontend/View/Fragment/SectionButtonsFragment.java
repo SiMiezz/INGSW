@@ -85,7 +85,20 @@ public class SectionButtonsFragment extends Fragment {
        user = (User) intent.getSerializableExtra("user");
 
        if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-           restaurantButton = setButton(restaurantButton);
+           switch(user.getJob().toString()){
+               case "admin":
+                   restaurantButton = setButton(restaurantButton);
+                   break;
+               case "supervisor":
+                   menuButton = setButton(menuButton);
+                   break;
+               case "waiter":
+                   tablesButton = setButton(tablesButton);
+                   break;
+               case "chef":
+                   kitchenButton = setButton(kitchenButton);
+                   break;
+           }
        }
        else{
            openDialog();
@@ -110,7 +123,9 @@ public class SectionButtonsFragment extends Fragment {
                 kitchenButton = deselectButton(kitchenButton);
 
                 if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-                    ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
+                    if(user.getJob().toString().equals("admin")){
+                        ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
+                    }
                 }
             }
         };
@@ -128,7 +143,9 @@ public class SectionButtonsFragment extends Fragment {
                 kitchenButton = deselectButton(kitchenButton);
 
                 if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    if(user.getJob().toString().equals("admin") || user.getJob().toString().equals("supervisor")){
+                        ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                    }
                 }
             }
         };
@@ -146,7 +163,9 @@ public class SectionButtonsFragment extends Fragment {
                 kitchenButton = deselectButton(kitchenButton);
 
                 if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-                    ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
+                    if(user.getJob().toString().equals("waiter")){
+                        ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
+                    }
                 }
             }
         };
@@ -164,7 +183,9 @@ public class SectionButtonsFragment extends Fragment {
                 kitchenButton = deselectButton(kitchenButton);
 
                 if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-                    ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
+                    if(user.getJob().toString().equals("admin")){
+                        ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
+                    }
                 }
             }
         };
@@ -182,7 +203,9 @@ public class SectionButtonsFragment extends Fragment {
                 kitchenButton = setButton(kitchenButton);
 
                 if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
-                    ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
+                    if(user.getJob().toString().equals("chef")){
+                        ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
+                    }
                 }
             }
         };
