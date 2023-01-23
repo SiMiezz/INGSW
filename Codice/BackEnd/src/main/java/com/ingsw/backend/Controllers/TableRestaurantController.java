@@ -39,6 +39,13 @@ public class TableRestaurantController {
         return tableRestaurantDTOS;
     }
 
+    @GetMapping("/get/{name}/total")
+    public Integer countTotalTableByRestaurantName(String name){
+        Integer total = tableRestaurantService.countTotalTableByRestaurantName(name);
+
+        return total;
+    }
+
     private TableRestaurantDTO convertDTO(TableRestaurant tableRestaurant) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);

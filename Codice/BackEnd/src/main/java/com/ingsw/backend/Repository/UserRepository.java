@@ -16,5 +16,6 @@ public interface UserRepository extends CrudRepository<User,String>{
     Optional<User> findByEmailAndPwd(String email, String pwd);
 
     List<User> findByRestaurantNameAndJob(String restaurant_name, User_Type job);
+
 }
 

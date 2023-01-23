@@ -69,7 +69,7 @@ public class TablesAllFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.tables_listview);
 
         tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList);
-        tableRestaurantPresenter = new TableRestaurantPresenter(this);
+        tableRestaurantPresenter = new TableRestaurantPresenter(this,null);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

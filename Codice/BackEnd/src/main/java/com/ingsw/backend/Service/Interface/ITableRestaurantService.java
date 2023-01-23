@@ -11,4 +11,6 @@ public interface ITableRestaurantService {
     List<TableRestaurant> getByRestaurantName(String name);
 
     Optional<TableRestaurant> getById(Integer id);
+
+    Integer countTotalTableByRestaurantName(String name);
 }
