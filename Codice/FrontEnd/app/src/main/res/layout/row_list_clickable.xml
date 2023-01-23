@@ -10,7 +10,8 @@
     android:layout_marginRight="10dp"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="5dp"
-    card_view:cardBackgroundColor="@color/white"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:backgroundTint="@color/white"
     android:foreground="?android:attr/selectableItemBackground"
     android:clickable="true"
     >

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -46,7 +47,7 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
 
     @Override
     public void onBindViewHolder(@NonNull TableRestaurantAdapter.TableRestaurantHolder holder, int position) {
-        holder.imageView.setImageResource(R.drawable.table_2_free);
+        holder.imageView.setImageResource(R.drawable.table_10_free);
     }
 
     @Override

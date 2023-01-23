@@ -88,8 +88,8 @@ public class TablesAllFragment extends Fragment {
 
 
     public void loadTableRestaurant(ArrayList<TableRestaurant> tableRestaurantArrayList){
-//        tableAdapter.clearList();
-//        tableAdapter.setArrayList(tableRestaurantArrayList);
-//        tableAdapter.notifyDataSetChanged();
+        tableRestaurantAdapter.clearList();
+        tableRestaurantAdapter.setTableRestaurantArrayList(tableRestaurantArrayList);
+        tableRestaurantAdapter.notifyDataSetChanged();
     }
 }

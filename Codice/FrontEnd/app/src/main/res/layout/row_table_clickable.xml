@@ -8,13 +8,18 @@
     android:layout_marginRight="10dp"
     android:layout_marginBottom="5dp"
     android:layout_marginTop="5dp"
-    card_view:cardBackgroundColor="@color/white"
+    android:theme="@style/ThemeOverlay.AppCompat.Light"
+    android:backgroundTint="@color/white"
     android:foreground="?android:attr/selectableItemBackground"
-    android:clickable="true">
+    android:clickable="true"
+    card_view:cardCornerRadius="5dp">
 
     <ImageView
         android:id="@+id/table_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal|center_vertical"/>
+
 
 </androidx.cardview.widget.CardView>
