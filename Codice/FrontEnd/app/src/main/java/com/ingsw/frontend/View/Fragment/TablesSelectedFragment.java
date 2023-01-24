@@ -59,7 +59,6 @@ public class TablesSelectedFragment extends Fragment {
     }
 
     public void getInfoTableFromClick(Integer id) {
-
         tableRestaurantPresenter.getById(id);
     }
 
