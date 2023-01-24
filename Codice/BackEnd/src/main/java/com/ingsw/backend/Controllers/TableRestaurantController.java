@@ -40,8 +40,8 @@ public class TableRestaurantController {
     }
 
     @GetMapping("/get/{name}/total")
-    public Integer countTotalTableByRestaurantName(String name){
-        Integer total = tableRestaurantService.countTotalTableByRestaurantName(name);
+    public Long countTableRestaurantByRestaurantName(@PathVariable String name){
+        Long total = tableRestaurantService.countTableRestaurantByRestaurantName(name);
 
         return total;
     }

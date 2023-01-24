@@ -28,9 +28,7 @@ public class TableRestaurantService implements ITableRestaurantService {
     }
 
     @Override
-    public Integer countTotalTableByRestaurantName(String name) {
-        long integer = tableRestaurantRepository.countTotalTableByRestaurantName(name);
-        System.out.println(integer);
-        return tableRestaurantRepository.countTotalTableByRestaurantName(name);
+    public Long countTableRestaurantByRestaurantName(String name) {
+        return tableRestaurantRepository.countTableRestaurantByRestaurantName(name);
     }
 }

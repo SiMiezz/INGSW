@@ -13,7 +13,8 @@ import java.util.List;
 public interface TableRestaurantRepository extends CrudRepository<TableRestaurant,Integer> {
 
     List<TableRestaurant> findByRestaurantName(String name);
+    
+    Long countTableRestaurantByRestaurantName(String name);
 
-    @Query(value = "SELECT COUNT(*) FROM tablerestaurant r WHERE r.restaurant_name = :restaurant_name", nativeQuery = true)
-    Integer countTotalTableByRestaurantName(@Param(value = "restaurant_name") String restaurant_name);
+
 }
