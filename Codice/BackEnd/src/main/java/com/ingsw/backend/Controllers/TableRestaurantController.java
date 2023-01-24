@@ -39,14 +39,13 @@ public class TableRestaurantController {
         return tableRestaurantDTOS;
     }
 
-    @GetMapping("/get/{name}/total")
-    public Long countTableRestaurantByRestaurantName(@PathVariable String name){
-        return tableRestaurantService.countTableRestaurantByRestaurantName(name);
-    }
-
     @GetMapping("get/seats/{id}")
     public Integer getSeatsByTableRestaurantId(@PathVariable Integer id){
         return tableRestaurantService.getSeatsByTableRestaurantId(id);
+
+    @GetMapping("/count/total/{name}")
+    public Long countByRestaurantName(@PathVariable String name){
+        return tableRestaurantService.countByRestaurantName(name);
     }
 
     private TableRestaurantDTO convertDTO(TableRestaurant tableRestaurant) {

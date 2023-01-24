@@ -36,13 +36,8 @@ import com.ingsw.frontend.R;
 
 public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener {
 
-    private static final String defaultPwd = "defpwd";
     private Intent intent;
     private User user;
-
-    public static String getDefaultPwd(){
-        return defaultPwd;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +51,7 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
 
-        if((!user.getPwd().equals(HomeActivity.getDefaultPwd()))){
+        if((!user.getPwd().equals(User.getDefaultPwd()))){
             switch (user.getJob().toString()){
                 case "admin":
                     getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();

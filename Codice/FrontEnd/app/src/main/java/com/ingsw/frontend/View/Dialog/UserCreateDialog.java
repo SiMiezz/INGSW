@@ -15,7 +15,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.Model.Enumerations.User_Type;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Activity.HomeActivity;
 
 public class UserCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
@@ -51,9 +53,8 @@ public class UserCreateDialog extends AppCompatDialogFragment {
                     String name = editTextname.getText().toString();
                     String surname = editTextsurname.getText().toString();
                     String email = editTextemail.getText().toString();
-                    String pwd = "defpwd";
 
-                    userCreateDialogListener.createUser(email,pwd,name,surname,job,nameRestaurant);
+                    userCreateDialogListener.createUser(email, User.getDefaultPwd(),name,surname,job,nameRestaurant);
                     dialog.dismiss();
                 }
             }

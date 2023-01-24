@@ -28,8 +28,8 @@ public class TableRestaurantService implements ITableRestaurantService {
     }
 
     @Override
-    public Long countTableRestaurantByRestaurantName(String name) {
-        return tableRestaurantRepository.countTableRestaurantByRestaurantName(name);
+    public Long countByRestaurantName(String name) {
+        return tableRestaurantRepository.countByRestaurantName(name);
     }
 
     @Override
