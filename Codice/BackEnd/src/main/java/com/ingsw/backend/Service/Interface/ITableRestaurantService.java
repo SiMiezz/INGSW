@@ -12,5 +12,5 @@ public interface ITableRestaurantService {
 
     Optional<TableRestaurant> getById(Integer id);
 
-    Long countTableRestaurantByRestaurantName(String restaurant_name);
+    Long countByRestaurantName(String restaurant_name);
 }
