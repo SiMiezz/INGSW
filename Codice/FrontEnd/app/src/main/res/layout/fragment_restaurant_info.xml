@@ -76,6 +76,141 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Name : "
+                            android:textColor="#787486"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="nome ristorante"
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description : "
+                            android:textColor="#787486"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="descrizione ristorante  rdescrizione ristorante descrizione ristoranteistorantedescrizione ristorante descrizione ristorantedescrizione  "
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Locality : "
+                            android:textColor="#787486"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="località ristorante"
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Touristic : "
+                            android:textColor="#787486"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="sì/no"
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QrCode : "
+                            android:textColor="#787486"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="20dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Immagine da capire come generare"
+                            android:textSize="20sp"
+                            android:textColor="@color/black"
+                            android:layout_marginHorizontal="10dp"/>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </ScrollView>
+
+
+
+
+
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
