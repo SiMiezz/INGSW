@@ -2,6 +2,7 @@ package com.ingsw.backend.Repository;
 
 import com.ingsw.backend.Model.Restaurant;
 import com.ingsw.backend.Model.TableRestaurant;
+import jakarta.persistence.Table;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -14,10 +15,7 @@ public interface TableRestaurantRepository extends CrudRepository<TableRestauran
 
     List<TableRestaurant> findByRestaurantName(String name);
 
-    Long countTableRestaurantByRestaurantName(String name);
+    TableRestaurant findByRestaurantNameAndId(String name, Integer id);
 
-    @Query(value = "SELECT seats FROM tablerestaurant AS t WHERE t.id_table = :id", nativeQuery = true)
-    Integer getSeatsByTableRestaurantId(@Param("id") Integer id);
-
-
+    Long countByRestaurantName(String name);
 }

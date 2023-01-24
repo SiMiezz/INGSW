@@ -10,6 +10,8 @@ import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import java.util.ArrayList;
 
+import okhttp3.Call;
+
 public class TableRestaurantPresenter {
     
     private final TablesAllFragment tablesAllFragment;
@@ -65,20 +67,38 @@ public class TableRestaurantPresenter {
         }, restaurantName);
     }
 
+//    public void getById(Integer id){
+//        tableRestaurantService.getById(new Callback(){
+//
+//            @Override
+//            public void returnResult(Object o) {
+//                TableRestaurant result = (TableRestaurant) o;
+//                System.out.println(String.valueOf(result.getSeats()));
+//                tablesSelectedFragment.setSeatsNumber(result.getSeats());
+//            }
+//
+//            @Override
+//            public void returnError(Throwable e) {
+//
+//            }
+//        },id);
+//    }
 
-    public void getSeatsByTableRestaurantId(Integer id) {
-        tableRestaurantService.getSeatsByTableRestaurantId(new Callback(){
+
+    public void findByRestaurantNameAndId(String name, Integer id) {
+        tableRestaurantService.findByRestaurantNameAndId(new Callback(){
 
             @Override
             public void returnResult(Object o) {
-                Integer result = (Integer) o;
-                tablesSelectedFragment.setSeatsNumber(result);
+
+                TableRestaurant result = (TableRestaurant) o;
+                tablesSelectedFragment.setSeatsNumber(result.getSeats());
             }
 
             @Override
             public void returnError(Throwable e) {
 
             }
-        }, id);
+        },name,id);
     }
 }

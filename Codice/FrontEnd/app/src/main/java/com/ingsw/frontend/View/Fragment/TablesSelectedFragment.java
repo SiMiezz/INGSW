@@ -58,8 +58,10 @@ public class TablesSelectedFragment extends Fragment {
         return rootView;
     }
 
-    public void getInfoTableFromClick(Integer id) {
-        tableRestaurantPresenter.getSeatsByTableRestaurantId(id);
+    public void getInfoTableFromClick(String name, Integer id) {
+//        tableRestaurantPresenter.getById(id);
+
+        tableRestaurantPresenter.findByRestaurantNameAndId(name,id);
     }
 
     public void setSeatsNumber(Integer result) {

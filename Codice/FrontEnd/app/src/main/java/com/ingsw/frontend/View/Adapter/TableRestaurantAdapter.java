@@ -73,17 +73,19 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
         if(tableRestaurantArrayList.get(position).getSeats() == 10)
             holder.imageView.setImageResource(R.drawable.table_10_free);
 
-        System.out.println(String.valueOf(tableRestaurantArrayList.get(holder.getAdapterPosition()).getId()));
-
 
         holder.textView.setText(String.valueOf(holder.getAdapterPosition() + 1));
+
+        TableRestaurant temp = tableRestaurantArrayList.get(holder.getAdapterPosition());
 
         if(holder.cardView != null)
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    tablesSelectedFragment.getInfoTableFromClick(tableRestaurantArrayList.get(holder.getAdapterPosition()).getId());
-
+                    tablesSelectedFragment.getInfoTableFromClick(temp.getRestaurantName(), temp.getId());
+                    System.out.println(String.valueOf(temp.getRestaurantName()));
+                    System.out.println(String.valueOf(temp.getId()));
+                    System.out.println(String.valueOf(temp.getSeats()));
                 }
             });
 

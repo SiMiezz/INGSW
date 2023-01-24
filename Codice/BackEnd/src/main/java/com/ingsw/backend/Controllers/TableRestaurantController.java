@@ -4,6 +4,7 @@ import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.DTO.TableRestaurantDTO;
 import com.ingsw.backend.Model.TableRestaurant;
 import com.ingsw.backend.Service.Interface.ITableRestaurantService;
+import jakarta.persistence.Table;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/tablerestaurant")
@@ -39,9 +41,15 @@ public class TableRestaurantController {
         return tableRestaurantDTOS;
     }
 
-    @GetMapping("get/seats/{id}")
-    public Integer getSeatsByTableRestaurantId(@PathVariable Integer id){
-        return tableRestaurantService.getSeatsByTableRestaurantId(id);
+    @GetMapping("/get/{name}/{id}")
+    public TableRestaurantDTO getById(@PathVariable String name, @PathVariable Integer id){
+        TableRestaurant tableRestaurant = tableRestaurantService.findByRestaurantNameAndId(name, id);
+
+        TableRestaurantDTO tableRestaurantDTO = new TableRestaurantDTO();
+        tableRestaurantDTO = convertDTO(tableRestaurant);
+
+        return  tableRestaurantDTO;
+    }
 
     @GetMapping("/count/total/{name}")
     public Long countByRestaurantName(@PathVariable String name){
