@@ -42,7 +42,7 @@ public class TableRestaurantController {
     }
 
     @GetMapping("/get/{name}/{id}")
-    public TableRestaurantDTO getById(@PathVariable String name, @PathVariable Integer id){
+    public TableRestaurantDTO findByRestaurantNameAndId(@PathVariable String name, @PathVariable Integer id){
         TableRestaurant tableRestaurant = tableRestaurantService.findByRestaurantNameAndId(name, id);
 
         TableRestaurantDTO tableRestaurantDTO = new TableRestaurantDTO();
@@ -64,6 +64,12 @@ public class TableRestaurantController {
 
         String restaurant_name = tableRestaurant.getRestaurant().getName();
         tableRestaurantDTO.setRestaurantName(restaurant_name);
+
+        Integer id = tableRestaurant.getId();
+        tableRestaurantDTO.setId(id);
+
+        Integer seats = tableRestaurant.getSeats();
+        tableRestaurantDTO.setSeats(seats);
 
         return tableRestaurantDTO;
     }
