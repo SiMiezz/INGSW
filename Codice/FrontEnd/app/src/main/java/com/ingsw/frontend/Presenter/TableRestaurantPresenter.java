@@ -67,31 +67,13 @@ public class TableRestaurantPresenter {
         }, restaurantName);
     }
 
-//    public void getById(Integer id){
-//        tableRestaurantService.getById(new Callback(){
-//
-//            @Override
-//            public void returnResult(Object o) {
-//                TableRestaurant result = (TableRestaurant) o;
-//                System.out.println(String.valueOf(result.getSeats()));
-//                tablesSelectedFragment.setSeatsNumber(result.getSeats());
-//            }
-//
-//            @Override
-//            public void returnError(Throwable e) {
-//
-//            }
-//        },id);
-//    }
-
-
-    public void findByRestaurantNameAndId(String name, Integer id) {
-        tableRestaurantService.findByRestaurantNameAndId(new Callback(){
+    public void getById( Integer id) {
+        tableRestaurantService.getById(new Callback(){
 
             @Override
             public void returnResult(Object o) {
-
                 TableRestaurant result = (TableRestaurant) o;
+
                 tablesSelectedFragment.setSeatsNumber(result.getSeats());
             }
 
@@ -99,6 +81,6 @@ public class TableRestaurantPresenter {
             public void returnError(Throwable e) {
 
             }
-        },name,id);
+        },id);
     }
 }

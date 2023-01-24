@@ -1,6 +1,7 @@
 package com.ingsw.backend.Controllers;
 
 import com.ingsw.backend.Model.Category;
+import com.ingsw.backend.Model.DTO.MenuDTO;
 import com.ingsw.backend.Model.DTO.TableRestaurantDTO;
 import com.ingsw.backend.Model.TableRestaurant;
 import com.ingsw.backend.Service.Interface.ITableRestaurantService;
@@ -9,10 +10,12 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,12 +44,15 @@ public class TableRestaurantController {
         return tableRestaurantDTOS;
     }
 
-    @GetMapping("/get/{name}/{id}")
-    public TableRestaurantDTO findByRestaurantNameAndId(@PathVariable String name, @PathVariable Integer id){
-        TableRestaurant tableRestaurant = tableRestaurantService.findByRestaurantNameAndId(name, id);
+    @GetMapping("/get/one/{id}")
+    public TableRestaurantDTO getById(@PathVariable Integer id){
+        Optional<TableRestaurant> optionalTableRestaurant = tableRestaurantService.getById(id);
 
-        TableRestaurantDTO tableRestaurantDTO = new TableRestaurantDTO();
-        tableRestaurantDTO = convertDTO(tableRestaurant);
+        if(optionalTableRestaurant.isEmpty()){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+
+        TableRestaurantDTO tableRestaurantDTO = convertDTO(optionalTableRestaurant.get());
 
         return  tableRestaurantDTO;
     }
@@ -64,12 +70,6 @@ public class TableRestaurantController {
 
         String restaurant_name = tableRestaurant.getRestaurant().getName();
         tableRestaurantDTO.setRestaurantName(restaurant_name);
-
-        Integer id = tableRestaurant.getId();
-        tableRestaurantDTO.setId(id);
-
-        Integer seats = tableRestaurant.getSeats();
-        tableRestaurantDTO.setSeats(seats);
 
         return tableRestaurantDTO;
     }

@@ -8,5 +8,5 @@ public interface ITableRestaurantService {
 
     void countTotalTableByRestaurantName(Callback callback, String name);
 
-    void findByRestaurantNameAndId(Callback callback, String name, Integer id);
+    void getById(Callback callback, Integer id);
 }

@@ -23,8 +23,8 @@ public class TableRestaurantService implements ITableRestaurantService {
     }
 
     @Override
-    public TableRestaurant findByRestaurantNameAndId(String name, Integer id){
-        return tableRestaurantRepository.findByRestaurantNameAndId(name, id);
+    public Optional<TableRestaurant> getById(Integer id){
+        return tableRestaurantRepository.findById(id);
     }
 
     @Override

@@ -15,7 +15,5 @@ public interface TableRestaurantRepository extends CrudRepository<TableRestauran
 
     List<TableRestaurant> findByRestaurantName(String name);
 
-    TableRestaurant findByRestaurantNameAndId(String name, Integer id);
-
     Long countByRestaurantName(String name);
 }

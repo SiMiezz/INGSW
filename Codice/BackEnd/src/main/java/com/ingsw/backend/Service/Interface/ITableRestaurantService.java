@@ -9,7 +9,7 @@ public interface ITableRestaurantService {
 
     List<TableRestaurant> getByRestaurantName(String name);
 
-    TableRestaurant findByRestaurantNameAndId(String name, Integer id);
+    Optional<TableRestaurant> getById(Integer id);
 
     Long countByRestaurantName(String restaurant_name);
 

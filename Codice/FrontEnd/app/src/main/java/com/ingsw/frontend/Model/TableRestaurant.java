@@ -11,7 +11,7 @@ public class TableRestaurant implements Serializable {
 
     //PRIMARY KEY
     @Expose
-    @SerializedName("idTable")
+    @SerializedName("id")
     private Integer id;
 
     //ATTRIBUTES
@@ -21,7 +21,7 @@ public class TableRestaurant implements Serializable {
 
     //REFERENCES
     @Expose
-    @SerializedName("restaurant_name")
+    @SerializedName("restaurantName")
     private String restaurantName;
 
     //CONSTRUCTORS
