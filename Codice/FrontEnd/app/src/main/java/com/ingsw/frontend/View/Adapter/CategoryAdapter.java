@@ -106,7 +106,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.println(Log.ASSERT,"bbb", String.valueOf(temp.getId()));
                     currentId = temp.getId();
                     menuElementsFragment.setCategoryId(temp.getId());
                     menuElementsFragment.getElementFromClick(temp.getId());

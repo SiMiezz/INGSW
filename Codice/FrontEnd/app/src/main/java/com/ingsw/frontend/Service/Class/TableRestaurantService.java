@@ -63,4 +63,24 @@ public class TableRestaurantService implements ITableRestaurantService {
                     }
                 });
     }
+
+    public void getSeatsByTableRestaurantId(Callback callback, Integer id) {
+        tableRestaurantApi.getSeatsByTableRestaurantId(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Integer total) {
+                        callback.returnResult(total);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }

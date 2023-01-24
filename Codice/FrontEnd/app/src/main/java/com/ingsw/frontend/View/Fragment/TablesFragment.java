@@ -20,6 +20,10 @@ public class TablesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private TablesNumberFragment tablesNumberFragment;
+    private TablesAllFragment tablesAllFragment;
+    private TablesSelectedFragment tablesSelectedFragment;
+
     public TablesFragment() {
         // Required empty public constructor
     }
@@ -45,9 +49,13 @@ public class TablesFragment extends Fragment {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
 
-        fragmentTransaction.replace(R.id.number_tables_container, new TablesNumberFragment());
-        fragmentTransaction.replace(R.id.all_tables_container, new TablesAllFragment());
-        fragmentTransaction.replace(R.id.selected_table_container, new TablesSelectedFragment());
+        tablesNumberFragment = new TablesNumberFragment();
+        tablesSelectedFragment = new TablesSelectedFragment();
+        tablesAllFragment = new TablesAllFragment(tablesSelectedFragment);
+
+        fragmentTransaction.replace(R.id.number_tables_container, tablesNumberFragment);
+        fragmentTransaction.replace(R.id.all_tables_container, tablesAllFragment);
+        fragmentTransaction.replace(R.id.selected_table_container, tablesSelectedFragment);
         fragmentTransaction.commit();
     }
 

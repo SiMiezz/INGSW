@@ -8,10 +8,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.TableRestaurant;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.TablesAllFragment;
+import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import org.w3c.dom.Text;
 
@@ -21,9 +24,11 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
 
     private static int tableNumber = 0;
     public ArrayList<TableRestaurant> tableRestaurantArrayList;
+    private TablesSelectedFragment tablesSelectedFragment;
 
-    public TableRestaurantAdapter(Context context, ArrayList<TableRestaurant> tableRestaurantArrayList){
+    public TableRestaurantAdapter(Context context, ArrayList<TableRestaurant> tableRestaurantArrayList, TablesSelectedFragment tablesSelectedFragment){
         this.tableRestaurantArrayList = tableRestaurantArrayList;
+        this.tablesSelectedFragment = tablesSelectedFragment;
     }
 
     public ArrayList<TableRestaurant> getTableRestaurantArrayList() {
@@ -68,8 +73,19 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
         if(tableRestaurantArrayList.get(position).getSeats() == 10)
             holder.imageView.setImageResource(R.drawable.table_10_free);
 
+        System.out.println(String.valueOf(tableRestaurantArrayList.get(holder.getAdapterPosition()).getId()));
+
 
         holder.textView.setText(String.valueOf(holder.getAdapterPosition() + 1));
+
+        if(holder.cardView != null)
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    tablesSelectedFragment.getInfoTableFromClick(tableRestaurantArrayList.get(holder.getAdapterPosition()).getId());
+
+                }
+            });
 
 
     }
@@ -88,11 +104,13 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
 
     public class TableRestaurantHolder extends RecyclerView.ViewHolder{
 
+        private CardView cardView;
         private ImageView imageView;
         private TextView textView;
 
         public TableRestaurantHolder(@NonNull View itemView) {
             super(itemView);
+            cardView = itemView.findViewById(R.id.row_clickable_table);
             imageView = itemView.findViewById(R.id.table_image);
             textView = itemView.findViewById(R.id.table_number);
         }

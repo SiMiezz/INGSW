@@ -36,8 +36,14 @@ public class TablesAllFragment extends Fragment {
 
     private TableRestaurantPresenter tableRestaurantPresenter;
 
+    private TablesSelectedFragment tablesSelectedFragment;
+
     public TablesAllFragment() {
         // Required empty public constructor
+    }
+
+    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment){
+        this.tablesSelectedFragment = tablesSelectedFragment;
     }
 
     public static TablesAllFragment newInstance(String param1, String param2) {
@@ -68,8 +74,8 @@ public class TablesAllFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.tables_listview);
 
-        tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList);
-        tableRestaurantPresenter = new TableRestaurantPresenter(this,null);
+        tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList, tablesSelectedFragment);
+        tableRestaurantPresenter = new TableRestaurantPresenter(this,null, null);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

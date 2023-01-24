@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
 
 public class TablesSelectedFragment extends Fragment {
@@ -17,6 +19,9 @@ public class TablesSelectedFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private TextView numberOfSeats;
+    private TableRestaurantPresenter tableRestaurantPresenter;
 
     public TablesSelectedFragment() {
         // Required empty public constructor
@@ -44,6 +49,20 @@ public class TablesSelectedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tables_selected, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_tables_selected, container, false);
+
+        numberOfSeats = rootView.findViewById(R.id.table_selected_number_seats);
+
+        tableRestaurantPresenter = new TableRestaurantPresenter(null, null, this);
+
+        return rootView;
+    }
+
+    public void getInfoTableFromClick(Integer id) {
+        tableRestaurantPresenter.getSeatsByTableRestaurantId(id);
+    }
+
+    public void setSeatsNumber(Integer result) {
+        numberOfSeats.setText(String.valueOf(result));
     }
 }

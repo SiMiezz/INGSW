@@ -64,7 +64,7 @@ public class TablesNumberFragment extends Fragment {
         freeNumber = rootView.findViewById(R.id.free_number_tables);
         occupiedNumber = rootView.findViewById(R.id.occupied_number_tables);
 
-        tableRestaurantPresenter = new TableRestaurantPresenter(null,this);
+        tableRestaurantPresenter = new TableRestaurantPresenter(null,this, null);
 
         intent = getActivity().getIntent();
 

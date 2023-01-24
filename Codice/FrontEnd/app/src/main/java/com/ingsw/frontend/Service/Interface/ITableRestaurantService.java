@@ -7,4 +7,6 @@ public interface ITableRestaurantService {
     void getByRestaurantName(Callback callback, String name);
 
     void countTotalTableByRestaurantName(Callback callback, String name);
+
+    void getSeatsByTableRestaurantId(Callback callback, Integer id);
 }

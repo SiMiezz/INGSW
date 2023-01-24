@@ -6,6 +6,7 @@ import com.ingsw.frontend.Service.Class.TableRestaurantService;
 import com.ingsw.frontend.View.Adapter.TableRestaurantAdapter;
 import com.ingsw.frontend.View.Fragment.TablesAllFragment;
 import com.ingsw.frontend.View.Fragment.TablesNumberFragment;
+import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import java.util.ArrayList;
 
@@ -14,11 +15,13 @@ public class TableRestaurantPresenter {
     private final TablesAllFragment tablesAllFragment;
     private final TablesNumberFragment tablesNumberFragment;
     private TableRestaurantService tableRestaurantService;
+    private TablesSelectedFragment tablesSelectedFragment;
 
     
-    public TableRestaurantPresenter(TablesAllFragment tablesAllFragment, TablesNumberFragment tablesNumberFragment) {
+    public TableRestaurantPresenter(TablesAllFragment tablesAllFragment, TablesNumberFragment tablesNumberFragment, TablesSelectedFragment tablesSelectedFragment) {
         this.tablesAllFragment = tablesAllFragment;
         this.tablesNumberFragment = tablesNumberFragment;
+        this.tablesSelectedFragment = tablesSelectedFragment;
         tableRestaurantService = new TableRestaurantService();
     }
 
@@ -63,4 +66,19 @@ public class TableRestaurantPresenter {
     }
 
 
+    public void getSeatsByTableRestaurantId(Integer id) {
+        tableRestaurantService.getSeatsByTableRestaurantId(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                Integer result = (Integer) o;
+                tablesSelectedFragment.setSeatsNumber(result);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, id);
+    }
 }

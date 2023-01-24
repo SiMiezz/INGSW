@@ -31,4 +31,9 @@ public class TableRestaurantService implements ITableRestaurantService {
     public Long countTableRestaurantByRestaurantName(String name) {
         return tableRestaurantRepository.countTableRestaurantByRestaurantName(name);
     }
+
+    @Override
+    public Integer getSeatsByTableRestaurantId(Integer id){
+        return tableRestaurantRepository.getSeatsByTableRestaurantId(id);
+    }
 }
