@@ -14,6 +14,6 @@ public interface TableRestaurantApi {
     @GET("tablerestaurant/get/{name}")
     Single<List<TableRestaurant>> getByRestaurantName(@Path("name") String name);
 
-    @GET("tablerestaurant/get/{name}/total")
+    @GET("tablerestaurant/count/total/{name}")
     Single<Integer> countTotalTableByRestaurantName(@Path("name") String name);
 }

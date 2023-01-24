@@ -35,6 +35,8 @@ public class User implements Serializable {
     @SerializedName("restaurantName")
     private String restaurantName;
 
+    private static final String defaultPwd = "defpwd";
+
     //CONSTRUCTORS
     public User() {
     }
@@ -58,6 +60,10 @@ public class User implements Serializable {
     }
 
     //GETTERS AND SETTERS
+
+    public static String getDefaultPwd(){
+        return defaultPwd;
+    }
 
     public String getEmail() {
         return email;
