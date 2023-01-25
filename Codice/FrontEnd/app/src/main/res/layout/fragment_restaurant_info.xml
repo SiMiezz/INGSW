@@ -102,7 +102,7 @@
                             android:id="@+id/info_nome_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="nome ristorante"
+                            android:text=""
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>
@@ -125,7 +125,7 @@
                             android:id="@+id/info_descrizione_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="descrizione ristorante  rdescrizione ristorante descrizione ristoranteistorantedescrizione ristorante descrizione ristorantedescrizione  "
+                            android:text=""
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>
@@ -151,7 +151,7 @@
                             android:id="@+id/info_locality_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="località ristorante"
+                            android:text=""
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>
@@ -177,7 +177,7 @@
                             android:id="@+id/info_touristic_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="sì/no"
+                            android:text=""
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>
@@ -201,7 +201,7 @@
                             android:id="@+id/info_qrcode_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Immagine da capire come generare"
+                            android:text=""
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:layout_marginHorizontal="10dp"/>

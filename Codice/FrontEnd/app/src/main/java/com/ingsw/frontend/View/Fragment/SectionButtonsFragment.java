@@ -116,14 +116,15 @@ public class SectionButtonsFragment extends Fragment {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                restaurantButton = setButton(restaurantButton);
-                menuButton = deselectButton(menuButton);
-                tablesButton = deselectButton(tablesButton);
-                membersButton = deselectButton(membersButton);
-                kitchenButton = deselectButton(kitchenButton);
+
 
                 if((!user.getPwd().equals(User.getDefaultPwd()))){
                     if(user.getJob().toString().equals("admin")){
+                        restaurantButton = setButton(restaurantButton);
+                        menuButton = deselectButton(menuButton);
+                        tablesButton = deselectButton(tablesButton);
+                        membersButton = deselectButton(membersButton);
+                        kitchenButton = deselectButton(kitchenButton);
                         ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
                     }
                 }
@@ -136,14 +137,15 @@ public class SectionButtonsFragment extends Fragment {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                restaurantButton = deselectButton(restaurantButton);
-                menuButton = setButton(menuButton);
-                tablesButton = deselectButton(tablesButton);
-                membersButton = deselectButton(membersButton);
-                kitchenButton = deselectButton(kitchenButton);
+
 
                 if((!user.getPwd().equals(User.getDefaultPwd()))){
                     if(user.getJob().toString().equals("admin") || user.getJob().toString().equals("supervisor")){
+                        restaurantButton = deselectButton(restaurantButton);
+                        menuButton = setButton(menuButton);
+                        tablesButton = deselectButton(tablesButton);
+                        membersButton = deselectButton(membersButton);
+                        kitchenButton = deselectButton(kitchenButton);
                         ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
                     }
                 }
@@ -156,14 +158,15 @@ public class SectionButtonsFragment extends Fragment {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                restaurantButton = deselectButton(restaurantButton);
-                menuButton = deselectButton(menuButton);
-                tablesButton = setButton(tablesButton);
-                membersButton = deselectButton(membersButton);
-                kitchenButton = deselectButton(kitchenButton);
+
 
                 if((!user.getPwd().equals(User.getDefaultPwd()))){
                     if(user.getJob().toString().equals("waiter")){
+                        restaurantButton = deselectButton(restaurantButton);
+                        menuButton = deselectButton(menuButton);
+                        tablesButton = setButton(tablesButton);
+                        membersButton = deselectButton(membersButton);
+                        kitchenButton = deselectButton(kitchenButton);
                         ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
                     }
                 }
@@ -176,14 +179,15 @@ public class SectionButtonsFragment extends Fragment {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                restaurantButton = deselectButton(restaurantButton);
-                menuButton = deselectButton(menuButton);
-                tablesButton = deselectButton(tablesButton);
-                membersButton = setButton(membersButton);
-                kitchenButton = deselectButton(kitchenButton);
+
 
                 if((!user.getPwd().equals(User.getDefaultPwd()))){
                     if(user.getJob().toString().equals("admin")){
+                        restaurantButton = deselectButton(restaurantButton);
+                        menuButton = deselectButton(menuButton);
+                        tablesButton = deselectButton(tablesButton);
+                        membersButton = setButton(membersButton);
+                        kitchenButton = deselectButton(kitchenButton);
                         ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
                     }
                 }
@@ -196,14 +200,15 @@ public class SectionButtonsFragment extends Fragment {
         View.OnClickListener listener = new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                restaurantButton = deselectButton(restaurantButton);
-                menuButton = deselectButton(menuButton);
-                tablesButton = deselectButton(tablesButton);
-                membersButton = deselectButton(membersButton);
-                kitchenButton = setButton(kitchenButton);
+
 
                 if((!user.getPwd().equals(User.getDefaultPwd()))){
                     if(user.getJob().toString().equals("chef")){
+                        restaurantButton = deselectButton(restaurantButton);
+                        menuButton = deselectButton(menuButton);
+                        tablesButton = deselectButton(tablesButton);
+                        membersButton = deselectButton(membersButton);
+                        kitchenButton = setButton(kitchenButton);
                         ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
                     }
                 }
