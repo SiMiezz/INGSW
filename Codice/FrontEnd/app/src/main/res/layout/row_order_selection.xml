@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginVertical="10dp">
+            android:layout_marginVertical="10dp"
+            android:layout_weight="0.9">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -86,6 +87,16 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="#e5e5e5"></View>
+
         <CheckBox
             android:id="@+id/order_checkbox"
             android:layout_width="wrap_content"
@@ -93,7 +104,7 @@
             android:layout_gravity="right|center_vertical"
             android:button="@drawable/checkbox"
             android:layout_marginRight="10dp"
-            android:visibility="invisible"
+            android:layout_weight="0.1"
             ></CheckBox>
 
     </LinearLayout>
