@@ -18,6 +18,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
     private ArrayList<Order> orderArrayList = new ArrayList<>();
 
+    public int currentLayout = -1;
+
     public OrderAdapter(Context context, ArrayList<Order> orderArrayList){
         this.orderArrayList = orderArrayList;
     }
@@ -38,6 +40,27 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     @Override
     public int getItemCount() {
         return orderArrayList.size();
+    }
+
+    @Override
+    public int getItemViewType(int position){
+        return currentLayout;
+    }
+
+    public ArrayList<Order> getOrderArrayList() {
+        return orderArrayList;
+    }
+
+    public void setOrderArrayList(ArrayList<Order> orderArrayList) {
+        this.orderArrayList = orderArrayList;
+    }
+
+    public int getCurrentLayout() {
+        return currentLayout;
+    }
+
+    public void setCurrentLayout(int currentLayout) {
+        this.currentLayout = currentLayout;
     }
 
 
