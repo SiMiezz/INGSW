@@ -24,15 +24,8 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
-    public boolean deleteById(Integer id){
-       Optional<Category> optionalCategory = categoryRepository.findById(id);
-
-        if(optionalCategory.isEmpty()){
-            return false;
-        }
-
-        categoryRepository.delete(optionalCategory.get());
-        return true;
+    public void delete(Category category){
+        categoryRepository.delete(category);
     }
 
     @Override

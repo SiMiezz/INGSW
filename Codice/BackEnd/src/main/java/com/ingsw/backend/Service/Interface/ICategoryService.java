@@ -10,7 +10,7 @@ public interface ICategoryService {
 
     void create(Category category);
 
-    boolean deleteById(Integer id);
+    void delete(Category category);
 
     List<Category> getByMenuId(Integer id);
 

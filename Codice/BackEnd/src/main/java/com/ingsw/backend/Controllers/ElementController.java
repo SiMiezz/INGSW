@@ -39,13 +39,11 @@ public class ElementController {
         elementService.create(element);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable Integer id){
-        boolean delete = elementService.deleteById(id);
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody ElementDTO elementDTO){
+        Element element = this.convertEntity(elementDTO);
 
-        if(!delete){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        elementService.delete(element);
     }
 
     @GetMapping("/get/{id}")

@@ -24,15 +24,8 @@ public class ElementService implements IElementService {
     }
 
     @Override
-    public Boolean deleteById(Integer id){
-        Optional<Element> optionalElement = elementRepository.findById(id);
-
-        if(optionalElement.isEmpty()){
-            return false;
-        }
-
-        elementRepository.delete(optionalElement.get());
-        return true;
+    public void delete(Element element){
+        elementRepository.delete(element);
     }
 
     @Override

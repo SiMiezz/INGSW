@@ -40,13 +40,11 @@ public class CategoryController {
         categoryService.create(category);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable Integer id){
-        boolean delete = categoryService.deleteById(id);
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody CategoryDTO categoryDTO){
+        Category category = this.convertEntity(categoryDTO);
 
-        if(!delete){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        categoryService.delete(category);
     }
 
     @GetMapping("/get/{id}")

@@ -8,7 +8,7 @@ public interface IElementService {
 
     void create(Element element);
 
-    Boolean deleteById(Integer id);
+    void delete(Element element);
 
     List<Element> getByCategoryId(Integer id);
 }
