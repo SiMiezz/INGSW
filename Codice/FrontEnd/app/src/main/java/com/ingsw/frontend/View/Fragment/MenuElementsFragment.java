@@ -2,6 +2,8 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -78,13 +80,19 @@ public class MenuElementsFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_menu_elements, container, false);
 
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         arrayList = new ArrayList<>();
-        removeButton = rootView.findViewById(R.id.remove_element_button);
-        addButton = rootView.findViewById(R.id.add_element_button);
-        backButton = rootView.findViewById(R.id.back_element_button);
-        confirmButton = rootView.findViewById(R.id.confirm_element_button);
-        myView = rootView.findViewById(R.id.elements_listview);
+        removeButton = getView().findViewById(R.id.remove_element_button);
+        addButton = getView().findViewById(R.id.add_element_button);
+        backButton = getView().findViewById(R.id.back_element_button);
+        confirmButton = getView().findViewById(R.id.confirm_element_button);
+        myView = getView().findViewById(R.id.elements_listview);
 
         adapter = new ElementAdapter(getContext(),arrayList);
 
@@ -131,7 +139,7 @@ public class MenuElementsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(getCategoryId()!=null){
-                    openDialog(getCategoryId());
+                    openDialog();
                 }
             }
         });
@@ -141,25 +149,18 @@ public class MenuElementsFragment extends Fragment {
             public void onClick(View view) {
                 removeSelectedItems();
 
+                if(ElementAdapter.currentLayout == -2){
+                    ElementAdapter.currentLayout = -1;
+                    adapter.notifyDataSetChanged();
+                }
 
-                ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
 
-
-                ElementAdapter.currentLayout = -1;
-
-                getElementFromClick(CategoryAdapter.currentId); // dovrebbe funzionare ma non aggiorna (il valore stampato è corretto)
-                Log.println(Log.ASSERT, "boh", String.valueOf(CategoryAdapter.currentId));
-//                getElementFromClick(20);         il numero passato così funziona invece
-//                                                 (a meno che il numero passato non sia
-//                                                 esattamente l'id della category cliccata),
-//                                                 dopo due ore ancora devo capire perchè.
-
-
-                adapter.notifyDataSetChanged();
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
             }
         });
-
-        return rootView;
     }
 
     public ElementAdapter getAdapter(){
@@ -185,7 +186,7 @@ public class MenuElementsFragment extends Fragment {
     public void removeSelectedItems() {
         ArrayList<Element> elements = adapter.getSelectedItemsArrayList();
         for (Element element: elements) {
-            menuElementsPresenter.deleteById(element.getId());
+            menuElementsPresenter.delete(element);
         }
     }
 
@@ -193,8 +194,8 @@ public class MenuElementsFragment extends Fragment {
         menuElementsPresenter.create(element);
     }
 
-    public void openDialog(Integer idCategory){
-        ElementCreateDialog elementCreateDialog = new ElementCreateDialog(idCategory);
+    public void openDialog(){
+        ElementCreateDialog elementCreateDialog = new ElementCreateDialog(this);
         elementCreateDialog.show(requireActivity().getSupportFragmentManager(),"Element");
     }
 }

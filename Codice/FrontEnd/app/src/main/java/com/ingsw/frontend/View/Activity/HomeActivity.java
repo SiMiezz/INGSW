@@ -91,10 +91,8 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
     }
 
     @Override
-    public void createElement(String name, String description, Double price, Boolean prepackaged,Integer idCategory) {
-        Element element = new Element(name,description,price,prepackaged,idCategory);
-
-        MenuElementsFragment menuElementsFragment = new MenuElementsFragment();
+    public void createElement(String name, String description, Double price, Boolean prepackaged,MenuElementsFragment menuElementsFragment) {
+        Element element = new Element(name,description,price,prepackaged, menuElementsFragment.getCategoryId());
 
         menuElementsFragment.createElement(element);
     }
@@ -135,18 +133,14 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
 
     @Override
-    public void createCategory(String name, Aliment_Type aliment,Integer idMenu) {
-        Category category = new Category(name,aliment,idMenu);
-
-        switch(aliment.toString()){
-            case "food":
-                MenuCategoriesFoodFragment menuCategoriesFoodFragment = new MenuCategoriesFoodFragment();
-                menuCategoriesFoodFragment.createCategory(category);
-                break;
-            case "drink":
-                MenuCategoriesDrinkFragment menuCategoriesDrinkFragment = new MenuCategoriesDrinkFragment();
-                menuCategoriesDrinkFragment.createCategory(category);
-                break;
+    public void createCategory(String name,MenuCategoriesFoodFragment menuCategoriesFoodFragment, MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
+        if(menuCategoriesFoodFragment!=null){
+            Category category = new Category(name,menuCategoriesFoodFragment.getAliment_type(),menuCategoriesFoodFragment.getMenu().getId());
+            menuCategoriesFoodFragment.createCategory(category);
+        }
+        else{
+            Category category = new Category(name,menuCategoriesDrinkFragment.getAliment_type(),menuCategoriesDrinkFragment.getMenu().getId());
+            menuCategoriesDrinkFragment.createCategory(category);
         }
     }
 }

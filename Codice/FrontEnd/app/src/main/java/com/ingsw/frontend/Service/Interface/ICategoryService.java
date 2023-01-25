@@ -12,5 +12,5 @@ public interface ICategoryService {
 
     void getByMenuIdAndAliment(Callback callback, Integer id, Aliment_Type aliment_type);
 
-    void deleteById(Callback callback, Integer Id);
+    void delete(Callback callback, Category category);
 }

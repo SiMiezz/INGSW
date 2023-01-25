@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
@@ -24,10 +26,17 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     private Integer idMenu;
 
     private CategoryCreateDialogListener categoryCreateDialogListener;
+    private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
+    private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
 
-    public CategoryCreateDialog(Aliment_Type aliment, Integer idMenu) {
-        this.aliment = aliment;
-        this.idMenu = idMenu;
+    public CategoryCreateDialog(MenuCategoriesFoodFragment menuCategoriesFoodFragment) {
+        this.menuCategoriesFoodFragment = menuCategoriesFoodFragment;
+        menuCategoriesDrinkFragment = null;
+    }
+
+    public CategoryCreateDialog(MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
+        this.menuCategoriesDrinkFragment = menuCategoriesDrinkFragment;
+        menuCategoriesFoodFragment = null;
     }
 
     @NonNull
@@ -49,7 +58,7 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
                 if(!editTextname.getText().toString().isEmpty()){
                     String name = editTextname.getText().toString();
 
-                    categoryCreateDialogListener.createCategory(name,aliment,idMenu);
+                    categoryCreateDialogListener.createCategory(name,menuCategoriesFoodFragment,menuCategoriesDrinkFragment);
                     dialog.dismiss();
                 }
             }
@@ -81,6 +90,6 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface CategoryCreateDialogListener{
-        void createCategory(String name, Aliment_Type aliment, Integer idMenu);
+        void createCategory(String name,MenuCategoriesFoodFragment menuCategoriesFoodFragment,MenuCategoriesDrinkFragment menuCategoriesDrinkFragment);
     }
 }

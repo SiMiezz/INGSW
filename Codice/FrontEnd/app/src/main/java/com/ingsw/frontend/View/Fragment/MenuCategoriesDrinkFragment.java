@@ -40,6 +40,19 @@ public class MenuCategoriesDrinkFragment extends Fragment {
 
     private Intent intent;
     private Menu menu;
+    private final Aliment_Type aliment_type = Aliment_Type.drink;
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Aliment_Type getAliment_type() {
+        return aliment_type;
+    }
 
     public MenuCategoriesDrinkFragment() {
         // Required empty public constructor
@@ -105,7 +118,7 @@ public class MenuCategoriesDrinkFragment extends Fragment {
     public void removeSelectedItems() {
         ArrayList<Category> categories = adapter.getSelectedItemsArrayList();
         for (Category category: categories) {
-            menuCategoriesPresenter.deleteById(category.getId());
+            menuCategoriesPresenter.delete(category);
         }
     }
 
@@ -114,7 +127,7 @@ public class MenuCategoriesDrinkFragment extends Fragment {
     }
 
     public void openDialog(){
-        CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(Aliment_Type.valueOf("drink"),menu.getId());
+        CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(this);
         categoryCreateDialog.show(requireActivity().getSupportFragmentManager(),"Category");
     }
 }

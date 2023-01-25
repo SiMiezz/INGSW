@@ -76,24 +76,26 @@ public class MenuCategoriesPresenter {
         }, id, aliment_type);
     }
 
-    public void deleteById(Integer id) {
-        categoryService.deleteById(new Callback(){
+    public void delete(Category category) {
+        categoryService.delete(new Callback(){
 
             @Override
             public void returnResult(Object o) {
+                getByMenuIdAndAliment(category.getMenuId(),category.getAliment());
             }
 
             @Override
             public void returnError(Throwable e) {
                 System.out.println(e);
             }
-        },id);
+        },category);
     }
 
     public void create(Category category){
         categoryService.create(new Callback() {
             @Override
             public void returnResult(Object o) {
+                getByMenuIdAndAliment(category.getMenuId(),category.getAliment());
             }
 
             @Override

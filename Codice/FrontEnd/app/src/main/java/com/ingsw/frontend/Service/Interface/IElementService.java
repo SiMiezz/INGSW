@@ -7,7 +7,7 @@ public interface IElementService {
 
     void create(Callback callback, Element element);
 
-    void deleteById(Callback callback, Integer id);
+    void delete(Callback callback, Element element);
 
     void getByCategoryId(Callback callback, Integer id);
 }

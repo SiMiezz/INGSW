@@ -46,8 +46,8 @@ public class ElementService implements IElementService {
     }
 
     @Override
-    public void deleteById(Callback callback, Integer id){
-        elementApi.deleteById(id)
+    public void delete(Callback callback, Element element){
+        elementApi.delete(element)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

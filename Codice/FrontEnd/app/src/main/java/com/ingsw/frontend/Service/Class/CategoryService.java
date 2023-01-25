@@ -91,8 +91,8 @@ public class CategoryService implements ICategoryService {
                 });
     }
 
-    public void deleteById(Callback callback, Integer id) {
-        categoryApi.deleteById(id)
+    public void delete(Callback callback, Category category) {
+        categoryApi.delete(category)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

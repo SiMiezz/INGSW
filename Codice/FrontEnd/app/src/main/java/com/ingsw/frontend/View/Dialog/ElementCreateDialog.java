@@ -15,18 +15,19 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
     private EditText editTextprice;
     private EditText editTextdescription;
     private CheckBox checkBoxprepackaged;
-    private Integer idCategory;
 
     private ElementCreateDialogListener elementCreateDialogListener;
+    private MenuElementsFragment menuElementsFragment;
 
-    public ElementCreateDialog(Integer idCategory) {
-        this.idCategory = idCategory;
+    public ElementCreateDialog(MenuElementsFragment menuElementsFragment) {
+        this.menuElementsFragment = menuElementsFragment;
     }
 
     @NonNull
@@ -51,7 +52,7 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                     Boolean prepackaged = checkBoxprepackaged.isChecked();
                     Double price = Double.parseDouble(editTextprice.getText().toString());
 
-                    elementCreateDialogListener.createElement(name,description,price,prepackaged,idCategory);
+                    elementCreateDialogListener.createElement(name,description,price,prepackaged,menuElementsFragment);
                     dialog.dismiss();
                 }
             }
@@ -87,6 +88,6 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface ElementCreateDialogListener {
-        void createElement(String name,String description,Double price,Boolean prepackaged,Integer idCategory);
+        void createElement(String name,String description,Double price,Boolean prepackaged,MenuElementsFragment menuElementsFragment);
     }
 }

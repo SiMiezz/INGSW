@@ -151,13 +151,9 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(tabLayout.getSelectedTabPosition() == 0){
                     menuCategoriesFoodFragment.openDialog();
-                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
-                    CategoryAdapter.currentLayout = -1;
                 }
                 else if(tabLayout.getSelectedTabPosition() == 1){
                     menuCategoriesDrinkFragment.openDialog();
-                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
-                    CategoryAdapter.currentLayout = -1;
                 }
             }
         });
@@ -167,14 +163,20 @@ public class MenuCategoriesFragment extends Fragment {
             public void onClick(View view) {
                 if(tabLayout.getSelectedTabPosition() == 0){
                     menuCategoriesFoodFragment.removeSelectedItems();
-                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
-                    CategoryAdapter.currentLayout = -1;
                 }
                 else if(tabLayout.getSelectedTabPosition() == 1){
                     menuCategoriesDrinkFragment.removeSelectedItems();
-                    ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
+                }
+
+                if(CategoryAdapter.currentLayout == -2){
                     CategoryAdapter.currentLayout = -1;
                 }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
             }
         });
 

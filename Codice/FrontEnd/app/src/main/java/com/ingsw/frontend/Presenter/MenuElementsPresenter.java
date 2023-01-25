@@ -27,6 +27,11 @@ public class MenuElementsPresenter {
             @Override
             public void returnResult(Object o) {
                 ArrayList<Element> elementList = (ArrayList<Element>) o;
+
+                for (Element element: elementList) {
+                    System.out.println(element.getName());
+                }
+
                 menuElementsFragment.loadElement(elementList);
             }
 
@@ -37,24 +42,26 @@ public class MenuElementsPresenter {
         },id);
     }
 
-    public void deleteById(Integer id) {
-        elementService.deleteById(new Callback(){
+    public void delete(Element element) {
+        elementService.delete(new Callback(){
 
             @Override
             public void returnResult(Object o) {
+                getByCategoryId(element.getCategoryId());
             }
 
             @Override
             public void returnError(Throwable e) {
                 System.out.println(e);
             }
-        },id);
+        },element);
     }
 
     public void create(Element element){
         elementService.create(new Callback() {
             @Override
             public void returnResult(Object o) {
+                getByCategoryId(element.getCategoryId());
             }
 
             @Override

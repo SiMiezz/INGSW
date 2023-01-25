@@ -12,6 +12,7 @@ import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -26,6 +27,6 @@ public interface CategoryApi {
     @GET("/category/get/{id}/{aliment_type}")
     Single<List<Category>> getByMenuIdAndAliment(@Path("id") Integer id,@Path("aliment_type") Aliment_Type aliment_type);
 
-    @DELETE("/category/delete/{id}")
-    Completable deleteById(@Path("id") Integer id);
+    @HTTP(method = "DELETE", path= "/category/delete", hasBody = true)
+    Completable delete(@Body Category category);
 }
