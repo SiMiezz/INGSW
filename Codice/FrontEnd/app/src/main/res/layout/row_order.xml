@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
                 android:text=" • element1 \n • element2 \n • element3 \n • element4 \n • element5 \n • element6 \n • element7 \n • element8 \n • element9 \n • element10 "
                 android:textColor="@color/black"
                 android:textSize="20sp" />
