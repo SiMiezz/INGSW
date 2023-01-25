@@ -4,19 +4,24 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.R;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder> {
 
     private ArrayList<Order> orderArrayList = new ArrayList<>();
+    public ArrayList<Order> selectedItemsArrayList = new ArrayList<>();
 
     public int currentLayout = -1;
 
@@ -27,13 +32,43 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     @NonNull
     @Override
     public OrderAdapter.OrderHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new OrderAdapter.OrderHolder((LayoutInflater
-                                            .from(parent.getContext())
-                                            .inflate(R.layout.row_order, parent, false)));
+
+        View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_order, parent,false);
+        View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_order_selection, parent,false);
+
+        if(getItemViewType(0) == -1)
+            return new OrderAdapter.OrderHolder(normalList);
+        else
+            return  new OrderAdapter.OrderHolder(selectionList);
+
     }
 
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.OrderHolder holder, int position) {
+
+        holder.checkBox.setChecked(false);
+
+        Order temp = orderArrayList.get(holder.getAdapterPosition());
+
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                temp.setChecked(holder.checkBox.isChecked());
+
+                if(temp.getChecked() == true){
+                    selectedItemsArrayList.add(temp);
+                }
+                else if(temp.getChecked() == false && !(orderArrayList.contains(temp))){
+                    selectedItemsArrayList.remove(temp);
+                }
+            }
+        });
+
+        if(temp.getChecked() == true)
+            holder.checkBox.setChecked(true);
+        else
+            holder.checkBox.setChecked(false);
+
 
     }
 
@@ -71,10 +106,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     public class OrderHolder extends RecyclerView.ViewHolder{
 
         TextView orderElement;
+        TextView orderPrice;
+        CheckBox checkBox;
 
         public OrderHolder(@NonNull View itemView) {
             super(itemView);
-//            orderElement = itemView.findViewById(R.id.);
+            orderElement = itemView.findViewById(R.id.order_elements);
+            orderPrice = itemView.findViewById(R.id.order_price);
+            checkBox = itemView.findViewById(R.id.order_checkbox);
         }
     }
 

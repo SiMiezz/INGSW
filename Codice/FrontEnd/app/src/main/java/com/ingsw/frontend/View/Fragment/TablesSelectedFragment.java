@@ -3,18 +3,24 @@ package com.ingsw.frontend.View.Fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.ingsw.frontend.Model.Enumerations.User_Type;
+import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.HomeActivity;
+import com.ingsw.frontend.View.Adapter.OrderAdapter;
+
+import java.util.ArrayList;
 
 public class TablesSelectedFragment extends Fragment {
 
@@ -24,14 +30,18 @@ public class TablesSelectedFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ArrayList<Order> orderArrayList;
     private TextView numberOfSeats;
     private TableRestaurantPresenter tableRestaurantPresenter;
+    private OrderAdapter orderAdapter;
 
     private ImageButton removeButton;
     private ImageButton addButton;
     private ImageButton backButton;
     private ImageButton confirmButton;
     private RecyclerView recyclerView;
+
+
 
     public TablesSelectedFragment() {
         // Required empty public constructor
@@ -61,6 +71,7 @@ public class TablesSelectedFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tables_selected, container, false);
 
+        orderArrayList = new ArrayList<>();
         numberOfSeats = rootView.findViewById(R.id.table_selected_number_seats);
         removeButton = rootView.findViewById(R.id.remove_order_button);
         addButton = rootView.findViewById(R.id.add_order_button);
@@ -68,12 +79,23 @@ public class TablesSelectedFragment extends Fragment {
         confirmButton = rootView.findViewById(R.id.confirm_order_button);
         recyclerView = rootView.findViewById(R.id.selected_table_order_listview);
 
+        orderAdapter = new OrderAdapter(getContext(), orderArrayList);
+
         tableRestaurantPresenter = new TableRestaurantPresenter(null, null, this);
 
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(orderAdapter);
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if(orderAdapter.getCurrentLayout() == -1){
+                    orderAdapter.setCurrentLayout(-2);
+                    orderAdapter.notifyDataSetChanged();
+                }
 
                 removeButton.setVisibility(View.INVISIBLE);
                 backButton.setVisibility(View.VISIBLE);
@@ -87,6 +109,11 @@ public class TablesSelectedFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                if(orderAdapter.getCurrentLayout() == -2){
+                    orderAdapter.setCurrentLayout(-1);
+                    orderAdapter.notifyDataSetChanged();
+                }
+
                 backButton.setVisibility(View.INVISIBLE);
                 removeButton.setVisibility(View.VISIBLE);
 
@@ -99,12 +126,14 @@ public class TablesSelectedFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
             }
         });
 
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
             }
         });
 

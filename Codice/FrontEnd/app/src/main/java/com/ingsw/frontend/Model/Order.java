@@ -73,4 +73,14 @@ public class Order implements Serializable {
     public void setTableId(Integer tableId) {
         this.tableId = tableId;
     }
+
+    private Boolean checked = Boolean.valueOf(false);
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 }
