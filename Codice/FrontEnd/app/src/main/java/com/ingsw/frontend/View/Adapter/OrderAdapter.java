@@ -51,7 +51,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         public OrderHolder(@NonNull View itemView) {
             super(itemView);
-            orderElement = itemView.findViewById(R.id.order_element);
+//            orderElement = itemView.findViewById(R.id.);
         }
     }
 

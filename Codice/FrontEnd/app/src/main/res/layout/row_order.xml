@@ -14,14 +14,70 @@
     android:clickable="true"
     card_view:cardCornerRadius="5dp">
 
-    <TextView
-        android:id="@+id/order_element"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="20sp">
+        android:orientation="vertical"
+        android:layout_marginVertical="10dp">
 
-    </TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#787486"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:text="Elements : " />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text=" • element1 \n • element2 \n • element3 \n • element4 \n • element5 \n • element6 \n • element7 \n • element8 \n • element9 \n • element10 "
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#787486"
+                android:textSize="20sp"
+                android:layout_marginLeft="20dp"
+                android:text="Total : "
+                android:layout_gravity="center_vertical"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
+                android:text="€ X.YZ"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"/>
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+
 
 
 </androidx.cardview.widget.CardView>
