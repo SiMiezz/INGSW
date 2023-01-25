@@ -99,6 +99,7 @@
                             android:layout_marginLeft="20dp"/>
 
                         <TextView
+                            android:id="@+id/info_nome_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="nome ristorante"
@@ -121,6 +122,7 @@
                             android:layout_marginLeft="20dp"/>
 
                         <TextView
+                            android:id="@+id/info_descrizione_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="descrizione ristorante  rdescrizione ristorante descrizione ristoranteistorantedescrizione ristorante descrizione ristorantedescrizione  "
@@ -146,6 +148,7 @@
                             android:layout_marginLeft="20dp"/>
 
                         <TextView
+                            android:id="@+id/info_locality_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="località ristorante"
@@ -171,6 +174,7 @@
                             android:layout_marginLeft="20dp"/>
 
                         <TextView
+                            android:id="@+id/info_touristic_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="sì/no"
@@ -194,6 +198,7 @@
                             android:layout_marginLeft="20dp"/>
 
                         <TextView
+                            android:id="@+id/info_qrcode_restaurant_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Immagine da capire come generare"
