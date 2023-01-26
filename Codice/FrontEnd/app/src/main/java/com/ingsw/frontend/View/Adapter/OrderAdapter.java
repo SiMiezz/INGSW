@@ -50,6 +50,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         holder.checkBox.setChecked(false);
 
+        holder.orderElement.setText(String.valueOf(temp.getId())+" (prova per vedere se l'id è corretto)");
         holder.orderPrice.setText(String.valueOf(temp.getPrice()));
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
