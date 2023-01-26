@@ -10,7 +10,7 @@ public interface IUserService {
 
     void create(Callback callback, User user);
 
-    void deleteByEmail(Callback callback, String email);
+    void delete(Callback callback, User user);
 
     void getByRestaurantName(Callback callback, String name);
 

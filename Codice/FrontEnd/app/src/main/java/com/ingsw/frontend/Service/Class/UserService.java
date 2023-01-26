@@ -70,8 +70,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void deleteByEmail(Callback callback, String email){
-        userApi.deleteByEmail(email)
+    public void delete(Callback callback, User user){
+        userApi.delete(user)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new CompletableObserver() {

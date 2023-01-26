@@ -29,15 +29,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Boolean deleteByEmail(String email){
-        Optional<User> optionalUser = userRepository.findById(email);
-
-        if(optionalUser.isEmpty()){
-            return false;
-        }
-
-        userRepository.delete(optionalUser.get());
-        return true;
+    public void delete(User user){
+        userRepository.delete(user);
     }
 
     @Override

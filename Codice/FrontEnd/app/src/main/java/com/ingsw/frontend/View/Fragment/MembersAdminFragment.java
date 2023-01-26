@@ -15,10 +15,8 @@ import android.widget.ImageButton;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
-import com.ingsw.frontend.Presenter.MembersPresenter;
 import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
-import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.MemberAdapter;
 import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 
@@ -40,12 +38,24 @@ public class MembersAdminFragment extends Fragment {
     private MemberAdapter memberAdapter;
     private ArrayList<User> userArrayList;
     private RecyclerView recyclerView;
-    private MembersPresenter memberPresenter;
 
     private Intent intent;
     private Restaurant restaurant;
+    private final User_Type job = User_Type.admin;
 
     private UserPresenter userPresenter = new UserPresenter(this);
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public User_Type getJob() {
+        return job;
+    }
 
     public MembersAdminFragment() {
         // Required empty public constructor
@@ -84,8 +94,6 @@ public class MembersAdminFragment extends Fragment {
 
         memberAdapter = new MemberAdapter(getContext(),userArrayList);
 
-        memberPresenter = new MembersPresenter(this, null, null, null);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -95,7 +103,7 @@ public class MembersAdminFragment extends Fragment {
 
         restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
-        memberPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("admin"));
+        userPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("admin"));
 
 
         removeButton.setOnClickListener(new View.OnClickListener() {
@@ -137,7 +145,7 @@ public class MembersAdminFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDialog(User_Type.valueOf("admin"),restaurant.getName());
+                openDialog();
             }
         });
 
@@ -145,8 +153,17 @@ public class MembersAdminFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 removeSelectedItems();
-                ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
-                memberAdapter.setCurrentLayout(-1);
+
+                if(memberAdapter.getCurrentLayout() == -2){
+                    memberAdapter.setCurrentLayout(-1);
+                    memberAdapter.notifyDataSetChanged();
+                }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -166,7 +183,7 @@ public class MembersAdminFragment extends Fragment {
     public void removeSelectedItems() {
         ArrayList<User> users = memberAdapter.getSelectedItemsArrayList();
         for (User user: users) {
-            memberPresenter.deleteById(user.getEmail());
+            userPresenter.delete(user);
         }
     }
 
@@ -174,8 +191,8 @@ public class MembersAdminFragment extends Fragment {
         userPresenter.create(user);
     }
 
-    public void openDialog(User_Type job, String restaurant){
-        UserCreateDialog userCreateDialog = new UserCreateDialog(job,restaurant);
+    public void openDialog(){
+        UserCreateDialog userCreateDialog = new UserCreateDialog(this);
         userCreateDialog.show(requireActivity().getSupportFragmentManager(),"UserCreate");
     }
 }

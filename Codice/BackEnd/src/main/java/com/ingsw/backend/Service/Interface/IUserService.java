@@ -12,7 +12,7 @@ public interface IUserService {
 
     void create(User user);
 
-    Boolean deleteByEmail(String email);
+    void delete(User user);
 
     List<User> getByRestaurantName(String name);
 

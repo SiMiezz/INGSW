@@ -98,26 +98,22 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
     }
 
     @Override
-    public void createUser(String email, String pwd, String name, String surname, User_Type job, String restaurant) {
-        User user = new User(email,pwd,name,surname,job,restaurant);
-
-        switch(job.toString()){
-            case "admin":
-                MembersAdminFragment membersAdminFragment = new MembersAdminFragment();
-                membersAdminFragment.createUser(user);
-                break;
-            case "supervisor":
-                MembersSupervisorsFragment membersSupervisorsFragment = new MembersSupervisorsFragment();
-                membersSupervisorsFragment.createUser(user);
-                break;
-            case "waiter":
-                MembersWaitersFragment membersWaitersFragment = new MembersWaitersFragment();
-                membersWaitersFragment.createUser(user);
-                break;
-            case "chef":
-                MembersChefsFragment membersChefsFragment = new MembersChefsFragment();
-                membersChefsFragment.createUser(user);
-                break;
+    public void createUser(String email, String pwd, String name, String surname, MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
+        if(membersAdminFragment != null){
+            User user = new User(email,pwd,name,surname,membersAdminFragment.getJob(),membersAdminFragment.getRestaurant().getName());
+            membersAdminFragment.createUser(user);
+        }
+        else if(membersSupervisorsFragment != null){
+            User user = new User(email,pwd,name,surname,membersSupervisorsFragment.getJob(),membersSupervisorsFragment.getRestaurant().getName());
+            membersSupervisorsFragment.createUser(user);
+        }
+        else if(membersWaitersFragment != null){
+            User user = new User(email,pwd,name,surname,membersWaitersFragment.getJob(),membersWaitersFragment.getRestaurant().getName());
+            membersWaitersFragment.createUser(user);
+        }
+        else{
+            User user = new User(email,pwd,name,surname,membersChefsFragment.getJob(),membersChefsFragment.getRestaurant().getName());
+            membersChefsFragment.createUser(user);
         }
     }
 

@@ -18,19 +18,48 @@ import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.HomeActivity;
+import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
+import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
+import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
+import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 
 public class UserCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
     private EditText editTextsurname;
     private EditText editTextemail;
-    private User_Type job;
-    private String nameRestaurant;
-
     private UserCreateDialogListener userCreateDialogListener;
 
-    public UserCreateDialog(User_Type job, String nameRestaurant) {
-        this.job = job;
-        this.nameRestaurant = nameRestaurant;
+    private MembersAdminFragment membersAdminFragment;
+    private MembersSupervisorsFragment membersSupervisorsFragment;
+    private MembersWaitersFragment membersWaitersFragment;
+    private MembersChefsFragment membersChefsFragment;
+
+    public UserCreateDialog(MembersAdminFragment membersAdminFragment) {
+        this.membersAdminFragment = membersAdminFragment;
+        membersChefsFragment = null;
+        membersSupervisorsFragment = null;
+        membersWaitersFragment = null;
+    }
+
+    public UserCreateDialog(MembersSupervisorsFragment membersSupervisorsFragment) {
+        this.membersSupervisorsFragment = membersSupervisorsFragment;
+        membersChefsFragment = null;
+        membersAdminFragment = null;
+        membersWaitersFragment = null;
+    }
+
+    public UserCreateDialog(MembersWaitersFragment membersWaitersFragment) {
+        this.membersWaitersFragment = membersWaitersFragment;
+        membersChefsFragment = null;
+        membersSupervisorsFragment = null;
+        membersAdminFragment = null;
+    }
+
+    public UserCreateDialog(MembersChefsFragment membersChefsFragment) {
+        this.membersChefsFragment = membersChefsFragment;
+        membersSupervisorsFragment = null;
+        membersWaitersFragment = null;
+        membersAdminFragment = null;
     }
 
     @NonNull
@@ -54,7 +83,7 @@ public class UserCreateDialog extends AppCompatDialogFragment {
                     String surname = editTextsurname.getText().toString();
                     String email = editTextemail.getText().toString();
 
-                    userCreateDialogListener.createUser(email, User.getDefaultPwd(),name,surname,job,nameRestaurant);
+                    userCreateDialogListener.createUser(email,User.getDefaultPwd(),name,surname,membersAdminFragment,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
                     dialog.dismiss();
                 }
             }
@@ -88,6 +117,6 @@ public class UserCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface UserCreateDialogListener {
-        void createUser(String email,String pwd,String name,String surname,User_Type job,String restaurant);
+        void createUser(String email,String pwd,String name,String surname,MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment);
     }
 }

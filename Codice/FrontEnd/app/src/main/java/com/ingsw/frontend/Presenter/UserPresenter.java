@@ -1,5 +1,6 @@
 package com.ingsw.frontend.Presenter;
 
+import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.UserService;
@@ -9,6 +10,8 @@ import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
 import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
+
+import java.util.ArrayList;
 
 public class UserPresenter {
 
@@ -110,10 +113,27 @@ public class UserPresenter {
         this.membersChefsFragment = membersChefsFragment;
     }
 
+    public void delete(User user) {
+        userService.delete(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                getByRestaurantNameAndUserType(user.getRestaurantName(),user.getJob());
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },user);
+    }
+
     public void create(User user){
         userService.create(new Callback() {
             @Override
-            public void returnResult(Object o) {}
+            public void returnResult(Object o) {
+                getByRestaurantNameAndUserType(user.getRestaurantName(),user.getJob());
+            }
 
             @Override
             public void returnError(Throwable e) {
@@ -170,5 +190,30 @@ public class UserPresenter {
                 System.out.println(e);
             }
         },email,pwd);
+    }
+
+    public void getByRestaurantNameAndUserType(String restaurantName, User_Type job){
+        userService.getByRestaurantNameAndJob(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                ArrayList<User> userArrayList = (ArrayList<User>) o;
+
+                if(job == User_Type.valueOf("admin"))
+                    membersAdminFragment.loadUser(userArrayList);
+                else if(job == User_Type.valueOf("supervisor"))
+                    membersSupervisorsFragment.loadUser(userArrayList);
+                else if(job == User_Type.valueOf("waiter"))
+                    membersWaitersFragment.loadUser(userArrayList);
+                else if(job == User_Type.valueOf("chef"))
+                    membersChefsFragment.loadUser(userArrayList);
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, restaurantName, job);
     }
 }

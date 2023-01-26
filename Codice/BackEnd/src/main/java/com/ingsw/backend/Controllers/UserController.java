@@ -47,13 +47,11 @@ public class UserController {
         userService.create(user);
     }
 
-    @DeleteMapping("/delete/{email}")
-    public void deleteByEmail(@PathVariable String email){
-        boolean delete = userService.deleteByEmail(email);
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody UserDTO userDTO){
+        User user = this.convertEntity(userDTO);
 
-        if(!delete){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        userService.delete(user);
     }
 
     @GetMapping("/get/restaurant/{name}")
