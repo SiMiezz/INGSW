@@ -46,9 +46,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
     @Override
     public void onBindViewHolder(@NonNull OrderAdapter.OrderHolder holder, int position) {
 
+        Order temp = orderArrayList.get(holder.getAdapterPosition());
+
         holder.checkBox.setChecked(false);
 
-        Order temp = orderArrayList.get(holder.getAdapterPosition());
+        holder.orderPrice.setText(String.valueOf(temp.getPrice()));
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +100,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         this.currentLayout = currentLayout;
     }
 
+    public void clearList(){
+        orderArrayList.clear();
+    }
+
+    public ArrayList<Order> getSelectedItemsArrayList() {
+        return selectedItemsArrayList;
+    }
+
+    public void setSelectedItemsArrayList(ArrayList<Order> selectedItemsArrayList) {
+        this.selectedItemsArrayList = selectedItemsArrayList;
+    }
 
     // ***************************************************************************************
     // ***************************************************************************************

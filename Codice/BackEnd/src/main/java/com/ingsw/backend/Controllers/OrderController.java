@@ -31,12 +31,12 @@ public class OrderController {
     @Autowired
     private ModelMapper modelMapper;
 
-//    @PostMapping("/create")
-//    public void create(@RequestBody OrderDTO orderDTO){
-//        Order order = this.convertEntity(orderDTO);
-//
-//        orderService.create(order);
-//    }
+    @PostMapping("/create")
+    public void create(@RequestBody OrderDTO orderDTO){
+        Order order = this.convertEntity(orderDTO);
+
+        orderService.create(order);
+    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Integer id){
@@ -47,25 +47,25 @@ public class OrderController {
         }
     }
 
-//    private Order convertEntity(OrderDTO orderDTO) {
-//        modelMapper.getConfiguration()
-//                .setMatchingStrategy(MatchingStrategies.LOOSE);
-//        Order order = new Order();
-//        order = modelMapper.map(orderDTO, Order.class);
-//
-//        //Mapping
-//        Integer id = orderDTO.getTableId();
-//        Optional<TableRestaurant> tableRestaurantOptional = this.tableRestaurantService.getById(name, id);
-//
-//        if(!tableRestaurantOptional.isEmpty()){
-//            order.setTable(tableRestaurantOptional.get());
-//        }
-//
-//        return order;
-//    }
+    private Order convertEntity(OrderDTO orderDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        Order order = new Order();
+        order = modelMapper.map(orderDTO, Order.class);
 
-    //@GetMapping("/get/{id}")
-    //public List<Order> getByTableRestaurantId(@PathVariable Integer id){
-        //return orderService.getByTablerestaurantId(id);
-    //}
+        //Mapping
+        Integer id = orderDTO.getTableId();
+        Optional<TableRestaurant> tableRestaurantOptional = this.tableRestaurantService.getById(id);
+
+        if(!tableRestaurantOptional.isEmpty()){
+            order.setTable(tableRestaurantOptional.get());
+        }
+
+        return order;
+    }
+
+    @GetMapping("/get/{id}")
+    public List<Order> getByTableRestaurantId(@PathVariable Integer id){
+        return orderService.getByTablerestaurantId(id);
+    }
 }

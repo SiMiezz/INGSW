@@ -3,6 +3,7 @@ package com.ingsw.backend.Service.Class;
 import com.ingsw.backend.Model.Order;
 import com.ingsw.backend.Repository.OrderRepository;
 import com.ingsw.backend.Service.Interface.IOrderService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 @Service("mainOrderService")
 public class OrderService implements IOrderService {
 
+    @Autowired
     private OrderRepository orderRepository;
 
     public OrderService(){}
@@ -32,8 +34,8 @@ public class OrderService implements IOrderService {
         return true;
     }
 
-    //@Override
-    //public List<Order> getByTablerestaurantId(Integer id){
-        //return orderRepository.findByTablerestaurantId(id);
-    //}
+    @Override
+    public List<Order> getByTablerestaurantId(Integer id){
+        return orderRepository.findByTableId(id);
+    }
 }

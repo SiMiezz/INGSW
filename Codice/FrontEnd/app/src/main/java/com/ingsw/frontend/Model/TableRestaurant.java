@@ -59,4 +59,6 @@ public class TableRestaurant implements Serializable {
     public void setRestaurantName(String restaurantName) {
         this.restaurantName = restaurantName;
     }
+
+
 }

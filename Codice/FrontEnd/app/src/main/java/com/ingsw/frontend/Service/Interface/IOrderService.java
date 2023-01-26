@@ -10,4 +10,5 @@ public interface IOrderService {
     void deleteById(Callback callback, Integer id);
 
     void getByTableRestaurantId(Callback callback, Integer id);
+
 }

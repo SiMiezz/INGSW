@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.Order;
+import com.ingsw.frontend.Model.TableRestaurant;
+import com.ingsw.frontend.Presenter.OrderPresenter;
 import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.HomeActivity;
@@ -32,7 +34,9 @@ public class TablesSelectedFragment extends Fragment {
 
     private ArrayList<Order> orderArrayList;
     private TextView numberOfSeats;
+
     private TableRestaurantPresenter tableRestaurantPresenter;
+    private OrderPresenter orderPresenter;
     private OrderAdapter orderAdapter;
 
     private ImageButton removeButton;
@@ -82,6 +86,7 @@ public class TablesSelectedFragment extends Fragment {
         orderAdapter = new OrderAdapter(getContext(), orderArrayList);
 
         tableRestaurantPresenter = new TableRestaurantPresenter(null, null, this);
+        orderPresenter = new OrderPresenter(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -144,7 +149,17 @@ public class TablesSelectedFragment extends Fragment {
         tableRestaurantPresenter.getById(id);
     }
 
-    public void setSeatsNumber(Integer result) {
-        numberOfSeats.setText(String.valueOf(result));
+    public void setSeatsNumber(TableRestaurant tableRestaurant) {
+        numberOfSeats.setText(String.valueOf(tableRestaurant.getSeats()));
+    }
+
+    public void getOrderRecyclerView(TableRestaurant tableRestaurant){
+        orderPresenter.getOrdersByTableId(tableRestaurant.getId());
+    }
+
+    public void loadOrders(ArrayList<Order> orderArrayList) {
+        orderAdapter.clearList();
+        orderAdapter.setOrderArrayList(orderArrayList);
+        orderAdapter.notifyDataSetChanged();
     }
 }

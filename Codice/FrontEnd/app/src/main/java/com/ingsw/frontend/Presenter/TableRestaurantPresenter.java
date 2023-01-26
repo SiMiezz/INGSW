@@ -73,8 +73,8 @@ public class TableRestaurantPresenter {
             @Override
             public void returnResult(Object o) {
                 TableRestaurant result = (TableRestaurant) o;
-                tablesSelectedFragment.setSeatsNumber(result.getSeats());
-                // DA IMPLEMENTARE LOAD ORDERS (SERVE UN ORDER PRESENTER)
+                tablesSelectedFragment.setSeatsNumber(result);
+                tablesSelectedFragment.getOrderRecyclerView(result);
             }
 
             @Override
