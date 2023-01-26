@@ -212,7 +212,7 @@ CREATE TABLE `order` (
   PRIMARY KEY (`id_order`),
   KEY `table_fk1_idx` (`table_id`),
   CONSTRAINT `table_fk1` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -221,6 +221,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,'2012-08-19 00:00:00',420.69,1),(2,'2012-09-28 00:00:00',3.42,1),(3,'2012-10-28 00:00:00',7.28,2),(4,'2012-11-28 00:00:00',9.86,3);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,7 +247,7 @@ CREATE TABLE `restaurant` (
 
 LOCK TABLES `restaurant` WRITE;
 /*!40000 ALTER TABLE `restaurant` DISABLE KEYS */;
-INSERT INTO `restaurant` VALUES ('rest','ristorante','italia',0),('risto','pizzeria','napoli',1);
+INSERT INTO `restaurant` VALUES ('rest','descrizione ristorante rest','italia',0),('risto','pizzeria','napoli',1);
 /*!40000 ALTER TABLE `restaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -316,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-23 13:26:04
+-- Dump completed on 2023-01-26 13:07:27
