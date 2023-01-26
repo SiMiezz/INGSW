@@ -11,8 +11,6 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<Order,Integer> {
 
-//    public List<Order> findByTablerestaurantId(Integer id);
-
     @Query(value = "SELECT * FROM ratatouille.order AS o " +
                    "WHERE o.table_id = :id", nativeQuery = true)
     List<Order> findByTableId(@PathVariable("id") Integer id);
