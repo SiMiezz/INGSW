@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -38,6 +40,9 @@ public class Order implements Serializable {
         this.price = price;
         this.date = date;
         this.tableId = tableId;
+
+
+        
     }
 
     //GETTERS AND SETTERS

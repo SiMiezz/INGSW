@@ -41,7 +41,6 @@ public class Order implements Serializable {
     private double price;
 
     @Column(name = "date", nullable = false)
-    @JsonFormat(pattern = "")
     private Date date;
 
 
@@ -56,6 +55,7 @@ public class Order implements Serializable {
         this.price = price;
         this.date = date;
         this.table = table;
+
     }
 
 
