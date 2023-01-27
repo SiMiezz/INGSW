@@ -11,7 +11,7 @@ public class OrderDTO {
     //ATTRIBUTES
     private Double price;
 
-    private String date;
+    private String datecreate;
 
     // -------------------------------------------------
 
@@ -19,11 +19,11 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(Integer id, Integer tableId, Double price, String date) {
+    public OrderDTO(Integer id, Integer tableId, Double price, String datecreate) {
         this.id = id;
         this.tableId = tableId;
         this.price = price;
-        this.date = date;
+        this.datecreate = datecreate;
     }
 
     // -------------------------------------------------
@@ -48,12 +48,12 @@ public class OrderDTO {
         this.price = price;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatecreate() {
+        return datecreate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDatecreate(String datecreate) {
+        this.datecreate = datecreate;
     }
 
     public void setId(Integer id) {

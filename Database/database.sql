@@ -208,7 +208,7 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `id_order` int NOT NULL AUTO_INCREMENT,
-  `date` datetime NOT NULL,
+  `datecreate` date NOT NULL,
   `price` double NOT NULL,
   `table_id` int NOT NULL,
   PRIMARY KEY (`id_order`),
@@ -223,7 +223,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (5,'2023-01-20 20:10:12',23,1);
+INSERT INTO `order` VALUES (5,'2023-01-20',23,1);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,4 +327,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-27 19:08:21
+-- Dump completed on 2023-01-27 22:05:46
