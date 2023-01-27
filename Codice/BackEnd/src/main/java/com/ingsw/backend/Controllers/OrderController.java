@@ -9,10 +9,12 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,13 +40,38 @@ public class OrderController {
         orderService.create(order);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public void deleteById(@PathVariable Integer id){
-        boolean delete = orderService.deleteById(id);
+    @GetMapping("/get/table/{id}")
+    public List<OrderDTO> getByTableRestaurantId(@PathVariable Integer id){
+        List<Order> orderList = orderService.getByTablerestaurantId(id);
 
-        if(!delete){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        List<OrderDTO> orderDTOS = new ArrayList<>();
+        for (Order order: orderList) {
+            orderDTOS.add(convertDTO(order));
         }
+
+        return orderDTOS;
+    }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody OrderDTO orderDTO){
+        Order order = this.convertEntity(orderDTO);
+
+        orderService.delete(order);
+    }
+
+    private OrderDTO convertDTO(Order order) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        OrderDTO orderDTO = new OrderDTO();
+        orderDTO = modelMapper.map(order, OrderDTO.class);
+
+        Integer table_id = order.getTable().getId();
+        orderDTO.setTableId(table_id);
+
+        String date = String.valueOf(order.getDate());
+        orderDTO.setDate(date);
+
+        return orderDTO;
     }
 
     private Order convertEntity(OrderDTO orderDTO) {
@@ -57,22 +84,20 @@ public class OrderController {
         Integer id = orderDTO.getTableId();
         Optional<TableRestaurant> tableRestaurantOptional = this.tableRestaurantService.getById(id);
 
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String datestr = orderDTO.getDate();
+        try{
+            Date date = formatter.parse(datestr);
+            order.setDate(date);
+        }
+        catch(ParseException e){
+            System.out.println(e);
+        }
+
         if(!tableRestaurantOptional.isEmpty()){
             order.setTable(tableRestaurantOptional.get());
         }
 
         return order;
-    }
-
-    @GetMapping("/get/{id}")
-    public List<Order> getByTableRestaurantId(@PathVariable Integer id){
-        return orderService.getByTablerestaurantId(id);
-    }
-
-    @DeleteMapping("/delete")
-    public void delete(@RequestBody OrderDTO orderDTO){
-        Order order = this.convertEntity(orderDTO);
-
-        orderService.delete(order);
     }
 }
