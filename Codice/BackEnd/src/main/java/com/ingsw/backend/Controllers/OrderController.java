@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,9 +69,9 @@ public class OrderController {
         Integer table_id = order.getTable().getId();
         orderDTO.setTableId(table_id);
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String strdate = dateFormat.format(order.getDate());
-        orderDTO.setDate(strdate);
+        Date date = order.getDatecreate();
+        String strdate = date.toString();
+        orderDTO.setDatecreate(strdate);
 
         return orderDTO;
     }
@@ -86,15 +86,11 @@ public class OrderController {
         Integer id = orderDTO.getTableId();
         Optional<TableRestaurant> tableRestaurantOptional = this.tableRestaurantService.getById(id);
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String datestr = orderDTO.getDate();
-        try{
-            Date date = formatter.parse(datestr);
-            order.setDate(date);
-        }
-        catch(ParseException e){
-            System.out.println(e);
-        }
+        String datestr = orderDTO.getDatecreate();
+        Date date = Date.valueOf(datestr);
+        order.setDatecreate(date);
+
+        System.out.println("PROVA DATA:" + date);
 
         if(!tableRestaurantOptional.isEmpty()){
             order.setTable(tableRestaurantOptional.get());

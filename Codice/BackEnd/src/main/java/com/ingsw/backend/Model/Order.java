@@ -1,8 +1,8 @@
 package com.ingsw.backend.Model;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.*;
@@ -40,8 +40,8 @@ public class Order implements Serializable {
     @Column(name = "price", nullable = false)
     private double price;
 
-    @Column(name = "date", nullable = false)
-    private Date date;
+    @Column(name = "datecreate", nullable = false)
+    private Date datecreate;
 
 
     // -------------------------------------------------
@@ -50,14 +50,12 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(int id, double price, Date date, TableRestaurant table) {
+    public Order(Integer id, TableRestaurant table, double price, Date datecreate) {
         this.id = id;
-        this.price = price;
-        this.date = date;
         this.table = table;
-
+        this.price = price;
+        this.datecreate = datecreate;
     }
-
 
     // -------------------------------------------------
 
@@ -81,12 +79,12 @@ public class Order implements Serializable {
         this.price = price;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getDatecreate() {
+        return datecreate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDatecreate(Date datecreate) {
+        this.datecreate = datecreate;
     }
 
     public TableRestaurant getTable() {

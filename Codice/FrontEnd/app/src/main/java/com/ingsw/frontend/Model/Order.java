@@ -18,8 +18,8 @@ public class Order implements Serializable {
     private double price;
 
     @Expose
-    @SerializedName("date")
-    private String date;
+    @SerializedName("datecreate")
+    private String datecreate;
 
     //REFERENCES
     @Expose
@@ -30,10 +30,10 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Integer id, double price, String date, Integer tableId) {
+    public Order(Integer id, double price, String datecreate, Integer tableId) {
         this.id = id;
         this.price = price;
-        this.date = date;
+        this.datecreate = datecreate;
         this.tableId = tableId;
     }
 
@@ -55,12 +55,12 @@ public class Order implements Serializable {
         this.price = price;
     }
 
-    public String getDate() {
-        return date;
+    public String getDatecreate() {
+        return datecreate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDatecreate(String datecreate) {
+        this.datecreate = datecreate;
     }
 
     public Integer getTableId() {

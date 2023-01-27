@@ -72,7 +72,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         else
             holder.checkBox.setChecked(false);
 
-        System.out.println(orderArrayList.get(holder.getAdapterPosition()).getDate());
+        System.out.println(orderArrayList.get(holder.getAdapterPosition()).getDatecreate());
 
 
     }
