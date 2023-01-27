@@ -1,7 +1,5 @@
 package com.ingsw.backend.Model.DTO;
 
-import java.util.Date;
-
 public class OrderDTO {
 
     //PRIMARY KEY
@@ -13,7 +11,7 @@ public class OrderDTO {
     //ATTRIBUTES
     private Double price;
 
-    private Date date;
+    private String date;
 
     // -------------------------------------------------
 
@@ -21,7 +19,7 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(Integer id, Integer tableId, Double price, Date date) {
+    public OrderDTO(Integer id, Integer tableId, Double price, String date) {
         this.id = id;
         this.tableId = tableId;
         this.price = price;
@@ -50,11 +48,11 @@ public class OrderDTO {
         this.price = price;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
