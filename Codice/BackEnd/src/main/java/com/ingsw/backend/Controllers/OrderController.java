@@ -68,4 +68,11 @@ public class OrderController {
     public List<Order> getByTableRestaurantId(@PathVariable Integer id){
         return orderService.getByTablerestaurantId(id);
     }
+
+    @DeleteMapping("/delete")
+    public void delete(@RequestBody OrderDTO orderDTO){
+        Order order = this.convertEntity(orderDTO);
+
+        orderService.delete(order);
+    }
 }

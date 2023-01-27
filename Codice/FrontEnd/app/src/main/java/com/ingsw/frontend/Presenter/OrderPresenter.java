@@ -5,6 +5,7 @@ import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.OrderService;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
+
 import java.util.ArrayList;
 
 public class OrderPresenter {
@@ -33,4 +34,18 @@ public class OrderPresenter {
     }
 
 
+    public void delete(Order order) {
+        orderService.delete(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, order);
+    }
 }

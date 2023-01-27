@@ -38,4 +38,9 @@ public class OrderService implements IOrderService {
     public List<Order> getByTablerestaurantId(Integer id){
         return orderRepository.findByTableId(id);
     }
+
+    @Override
+    public void delete(Order order) {
+        orderRepository.delete(order);
+    }
 }

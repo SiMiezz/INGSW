@@ -139,6 +139,21 @@ public class TablesSelectedFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                ArrayList temp = orderAdapter.getSelectedItemsArrayList();
+                System.out.println(temp.size());
+
+                removeSelectedItems();
+
+                if(orderAdapter.getCurrentLayout() == -2){
+                    orderAdapter.setCurrentLayout(-1);
+                    orderAdapter.notifyDataSetChanged();
+                }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -161,5 +176,13 @@ public class TablesSelectedFragment extends Fragment {
         orderAdapter.clearList();
         orderAdapter.setOrderArrayList(orderArrayList);
         orderAdapter.notifyDataSetChanged();
+    }
+
+    public void removeSelectedItems(){
+        ArrayList<Order> orders = orderAdapter.getSelectedItemsArrayList();
+
+        for(Order order : orders){
+            orderPresenter.delete(order);
+        }
     }
 }

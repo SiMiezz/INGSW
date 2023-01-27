@@ -41,6 +41,7 @@ public class Order implements Serializable {
     private double price;
 
     @Column(name = "date", nullable = false)
+    @JsonFormat(pattern = "")
     private Date date;
 
 

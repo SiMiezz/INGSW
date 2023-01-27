@@ -9,6 +9,7 @@ import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -22,5 +23,8 @@ public interface OrderApi {
 
     @GET("/order/get/{id}")
     Single<List<Order>> getByTableRestaurantId(@Path("id") Integer id);
+
+    @HTTP(method = "DELETE", path = "/order/delete", hasBody = true)
+    Completable delete(@Body Order order);
 
 }

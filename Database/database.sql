@@ -206,7 +206,7 @@ DROP TABLE IF EXISTS `order`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `order` (
   `id_order` int NOT NULL AUTO_INCREMENT,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
   `price` double NOT NULL,
   `table_id` int NOT NULL,
   PRIMARY KEY (`id_order`),

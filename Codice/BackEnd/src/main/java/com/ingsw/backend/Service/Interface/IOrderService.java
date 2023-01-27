@@ -11,4 +11,7 @@ public interface IOrderService {
     Boolean deleteById(Integer id);
 
     public List<Order> getByTablerestaurantId(Integer id);
+
+    void delete(Order order);
+
 }
