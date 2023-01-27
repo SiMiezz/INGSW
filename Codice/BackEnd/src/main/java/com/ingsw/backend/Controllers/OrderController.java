@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -68,8 +69,9 @@ public class OrderController {
         Integer table_id = order.getTable().getId();
         orderDTO.setTableId(table_id);
 
-        String date = String.valueOf(order.getDate());
-        orderDTO.setDate(date);
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String strdate = dateFormat.format(order.getDate());
+        orderDTO.setDate(strdate);
 
         return orderDTO;
     }
