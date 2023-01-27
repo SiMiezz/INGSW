@@ -48,4 +48,19 @@ public class OrderPresenter {
             }
         }, order);
     }
+
+    public void create(Order order) {
+        orderService.create(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, order);
+    }
 }

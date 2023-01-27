@@ -21,7 +21,7 @@ public interface OrderApi {
     @DELETE("order/delete/{id}")
     Completable deleteById(@Path("id") Integer id);
 
-    @GET("/order/get/{id}")
+    @GET("/order/get/table/{id}")
     Single<List<Order>> getByTableRestaurantId(@Path("id") Integer id);
 
     @HTTP(method = "DELETE", path = "/order/delete", hasBody = true)

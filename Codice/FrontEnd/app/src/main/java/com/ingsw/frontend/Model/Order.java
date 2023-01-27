@@ -4,11 +4,6 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class Order implements Serializable {
 
@@ -24,7 +19,7 @@ public class Order implements Serializable {
 
     @Expose
     @SerializedName("date")
-    private Date date;
+    private String date;
 
     //REFERENCES
     @Expose
@@ -35,14 +30,11 @@ public class Order implements Serializable {
     public Order() {
     }
 
-    public Order(Integer id, double price, Date date, Integer tableId) {
+    public Order(Integer id, double price, String date, Integer tableId) {
         this.id = id;
         this.price = price;
         this.date = date;
         this.tableId = tableId;
-
-
-        
     }
 
     //GETTERS AND SETTERS
@@ -63,11 +55,11 @@ public class Order implements Serializable {
         this.price = price;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
