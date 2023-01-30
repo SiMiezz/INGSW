@@ -121,6 +121,7 @@ public class MenuCategoriesFragment extends Fragment {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(CategoryAdapter.currentLayout == -1){
                     CategoryAdapter.currentLayout = -2;
                     if(menuCategoriesFoodFragment.getAdapter() != null)

@@ -123,7 +123,13 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         sortDrinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(CategoryAdapter.currentLayout == -1 || CategoryAdapter.currentLayout == -2){
+                    CategoryAdapter.currentLayout = -3;
+                    adapter.notifyDataSetChanged();
+                } else if(CategoryAdapter.currentLayout == -3){
+                    CategoryAdapter.currentLayout = -1;
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
     }

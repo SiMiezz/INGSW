@@ -117,12 +117,19 @@ public class MenuCategoriesFoodFragment extends Fragment {
         menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("food"));
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(foodView);
 
         sortFoodButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                if(CategoryAdapter.currentLayout == -1 || CategoryAdapter.currentLayout == -2){
+                    CategoryAdapter.currentLayout = -3;
+                    adapter.notifyDataSetChanged();
+                    itemTouchHelper.attachToRecyclerView(foodView);
+                } else if(CategoryAdapter.currentLayout == -3){
+                    CategoryAdapter.currentLayout = -1;
+                    adapter.notifyDataSetChanged();
+                    itemTouchHelper.attachToRecyclerView(null);
+                }
             }
         });
 
