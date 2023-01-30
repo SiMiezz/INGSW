@@ -3,7 +3,10 @@ package com.ingsw.frontend.View.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Model.Menu;
@@ -23,6 +27,7 @@ import com.ingsw.frontend.View.Adapter.CategoryAdapter;
 import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MenuCategoriesFoodFragment extends Fragment {
 
@@ -41,6 +46,8 @@ public class MenuCategoriesFoodFragment extends Fragment {
     private Intent intent;
     private Menu menu;
     private final Aliment_Type aliment_type = Aliment_Type.food;
+
+    private FloatingActionButton sortFoodButton;
 
     public Menu getMenu() {
         return menu;
@@ -86,7 +93,15 @@ public class MenuCategoriesFoodFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.fragment_menu_categories_food, container, false);
 
-        foodView = rootView.findViewById(R.id.category_food_listview);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        foodView = getView().findViewById(R.id.category_food_listview);
+        sortFoodButton = getView().findViewById(R.id.sort_category_food_button);
 
         adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
 
@@ -101,8 +116,37 @@ public class MenuCategoriesFoodFragment extends Fragment {
 
         menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("food"));
 
-        return rootView;
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(foodView);
+
+        sortFoodButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+
+            Collections.swap(adapter.getArrayList(), fromPosition, toPosition);
+
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+    };
 
 
     public void loadCategory(ArrayList<Category> categoryList){

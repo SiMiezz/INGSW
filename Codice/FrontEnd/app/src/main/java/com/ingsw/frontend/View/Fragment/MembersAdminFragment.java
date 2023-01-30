@@ -96,7 +96,7 @@ public class MembersAdminFragment extends Fragment {
 
         userPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("admin"));
 
-        
+
         return rootView;
     }
 

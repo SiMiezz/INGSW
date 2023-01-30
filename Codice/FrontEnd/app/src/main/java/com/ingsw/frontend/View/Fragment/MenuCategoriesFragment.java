@@ -2,6 +2,9 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -85,15 +88,23 @@ public class MenuCategoriesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_menu_categories, container, false);
 
+
+
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
         /////////////////////////////////////////////
 
 
         arrayList = new ArrayList<>();
-        removeButton = rootView.findViewById(R.id.remove_category_button);
-        addButton = rootView.findViewById(R.id.add_category_button);
-        backButton = rootView.findViewById(R.id.back_category_button);
-        confirmButton = rootView.findViewById(R.id.confirm_category_button);
-        tabLayout = rootView.findViewById(R.id.tab_category);
+        removeButton = getView().findViewById(R.id.remove_category_button);
+        addButton = getView().findViewById(R.id.add_category_button);
+        backButton = getView().findViewById(R.id.back_category_button);
+        confirmButton = getView().findViewById(R.id.confirm_category_button);
+        tabLayout = getView().findViewById(R.id.tab_category);
 
 //        drinkView = rootView.findViewById(R.id.category_drink_listview);
 
@@ -209,13 +220,10 @@ public class MenuCategoriesFragment extends Fragment {
             }
         });
 
-
-
         /////////////////////////////////////////////
-
-
-        return rootView;
     }
+
+
 
     public MenuCategoriesFoodFragment getMenuCategoriesFoodFragment() {
         return menuCategoriesFoodFragment;

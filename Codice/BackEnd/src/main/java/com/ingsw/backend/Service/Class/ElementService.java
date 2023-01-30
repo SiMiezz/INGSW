@@ -30,6 +30,6 @@ public class ElementService implements IElementService {
 
     @Override
     public List<Element> getByCategoryId(Integer id){
-        return elementRepository.findByCategoryId(id);
+        return elementRepository.findByCategoryIdOrderByName(id);
     }
 }

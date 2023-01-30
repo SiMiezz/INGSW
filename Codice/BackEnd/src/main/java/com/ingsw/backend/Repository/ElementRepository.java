@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface ElementRepository extends CrudRepository<Element,Integer> {
 
-    List<Element> findByCategoryId(Integer id);
+    List<Element> findByCategoryIdOrderByName(Integer id);
 }

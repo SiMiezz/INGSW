@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuElementsPresenter;
@@ -26,6 +28,7 @@ import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MenuElementsFragment extends Fragment {
 
@@ -45,7 +48,7 @@ public class MenuElementsFragment extends Fragment {
     private ImageButton backButton;
     private ImageButton confirmButton;
 
-    private RecyclerView myView;
+    private RecyclerView recyclerView;
     private ElementAdapter adapter;
     private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
@@ -105,14 +108,14 @@ public class MenuElementsFragment extends Fragment {
         addButton = getView().findViewById(R.id.add_element_button);
         backButton = getView().findViewById(R.id.back_element_button);
         confirmButton = getView().findViewById(R.id.confirm_element_button);
-        myView = getView().findViewById(R.id.elements_listview);
+        recyclerView = getView().findViewById(R.id.elements_listview);
 
         adapter = new ElementAdapter(getContext(),arrayList);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        myView.setLayoutManager(linearLayoutManager);
-        myView.setAdapter(adapter);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
 
         intent = getActivity().getIntent();
         restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
@@ -176,7 +179,14 @@ public class MenuElementsFragment extends Fragment {
                 addButton.setVisibility(View.VISIBLE);
             }
         });
+
+
+
+
+
     }
+
+
 
     public ElementAdapter getAdapter(){
         return adapter;

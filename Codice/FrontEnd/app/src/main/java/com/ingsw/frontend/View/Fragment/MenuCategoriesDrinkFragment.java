@@ -3,7 +3,10 @@ package com.ingsw.frontend.View.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
@@ -22,6 +26,7 @@ import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MenuCategoriesDrinkFragment extends Fragment {
 
@@ -41,6 +46,8 @@ public class MenuCategoriesDrinkFragment extends Fragment {
     private Intent intent;
     private Menu menu;
     private final Aliment_Type aliment_type = Aliment_Type.drink;
+
+    private FloatingActionButton sortDrinkButton;
 
     public Menu getMenu() {
         return menu;
@@ -87,7 +94,15 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_menu_categories_drink, container, false);
 
-        drinkView = rootView.findViewById(R.id.category_drink_listview);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState){
+        super.onViewCreated(view, savedInstanceState);
+
+        drinkView = getView().findViewById(R.id.category_drink_listview);
+        sortDrinkButton = getView().findViewById(R.id.sort_category_drink_button);
 
         adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
 
@@ -102,8 +117,36 @@ public class MenuCategoriesDrinkFragment extends Fragment {
 
         menuCategoriesPresenter.getByMenuIdAndAliment(menu.getId(), Aliment_Type.valueOf("drink"));
 
-        return rootView;
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(drinkView);
+
+        sortDrinkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP | ItemTouchHelper.DOWN | ItemTouchHelper.START | ItemTouchHelper.END, 0) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+
+            int fromPosition = viewHolder.getAdapterPosition();
+            int toPosition = target.getAdapterPosition();
+
+            Collections.swap(adapter.getArrayList(), fromPosition, toPosition);
+
+            recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
+
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+        }
+    };
 
     public void loadCategory(ArrayList<Category> categoryList){
         adapter.clearList();
