@@ -61,7 +61,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
                 if(temp.getChecked() == true){
                     selectedItemsArrayList.add(temp);
                 }
-                else if(temp.getChecked() == false && !(orderArrayList.contains(temp))){
+                else if(temp.getChecked() == false){
                     selectedItemsArrayList.remove(temp);
                 }
             }
