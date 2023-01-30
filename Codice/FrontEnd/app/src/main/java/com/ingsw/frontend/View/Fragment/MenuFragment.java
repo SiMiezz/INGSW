@@ -29,10 +29,6 @@ public class MenuFragment extends Fragment {
     private MenuElementsFragment menuElementsFragment = new MenuElementsFragment();
     private MenuCategoriesFragment menuCategoriesFragment = new MenuCategoriesFragment(menuElementsFragment);
 
-
-    private Intent intent;
-    private Restaurant restaurant;
-
     public MenuFragment() {
         // Required empty public constructor
     }

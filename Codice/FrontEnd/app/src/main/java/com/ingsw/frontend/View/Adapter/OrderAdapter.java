@@ -50,7 +50,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         holder.checkBox.setChecked(false);
 
-        holder.orderElement.setText(String.valueOf(temp.getId())+" (prova per vedere se l'id è corretto)");
+        holder.orderElement.setText(String.valueOf(temp.getId()));
         holder.orderPrice.setText(String.valueOf(temp.getPrice()));
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
@@ -71,10 +71,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);
-
-        System.out.println(orderArrayList.get(holder.getAdapterPosition()).getDatecreate());
-
-
     }
 
     @Override

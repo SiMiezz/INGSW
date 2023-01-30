@@ -29,7 +29,8 @@
         android:hint="Name" />
 
     <TextView
-        android:text="Enter price*"
+        android:id="@+id/view_translatename"
+        android:text="translate name"
         android:textSize="15sp"
         android:textColor="@color/black"
         android:layout_width="wrap_content"
@@ -37,12 +38,12 @@
         android:paddingLeft="5sp"/>
 
     <EditText
-        android:id="@+id/edit_element_price"
+        android:id="@+id/edit_element_translatename"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:hint="Price" />
+        android:hint="Name" />
 
     <TextView
         android:text="Enter description"
@@ -59,6 +60,41 @@
         android:textSize="20sp"
         android:textColor="@color/black"
         android:hint="Description" />
+
+    <TextView
+        android:id="@+id/view_translatedescription"
+        android:text="translate description"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5sp"/>
+
+    <EditText
+        android:id="@+id/edit_element_translatedescription"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:hint="Description" />
+
+    <TextView
+        android:text="Enter price*"
+        android:textSize="15sp"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5sp"/>
+
+    <EditText
+        android:id="@+id/edit_element_price"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:hint="Price" />
+
+
 
     <CheckBox
         android:id="@+id/checkbox_prepackaged"

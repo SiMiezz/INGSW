@@ -28,7 +28,7 @@ public class OrderPresenter {
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
         }, tableId);
     }
@@ -39,12 +39,12 @@ public class OrderPresenter {
 
             @Override
             public void returnResult(Object o) {
-
+                getOrdersByTableId(order.getTableId());
             }
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
         }, order);
     }
@@ -54,12 +54,12 @@ public class OrderPresenter {
 
             @Override
             public void returnResult(Object o) {
-
+                getOrdersByTableId(order.getTableId());
             }
 
             @Override
             public void returnError(Throwable e) {
-
+                System.out.println(e);
             }
         }, order);
     }

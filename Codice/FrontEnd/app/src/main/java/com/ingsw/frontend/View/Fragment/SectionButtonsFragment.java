@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -69,42 +71,47 @@ public class SectionButtonsFragment extends Fragment {
         // Inflate the layout for this fragment
        View rootView = inflater.inflate(R.layout.fragment_section_buttons, container, false);
 
-       restaurantButton = (Button) rootView.findViewById(R.id.restaurantButton);
-       menuButton = (Button) rootView.findViewById(R.id.menuButton);
-       tablesButton = (Button) rootView.findViewById(R.id.tablesButton);
-       membersButton = (Button) rootView.findViewById(R.id.membersButton);
-       kitchenButton = (Button) rootView.findViewById(R.id.kitchenButton);
-
-       restaurantButton.setOnClickListener(restaurantButtonListener());
-       menuButton.setOnClickListener(menuButtonListener());
-       tablesButton.setOnClickListener(tablesButtonListener());
-       membersButton.setOnClickListener(membersButtonListener());
-       kitchenButton.setOnClickListener(kitchenButtonListener());
-
-       intent = getActivity().getIntent();
-       user = (User) intent.getSerializableExtra("user");
-
-       if((!user.getPwd().equals(User.getDefaultPwd()))){
-           switch(user.getJob().toString()){
-               case "admin":
-                   restaurantButton = setButton(restaurantButton);
-                   break;
-               case "supervisor":
-                   menuButton = setButton(menuButton);
-                   break;
-               case "waiter":
-                   tablesButton = setButton(tablesButton);
-                   break;
-               case "chef":
-                   kitchenButton = setButton(kitchenButton);
-                   break;
-           }
-       }
-       else{
-           openDialog();
-       }
-
        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        restaurantButton = (Button) getView().findViewById(R.id.restaurantButton);
+        menuButton = (Button) getView().findViewById(R.id.menuButton);
+        tablesButton = (Button) getView().findViewById(R.id.tablesButton);
+        membersButton = (Button) getView().findViewById(R.id.membersButton);
+        kitchenButton = (Button) getView().findViewById(R.id.kitchenButton);
+
+        restaurantButton.setOnClickListener(restaurantButtonListener());
+        menuButton.setOnClickListener(menuButtonListener());
+        tablesButton.setOnClickListener(tablesButtonListener());
+        membersButton.setOnClickListener(membersButtonListener());
+        kitchenButton.setOnClickListener(kitchenButtonListener());
+
+        intent = getActivity().getIntent();
+        user = (User) intent.getSerializableExtra("user");
+
+        if((!user.getPwd().equals(User.getDefaultPwd()))){
+            switch(user.getJob().toString()){
+                case "admin":
+                    restaurantButton = setButton(restaurantButton);
+                    break;
+                case "supervisor":
+                    menuButton = setButton(menuButton);
+                    break;
+                case "waiter":
+                    tablesButton = setButton(tablesButton);
+                    break;
+                case "chef":
+                    kitchenButton = setButton(kitchenButton);
+                    break;
+            }
+        }
+        else{
+            openDialog();
+        }
     }
 
     public void openDialog(){

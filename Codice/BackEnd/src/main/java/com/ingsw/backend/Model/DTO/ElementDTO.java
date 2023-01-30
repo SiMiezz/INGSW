@@ -11,7 +11,11 @@ public class ElementDTO {
     //ATTRIBUTES
     private String name;
 
+    private String translateName;
+
     private String description;
+
+    private String translateDescription;
 
     private Double price;
 
@@ -24,11 +28,13 @@ public class ElementDTO {
     public ElementDTO() {
     }
 
-    public ElementDTO(Integer id, Integer categoryId, String name, String description, Double price, Boolean prePackaged) {
+    public ElementDTO(Integer id, Integer categoryId, String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged) {
         this.id = id;
         this.categoryId = categoryId;
         this.name = name;
+        this.translateName = translateName;
         this.description = description;
+        this.translateDescription = translateDescription;
         this.price = price;
         this.prePackaged = prePackaged;
     }
@@ -78,15 +84,31 @@ public class ElementDTO {
         this.prePackaged = prePackaged;
     }
 
+    public Boolean getPrePackaged() {
+        return prePackaged;
+    }
+
+    public String getTranslateName() {
+        return translateName;
+    }
+
+    public void setTranslateName(String translateName) {
+        this.translateName = translateName;
+    }
+
+    public String getTranslateDescription() {
+        return translateDescription;
+    }
+
+    public void setTranslateDescription(String translateDescription) {
+        this.translateDescription = translateDescription;
+    }
+
     public Integer getCategoryId() {
         return categoryId;
     }
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
-    }
-
-    public Boolean getPrePackaged() {
-        return prePackaged;
     }
 }

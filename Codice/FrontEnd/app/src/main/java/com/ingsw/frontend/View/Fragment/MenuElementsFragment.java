@@ -1,5 +1,6 @@
 package com.ingsw.frontend.View.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.CategoryAdapter;
@@ -46,7 +49,17 @@ public class MenuElementsFragment extends Fragment {
     private ElementAdapter adapter;
     private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
+    private Intent intent;
     private Integer categoryId;
+    private Restaurant restaurant;
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
 
     public Integer getCategoryId() {
         return categoryId;
@@ -101,6 +114,8 @@ public class MenuElementsFragment extends Fragment {
         myView.setLayoutManager(linearLayoutManager);
         myView.setAdapter(adapter);
 
+        intent = getActivity().getIntent();
+        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override

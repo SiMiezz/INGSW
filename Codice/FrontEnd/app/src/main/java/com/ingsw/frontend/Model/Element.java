@@ -21,8 +21,16 @@ public class Element implements Serializable {
     private String name;
 
     @Expose
+    @SerializedName("translateName")
+    private String translateName;
+
+    @Expose
     @SerializedName("description")
     private String description;
+
+    @Expose
+    @SerializedName("translateDescription")
+    private String translateDescription;
 
     @Expose
     @SerializedName("price")
@@ -41,10 +49,11 @@ public class Element implements Serializable {
     public Element() {
     }
 
-    public Element(String name, String description, Double price, Boolean prePackaged, Integer categoryId) {
-        super();
+    public Element(String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged, Integer categoryId) {
         this.name = name;
+        this.translateName = translateName;
         this.description = description;
+        this.translateDescription = translateDescription;
         this.price = price;
         this.prePackaged = prePackaged;
         this.categoryId = categoryId;
@@ -90,6 +99,26 @@ public class Element implements Serializable {
 
     public void setPrePackaged(Boolean prePackaged) {
         this.prePackaged = prePackaged;
+    }
+
+    public Boolean getPrePackaged() {
+        return prePackaged;
+    }
+
+    public String getTranslateName() {
+        return translateName;
+    }
+
+    public void setTranslateName(String translateName) {
+        this.translateName = translateName;
+    }
+
+    public String getTranslateDescription() {
+        return translateDescription;
+    }
+
+    public void setTranslateDescription(String translateDescription) {
+        this.translateDescription = translateDescription;
     }
 
     public Integer getCategoryId() {

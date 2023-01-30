@@ -41,8 +41,14 @@ public class Element implements Serializable {
     @Column(name = "name", length = 50, nullable = false)
     private String name;
 
+    @Column(name = "translatename", length = 50)
+    private String translateName;
+
     @Column(name = "description")
     private String description;
+
+    @Column(name = "translatedescription")
+    private String translateDescription;
 
     @Column(name = "price", nullable = false)
     private Double price;
@@ -56,15 +62,16 @@ public class Element implements Serializable {
     public Element() {
     }
 
-    public Element(Integer id, String name, String description, Double price, Boolean prePackaged, Category category) {
+    public Element(Integer id, Category category, String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged) {
         this.id = id;
+        this.category = category;
         this.name = name;
+        this.translateName = translateName;
         this.description = description;
+        this.translateDescription = translateDescription;
         this.price = price;
         this.prePackaged = prePackaged;
-        this.category = category;
     }
-
 
     // -------------------------------------------------
 
@@ -109,6 +116,26 @@ public class Element implements Serializable {
 
     public void setPrePackaged(Boolean prePackaged) {
         this.prePackaged = prePackaged;
+    }
+
+    public Boolean getPrePackaged() {
+        return prePackaged;
+    }
+
+    public String getTranslateName() {
+        return translateName;
+    }
+
+    public void setTranslateName(String translateName) {
+        this.translateName = translateName;
+    }
+
+    public String getTranslateDescription() {
+        return translateDescription;
+    }
+
+    public void setTranslateDescription(String translateDescription) {
+        this.translateDescription = translateDescription;
     }
 
     public Category getCategory() {

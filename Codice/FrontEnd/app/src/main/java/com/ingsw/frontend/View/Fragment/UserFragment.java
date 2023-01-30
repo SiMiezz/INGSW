@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.view.menu.MenuPopupHelper;
 import androidx.fragment.app.Fragment;
@@ -74,9 +76,16 @@ public class UserFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_user, container, false);
 
-        arrowButton = (Button) rootView.findViewById(R.id.arrowButton);
-        userView = (TextView) rootView.findViewById(R.id.TextUser);
-        imageView = (ImageView) rootView.findViewById(R.id.ImageUser);
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        arrowButton = (Button) getView().findViewById(R.id.arrowButton);
+        userView = (TextView) getView().findViewById(R.id.TextUser);
+        imageView = (ImageView) getView().findViewById(R.id.ImageUser);
 
         intent = getActivity().getIntent();
 
@@ -85,11 +94,7 @@ public class UserFragment extends Fragment {
         loadUser(user);
 
         arrowButton.setOnClickListener(arrowButtonOListener());
-
-
-        return rootView;
     }
-
 
     public View.OnClickListener arrowButtonOListener(){
 
@@ -97,7 +102,7 @@ public class UserFragment extends Fragment {
             @SuppressLint("RestrictedApi")
             @Override
             public void onClick(View view) {
-                
+
                 @SuppressLint("RestrictedApi") MenuBuilder menuBuilder =new MenuBuilder(getContext());
                 MenuInflater inflater = new MenuInflater(getContext());
                 inflater.inflate(R.menu.user_menu, menuBuilder);

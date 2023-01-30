@@ -35,19 +35,6 @@
   </FrameLayout>
 
   <FrameLayout
-      android:id="@+id/section_container"
-      android:layout_width="0dp"
-      android:layout_height="721dp"
-      app:layout_constraintBottom_toBottomOf="parent"
-      app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.0"
-      app:layout_constraintStart_toEndOf="@+id/sectionbutton_container"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="1.0">
-
-  </FrameLayout>
-
-  <FrameLayout
       android:id="@+id/logo_container"
       android:layout_width="187dp"
       android:layout_height="50dp"
@@ -61,16 +48,28 @@
   </FrameLayout>
 
   <FrameLayout
+      android:id="@+id/section_container"
+      android:layout_width="0dp"
+      android:layout_height="721dp"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toEndOf="@+id/sectionbutton_container"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintVertical_bias="1.0">
+
+  </FrameLayout>
+
+  <FrameLayout
       android:id="@+id/user_container"
       android:layout_width="250dp"
       android:layout_height="50dp"
-      android:layout_marginBottom="12dp"
-      app:layout_constraintBottom_toTopOf="@+id/section_container"
+      app:layout_constraintBottom_toBottomOf="@+id/logo_container"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintHorizontal_bias="0.95"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.941">
+      app:layout_constraintTop_toTopOf="@+id/logo_container"
+      app:layout_constraintVertical_bias="0.144">
 
   </FrameLayout>
 

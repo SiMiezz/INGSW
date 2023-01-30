@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,9 +20,14 @@ import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
-    private EditText editTextprice;
+    private EditText editTextTranslateName;
     private EditText editTextdescription;
+    private EditText editTextTranslateDescription;
+    private EditText editTextprice;
     private CheckBox checkBoxprepackaged;
+
+    private TextView viewTranslateName;
+    private TextView viewTranslateDescription;
 
     private ElementCreateDialogListener elementCreateDialogListener;
     private MenuElementsFragment menuElementsFragment;
@@ -48,20 +54,32 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
             public void onClick(View v) {
                 if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
                     String name = editTextname.getText().toString();
+                    String translateName = editTextTranslateName.getText().toString();
                     String description = editTextdescription.getText().toString();
+                    String translateDescription = editTextTranslateDescription.getText().toString();
                     Boolean prepackaged = checkBoxprepackaged.isChecked();
                     Double price = Double.parseDouble(editTextprice.getText().toString());
 
-                    elementCreateDialogListener.createElement(name,description,price,prepackaged,menuElementsFragment);
+                    elementCreateDialogListener.createElement(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment);
                     dialog.dismiss();
                 }
             }
         });
 
         editTextname = view.findViewById(R.id.edit_element_name);
-        editTextprice = view.findViewById(R.id.edit_element_price);
+        editTextTranslateName = view.findViewById(R.id.edit_element_translatename);
         editTextdescription = view.findViewById(R.id.edit_element_description);
+        editTextTranslateDescription = view.findViewById(R.id.edit_element_translatedescription);
+        editTextprice = view.findViewById(R.id.edit_element_price);
         checkBoxprepackaged = view.findViewById(R.id.checkbox_prepackaged);
+
+        viewTranslateName = view.findViewById(R.id.view_translatename);
+        viewTranslateDescription = view.findViewById(R.id.view_translatedescription);
+
+        if(!menuElementsFragment.getRestaurant().isTouristic()){
+            editTextTranslateDescription.setEnabled(false);
+            editTextTranslateName.setEnabled(false);
+        }
 
         return dialog;
     }
@@ -88,6 +106,6 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface ElementCreateDialogListener {
-        void createElement(String name,String description,Double price,Boolean prepackaged,MenuElementsFragment menuElementsFragment);
+        void createElement(String name,String translateName,String description,String translateDescription,Double price,Boolean prepackaged,MenuElementsFragment menuElementsFragment);
     }
 }

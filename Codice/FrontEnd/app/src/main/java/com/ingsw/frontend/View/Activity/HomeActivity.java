@@ -2,6 +2,7 @@ package com.ingsw.frontend.View.Activity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
@@ -44,9 +45,12 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.sectionbutton_container, new SectionButtonsFragment()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.logo_container, new LogoFragment()).commit();
-        getSupportFragmentManager().beginTransaction().add(R.id.user_container, new UserFragment()).commit();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction
+                .add(R.id.sectionbutton_container, SectionButtonsFragment.class,null)
+                .add(R.id.logo_container, LogoFragment.class,null);
 
         intent = getIntent();
         user = (User) intent.getSerializableExtra("user");
@@ -54,19 +58,20 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         if((!user.getPwd().equals(User.getDefaultPwd()))){
             switch (user.getJob().toString()){
                 case "admin":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new RestaurantFragment()).commit();
+                    fragmentTransaction.add(R.id.section_container, RestaurantFragment.class, null);
                     break;
                 case "supervisor":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new MenuFragment()).commit();
+                    fragmentTransaction.add(R.id.section_container, MenuFragment.class, null);
                     break;
                 case "waiter":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new TablesFragment()).commit();
+                    fragmentTransaction.add(R.id.section_container, TablesFragment.class, null);
                     break;
                 case "chef":
-                    getSupportFragmentManager().beginTransaction().replace(R.id.section_container, new KitchenFragment()).commit();
+                    fragmentTransaction.add(R.id.section_container, KitchenFragment.class, null);
                     break;
             }
         }
+        fragmentTransaction.add(R.id.user_container, UserFragment.class,null).commitNow();
     }
 
     public void onWindowFocusChanged(boolean hasFocus) {
@@ -86,13 +91,13 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
     public void changeFragment(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.section_container, fragment);
-        transaction.commit();
+        transaction.replace(R.id.section_container, fragment.getClass(), null);
+        transaction.commitNow();
     }
 
     @Override
-    public void createElement(String name, String description, Double price, Boolean prepackaged,MenuElementsFragment menuElementsFragment) {
-        Element element = new Element(name,description,price,prepackaged, menuElementsFragment.getCategoryId());
+    public void createElement(String name,String translateName, String description,String translateDescription, Double price, Boolean prepackaged,MenuElementsFragment menuElementsFragment) {
+        Element element = new Element(name,translateName,description,translateDescription,price,prepackaged, menuElementsFragment.getCategoryId());
 
         menuElementsFragment.createElement(element);
     }
