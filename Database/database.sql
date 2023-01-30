@@ -68,29 +68,6 @@ INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'co
 UNLOCK TABLES;
 
 --
--- Table structure for table `client`
---
-
-DROP TABLE IF EXISTS `client`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `client` (
-  `table_id` int NOT NULL,
-  KEY `table_fk2_idx` (`table_id`),
-  CONSTRAINT `table_fk2` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `client`
---
-
-LOCK TABLES `client` WRITE;
-/*!40000 ALTER TABLE `client` DISABLE KEYS */;
-/*!40000 ALTER TABLE `client` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `composed`
 --
 
@@ -265,6 +242,7 @@ DROP TABLE IF EXISTS `tablerestaurant`;
 CREATE TABLE `tablerestaurant` (
   `id_table` int NOT NULL AUTO_INCREMENT,
   `seats` int NOT NULL,
+  `free` tinyint NOT NULL DEFAULT '1',
   `restaurant_name` varchar(50) NOT NULL,
   PRIMARY KEY (`id_table`),
   KEY `restaurant_fk2_idx` (`restaurant_name`),
@@ -278,7 +256,7 @@ CREATE TABLE `tablerestaurant` (
 
 LOCK TABLES `tablerestaurant` WRITE;
 /*!40000 ALTER TABLE `tablerestaurant` DISABLE KEYS */;
-INSERT INTO `tablerestaurant` VALUES (1,2,'rest'),(2,6,'rest'),(3,4,'rest'),(4,8,'rest'),(5,10,'rest'),(6,4,'rest'),(7,2,'rest'),(8,6,'rest');
+INSERT INTO `tablerestaurant` VALUES (1,2,1,'rest'),(2,6,1,'rest'),(3,4,0,'rest'),(4,8,0,'rest'),(5,10,1,'rest'),(6,4,0,'rest'),(7,2,1,'rest'),(8,6,1,'rest');
 /*!40000 ALTER TABLE `tablerestaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,4 +307,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-30 13:20:22
+-- Dump completed on 2023-01-30 16:37:47
