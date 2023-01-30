@@ -30,11 +30,6 @@ public class MembersAdminFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private ImageButton removeButton;
-    private ImageButton addButton;
-    private ImageButton backButton;
-    private ImageButton confirmButton;
-
     private MemberAdapter memberAdapter;
     private ArrayList<User> userArrayList;
     private RecyclerView recyclerView;
@@ -86,10 +81,6 @@ public class MembersAdminFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_members_admin, container, false);
 
         userArrayList = new ArrayList<>();
-        removeButton = rootView.findViewById(R.id.remove_admin_button);
-        addButton = rootView.findViewById(R.id.add_admin_button);
-        backButton = rootView.findViewById(R.id.back_admin_button);
-        confirmButton = rootView.findViewById(R.id.confirm_admin_button);
         recyclerView = rootView.findViewById(R.id.member_admin_listview);
 
         memberAdapter = new MemberAdapter(getContext(),userArrayList);
@@ -105,71 +96,7 @@ public class MembersAdminFragment extends Fragment {
 
         userPresenter.getByRestaurantNameAndUserType(restaurant.getName(), User_Type.valueOf("admin"));
 
-
-        removeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(memberAdapter.getCurrentLayout() == -1){
-                    memberAdapter.setCurrentLayout(-2);
-                    memberAdapter.notifyDataSetChanged();
-                }
-
-                removeButton.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.VISIBLE);
-
-                addButton.setVisibility(View.INVISIBLE);
-                confirmButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                if(memberAdapter.getCurrentLayout() == -2){
-                    memberAdapter.setCurrentLayout(-1);
-                    memberAdapter.notifyDataSetChanged();
-                }
-
-
-                backButton.setVisibility(View.INVISIBLE);
-                removeButton.setVisibility(View.VISIBLE);
-
-                confirmButton.setVisibility(View.INVISIBLE);
-                addButton.setVisibility(View.VISIBLE);
-
-            }
-        });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
-
-        confirmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                removeSelectedItems();
-
-                if(memberAdapter.getCurrentLayout() == -2){
-                    memberAdapter.setCurrentLayout(-1);
-                    memberAdapter.notifyDataSetChanged();
-                }
-
-                backButton.setVisibility(View.INVISIBLE);
-                removeButton.setVisibility(View.VISIBLE);
-
-                confirmButton.setVisibility(View.INVISIBLE);
-                addButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-
-
-
+        
         return rootView;
     }
 
