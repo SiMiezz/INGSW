@@ -1,6 +1,4 @@
-CREATE DATABASE  IF NOT EXISTS `ratatouille` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `ratatouille`;
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: ratatouille
 -- ------------------------------------------------------
@@ -103,7 +101,7 @@ CREATE TABLE `composed` (
   KEY `order_fk_idx` (`order_id`),
   KEY `element_fk1_idx` (`element_id`),
   CONSTRAINT `element_fk1` FOREIGN KEY (`element_id`) REFERENCES `element` (`id_element`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `order_fk` FOREIGN KEY (`order_id`) REFERENCES `ordine` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -200,13 +198,13 @@ INSERT INTO `menu` VALUES (1,'123','rest'),(2,NULL,'risto');
 UNLOCK TABLES;
 
 --
--- Table structure for table `order`
+-- Table structure for table `ordine`
 --
 
-DROP TABLE IF EXISTS `order`;
+DROP TABLE IF EXISTS `ordine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `order` (
+CREATE TABLE `ordine` (
   `id_order` int NOT NULL AUTO_INCREMENT,
   `datecreate` date NOT NULL,
   `price` double NOT NULL,
@@ -218,13 +216,13 @@ CREATE TABLE `order` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `order`
+-- Dumping data for table `ordine`
 --
 
-LOCK TABLES `order` WRITE;
-/*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (5,'2023-01-20',23,1);
-/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+LOCK TABLES `ordine` WRITE;
+/*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
+INSERT INTO `ordine` VALUES (1,'2021-08-19',9.8,1),(2,'2021-08-20',9.8,1),(3,'2021-08-22',9.8,1),(4,'2021-08-23',9.8,2),(5,'2021-08-24',9.8,2);
+/*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -309,14 +307,6 @@ LOCK TABLES `user` WRITE;
 INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','defpwd','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('sup1','defpwd','cop','meme','supervisor','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping events for database 'ratatouille'
---
-
---
--- Dumping routines for database 'ratatouille'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -327,4 +317,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-27 22:05:46
+-- Dump completed on 2023-01-30 11:24:31

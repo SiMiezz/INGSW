@@ -11,9 +11,14 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends CrudRepository<Order,Integer> {
 
-    @Query(value = "SELECT * FROM ratatouille.order AS o " +
+    @Query(value = "SELECT * FROM ordine AS o " +
                    "WHERE o.table_id = :id", nativeQuery = true)
     List<Order> findByTableId(@PathVariable("id") Integer id);
     //serve perchè c'è il problemma del nome della tabella order (va chiamata manualmente ratatouille.order)
+
+
+    @Query(value = "DELETE FROM ordine WHERE id_order = :id;", nativeQuery = true)
+    void delete(@PathVariable("id") Integer id);
+
 
 }
