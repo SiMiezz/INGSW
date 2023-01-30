@@ -15,16 +15,18 @@ import okhttp3.Call;
 
 public class TableRestaurantPresenter {
     
-    private final TablesAllFragment tablesAllFragment;
-    private final TablesNumberFragment tablesNumberFragment;
+    private TablesAllFragment tablesAllFragment;
+    private TablesNumberFragment tablesNumberFragment;
     private TableRestaurantService tableRestaurantService;
     private TablesSelectedFragment tablesSelectedFragment;
 
+    private OrderPresenter orderPresenter;
     
     public TableRestaurantPresenter(TablesAllFragment tablesAllFragment, TablesNumberFragment tablesNumberFragment, TablesSelectedFragment tablesSelectedFragment) {
         this.tablesAllFragment = tablesAllFragment;
         this.tablesNumberFragment = tablesNumberFragment;
         this.tablesSelectedFragment = tablesSelectedFragment;
+        orderPresenter = new OrderPresenter(tablesSelectedFragment);
         tableRestaurantService = new TableRestaurantService();
     }
 
@@ -40,7 +42,7 @@ public class TableRestaurantPresenter {
         tableRestaurantService.update(new Callback() {
             @Override
             public void returnResult(Object o) {
-                getByRestaurantName(tableRestaurant.getRestaurantName());
+                //getByRestaurantName(tableRestaurant.getRestaurantName());
             }
 
             @Override
@@ -55,7 +57,9 @@ public class TableRestaurantPresenter {
             @Override
             public void returnResult(Object o) {
                 ArrayList<TableRestaurant> tableRestaurantArrayList = (ArrayList<TableRestaurant>) o;
+
                 tablesAllFragment.loadTableRestaurant(tableRestaurantArrayList);
+                //countTotalByRestaurantName(restaurantName);
             }
 
             @Override
@@ -72,7 +76,10 @@ public class TableRestaurantPresenter {
             @Override
             public void returnResult(Object o) {
                 Integer result = (Integer) o;
+
                 tablesNumberFragment.setTotalNumber(result);
+                countByRestaurantNameAndFree(restaurantName,false);
+                countByRestaurantNameAndFree(restaurantName,true);
             }
 
             @Override
@@ -112,6 +119,31 @@ public class TableRestaurantPresenter {
                 TableRestaurant result = (TableRestaurant) o;
                 tablesSelectedFragment.setSeatsNumber(result);
                 tablesSelectedFragment.getOrderRecyclerView(result);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },id);
+    }
+
+    public void updateById(Integer id) {
+        tableRestaurantService.getById(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                TableRestaurant table = (TableRestaurant) o;
+
+                if(table.isFree()){
+                    table.setFree(false);
+                    update(table);
+                }
+                else{
+                    orderPresenter.sumPriceByTableId(table.getId());
+                    table.setFree(true);
+                    update(table);
+                }
             }
 
             @Override

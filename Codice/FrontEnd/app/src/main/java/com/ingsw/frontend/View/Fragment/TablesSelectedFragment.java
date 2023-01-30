@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -21,6 +22,8 @@ import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.OrderAdapter;
+import com.ingsw.frontend.View.Dialog.BillDialog;
+import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
 
@@ -39,13 +42,30 @@ public class TablesSelectedFragment extends Fragment {
     private OrderPresenter orderPresenter;
     private OrderAdapter orderAdapter;
 
+    private TablesAllFragment tablesAllFragment;
+    private TablesNumberFragment tablesNumberFragment;
+
     private ImageButton removeButton;
     private ImageButton addButton;
     private ImageButton backButton;
     private ImageButton confirmButton;
+    private Button libera_occupaButton;
     private RecyclerView recyclerView;
 
+    private Integer tableId;
 
+    public Integer getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
+    }
+
+    public TablesSelectedFragment(TablesAllFragment tablesAllFragment, TablesNumberFragment tablesNumberFragment) {
+        this.tablesAllFragment = tablesAllFragment;
+        this.tablesNumberFragment = tablesNumberFragment;
+    }
 
     public TablesSelectedFragment() {
         // Required empty public constructor
@@ -81,11 +101,12 @@ public class TablesSelectedFragment extends Fragment {
         addButton = rootView.findViewById(R.id.add_order_button);
         backButton = rootView.findViewById(R.id.back_order_button);
         confirmButton = rootView.findViewById(R.id.confirm_order_button);
+        libera_occupaButton = rootView.findViewById(R.id.libera_occupa_button);
         recyclerView = rootView.findViewById(R.id.selected_table_order_listview);
 
         orderAdapter = new OrderAdapter(getContext(), orderArrayList);
 
-        tableRestaurantPresenter = new TableRestaurantPresenter(null, null, this);
+        tableRestaurantPresenter = new TableRestaurantPresenter(tablesAllFragment, tablesNumberFragment, this);
         orderPresenter = new OrderPresenter(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -157,6 +178,13 @@ public class TablesSelectedFragment extends Fragment {
             }
         });
 
+        libera_occupaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tableRestaurantPresenter.updateById(getTableId());
+            }
+        });
+
         return rootView;
     }
 
@@ -184,5 +212,10 @@ public class TablesSelectedFragment extends Fragment {
         for(Order order : orders){
             orderPresenter.delete(order);
         }
+    }
+
+    public void openDialog(Double sum){
+        BillDialog billDialog = new BillDialog(sum);
+        billDialog.show(requireActivity().getSupportFragmentManager(),"Bill");
     }
 }

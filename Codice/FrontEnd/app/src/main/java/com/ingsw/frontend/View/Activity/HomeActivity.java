@@ -103,12 +103,8 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
     }
 
     @Override
-    public void createUser(String email, String pwd, String name, String surname, MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
-        if(membersAdminFragment != null){
-            User user = new User(email,pwd,name,surname,membersAdminFragment.getJob(),membersAdminFragment.getRestaurant().getName());
-            membersAdminFragment.createUser(user);
-        }
-        else if(membersSupervisorsFragment != null){
+    public void createUser(String email, String pwd, String name, String surname,MembersSupervisorsFragment membersSupervisorsFragment,MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
+        if(membersSupervisorsFragment != null){
             User user = new User(email,pwd,name,surname,membersSupervisorsFragment.getJob(),membersSupervisorsFragment.getRestaurant().getName());
             membersSupervisorsFragment.createUser(user);
         }

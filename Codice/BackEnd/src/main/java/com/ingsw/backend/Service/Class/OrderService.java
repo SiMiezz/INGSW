@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service("mainOrderService")
 public class OrderService implements IOrderService {
@@ -25,6 +24,11 @@ public class OrderService implements IOrderService {
     @Override
     public List<Order> getByTablerestaurantId(Integer id){
         return orderRepository.findByTableId(id);
+    }
+
+    @Override
+    public Double sumPriceByTableId(Integer id){
+        return orderRepository.sumPriceByTableId(id);
     }
 
     @Override

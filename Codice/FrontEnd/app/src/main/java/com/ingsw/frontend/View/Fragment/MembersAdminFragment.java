@@ -106,20 +106,4 @@ public class MembersAdminFragment extends Fragment {
         memberAdapter.setArrayList(userList);
         memberAdapter.notifyDataSetChanged();
     }
-
-    public void removeSelectedItems() {
-        ArrayList<User> users = memberAdapter.getSelectedItemsArrayList();
-        for (User user: users) {
-            userPresenter.delete(user);
-        }
-    }
-
-    public void createUser(User user){
-        userPresenter.create(user);
-    }
-
-    public void openDialog(){
-        UserCreateDialog userCreateDialog = new UserCreateDialog(this);
-        userCreateDialog.show(requireActivity().getSupportFragmentManager(),"UserCreate");
-    }
 }

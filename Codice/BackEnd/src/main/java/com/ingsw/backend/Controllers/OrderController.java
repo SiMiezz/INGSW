@@ -50,6 +50,11 @@ public class OrderController {
         return orderDTOS;
     }
 
+    @GetMapping("/sum/{id}")
+    public Double sumPriceByTableId(@PathVariable Integer id){
+        return orderService.sumPriceByTableId(id);
+    }
+
     @DeleteMapping("/delete")
     public void delete(@RequestBody OrderDTO orderDTO){
         Order order = this.convertEntity(orderDTO);

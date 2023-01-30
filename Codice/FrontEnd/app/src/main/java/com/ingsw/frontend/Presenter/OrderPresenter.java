@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class OrderPresenter {
 
     private OrderService orderService;
-    private final TablesSelectedFragment tablesSelectedFragment;
+    private TablesSelectedFragment tablesSelectedFragment;
 
     public OrderPresenter(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
@@ -33,6 +33,40 @@ public class OrderPresenter {
         }, tableId);
     }
 
+    public void sumPriceByTableId(Integer tableId){
+        orderService.sumPriceByTableId(new Callback(){
+            @Override
+            public void returnResult(Object o) {
+                Double sum = (Double) o;
+
+                tablesSelectedFragment.openDialog(sum);
+                deleteByTableId(tableId);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, tableId);
+    }
+
+    public void deleteByTableId(Integer tableId){
+        orderService.getByTableRestaurantId(new Callback(){
+            @Override
+            public void returnResult(Object o) {
+                ArrayList<Order> orderArrayList = (ArrayList<Order>) o;
+
+                for (Order order: orderArrayList) {
+                    delete(order);
+                }
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, tableId);
+    }
 
     public void delete(Order order) {
         orderService.delete(new Callback(){

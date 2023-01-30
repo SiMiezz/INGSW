@@ -8,7 +8,9 @@ public interface IOrderService {
 
     void create(Order order);
 
-    public List<Order> getByTablerestaurantId(Integer id);
+    List<Order> getByTablerestaurantId(Integer id);
+
+    Double sumPriceByTableId(Integer id);
 
     void delete(Order order);
 

@@ -89,7 +89,5 @@ public class TablesNumberFragment extends Fragment {
 
     public void countTables(String restaurantName){
         tableRestaurantPresenter.countTotalByRestaurantName(restaurantName);
-        tableRestaurantPresenter.countByRestaurantNameAndFree(restaurantName,false);
-        tableRestaurantPresenter.countByRestaurantNameAndFree(restaurantName,true);
     }
 }

@@ -50,8 +50,8 @@ public class TablesFragment extends Fragment {
 
 
         tablesNumberFragment = new TablesNumberFragment();
-        tablesSelectedFragment = new TablesSelectedFragment();
-        tablesAllFragment = new TablesAllFragment(tablesSelectedFragment);
+        tablesSelectedFragment = new TablesSelectedFragment(tablesAllFragment,tablesNumberFragment);
+        tablesAllFragment = new TablesAllFragment(tablesSelectedFragment,tablesNumberFragment);
 
         fragmentTransaction.replace(R.id.number_tables_container, tablesNumberFragment);
         fragmentTransaction.replace(R.id.all_tables_container, tablesAllFragment);

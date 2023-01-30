@@ -29,22 +29,13 @@ public class UserCreateDialog extends AppCompatDialogFragment {
     private EditText editTextemail;
     private UserCreateDialogListener userCreateDialogListener;
 
-    private MembersAdminFragment membersAdminFragment;
     private MembersSupervisorsFragment membersSupervisorsFragment;
     private MembersWaitersFragment membersWaitersFragment;
     private MembersChefsFragment membersChefsFragment;
 
-    public UserCreateDialog(MembersAdminFragment membersAdminFragment) {
-        this.membersAdminFragment = membersAdminFragment;
-        membersChefsFragment = null;
-        membersSupervisorsFragment = null;
-        membersWaitersFragment = null;
-    }
-
     public UserCreateDialog(MembersSupervisorsFragment membersSupervisorsFragment) {
         this.membersSupervisorsFragment = membersSupervisorsFragment;
         membersChefsFragment = null;
-        membersAdminFragment = null;
         membersWaitersFragment = null;
     }
 
@@ -52,14 +43,12 @@ public class UserCreateDialog extends AppCompatDialogFragment {
         this.membersWaitersFragment = membersWaitersFragment;
         membersChefsFragment = null;
         membersSupervisorsFragment = null;
-        membersAdminFragment = null;
     }
 
     public UserCreateDialog(MembersChefsFragment membersChefsFragment) {
         this.membersChefsFragment = membersChefsFragment;
         membersSupervisorsFragment = null;
         membersWaitersFragment = null;
-        membersAdminFragment = null;
     }
 
     @NonNull
@@ -83,7 +72,7 @@ public class UserCreateDialog extends AppCompatDialogFragment {
                     String surname = editTextsurname.getText().toString();
                     String email = editTextemail.getText().toString();
 
-                    userCreateDialogListener.createUser(email,User.getDefaultPwd(),name,surname,membersAdminFragment,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
+                    userCreateDialogListener.createUser(email,User.getDefaultPwd(),name,surname,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
                     dialog.dismiss();
                 }
             }
@@ -117,6 +106,6 @@ public class UserCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface UserCreateDialogListener {
-        void createUser(String email,String pwd,String name,String surname,MembersAdminFragment membersAdminFragment, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment);
+        void createUser(String email,String pwd,String name,String surname, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment);
     }
 }

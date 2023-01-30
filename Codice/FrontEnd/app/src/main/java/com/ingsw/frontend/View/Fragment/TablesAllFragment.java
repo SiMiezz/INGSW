@@ -37,13 +37,15 @@ public class TablesAllFragment extends Fragment {
     private TableRestaurantPresenter tableRestaurantPresenter;
 
     private TablesSelectedFragment tablesSelectedFragment;
+    private TablesNumberFragment tablesNumberFragment;
 
     public TablesAllFragment() {
         // Required empty public constructor
     }
 
-    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment){
+    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment, TablesNumberFragment tablesNumberFragment) {
         this.tablesSelectedFragment = tablesSelectedFragment;
+        this.tablesNumberFragment = tablesNumberFragment;
     }
 
     public static TablesAllFragment newInstance(String param1, String param2) {
@@ -76,7 +78,7 @@ public class TablesAllFragment extends Fragment {
 
         tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList, tablesSelectedFragment);
 
-        tableRestaurantPresenter = new TableRestaurantPresenter(this,null, null);
+        tableRestaurantPresenter = new TableRestaurantPresenter(this,tablesNumberFragment, tablesSelectedFragment);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);

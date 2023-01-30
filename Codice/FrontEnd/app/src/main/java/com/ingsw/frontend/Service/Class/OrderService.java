@@ -88,6 +88,27 @@ public class OrderService implements IOrderService {
                 });
     }
 
+    @Override
+    public void sumPriceByTableId(Callback callback, Integer id){
+        orderApi.sumPriceByTableId(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Double>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Double sum) {
+                        callback.returnResult(sum);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
+
     public void delete(Callback callback, Order order) {
         orderApi.delete(order)
                 .subscribeOn(Schedulers.newThread())

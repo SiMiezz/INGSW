@@ -11,6 +11,8 @@ public interface IOrderService {
 
     void getByTableRestaurantId(Callback callback, Integer id);
 
+    void sumPriceByTableId(Callback callback, Integer id);
+
     void delete(Callback callback, Order order);
 
 }

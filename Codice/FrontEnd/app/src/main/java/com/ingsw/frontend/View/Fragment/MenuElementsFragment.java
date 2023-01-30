@@ -179,11 +179,6 @@ public class MenuElementsFragment extends Fragment {
                 addButton.setVisibility(View.VISIBLE);
             }
         });
-
-
-
-
-
     }
 
 

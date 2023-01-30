@@ -108,6 +108,7 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    tablesSelectedFragment.setTableId(temp.getId());
                     tablesSelectedFragment.getInfoTableFromClick(temp.getId());
                 }
             });

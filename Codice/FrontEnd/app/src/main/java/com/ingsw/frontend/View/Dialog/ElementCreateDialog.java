@@ -3,6 +3,7 @@ package com.ingsw.frontend.View.Dialog;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.media.MediaParser;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
+
+import java.text.ParseException;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;

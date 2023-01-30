@@ -203,12 +203,14 @@ public class MenuCategoriesFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0){
+                    menuElementsFragment.setCategoryId(null);
                     menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesFoodFragment);
                     fragmentTransaction.commit();
                 }
                 else{
+                    menuElementsFragment.setCategoryId(null);
                     menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.food_drink_container, menuCategoriesDrinkFragment);
