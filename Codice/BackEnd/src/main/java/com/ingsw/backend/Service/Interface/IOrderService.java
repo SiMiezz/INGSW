@@ -8,8 +8,6 @@ public interface IOrderService {
 
     void create(Order order);
 
-    Boolean deleteById(Integer id);
-
     public List<Order> getByTablerestaurantId(Integer id);
 
     void delete(Order order);

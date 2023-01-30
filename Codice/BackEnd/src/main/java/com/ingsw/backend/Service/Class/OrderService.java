@@ -23,18 +23,6 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Boolean deleteById(Integer id){
-        Optional<Order> optionalOrder = orderRepository.findById(id);
-
-        if(optionalOrder.isEmpty()){
-            return false;
-        }
-
-        orderRepository.delete(optionalOrder.get());
-        return true;
-    }
-
-    @Override
     public List<Order> getByTablerestaurantId(Integer id){
         return orderRepository.findByTableId(id);
     }
