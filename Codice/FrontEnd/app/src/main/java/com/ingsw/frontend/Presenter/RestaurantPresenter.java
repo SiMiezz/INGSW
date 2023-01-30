@@ -6,10 +6,12 @@ import com.ingsw.frontend.Service.Class.RestaurantService;
 import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Fragment.LoginFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
+import com.ingsw.frontend.View.Fragment.RestaurantInfoFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 
 public class RestaurantPresenter {
 
+    RestaurantInfoFragment restaurantInfoFragment;
     private RestaurantFragment restaurantFragment;
     private RestaurantService restaurantService;
 
@@ -24,13 +26,18 @@ public class RestaurantPresenter {
         restaurantService = new RestaurantService();
     }
 
+    public RestaurantPresenter(RestaurantInfoFragment restaurantInfoFragment){
+        this.restaurantInfoFragment = restaurantInfoFragment;
+        restaurantService = new RestaurantService();
+    }
+
     // GETTER AND SETTER
 
     public RestaurantFragment getRestaurantFragment() {
         return restaurantFragment;
     }
 
-    public void getByName(String name){
+    public void getByNameIntent(String name){
         restaurantService.getByName(new Callback() {
             @Override
             public void returnResult(Object o) {
@@ -45,5 +52,21 @@ public class RestaurantPresenter {
                 System.out.println(e);
             }
         },name);
+    }
+
+    public void getByName(String name){
+        restaurantService.getByName(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+
+                Restaurant restaurant = (Restaurant) o;
+                restaurantInfoFragment.loadInfo(restaurant);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+
+            }
+        }, name);
     }
 }

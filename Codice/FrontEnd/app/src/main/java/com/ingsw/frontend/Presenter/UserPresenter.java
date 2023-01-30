@@ -182,7 +182,7 @@ public class UserPresenter {
                 User user = (User) o;
 
                 loginFragment.loginSuccess(user);
-                restaurantPresenter.getByName(user.getRestaurantName());
+                restaurantPresenter.getByNameIntent(user.getRestaurantName());
             }
 
             @Override

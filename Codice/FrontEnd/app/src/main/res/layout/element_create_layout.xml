@@ -41,9 +41,9 @@
         android:id="@+id/edit_element_translatename"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/black"
-        android:hint="Name" />
+        android:hint="Name translated" />
 
     <TextView
         android:text="Enter description"
@@ -74,9 +74,9 @@
         android:id="@+id/edit_element_translatedescription"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/black"
-        android:hint="Description" />
+        android:hint="Description translated" />
 
     <TextView
         android:text="Enter price*"

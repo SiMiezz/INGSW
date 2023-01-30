@@ -9,8 +9,12 @@ public interface ITableRestaurantService {
 
     List<TableRestaurant> getByRestaurantName(String name);
 
+    void update(TableRestaurant tableRestaurant);
+
     Optional<TableRestaurant> getById(Integer id);
 
     Long countByRestaurantName(String restaurant_name);
+
+    Long countByRestaurantNameAndFree(String name, boolean free);
 
 }

@@ -1,6 +1,7 @@
 package com.ingsw.frontend.Presenter;
 
 import com.ingsw.frontend.Model.TableRestaurant;
+import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.TableRestaurantService;
 import com.ingsw.frontend.View.Adapter.TableRestaurantAdapter;
@@ -35,6 +36,20 @@ public class TableRestaurantPresenter {
         return tablesNumberFragment;
     }
 
+    public void update(TableRestaurant tableRestaurant){
+        tableRestaurantService.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                getByRestaurantName(tableRestaurant.getRestaurantName());
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },tableRestaurant);
+    }
+
     public void getByRestaurantName(String restaurantName){
         tableRestaurantService.getByRestaurantName(new Callback() {
             @Override
@@ -51,8 +66,8 @@ public class TableRestaurantPresenter {
     }
 
 
-    public void countTotalTableByRestaurantName(String restaurantName){
-        tableRestaurantService.countTotalTableByRestaurantName(new Callback(){
+    public void countTotalByRestaurantName(String restaurantName){
+        tableRestaurantService.countTotalByRestaurantName(new Callback(){
 
             @Override
             public void returnResult(Object o) {
@@ -65,6 +80,28 @@ public class TableRestaurantPresenter {
                 System.out.println(e);
             }
         }, restaurantName);
+    }
+
+    public void countByRestaurantNameAndFree(String restaurantName, boolean free){
+        tableRestaurantService.countByRestaurantNameAndFree(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                Integer result = (Integer) o;
+
+                if(free){
+                    tablesNumberFragment.setFreeNumber(result);
+                }
+                else{
+                    tablesNumberFragment.setOccupiedNumber(result);
+                }
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, restaurantName,free);
     }
 
     public void getById(Integer id) {

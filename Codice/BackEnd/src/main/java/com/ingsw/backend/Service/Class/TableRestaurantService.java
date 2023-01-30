@@ -23,6 +23,11 @@ public class TableRestaurantService implements ITableRestaurantService {
     }
 
     @Override
+    public void update(TableRestaurant tableRestaurant){
+        tableRestaurantRepository.save(tableRestaurant);
+    }
+
+    @Override
     public Optional<TableRestaurant> getById(Integer id){
         return tableRestaurantRepository.findById(id);
     }
@@ -30,6 +35,11 @@ public class TableRestaurantService implements ITableRestaurantService {
     @Override
     public Long countByRestaurantName(String name) {
         return tableRestaurantRepository.countByRestaurantName(name);
+    }
+
+    @Override
+    public Long countByRestaurantNameAndFree(String name, boolean free) {
+        return tableRestaurantRepository.countByRestaurantNameAndFree(name,free);
     }
 
 }

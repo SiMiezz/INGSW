@@ -1,20 +1,16 @@
 package com.ingsw.backend.Controllers;
 
-import com.ingsw.backend.Model.Category;
-import com.ingsw.backend.Model.DTO.MenuDTO;
 import com.ingsw.backend.Model.DTO.TableRestaurantDTO;
+import com.ingsw.backend.Model.Restaurant;
 import com.ingsw.backend.Model.TableRestaurant;
+import com.ingsw.backend.Service.Interface.IRestaurantService;
 import com.ingsw.backend.Service.Interface.ITableRestaurantService;
-import jakarta.persistence.Table;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -30,7 +26,18 @@ public class TableRestaurantController {
     private ITableRestaurantService tableRestaurantService;
 
     @Autowired
+    @Qualifier("mainRestaurantService")
+    private IRestaurantService restaurantService;
+
+    @Autowired
     private ModelMapper modelMapper;
+
+    @PutMapping("/update")
+    public void update(@RequestBody TableRestaurantDTO tableRestaurantDTO){
+        TableRestaurant tableRestaurant = this.convertEntity(tableRestaurantDTO);
+
+        tableRestaurantService.update(tableRestaurant);
+    }
 
     @GetMapping("/get/{name}")
     public List<TableRestaurantDTO> getByRestaurantName(@PathVariable String name){
@@ -62,6 +69,11 @@ public class TableRestaurantController {
         return tableRestaurantService.countByRestaurantName(name);
     }
 
+    @GetMapping("/count/{name}/{free}")
+    public Long countByRestaurantName(@PathVariable String name, @PathVariable boolean free){
+        return tableRestaurantService.countByRestaurantNameAndFree(name,free);
+    }
+
     private TableRestaurantDTO convertDTO(TableRestaurant tableRestaurant) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
@@ -72,5 +84,22 @@ public class TableRestaurantController {
         tableRestaurantDTO.setRestaurantName(restaurant_name);
 
         return tableRestaurantDTO;
+    }
+
+    private TableRestaurant convertEntity(TableRestaurantDTO tableRestaurantDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        TableRestaurant tableRestaurant = new TableRestaurant();
+        tableRestaurant = modelMapper.map(tableRestaurantDTO, TableRestaurant.class);
+
+        //Mapping
+        String name = tableRestaurantDTO.getRestaurantName();
+        Optional<Restaurant> restaurantOptional = this.restaurantService.getByName(name);
+
+        if(!restaurantOptional.isEmpty()){
+            tableRestaurant.setRestaurant(restaurantOptional.get());
+        }
+
+        return tableRestaurant;
     }
 }

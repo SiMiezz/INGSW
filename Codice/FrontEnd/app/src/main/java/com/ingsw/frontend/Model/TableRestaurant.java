@@ -19,6 +19,10 @@ public class TableRestaurant implements Serializable {
     @SerializedName("seats")
     private Integer seats;
 
+    @Expose
+    @SerializedName("free")
+    private boolean free;
+
     //REFERENCES
     @Expose
     @SerializedName("restaurantName")
@@ -28,9 +32,9 @@ public class TableRestaurant implements Serializable {
     public TableRestaurant() {
     }
 
-    public TableRestaurant(Integer id, Integer seats, String restaurantName) {
-        this.id = id;
+    public TableRestaurant(Integer seats, boolean free, String restaurantName) {
         this.seats = seats;
+        this.free = free;
         this.restaurantName = restaurantName;
     }
 
@@ -50,6 +54,14 @@ public class TableRestaurant implements Serializable {
 
     public void setSeats(Integer seats) {
         this.seats = seats;
+    }
+
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
     }
 
     public String getRestaurantName() {

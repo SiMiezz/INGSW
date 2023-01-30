@@ -32,16 +32,15 @@ public class TableRestaurant implements Serializable {
 
     @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonBackReference
-    private List<Client> clientList = new ArrayList<>();
-
-    @OneToMany(mappedBy = "table", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
     private List<Order> orderList = new ArrayList<>();
 
 
     //ATTRIBUTES
     @Column(name = "seats")
     private int seats;
+
+    @Column(name = "free", nullable = false)
+    private boolean free;
 
 
     // -------------------------------------------------
@@ -50,12 +49,12 @@ public class TableRestaurant implements Serializable {
     public TableRestaurant() {
     }
 
-    public TableRestaurant(int id, int seats, Restaurant restaurant) {
+    public TableRestaurant(Integer id, Restaurant restaurant, int seats, boolean free) {
         this.id = id;
-        this.seats = seats;
         this.restaurant = restaurant;
+        this.seats = seats;
+        this.free = free;
     }
-
 
     // -------------------------------------------------
 
@@ -78,20 +77,20 @@ public class TableRestaurant implements Serializable {
         this.seats = seats;
     }
 
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
-    }
-
-    public List<Client> getClientList() {
-        return clientList;
-    }
-
-    public void setClientList(List<Client> clientList) {
-        this.clientList = clientList;
     }
 
     public List<Order> getOrderList() {

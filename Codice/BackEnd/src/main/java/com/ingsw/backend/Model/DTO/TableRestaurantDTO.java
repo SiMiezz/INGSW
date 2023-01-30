@@ -13,6 +13,8 @@ public class TableRestaurantDTO {
     //ATTRIBUTES
     private int seats;
 
+    private boolean free;
+
 
     // -------------------------------------------------
 
@@ -20,10 +22,11 @@ public class TableRestaurantDTO {
     public TableRestaurantDTO() {
     }
 
-    public TableRestaurantDTO(Integer id, String restaurantName, int seats) {
+    public TableRestaurantDTO(Integer id, String restaurantName, int seats, boolean free) {
         this.id = id;
         this.restaurantName = restaurantName;
         this.seats = seats;
+        this.free = free;
     }
 
     // -------------------------------------------------
@@ -31,11 +34,11 @@ public class TableRestaurantDTO {
 
     //GETTERS AND SETTERS
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -47,8 +50,12 @@ public class TableRestaurantDTO {
         this.seats = seats;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public boolean isFree() {
+        return free;
+    }
+
+    public void setFree(boolean free) {
+        this.free = free;
     }
 
     public String getRestaurantName() {

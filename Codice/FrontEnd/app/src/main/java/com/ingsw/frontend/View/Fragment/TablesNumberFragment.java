@@ -79,9 +79,17 @@ public class TablesNumberFragment extends Fragment {
         totalNumber.setText(String.valueOf(total));
     }
 
+    public void setFreeNumber(Integer total) {
+        freeNumber.setText(String.valueOf(total));
+    }
+
+    public void setOccupiedNumber(Integer total) {
+        occupiedNumber.setText(String.valueOf(total));
+    }
+
     public void countTables(String restaurantName){
-        tableRestaurantPresenter.countTotalTableByRestaurantName(restaurantName);
-        // da fare tableRestaurantPresenter.countFreeTableByRestaurantName(restaurantName);
-        // da fare tableRestaurantPresenter.countOccupiedTableByRestaurantName(restaurantName);
+        tableRestaurantPresenter.countTotalByRestaurantName(restaurantName);
+        tableRestaurantPresenter.countByRestaurantNameAndFree(restaurantName,false);
+        tableRestaurantPresenter.countByRestaurantNameAndFree(restaurantName,true);
     }
 }

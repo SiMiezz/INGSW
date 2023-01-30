@@ -58,20 +58,44 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
     @Override
     public void onBindViewHolder(@NonNull TableRestaurantAdapter.TableRestaurantHolder holder, int position) {
 
-        if(tableRestaurantArrayList.get(position).getSeats() == 2)
-            holder.imageView.setImageResource(R.drawable.table_2_free);
-
-        if(tableRestaurantArrayList.get(position).getSeats() == 4)
-            holder.imageView.setImageResource(R.drawable.table_4_free);
-
-        if(tableRestaurantArrayList.get(position).getSeats() == 6)
-            holder.imageView.setImageResource(R.drawable.table_6_free);
-
-        if(tableRestaurantArrayList.get(position).getSeats() == 8)
-            holder.imageView.setImageResource(R.drawable.table_8_free);
-
-        if(tableRestaurantArrayList.get(position).getSeats() == 10)
-            holder.imageView.setImageResource(R.drawable.table_10_free);
+        if(tableRestaurantArrayList.get(position).isFree()){
+            switch (tableRestaurantArrayList.get(position).getSeats()){
+                case 2:
+                    holder.imageView.setImageResource(R.drawable.table_2_free);
+                    break;
+                case 4:
+                    holder.imageView.setImageResource(R.drawable.table_4_free);
+                    break;
+                case 6:
+                    holder.imageView.setImageResource(R.drawable.table_6_free);
+                    break;
+                case 8:
+                    holder.imageView.setImageResource(R.drawable.table_8_free);
+                    break;
+                case 10:
+                    holder.imageView.setImageResource(R.drawable.table_10_free);
+                    break;
+            }
+        }
+        else{
+            switch (tableRestaurantArrayList.get(position).getSeats()){
+                case 2:
+                    holder.imageView.setImageResource(R.drawable.table_2_occupied);
+                    break;
+                case 4:
+                    holder.imageView.setImageResource(R.drawable.table_4_occupied);
+                    break;
+                case 6:
+                    holder.imageView.setImageResource(R.drawable.table_6_occupied);
+                    break;
+                case 8:
+                    holder.imageView.setImageResource(R.drawable.table_8_occupied);
+                    break;
+                case 10:
+                    holder.imageView.setImageResource(R.drawable.table_10_occupied);
+                    break;
+            }
+        }
 
 
         holder.textView.setText(String.valueOf(holder.getAdapterPosition() + 1));

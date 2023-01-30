@@ -253,7 +253,6 @@
 
                 </LinearLayout>
 
-
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
@@ -272,9 +271,7 @@
                 app:strokeWidth="1dp"
                 app:cornerRadius="5dp"/>
 
-
-
-        </LinearLayout>
+            </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
 

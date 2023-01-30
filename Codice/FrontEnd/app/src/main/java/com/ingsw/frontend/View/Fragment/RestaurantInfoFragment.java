@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.ingsw.frontend.Model.Restaurant;
-import com.ingsw.frontend.Presenter.RestaurantInfoPresenter;
+import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.R;
 
 public class RestaurantInfoFragment extends Fragment {
@@ -24,7 +24,7 @@ public class RestaurantInfoFragment extends Fragment {
 
     private Intent intent;
     private Restaurant restaurant;
-    private RestaurantInfoPresenter restaurantInfoPresenter;
+    private RestaurantPresenter restaurantPresenter;
 
     private TextView nameRestaurant;
     private TextView descriptionRestaurant;
@@ -66,13 +66,13 @@ public class RestaurantInfoFragment extends Fragment {
         touristicRestaurant = rootView.findViewById(R.id.info_touristic_restaurant_text);
         qrRestaurant = rootView.findViewById(R.id.info_qrcode_restaurant_text);
 
-        restaurantInfoPresenter = new RestaurantInfoPresenter(this);
+        restaurantPresenter = new RestaurantPresenter(this);
 
         intent = getActivity().getIntent();
 
         restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
-        restaurantInfoPresenter.getByName(restaurant.getName());
+        restaurantPresenter.getByName(restaurant.getName());
 
         return rootView;
     }
