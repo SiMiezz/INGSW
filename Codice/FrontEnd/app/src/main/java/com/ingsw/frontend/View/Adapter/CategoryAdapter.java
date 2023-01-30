@@ -1,7 +1,6 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -67,11 +66,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_clickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
+        View sortList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_sort, parent,false);
 
         if(getItemViewType(0) == -1)
             return new CategoryHolder(normalList);
+        else if(getItemViewType(0) == -2)
+            return new CategoryHolder(selectionList);
         else
-            return  new CategoryHolder(selectionList);
+            return new CategoryHolder(sortList);
     }
 
     @Override
