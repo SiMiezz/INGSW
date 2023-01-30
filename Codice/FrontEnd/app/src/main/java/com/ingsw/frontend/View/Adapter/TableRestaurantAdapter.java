@@ -59,6 +59,7 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
     public void onBindViewHolder(@NonNull TableRestaurantAdapter.TableRestaurantHolder holder, int position) {
 
         if(tableRestaurantArrayList.get(position).isFree()){
+            holder.freeOccupiedTextView.setText("Free");
             switch (tableRestaurantArrayList.get(position).getSeats()){
                 case 2:
                     holder.imageView.setImageResource(R.drawable.table_2_free);
@@ -78,6 +79,7 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
             }
         }
         else{
+            holder.freeOccupiedTextView.setText("Occupied");
             switch (tableRestaurantArrayList.get(position).getSeats()){
                 case 2:
                     holder.imageView.setImageResource(R.drawable.table_2_occupied);
@@ -130,12 +132,14 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
         private CardView cardView;
         private ImageView imageView;
         private TextView textView;
+        private TextView freeOccupiedTextView;
 
         public TableRestaurantHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.row_clickable_table);
             imageView = itemView.findViewById(R.id.table_image);
             textView = itemView.findViewById(R.id.table_number);
+            freeOccupiedTextView = itemView.findViewById(R.id.free_occupied_text);
         }
     }
 
