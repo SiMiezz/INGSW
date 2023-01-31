@@ -115,16 +115,18 @@ public class MenuElementsFragment extends Fragment {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(ElementAdapter.currentLayout == -1){
-                    ElementAdapter.currentLayout = -2;
-                    adapter.notifyDataSetChanged();
+                if(getCategoryId()!=null){
+                    if(ElementAdapter.currentLayout == -1){
+                        ElementAdapter.currentLayout = -2;
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    removeButton.setVisibility(View.INVISIBLE);
+                    backButton.setVisibility(View.VISIBLE);
+
+                    addButton.setVisibility(View.INVISIBLE);
+                    confirmButton.setVisibility(View.VISIBLE);
                 }
-
-                removeButton.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.VISIBLE);
-
-                addButton.setVisibility(View.INVISIBLE);
-                confirmButton.setVisibility(View.VISIBLE);
             }
         });
 
