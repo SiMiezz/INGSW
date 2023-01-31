@@ -32,6 +32,11 @@ public class OrderService implements IOrderService {
     }
 
     @Override
+    public Long countByTableId(Integer id) {
+        return orderRepository.countByTableId(id);
+    }
+
+    @Override
     public void delete(Order order) {
         orderRepository.delete(order);
     }

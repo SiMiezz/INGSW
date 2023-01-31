@@ -12,6 +12,8 @@ public interface IOrderService {
 
     Double sumPriceByTableId(Integer id);
 
+    Long countByTableId(Integer id);
+
     void delete(Order order);
 
 }

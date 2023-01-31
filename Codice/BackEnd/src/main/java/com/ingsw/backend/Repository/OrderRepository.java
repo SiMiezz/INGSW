@@ -19,4 +19,7 @@ public interface OrderRepository extends CrudRepository<Order,Integer> {
             "WHERE o.table_id = :id", nativeQuery = true)
     Double sumPriceByTableId(@PathVariable("id") Integer id);
 
+    @Query(value = "SELECT COUNT(*) FROM ordine AS o " +
+            "WHERE o.table_id = :id", nativeQuery = true)
+    Long countByTableId(@PathVariable("id") Integer id);
 }

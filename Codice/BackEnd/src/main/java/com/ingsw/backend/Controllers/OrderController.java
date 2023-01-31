@@ -52,7 +52,11 @@ public class OrderController {
 
     @GetMapping("/sum/{id}")
     public Double sumPriceByTableId(@PathVariable Integer id){
-        return orderService.sumPriceByTableId(id);
+        if(orderService.countByTableId(id) > 0){
+            return orderService.sumPriceByTableId(id);
+        }
+
+        return 0.0;
     }
 
     @DeleteMapping("/delete")
