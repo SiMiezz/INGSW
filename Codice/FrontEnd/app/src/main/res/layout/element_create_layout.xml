@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="300dp"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/white"
@@ -126,14 +127,54 @@
             android:paddingLeft="5dp"
             android:layout_marginBottom="10dp"/>
 
-        <CheckBox
-            android:id="@+id/checkbox_prepackaged"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prepackaged"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginRight="5dp"/>
+
+            <CheckBox
+                android:id="@+id/checkbox_prepackaged"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:buttonTint="#00A2D3"
+                android:layout_marginBottom="10dp"/>
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:text="Prepackaged"
-            android:buttonTint="#00A2D3"/>
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Allergens "
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <Spinner
+                android:id="@+id/allergen_spinner"
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="#808080"/>
+
+
+        </LinearLayout>
 
 
     </LinearLayout>

@@ -15,6 +15,6 @@ public interface AllergenApi {
     @POST("/allergen/create")
     Completable create(@Body Allergen allergen);
 
-    @GET("/get")
+    @GET("/allergen/get")
     Single<List<Allergen>> getAll();
 }

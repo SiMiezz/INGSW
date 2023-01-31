@@ -10,16 +10,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.ingsw.frontend.Model.Allergen;
+import com.ingsw.frontend.Presenter.AllergenPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.Retrofit.AllergenApi;
+import com.ingsw.frontend.View.Adapter.AllergenAdapter;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;
@@ -31,9 +37,14 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
 
     private TextView viewTranslateName;
     private TextView viewTranslateDescription;
+    private Spinner spinner;
+
+    private ArrayList<Allergen> allergenArrayList;
 
     private ElementCreateDialogListener elementCreateDialogListener;
     private MenuElementsFragment menuElementsFragment;
+    private AllergenPresenter allergenPresenter = new AllergenPresenter(this);
+    private AllergenAdapter allergenAdapter;
 
     public ElementCreateDialog(MenuElementsFragment menuElementsFragment) {
         this.menuElementsFragment = menuElementsFragment;
@@ -69,12 +80,14 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
             }
         });
 
+        allergenArrayList = new ArrayList<>();
         editTextname = view.findViewById(R.id.edit_element_name);
         editTextTranslateName = view.findViewById(R.id.edit_element_translatename);
         editTextdescription = view.findViewById(R.id.edit_element_description);
         editTextTranslateDescription = view.findViewById(R.id.edit_element_translatedescription);
         editTextprice = view.findViewById(R.id.edit_element_price);
         checkBoxprepackaged = view.findViewById(R.id.checkbox_prepackaged);
+        spinner = view.findViewById(R.id.allergen_spinner);
 
         viewTranslateName = view.findViewById(R.id.view_translatename);
         viewTranslateDescription = view.findViewById(R.id.view_translatedescription);
@@ -83,6 +96,10 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
             editTextTranslateDescription.setEnabled(false);
             editTextTranslateName.setEnabled(false);
         }
+
+        allergenPresenter.getAllAllergens();
+        allergenAdapter = new AllergenAdapter(getContext(), 0, allergenArrayList);
+        spinner.setAdapter(allergenAdapter);
 
         return dialog;
     }
@@ -110,5 +127,12 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
 
     public interface ElementCreateDialogListener {
         void createElement(String name,String translateName,String description,String translateDescription,Double price,Boolean prepackaged,MenuElementsFragment menuElementsFragment);
+    }
+
+
+
+    public void loadAllergens(ArrayList<Allergen> allergens) {
+        for(Allergen allergen : allergens)
+            allergenArrayList.add(allergen);
     }
 }

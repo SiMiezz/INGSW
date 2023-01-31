@@ -32,4 +32,14 @@ public class Allergen implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
+
+    private Boolean checked = Boolean.valueOf(false);
+
+    public Boolean getChecked() {
+        return checked;
+    }
+
+    public void setChecked(Boolean checked) {
+        this.checked = checked;
+    }
 }

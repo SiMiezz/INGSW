@@ -164,7 +164,6 @@ public class TablesSelectedFragment extends Fragment {
             public void onClick(View view) {
 
                 ArrayList temp = orderAdapter.getSelectedItemsArrayList();
-                System.out.println(temp.size());
 
                 removeSelectedItems();
 

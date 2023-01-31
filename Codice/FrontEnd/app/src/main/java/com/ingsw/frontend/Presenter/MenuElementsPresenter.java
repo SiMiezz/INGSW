@@ -27,11 +27,6 @@ public class MenuElementsPresenter {
             @Override
             public void returnResult(Object o) {
                 ArrayList<Element> elementList = (ArrayList<Element>) o;
-
-                for (Element element: elementList) {
-                    System.out.println(element.getName());
-                }
-
                 menuElementsFragment.loadElement(elementList);
             }
 

@@ -53,7 +53,8 @@ public class AllergenService implements IAllergenService {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<List<Allergen>>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {}
+                    public void onSubscribe(@NonNull Disposable d) {
+                    }
 
                     @Override
                     public void onSuccess(@NonNull List<Allergen> allergens) {
