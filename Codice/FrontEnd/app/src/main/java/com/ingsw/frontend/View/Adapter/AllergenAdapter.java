@@ -69,7 +69,6 @@ public class AllergenAdapter extends ArrayAdapter<Allergen> {
             if(selectedAllergenArrayList.contains(currentAllergen))
                 selectedAllergenArrayList.remove(currentAllergen);
 
-
         return convertView;
     }
 

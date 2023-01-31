@@ -92,24 +92,19 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
     }
 
     @Override
-    public void createElement(String name,String translateName, String description,String translateDescription, Double price, Boolean prepackaged,MenuElementsFragment menuElementsFragment) {
-        Element element = new Element(name,translateName,description,translateDescription,price,prepackaged, menuElementsFragment.getCategoryId());
-
+    public void createElement(Element element,MenuElementsFragment menuElementsFragment) {
         menuElementsFragment.createElement(element);
     }
 
     @Override
-    public void createUser(String email, String pwd, String name, String surname,MembersSupervisorsFragment membersSupervisorsFragment,MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
+    public void createUser(User user,MembersSupervisorsFragment membersSupervisorsFragment,MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment) {
         if(membersSupervisorsFragment != null){
-            User user = new User(email,pwd,name,surname,membersSupervisorsFragment.getJob(),membersSupervisorsFragment.getRestaurant().getName());
             membersSupervisorsFragment.createUser(user);
         }
         else if(membersWaitersFragment != null){
-            User user = new User(email,pwd,name,surname,membersWaitersFragment.getJob(),membersWaitersFragment.getRestaurant().getName());
             membersWaitersFragment.createUser(user);
         }
         else{
-            User user = new User(email,pwd,name,surname,membersChefsFragment.getJob(),membersChefsFragment.getRestaurant().getName());
             membersChefsFragment.createUser(user);
         }
     }
@@ -126,13 +121,11 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
 
     @Override
-    public void createCategory(String name,MenuCategoriesFoodFragment menuCategoriesFoodFragment, MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
-        if(menuCategoriesFoodFragment!=null){
-            Category category = new Category(name,menuCategoriesFoodFragment.getAliment_type(),menuCategoriesFoodFragment.getMenu().getId());
+    public void createCategory(Category category,MenuCategoriesFoodFragment menuCategoriesFoodFragment, MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
+        if(menuCategoriesFoodFragment != null){
             menuCategoriesFoodFragment.createCategory(category);
         }
         else{
-            Category category = new Category(name,menuCategoriesDrinkFragment.getAliment_type(),menuCategoriesDrinkFragment.getMenu().getId());
             menuCategoriesDrinkFragment.createCategory(category);
         }
     }

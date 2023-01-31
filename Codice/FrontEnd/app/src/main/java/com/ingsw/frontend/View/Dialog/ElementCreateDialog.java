@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.ingsw.frontend.Model.Allergen;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Presenter.AllergenPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.AllergenAdapter;
@@ -71,7 +72,9 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                     Boolean prepackaged = checkBoxprepackaged.isChecked();
                     Double price = Double.parseDouble(editTextprice.getText().toString());
 
-                    elementCreateDialogListener.createElement(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment);
+                    Element element = new Element(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment.getCategoryId(),allergenAdapter.getSelectedAllergenArrayList());
+
+                    elementCreateDialogListener.createElement(element,menuElementsFragment);
                     dialog.dismiss();
                 }
             }
@@ -123,9 +126,8 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface ElementCreateDialogListener {
-        void createElement(String name,String translateName,String description,String translateDescription,Double price,Boolean prepackaged,MenuElementsFragment menuElementsFragment);
+        void createElement(Element element,MenuElementsFragment menuElementsFragment);
     }
-
 
 
     public void loadAllergens(ArrayList<Allergen> allergens) {

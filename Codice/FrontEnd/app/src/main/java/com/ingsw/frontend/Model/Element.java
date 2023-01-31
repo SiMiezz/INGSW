@@ -2,8 +2,10 @@ package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Element implements Serializable {
 
@@ -42,11 +44,15 @@ public class Element implements Serializable {
     @SerializedName("categoryId")
     private Integer categoryId;
 
+    @Expose
+    @SerializedName("allergens")
+    private List<Allergen> allergens;
+
     //CONSTRUCTORS
     public Element() {
     }
 
-    public Element(String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged, Integer categoryId) {
+    public Element(String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged, Integer categoryId, List<Allergen> allergens) {
         this.name = name;
         this.translateName = translateName;
         this.description = description;
@@ -54,6 +60,7 @@ public class Element implements Serializable {
         this.price = price;
         this.prePackaged = prePackaged;
         this.categoryId = categoryId;
+        this.allergens = allergens;
     }
 
     //GETTERS AND SETTERS
@@ -124,6 +131,14 @@ public class Element implements Serializable {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<Allergen> getAllergens() {
+        return allergens;
+    }
+
+    public void setAllergens(List<Allergen> allergens) {
+        this.allergens = allergens;
     }
 
     private Boolean checked = Boolean.valueOf(false);

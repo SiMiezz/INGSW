@@ -68,7 +68,22 @@ public class UserCreateDialog extends AppCompatDialogFragment {
                     String surname = editTextsurname.getText().toString();
                     String email = editTextemail.getText().toString();
 
-                    userCreateDialogListener.createUser(email,User.getDefaultPwd(),name,surname,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
+                    User user = new User(email,User.getDefaultPwd(),name,surname);
+
+                    if(membersSupervisorsFragment != null){
+                        user.setJob(membersSupervisorsFragment.getJob());
+                        user.setRestaurantName(membersSupervisorsFragment.getRestaurant().getName());
+                    }
+                    else if(membersWaitersFragment != null){
+                        user.setJob(membersWaitersFragment.getJob());
+                        user.setRestaurantName(membersWaitersFragment.getRestaurant().getName());
+                    }
+                    else{
+                        user.setJob(membersChefsFragment.getJob());
+                        user.setRestaurantName(membersChefsFragment.getRestaurant().getName());
+                    }
+
+                    userCreateDialogListener.createUser(user,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
                     dialog.dismiss();
                 }
             }
@@ -102,6 +117,6 @@ public class UserCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface UserCreateDialogListener {
-        void createUser(String email,String pwd,String name,String surname, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment);
+        void createUser(User user, MembersSupervisorsFragment membersSupervisorsFragment, MembersWaitersFragment membersWaitersFragment, MembersChefsFragment membersChefsFragment);
     }
 }

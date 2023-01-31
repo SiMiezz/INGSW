@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
@@ -56,7 +57,18 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
                 if(!editTextname.getText().toString().isEmpty()){
                     String name = editTextname.getText().toString();
 
-                    categoryCreateDialogListener.createCategory(name,menuCategoriesFoodFragment,menuCategoriesDrinkFragment);
+                    Category category = new Category(name);
+
+                    if(menuCategoriesFoodFragment!=null){
+                        category.setAliment(menuCategoriesFoodFragment.getAliment_type());
+                        category.setMenuId(menuCategoriesFoodFragment.getMenu().getId());
+                    }
+                    else{
+                        category.setAliment(menuCategoriesDrinkFragment.getAliment_type());
+                        category.setMenuId(menuCategoriesDrinkFragment.getMenu().getId());
+                    }
+
+                    categoryCreateDialogListener.createCategory(category,menuCategoriesFoodFragment,menuCategoriesDrinkFragment);
                     dialog.dismiss();
                 }
             }
@@ -88,6 +100,6 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     }
 
     public interface CategoryCreateDialogListener{
-        void createCategory(String name,MenuCategoriesFoodFragment menuCategoriesFoodFragment,MenuCategoriesDrinkFragment menuCategoriesDrinkFragment);
+        void createCategory(Category category,MenuCategoriesFoodFragment menuCategoriesFoodFragment,MenuCategoriesDrinkFragment menuCategoriesDrinkFragment);
     }
 }

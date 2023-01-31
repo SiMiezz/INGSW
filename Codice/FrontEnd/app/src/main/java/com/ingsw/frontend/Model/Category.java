@@ -35,6 +35,10 @@ public class Category implements Serializable {
         this.menuId = menuId;
     }
 
+    public Category(String name) {
+        this.name = name;
+    }
+
     public Category() {
     }
 
