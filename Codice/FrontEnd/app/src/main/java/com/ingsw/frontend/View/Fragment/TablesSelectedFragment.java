@@ -9,21 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Model.TableRestaurant;
 import com.ingsw.frontend.Presenter.OrderPresenter;
 import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
-import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Adapter.OrderAdapter;
 import com.ingsw.frontend.View.Dialog.BillDialog;
-import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
 
@@ -62,8 +58,15 @@ public class TablesSelectedFragment extends Fragment {
         this.tableId = tableId;
     }
 
-    public TablesSelectedFragment(TablesAllFragment tablesAllFragment, TablesNumberFragment tablesNumberFragment) {
+    public TablesAllFragment getTablesAllFragment() {
+        return tablesAllFragment;
+    }
+
+    public void setTablesAllFragment(TablesAllFragment tablesAllFragment) {
         this.tablesAllFragment = tablesAllFragment;
+    }
+
+    public TablesSelectedFragment(TablesNumberFragment tablesNumberFragment) {
         this.tablesNumberFragment = tablesNumberFragment;
     }
 
@@ -106,7 +109,7 @@ public class TablesSelectedFragment extends Fragment {
 
         orderAdapter = new OrderAdapter(getContext(), orderArrayList);
 
-        tableRestaurantPresenter = new TableRestaurantPresenter(tablesAllFragment, tablesNumberFragment, this);
+        tableRestaurantPresenter = new TableRestaurantPresenter(null, tablesNumberFragment, this);
         orderPresenter = new OrderPresenter(this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -181,6 +184,7 @@ public class TablesSelectedFragment extends Fragment {
         libera_occupaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                tableRestaurantPresenter.setTablesAllFragment(getTablesAllFragment());
                 tableRestaurantPresenter.updateById(getTableId());
             }
         });

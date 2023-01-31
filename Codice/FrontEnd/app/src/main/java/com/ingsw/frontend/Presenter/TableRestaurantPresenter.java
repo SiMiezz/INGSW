@@ -30,6 +30,14 @@ public class TableRestaurantPresenter {
         tableRestaurantService = new TableRestaurantService();
     }
 
+    public void setTablesAllFragment(TablesAllFragment tablesAllFragment) {
+        this.tablesAllFragment = tablesAllFragment;
+    }
+
+    public void setTablesNumberFragment(TablesNumberFragment tablesNumberFragment) {
+        this.tablesNumberFragment = tablesNumberFragment;
+    }
+
     public TablesAllFragment getTablesAllFragment() {
         return tablesAllFragment;
     }
@@ -42,7 +50,7 @@ public class TableRestaurantPresenter {
         tableRestaurantService.update(new Callback() {
             @Override
             public void returnResult(Object o) {
-                //getByRestaurantName(tableRestaurant.getRestaurantName());
+                getByRestaurantName(tableRestaurant.getRestaurantName());
             }
 
             @Override
@@ -59,7 +67,6 @@ public class TableRestaurantPresenter {
                 ArrayList<TableRestaurant> tableRestaurantArrayList = (ArrayList<TableRestaurant>) o;
 
                 tablesAllFragment.loadTableRestaurant(tableRestaurantArrayList);
-                //countTotalByRestaurantName(restaurantName);
             }
 
             @Override
@@ -144,6 +151,7 @@ public class TableRestaurantPresenter {
                     table.setFree(true);
                     update(table);
                 }
+                countTotalByRestaurantName(table.getRestaurantName());
             }
 
             @Override

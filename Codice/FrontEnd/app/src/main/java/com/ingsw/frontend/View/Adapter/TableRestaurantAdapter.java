@@ -25,10 +25,12 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
     private static int tableNumber = 0;
     public ArrayList<TableRestaurant> tableRestaurantArrayList;
     private TablesSelectedFragment tablesSelectedFragment;
+    private TablesAllFragment tablesAllFragment;
 
-    public TableRestaurantAdapter(Context context, ArrayList<TableRestaurant> tableRestaurantArrayList, TablesSelectedFragment tablesSelectedFragment){
+    public TableRestaurantAdapter(Context context, ArrayList<TableRestaurant> tableRestaurantArrayList, TablesSelectedFragment tablesSelectedFragment, TablesAllFragment tablesAllFragment){
         this.tableRestaurantArrayList = tableRestaurantArrayList;
         this.tablesSelectedFragment = tablesSelectedFragment;
+        this.tablesAllFragment = tablesAllFragment;
     }
 
     public ArrayList<TableRestaurant> getTableRestaurantArrayList() {
@@ -108,6 +110,7 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    tablesSelectedFragment.setTablesAllFragment(tablesAllFragment);
                     tablesSelectedFragment.setTableId(temp.getId());
                     tablesSelectedFragment.getInfoTableFromClick(temp.getId());
                 }

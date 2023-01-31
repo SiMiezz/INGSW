@@ -7,6 +7,7 @@ import com.ingsw.frontend.Retrofit.OrderApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;

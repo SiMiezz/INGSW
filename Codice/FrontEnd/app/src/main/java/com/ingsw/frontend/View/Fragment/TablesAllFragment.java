@@ -43,9 +43,8 @@ public class TablesAllFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment, TablesNumberFragment tablesNumberFragment) {
+    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment) {
         this.tablesSelectedFragment = tablesSelectedFragment;
-        this.tablesNumberFragment = tablesNumberFragment;
     }
 
     public static TablesAllFragment newInstance(String param1, String param2) {
@@ -76,7 +75,7 @@ public class TablesAllFragment extends Fragment {
 
         recyclerView = rootView.findViewById(R.id.tables_listview);
 
-        tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList, tablesSelectedFragment);
+        tableRestaurantAdapter = new TableRestaurantAdapter(getContext(),tableRestaurantArrayList, tablesSelectedFragment,this);
 
         tableRestaurantPresenter = new TableRestaurantPresenter(this,tablesNumberFragment, tablesSelectedFragment);
 

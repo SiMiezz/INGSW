@@ -10,7 +10,7 @@ public class RetrofitService {
 
     private static Retrofit retrofit;
 
-    private static final String BASE_URL = "http://192.168.97.118:8080";//inserire ip server macchina
+    private static final String BASE_URL = "http://192.168.1.221:8080";//inserire ip server macchina
 
 
     public RetrofitService() {}
@@ -19,6 +19,7 @@ public class RetrofitService {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+                .addConverterFactory(new NullOnEmptyConverterFactory())
                 .addConverterFactory(GsonConverterFactory.create(new Gson()))
                 .build();
 

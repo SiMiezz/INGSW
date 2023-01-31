@@ -39,8 +39,10 @@ public class OrderPresenter {
             public void returnResult(Object o) {
                 Double sum = (Double) o;
 
-                tablesSelectedFragment.openDialog(sum);
-                deleteByTableId(tableId);
+                if(sum>0){
+                    tablesSelectedFragment.openDialog(sum);
+                    deleteByTableId(tableId);
+                }
             }
 
             @Override
