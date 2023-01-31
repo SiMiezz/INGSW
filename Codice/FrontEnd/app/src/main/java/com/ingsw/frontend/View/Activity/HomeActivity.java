@@ -1,39 +1,35 @@
 package com.ingsw.frontend.View.Activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
-import com.ingsw.frontend.Model.Enumerations.User_Type;
 import com.ingsw.frontend.Model.User;
+import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
 import com.ingsw.frontend.View.Fragment.KitchenFragment;
 import com.ingsw.frontend.View.Fragment.LogoFragment;
-import com.ingsw.frontend.View.Fragment.MembersAdminFragment;
 import com.ingsw.frontend.View.Fragment.MembersChefsFragment;
 import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
-import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.TablesFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
-import com.ingsw.frontend.R;
 
 public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener {
 

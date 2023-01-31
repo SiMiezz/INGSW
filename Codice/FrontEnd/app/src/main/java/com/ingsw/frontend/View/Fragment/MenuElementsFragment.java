@@ -2,33 +2,25 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.ItemTouchHelper;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.ingsw.frontend.Model.Restaurant;
-import com.ingsw.frontend.Model.User;
-import com.ingsw.frontend.Presenter.MenuElementsPresenter;
-import com.ingsw.frontend.View.Activity.HomeActivity;
-import com.ingsw.frontend.View.Adapter.CategoryAdapter;
-import com.ingsw.frontend.View.Adapter.ElementAdapter;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Restaurant;
+import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MenuElementsFragment extends Fragment {
 

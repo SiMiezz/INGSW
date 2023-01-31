@@ -16,8 +16,6 @@ import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.TablesAllFragment;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurantAdapter.TableRestaurantHolder> {

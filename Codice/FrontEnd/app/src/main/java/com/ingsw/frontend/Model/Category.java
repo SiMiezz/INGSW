@@ -5,8 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Category implements Serializable {
 

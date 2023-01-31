@@ -6,7 +6,6 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.R;
 
 public class MainActivity extends FragmentActivity {

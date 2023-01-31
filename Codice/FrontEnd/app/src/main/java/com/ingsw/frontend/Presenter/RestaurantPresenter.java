@@ -3,11 +3,9 @@ package com.ingsw.frontend.Presenter;
 import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.RestaurantService;
-import com.ingsw.frontend.View.Activity.HomeActivity;
 import com.ingsw.frontend.View.Fragment.LoginFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantInfoFragment;
-import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 
 public class RestaurantPresenter {
 

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 

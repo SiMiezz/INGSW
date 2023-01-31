@@ -3,17 +3,7 @@ package com.ingsw.frontend.View.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.MenuBuilder;
-import androidx.appcompat.view.menu.MenuPopupHelper;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,11 +12,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.appcompat.view.menu.MenuPopupHelper;
+import androidx.fragment.app.Fragment;
+
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Presenter.UserPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Activity.LoginActivity;
-import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
 
 public class UserFragment extends Fragment {

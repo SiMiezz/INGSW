@@ -1,12 +1,11 @@
 package com.ingsw.frontend.Service.Class;
 
-import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.User_Type;
-import com.ingsw.frontend.Service.Callback;
-import com.ingsw.frontend.Service.Interface.IUserService;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.Retrofit.RetrofitService;
 import com.ingsw.frontend.Retrofit.UserApi;
+import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Interface.IUserService;
 
 import java.util.List;
 

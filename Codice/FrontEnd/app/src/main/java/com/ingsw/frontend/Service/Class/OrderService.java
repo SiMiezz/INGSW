@@ -1,13 +1,12 @@
 package com.ingsw.frontend.Service.Class;
 
-import com.ingsw.frontend.Service.Callback;
-import com.ingsw.frontend.Service.Interface.IOrderService;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Retrofit.OrderApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
+import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Interface.IOrderService;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;

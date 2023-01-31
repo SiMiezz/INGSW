@@ -2,11 +2,8 @@ package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Element implements Serializable {
 

@@ -1,21 +1,14 @@
 package com.ingsw.frontend.View.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.ingsw.frontend.Model.Menu;
-import com.ingsw.frontend.Model.Restaurant;
-import com.ingsw.frontend.Model.User;
-import com.ingsw.frontend.Presenter.MenuPresenter;
-import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.R;
 
 public class MenuFragment extends Fragment {

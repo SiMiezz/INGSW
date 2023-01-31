@@ -10,11 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 

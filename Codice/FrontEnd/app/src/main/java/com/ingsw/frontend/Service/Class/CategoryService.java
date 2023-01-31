@@ -1,24 +1,20 @@
 package com.ingsw.frontend.Service.Class;
 
-import com.ingsw.frontend.Model.Allergen;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
-import com.ingsw.frontend.Service.Callback;
-import com.ingsw.frontend.Service.Interface.ICategoryService;
 import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Retrofit.CategoryApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
+import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Interface.ICategoryService;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
 import io.reactivex.rxjava3.core.CompletableObserver;
-import io.reactivex.rxjava3.core.Observer;
-import io.reactivex.rxjava3.core.Single;
 import io.reactivex.rxjava3.core.SingleObserver;
 import io.reactivex.rxjava3.disposables.Disposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
-import retrofit2.Response;
 
 public class CategoryService implements ICategoryService {
 

@@ -1,10 +1,10 @@
 package com.ingsw.frontend.Service.Class;
 
 import com.ingsw.frontend.Model.TableRestaurant;
-import com.ingsw.frontend.Service.Callback;
-import com.ingsw.frontend.Service.Interface.ITableRestaurantService;
 import com.ingsw.frontend.Retrofit.RetrofitService;
 import com.ingsw.frontend.Retrofit.TableRestaurantApi;
+import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Interface.ITableRestaurantService;
 
 import java.util.List;
 

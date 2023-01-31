@@ -1,12 +1,12 @@
 package com.ingsw.frontend.View.Activity;
 
-import androidx.fragment.app.FragmentActivity;
-
-import com.ingsw.frontend.View.Fragment.LoginFragment;
-import com.ingsw.frontend.R;
-
 import android.os.Bundle;
 import android.view.View;
+
+import androidx.fragment.app.FragmentActivity;
+
+import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.LoginFragment;
 
 public class LoginActivity extends FragmentActivity {
 

@@ -17,8 +17,6 @@ import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
-import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
-import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 public class CategoryCreateDialog extends AppCompatDialogFragment {
     private EditText editTextname;

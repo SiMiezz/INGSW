@@ -5,7 +5,6 @@ import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.OrderService;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
-
 import java.util.ArrayList;
 
 public class OrderPresenter {

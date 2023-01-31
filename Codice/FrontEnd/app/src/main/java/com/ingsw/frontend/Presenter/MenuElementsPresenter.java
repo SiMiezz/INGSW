@@ -1,9 +1,10 @@
 package com.ingsw.frontend.Presenter;
 
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.ElementService;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
-import com.ingsw.frontend.Service.Callback;
+
 import java.util.ArrayList;
 
 public class MenuElementsPresenter {

@@ -1,11 +1,10 @@
 package com.ingsw.frontend.Service.Class;
 
 import com.ingsw.frontend.Model.Menu;
-import com.ingsw.frontend.Model.Restaurant;
-import com.ingsw.frontend.Service.Callback;
-import com.ingsw.frontend.Service.Interface.IMenuService;
 import com.ingsw.frontend.Retrofit.MenuApi;
 import com.ingsw.frontend.Retrofit.RetrofitService;
+import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Interface.IMenuService;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.annotations.NonNull;
