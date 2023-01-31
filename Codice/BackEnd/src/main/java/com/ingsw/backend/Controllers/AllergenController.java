@@ -51,4 +51,12 @@ public class AllergenController {
         return allergenDTO;
     }
 
+    private Allergen convertEntity(AllergenDTO allergenDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        Allergen allergen = new Allergen();
+        allergen = modelMapper.map(allergenDTO, Allergen.class);
+
+        return allergen;
+    }
 }

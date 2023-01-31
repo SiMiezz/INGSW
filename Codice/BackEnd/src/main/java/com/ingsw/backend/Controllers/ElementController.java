@@ -1,17 +1,18 @@
 package com.ingsw.backend.Controllers;
 
+import com.ingsw.backend.Model.Allergen;
 import com.ingsw.backend.Model.Category;
+import com.ingsw.backend.Model.DTO.AllergenDTO;
 import com.ingsw.backend.Model.DTO.ElementDTO;
 import com.ingsw.backend.Model.Element;
+import com.ingsw.backend.Service.Interface.IAllergenService;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import com.ingsw.backend.Service.Interface.IElementService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,10 @@ public class ElementController {
     @Autowired
     @Qualifier("mainCategoryService")
     private ICategoryService categoryService;
+
+    @Autowired
+    @Qualifier("mainAllergenService")
+    private IAllergenService allergenService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -80,10 +85,28 @@ public class ElementController {
         Integer id = elementDTO.getCategoryId();
         Optional<Category> categoryOptional = this.categoryService.getById(id);
 
+        List<Allergen> allergenList = new ArrayList<>();
+
+        if(elementDTO.getAllergens() != null){
+            for (AllergenDTO allergenDTO:elementDTO.getAllergens()) {
+                allergenList.add(convertAllergen(allergenDTO));
+            }
+        }
+
         if(!categoryOptional.isEmpty()){
             element.setCategory(categoryOptional.get());
         }
+        element.setAllergenList(allergenList);
 
         return element;
+    }
+
+    private Allergen convertAllergen(AllergenDTO allergenDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        Allergen allergen = new Allergen();
+        allergen = modelMapper.map(allergenDTO, Allergen.class);
+
+        return allergen;
     }
 }

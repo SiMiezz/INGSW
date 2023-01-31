@@ -21,8 +21,7 @@ public class Allergen implements Serializable {
     private String name;
 
     //REFERENCES
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "contains", joinColumns = @JoinColumn(name = "allergen_name"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    @ManyToMany(mappedBy = "allergenList", fetch = FetchType.LAZY)
     @JsonBackReference
     private List<Element> elementList = new ArrayList<>();
 

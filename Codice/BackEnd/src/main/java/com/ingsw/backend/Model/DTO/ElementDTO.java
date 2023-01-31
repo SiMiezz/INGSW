@@ -1,5 +1,7 @@
 package com.ingsw.backend.Model.DTO;
 
+import java.util.List;
+
 public class ElementDTO {
 
     //PRIMARY KEY
@@ -7,6 +9,8 @@ public class ElementDTO {
 
     //REFERENCES
     private Integer categoryId;
+
+    private List<AllergenDTO> allergens;
 
     //ATTRIBUTES
     private String name;
@@ -28,9 +32,10 @@ public class ElementDTO {
     public ElementDTO() {
     }
 
-    public ElementDTO(Integer id, Integer categoryId, String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged) {
+    public ElementDTO(Integer id, Integer categoryId, List<AllergenDTO> allergens, String name, String translateName, String description, String translateDescription, Double price, Boolean prePackaged) {
         this.id = id;
         this.categoryId = categoryId;
+        this.allergens = allergens;
         this.name = name;
         this.translateName = translateName;
         this.description = description;
@@ -110,5 +115,13 @@ public class ElementDTO {
 
     public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<AllergenDTO> getAllergens() {
+        return allergens;
+    }
+
+    public void setAllergens(List<AllergenDTO> allergens) {
+        this.allergens = allergens;
     }
 }

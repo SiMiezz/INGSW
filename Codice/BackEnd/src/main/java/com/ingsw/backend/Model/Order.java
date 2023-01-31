@@ -31,7 +31,8 @@ public class Order implements Serializable {
     private TableRestaurant table;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "element_id"))
+    @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "element_id"))
     @JsonIdentityReference(alwaysAsId = true)
     @JsonManagedReference
     private List<Element> elementOrderList = new ArrayList<>();
