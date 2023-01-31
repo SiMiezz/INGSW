@@ -23,7 +23,7 @@ public class LoginFailDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setPositiveButton("Riprova",null)
+                .setPositiveButton("OK",null)
                 .show();
 
         return dialog;
@@ -32,7 +32,7 @@ public class LoginFailDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=650;
+        getDialog().getWindow().getAttributes().width=700;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }

@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginVertical="10dp"
-            android:layout_weight="0.9">
+            android:layout_weight="0.995">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -103,8 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right|center_vertical"
             android:button="@drawable/checkbox"
-            android:layout_marginRight="10dp"
-            android:layout_weight="0.1"
+            android:layout_marginRight="13dp"
             ></CheckBox>
 
     </LinearLayout>

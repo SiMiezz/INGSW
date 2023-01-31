@@ -84,7 +84,7 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=650;
+        getDialog().getWindow().getAttributes().width=500;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
