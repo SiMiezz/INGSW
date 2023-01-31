@@ -22,7 +22,7 @@ public class LoginDefaultDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setPositiveButton("Ok",null)
+                .setPositiveButton("OK",null)
                 .show();
 
         return dialog;
@@ -31,7 +31,7 @@ public class LoginDefaultDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=900;
+        getDialog().getWindow().getAttributes().width=1000;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
