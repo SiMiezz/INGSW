@@ -1,0 +1,25 @@
+Traduzione automatica element
+
+Visualizzazione traduzione element
+
+Fix price element
+
+Auto completamento open food
+
+Insert order
+
+Posizione category
+
+Statistiche
+
+Qrcode
+
+Visualizzazione allergeni elements
+
+Fix dialog
+
+Fix velocità degli scroll
+
+Feedback selezione
+
+Fix tendina allergeni
