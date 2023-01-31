@@ -1,108 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="15sp">
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="#787486"
+    app:strokeWidth="1dp">
 
-    <TextView
-        android:text="CREATE ELEMENT"
-        android:textSize="20sp"
-        android:textColor="#ff0000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15sp">
 
-    <TextView
-        android:text="Enter name*"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
+        <TextView
+            android:text="CREATE ELEMENT"
+            android:textSize="20sp"
+            android:textColor="#ff0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/edit_element_name"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:hint="Name" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e5e5e5"
+            android:layout_marginVertical="5dp"/>
 
-    <TextView
-        android:id="@+id/view_translatename"
-        android:text="translate name"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
+        <TextView
+            android:text="Enter Name : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="3dp"/>
 
-    <EditText
-        android:id="@+id/edit_element_translatename"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:hint="Name translated" />
-
-    <TextView
-        android:text="Enter description"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
-
-    <EditText
-        android:id="@+id/edit_element_description"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:hint="Description" />
-
-    <TextView
-        android:id="@+id/view_translatedescription"
-        android:text="translate description"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
-
-    <EditText
-        android:id="@+id/edit_element_translatedescription"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:hint="Description translated" />
-
-    <TextView
-        android:text="Enter price*"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
-
-    <EditText
-        android:id="@+id/edit_element_price"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:hint="Price" />
+        <EditText
+            android:id="@+id/edit_element_name"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="@color/black"
+            android:hint="Name"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"/>
 
 
+        <TextView
+            android:id="@+id/view_translatename"
+            android:text="Translate Name : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"/>
 
-    <CheckBox
-        android:id="@+id/checkbox_prepackaged"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:text="Prepackaged" />
+        <EditText
+            android:id="@+id/edit_element_translatename"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="@color/black"
+            android:hint="Translated Name"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:text="Enter Description : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"/>
+
+        <EditText
+            android:id="@+id/edit_element_description"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="@color/black"
+            android:hint="Description"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/view_translatedescription"
+            android:text="Translate Description : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"/>
+
+        <EditText
+            android:id="@+id/edit_element_translatedescription"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="@color/black"
+            android:hint="Translated Description"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:text="Enter Price : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"/>
+
+        <EditText
+            android:id="@+id/edit_element_price"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textColor="@color/black"
+            android:hint="Price"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_prepackaged"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:text="Prepackaged"
+            android:buttonTint="#00A2D3"/>
 
 
-</LinearLayout>
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
+
+

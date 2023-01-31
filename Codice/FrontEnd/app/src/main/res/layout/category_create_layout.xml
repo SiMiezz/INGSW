@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="15sp">
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="10dp"
+    app:strokeColor="#787486"
+    app:strokeWidth="1dp"
+    >
 
-    <TextView
-        android:text="CREATE CATEGORY"
-        android:textSize="20sp"
-        android:textColor="#ff0000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="15sp">
 
-    <TextView
-        android:text="Enter name*"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="5sp"/>
+        <TextView
+            android:text="CREATE CATEGORY"
+            android:textSize="20sp"
+            android:textColor="#ff0000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/edit_category_name"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/black"
-        android:hint="Name" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#e5e5e5"
+            android:layout_marginVertical="5dp"/>
 
-</LinearLayout>
+            <TextView
+                android:text="Enter Name : "
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="3dp"/>
+
+            <EditText
+                android:id="@+id/edit_category_name"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:textColor="@color/black"
+                android:hint="Name"
+                android:textColorHint="#808080"
+                android:background="@drawable/shape_edit_text_popup"
+                android:paddingLeft="5dp"
+                />
+
+
+        </LinearLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
+
