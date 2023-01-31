@@ -20,6 +20,7 @@ import java.util.List;
 public class AllergenAdapter extends ArrayAdapter<Allergen> {
 
     private ArrayList<Allergen> allergenArrayList;
+    private ArrayList<Allergen> selectedAllergenArrayList;
     private Context context;
 
 
@@ -28,6 +29,7 @@ public class AllergenAdapter extends ArrayAdapter<Allergen> {
         super(context, resource, allergenArrayList);
         this.context = context;
         this.allergenArrayList = (ArrayList<Allergen>) allergenArrayList;
+        this.selectedAllergenArrayList = new ArrayList<>();
     }
 
     @Override
@@ -56,12 +58,37 @@ public class AllergenAdapter extends ArrayAdapter<Allergen> {
             holder = (AllergenHolder) convertView.getTag();
         }
 
-        holder.allergenText.setText(allergenArrayList.get(position).getName().toUpperCase());
+        Allergen currentAllergen = allergenArrayList.get(position);
+
+        holder.allergenText.setText(currentAllergen.getName().toUpperCase());
+
+        if(holder.allergenCheckBox.isChecked())
+            if( !(selectedAllergenArrayList.contains(currentAllergen)))
+                selectedAllergenArrayList.add(currentAllergen);
+
+        if( !(holder.allergenCheckBox.isChecked()))
+            if(selectedAllergenArrayList.contains(currentAllergen))
+                selectedAllergenArrayList.remove(currentAllergen);
 
 
         return convertView;
     }
 
+    public ArrayList<Allergen> getAllergenArrayList() {
+        return allergenArrayList;
+    }
+
+    public void setAllergenArrayList(ArrayList<Allergen> allergenArrayList) {
+        this.allergenArrayList = allergenArrayList;
+    }
+
+    public ArrayList<Allergen> getSelectedAllergenArrayList() {
+        return selectedAllergenArrayList;
+    }
+
+    public void setSelectedAllergenArrayList(ArrayList<Allergen> selectedAllergenArrayList) {
+        this.selectedAllergenArrayList = selectedAllergenArrayList;
+    }
 
     private class AllergenHolder{
         private TextView allergenText;
