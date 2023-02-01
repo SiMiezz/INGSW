@@ -1,5 +1,9 @@
 package com.ingsw.backend.Model.DTO;
 
+import com.ingsw.backend.Model.Element;
+
+import java.util.List;
+
 public class OrderDTO {
 
     //PRIMARY KEY
@@ -7,6 +11,8 @@ public class OrderDTO {
 
     //REFERENCES
     private Integer tableId;
+
+    private List<ElementDTO> elements;
 
     //ATTRIBUTES
     private Double price;
@@ -19,9 +25,10 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(Integer id, Integer tableId, Double price, String datecreate) {
+    public OrderDTO(Integer id, Integer tableId, List<ElementDTO> elements, Double price, String datecreate) {
         this.id = id;
         this.tableId = tableId;
+        this.elements = elements;
         this.price = price;
         this.datecreate = datecreate;
     }
@@ -40,11 +47,11 @@ public class OrderDTO {
         this.id = id;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -68,7 +75,11 @@ public class OrderDTO {
         this.tableId = tableId;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public List<ElementDTO> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<ElementDTO> elements) {
+        this.elements = elements;
     }
 }

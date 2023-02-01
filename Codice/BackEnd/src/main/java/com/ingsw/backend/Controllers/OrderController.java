@@ -1,8 +1,8 @@
 package com.ingsw.backend.Controllers;
 
+import com.ingsw.backend.Model.*;
+import com.ingsw.backend.Model.DTO.ElementDTO;
 import com.ingsw.backend.Model.DTO.OrderDTO;
-import com.ingsw.backend.Model.Order;
-import com.ingsw.backend.Model.TableRestaurant;
 import com.ingsw.backend.Service.Interface.IOrderService;
 import com.ingsw.backend.Service.Interface.ITableRestaurantService;
 import org.modelmapper.ModelMapper;
@@ -79,6 +79,16 @@ public class OrderController {
         String strdate = date.toString();
         orderDTO.setDatecreate(strdate);
 
+        List<ElementDTO> elementDTOS = new ArrayList<>();
+
+        if(order.getElementOrderList() != null){
+            for (Element element:order.getElementOrderList()) {
+                elementDTOS.add(convertElementDTO(element));
+            }
+        }
+
+        orderDTO.setElements(elementDTOS);
+
         return orderDTO;
     }
 
@@ -96,10 +106,37 @@ public class OrderController {
         Date date = Date.valueOf(datestr);
         order.setDatecreate(date);
 
+        List<Element> elementList = new ArrayList<>();
+
+        if(orderDTO.getElements() != null){
+            for (ElementDTO elementDTO:orderDTO.getElements()) {
+                elementList.add(convertElementEntity(elementDTO));
+            }
+        }
+
         if(!tableRestaurantOptional.isEmpty()){
             order.setTable(tableRestaurantOptional.get());
         }
+        order.setElementOrderList(elementList);
 
         return order;
+    }
+
+    private ElementDTO convertElementDTO(Element element) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        ElementDTO elementDTO = new ElementDTO();
+        elementDTO = modelMapper.map(element, ElementDTO.class);
+
+        return elementDTO;
+    }
+
+    private Element convertElementEntity(ElementDTO elementDTO) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        Element element = new Element();
+        element = modelMapper.map(elementDTO, Element.class);
+
+        return element;
     }
 }

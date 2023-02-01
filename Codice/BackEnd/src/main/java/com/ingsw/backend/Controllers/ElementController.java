@@ -5,7 +5,6 @@ import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.DTO.AllergenDTO;
 import com.ingsw.backend.Model.DTO.ElementDTO;
 import com.ingsw.backend.Model.Element;
-import com.ingsw.backend.Service.Interface.IAllergenService;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import com.ingsw.backend.Service.Interface.IElementService;
 import org.modelmapper.ModelMapper;
@@ -29,10 +28,6 @@ public class ElementController {
     @Autowired
     @Qualifier("mainCategoryService")
     private ICategoryService categoryService;
-
-    @Autowired
-    @Qualifier("mainAllergenService")
-    private IAllergenService allergenService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -102,7 +97,6 @@ public class ElementController {
                 allergenList.add(convertAllergenEntity(allergenDTO));
             }
         }
-
 
         if(!categoryOptional.isEmpty()){
             element.setCategory(categoryOptional.get());

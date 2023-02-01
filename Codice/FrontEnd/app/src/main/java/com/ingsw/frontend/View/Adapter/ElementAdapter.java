@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ingsw.frontend.Model.Allergen;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
 
@@ -90,8 +91,6 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
             holder.checkBox.setChecked(true);
         else
             holder.checkBox.setChecked(false);
-
-
 
     }
 

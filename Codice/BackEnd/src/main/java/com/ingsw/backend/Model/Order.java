@@ -30,7 +30,7 @@ public class Order implements Serializable {
     @JsonManagedReference
     private TableRestaurant table;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "composed", joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "element_id"))
     @JsonIdentityReference(alwaysAsId = true)
