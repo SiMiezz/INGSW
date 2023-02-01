@@ -20,3 +20,4 @@ Fix velocità degli scroll
 
 Feedback selezione
 
+modifica grafica per sezioni disabilitate
