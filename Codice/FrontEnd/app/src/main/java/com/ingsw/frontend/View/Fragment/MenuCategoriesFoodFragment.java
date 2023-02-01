@@ -177,4 +177,12 @@ public class MenuCategoriesFoodFragment extends Fragment {
         CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(this);
         categoryCreateDialog.show(requireActivity().getSupportFragmentManager(),"Category");
     }
+
+    public FloatingActionButton getSortFoodButton() {
+        return sortFoodButton;
+    }
+
+    public void setSortFoodButton(FloatingActionButton sortFoodButton) {
+        this.sortFoodButton = sortFoodButton;
+    }
 }

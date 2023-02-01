@@ -132,6 +132,11 @@ public class MenuCategoriesFragment extends Fragment {
 
                 addButton.setVisibility(View.INVISIBLE);
                 confirmButton.setVisibility(View.VISIBLE);
+
+                if(menuCategoriesFoodFragment.getSortFoodButton() != null)
+                    menuCategoriesFoodFragment.getSortFoodButton().setVisibility(View.INVISIBLE);
+                if(menuCategoriesDrinkFragment.getSortDrinkButton() != null)
+                    menuCategoriesDrinkFragment.getSortDrinkButton().setVisibility(View.INVISIBLE);
             }
         });
 
@@ -151,6 +156,11 @@ public class MenuCategoriesFragment extends Fragment {
 
                 confirmButton.setVisibility(View.INVISIBLE);
                 addButton.setVisibility(View.VISIBLE);
+
+                if(menuCategoriesFoodFragment.getSortFoodButton() != null)
+                    menuCategoriesFoodFragment.getSortFoodButton().setVisibility(View.VISIBLE);
+                if(menuCategoriesDrinkFragment.getSortDrinkButton() != null)
+                    menuCategoriesDrinkFragment.getSortDrinkButton().setVisibility(View.VISIBLE);
 
             }
         });

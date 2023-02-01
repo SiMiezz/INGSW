@@ -176,4 +176,12 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         CategoryCreateDialog categoryCreateDialog = new CategoryCreateDialog(this);
         categoryCreateDialog.show(requireActivity().getSupportFragmentManager(),"Category");
     }
+
+    public FloatingActionButton getSortDrinkButton() {
+        return sortDrinkButton;
+    }
+
+    public void setSortDrinkButton(FloatingActionButton sortDrinkButton) {
+        this.sortDrinkButton = sortDrinkButton;
+    }
 }
