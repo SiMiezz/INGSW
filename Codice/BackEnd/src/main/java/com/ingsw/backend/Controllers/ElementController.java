@@ -72,6 +72,16 @@ public class ElementController {
         Integer category_id = element.getCategory().getId();
         elementDTO.setCategoryId(category_id);
 
+        List<AllergenDTO> allergenDTOS = new ArrayList<>();
+
+        if(element.getAllergenList() != null){
+            for (Allergen allergen:element.getAllergenList()) {
+                allergenDTOS.add(convertAllergenDTO(allergen));
+            }
+        }
+
+        elementDTO.setAllergens(allergenDTOS);
+
         return elementDTO;
     }
 
@@ -89,9 +99,10 @@ public class ElementController {
 
         if(elementDTO.getAllergens() != null){
             for (AllergenDTO allergenDTO:elementDTO.getAllergens()) {
-                allergenList.add(convertAllergen(allergenDTO));
+                allergenList.add(convertAllergenEntity(allergenDTO));
             }
         }
+
 
         if(!categoryOptional.isEmpty()){
             element.setCategory(categoryOptional.get());
@@ -101,12 +112,21 @@ public class ElementController {
         return element;
     }
 
-    private Allergen convertAllergen(AllergenDTO allergenDTO) {
+    private Allergen convertAllergenEntity(AllergenDTO allergenDTO) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);
         Allergen allergen = new Allergen();
         allergen = modelMapper.map(allergenDTO, Allergen.class);
 
         return allergen;
+    }
+
+    private AllergenDTO convertAllergenDTO(Allergen allergen) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        AllergenDTO allergenDTO = new AllergenDTO();
+        allergenDTO = modelMapper.map(allergen, AllergenDTO.class);
+
+        return allergenDTO;
     }
 }

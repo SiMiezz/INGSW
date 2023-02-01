@@ -32,7 +32,7 @@ public class Element implements Serializable {
     @JsonBackReference
     private List<Order> orderList = new ArrayList<>();
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "contains",joinColumns = @JoinColumn(name = "element_id"),
             inverseJoinColumns = @JoinColumn(name = "allergen_name"))
     @JsonIdentityReference(alwaysAsId = true)
