@@ -93,15 +93,19 @@ public class SectionButtonsFragment extends Fragment {
             switch(user.getJob().toString()){
                 case "admin":
                     restaurantButton = setButton(restaurantButton);
+                    lockButtons("admin");
                     break;
                 case "supervisor":
                     menuButton = setButton(menuButton);
+                    lockButtons("supervisor");
                     break;
                 case "waiter":
                     tablesButton = setButton(tablesButton);
+                    lockButtons("waiter");
                     break;
                 case "chef":
                     kitchenButton = setButton(kitchenButton);
+                    lockButtons("chef");
                     break;
             }
         }
@@ -128,6 +132,7 @@ public class SectionButtonsFragment extends Fragment {
                         tablesButton = deselectButton(tablesButton);
                         membersButton = deselectButton(membersButton);
                         kitchenButton = deselectButton(kitchenButton);
+                        lockButtons("admin");
                         ((HomeActivity)getActivity()).changeFragment(new RestaurantFragment());
                     }
                 }
@@ -149,6 +154,12 @@ public class SectionButtonsFragment extends Fragment {
                         tablesButton = deselectButton(tablesButton);
                         membersButton = deselectButton(membersButton);
                         kitchenButton = deselectButton(kitchenButton);
+
+                        if(user.getJob().toString().equals("admin"))
+                            lockButtons("admin");
+                        else if(user.getJob().toString().equals("supervisor"))
+                            lockButtons("supervisor");
+
                         ((HomeActivity)getActivity()).changeFragment(new MenuFragment());
                     }
                 }
@@ -170,6 +181,7 @@ public class SectionButtonsFragment extends Fragment {
                         tablesButton = setButton(tablesButton);
                         membersButton = deselectButton(membersButton);
                         kitchenButton = deselectButton(kitchenButton);
+                        lockButtons("waiter");
                         ((HomeActivity)getActivity()).changeFragment(new TablesFragment());
                     }
                 }
@@ -191,6 +203,7 @@ public class SectionButtonsFragment extends Fragment {
                         tablesButton = deselectButton(tablesButton);
                         membersButton = setButton(membersButton);
                         kitchenButton = deselectButton(kitchenButton);
+                        lockButtons("admin");
                         ((HomeActivity)getActivity()).changeFragment(new MembersFragment());
                     }
                 }
@@ -212,6 +225,7 @@ public class SectionButtonsFragment extends Fragment {
                         tablesButton = deselectButton(tablesButton);
                         membersButton = deselectButton(membersButton);
                         kitchenButton = setButton(kitchenButton);
+                        lockButtons("chef");
                         ((HomeActivity)getActivity()).changeFragment(new KitchenFragment());
                     }
                 }
@@ -273,6 +287,33 @@ public class SectionButtonsFragment extends Fragment {
 
         return newButton;
 
+    }
+
+    public void lockButtons(String job){
+        switch (job){
+            case "admin":
+                tablesButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                kitchenButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                break;
+            case "supervisor":
+                restaurantButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                tablesButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                membersButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                kitchenButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                break;
+            case "waiter":
+                restaurantButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                menuButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                membersButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                kitchenButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                break;
+            case "chef":
+                restaurantButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                menuButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                tablesButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                membersButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_lock,0,0,0);
+                break;
+        }
     }
 
 
