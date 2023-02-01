@@ -22,4 +22,3 @@ Fix velocità degli scroll
 
 Feedback selezione
 
-Fix tendina allergeni
