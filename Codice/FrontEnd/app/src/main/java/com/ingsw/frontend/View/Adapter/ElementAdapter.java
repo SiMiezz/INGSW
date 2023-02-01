@@ -92,6 +92,20 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         else
             holder.checkBox.setChecked(false);
 
+        ArrayList<Allergen> allergens = (ArrayList<Allergen>) temp.getAllergens();
+        String allergenString = "";
+
+        for(Allergen allergen : allergens)
+            allergenString = allergenString + allergen.getName() + ", ";
+
+        if(allergenString.equals(""))
+            allergenString = "None";
+        else
+            allergenString = allergenString.substring(0, allergenString.length() - 2);
+
+        holder.allergen.setText(allergenString);
+
+
     }
 
     @Override
@@ -118,6 +132,7 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
         private TextView description;
         private TextView price;
         private TextView prepackaged;
+        private TextView allergen;
 
         public ElementHolder(@NonNull View itemView) {
             super(itemView);
@@ -127,6 +142,8 @@ public class ElementAdapter extends RecyclerView.Adapter<ElementAdapter.ElementH
             description = itemView.findViewById(R.id.element_description_cardview);
             price = itemView.findViewById(R.id.element_price_cardview);
             prepackaged = itemView.findViewById(R.id.element_prepackaged_cardview);
+            allergen = itemView.findViewById(R.id.element_allergen_cardview);
+
 
         }
 
