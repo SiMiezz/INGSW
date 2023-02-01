@@ -72,6 +72,7 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                     Boolean prepackaged = checkBoxprepackaged.isChecked();
                     Double price = Double.parseDouble(editTextprice.getText().toString());
 
+                    allergenAdapter.notifyDataSetChanged();
                     Element element = new Element(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment.getCategoryId(),allergenAdapter.getSelectedAllergenArrayList());
 
                     elementCreateDialogListener.createElement(element,menuElementsFragment);
