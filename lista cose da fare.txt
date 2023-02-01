@@ -14,8 +14,6 @@ Statistiche
 
 Qrcode
 
-Visualizzazione allergeni elements
-
 Fix dialog
 
 Fix velocità degli scroll
