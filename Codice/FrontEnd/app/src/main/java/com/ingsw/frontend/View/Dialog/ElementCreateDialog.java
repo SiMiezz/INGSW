@@ -70,7 +70,21 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                     String description = editTextdescription.getText().toString();
                     String translateDescription = editTextTranslateDescription.getText().toString();
                     Boolean prepackaged = checkBoxprepackaged.isChecked();
-                    Double price = Double.parseDouble(editTextprice.getText().toString());
+
+                    String priceString = editTextprice.getText().toString();
+                    char[] checkPrice = priceString.toCharArray();
+                    StringBuilder stringBuilder = new StringBuilder();
+                    for(char c : checkPrice){
+                        if(Character.isDigit(c))
+                            stringBuilder.append(c);
+                        else if(c == ',')
+                            stringBuilder.append('.');
+                        else if(c == '.')
+                            stringBuilder.append(c);
+
+                    }
+
+                    Double price = Double.parseDouble(stringBuilder.toString());
 
                     allergenAdapter.notifyDataSetChanged();
                     Element element = new Element(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment.getCategoryId(),allergenAdapter.getSelectedAllergenArrayList());
