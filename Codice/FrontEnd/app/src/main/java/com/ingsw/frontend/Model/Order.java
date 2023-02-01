@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Order implements Serializable {
 
@@ -26,15 +27,19 @@ public class Order implements Serializable {
     @SerializedName("tableId")
     private Integer tableId;
 
+    @Expose
+    @SerializedName("elements")
+    private List<Element> elements;
+
     //CONSTRUCTORS
     public Order() {
     }
 
-    public Order(Integer id, double price, String datecreate, Integer tableId) {
-        this.id = id;
+    public Order(double price, String datecreate, Integer tableId, List<Element> elements) {
         this.price = price;
         this.datecreate = datecreate;
         this.tableId = tableId;
+        this.elements = elements;
     }
 
     //GETTERS AND SETTERS
@@ -69,6 +74,14 @@ public class Order implements Serializable {
 
     public void setTableId(Integer tableId) {
         this.tableId = tableId;
+    }
+
+    public List<Element> getElements() {
+        return elements;
+    }
+
+    public void setElements(List<Element> elements) {
+        this.elements = elements;
     }
 
     private Boolean checked = Boolean.valueOf(false);
