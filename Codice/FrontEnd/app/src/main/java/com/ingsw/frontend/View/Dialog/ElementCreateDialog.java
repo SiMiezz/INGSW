@@ -86,7 +86,6 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
 
                     Double price = Double.parseDouble(stringBuilder.toString());
 
-                    allergenAdapter.notifyDataSetChanged();
                     Element element = new Element(name,translateName,description,translateDescription,price,prepackaged,menuElementsFragment.getCategoryId(),allergenAdapter.getSelectedAllergenArrayList());
 
                     elementCreateDialogListener.createElement(element,menuElementsFragment);

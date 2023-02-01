@@ -61,13 +61,18 @@ public class AllergenAdapter extends ArrayAdapter<Allergen> {
 
         holder.allergenText.setText(currentAllergen.getName().toUpperCase());
 
-        if(holder.allergenCheckBox.isChecked())
-            if( !(selectedAllergenArrayList.contains(currentAllergen)))
-                selectedAllergenArrayList.add(currentAllergen);
+        holder.allergenCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(holder.allergenCheckBox.isChecked())
+                    if( !(selectedAllergenArrayList.contains(currentAllergen)))
+                        selectedAllergenArrayList.add(currentAllergen);
 
-        if( !(holder.allergenCheckBox.isChecked()))
-            if(selectedAllergenArrayList.contains(currentAllergen))
-                selectedAllergenArrayList.remove(currentAllergen);
+                if( !(holder.allergenCheckBox.isChecked()))
+                    if(selectedAllergenArrayList.contains(currentAllergen))
+                        selectedAllergenArrayList.remove(currentAllergen);
+            }
+        });
 
         return convertView;
     }
