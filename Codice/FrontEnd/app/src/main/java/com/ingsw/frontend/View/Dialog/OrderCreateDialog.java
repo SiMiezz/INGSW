@@ -73,7 +73,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         menu = (Menu) intent.getSerializableExtra("menu");
 
-        //presenters
+        //presenters + andrebbe fatta la divisione food/drink con un tab layout
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
