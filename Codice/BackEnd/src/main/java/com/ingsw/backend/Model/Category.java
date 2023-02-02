@@ -43,14 +43,19 @@ public class Category implements Serializable {
     @Enumerated(EnumType.STRING)
     private Aliment_Type aliment;
 
+    @Column(name = "posizione", nullable = false, insertable = false)
+    private Integer posizione;
+
     //CONSTRUCTORS
     public Category() {
     }
 
-    public Category(Integer id, Menu menu, String name) {
+    public Category(Integer id, Menu menu, String name, Aliment_Type aliment, Integer posizione) {
         this.id = id;
         this.menu = menu;
         this.name = name;
+        this.aliment = aliment;
+        this.posizione = posizione;
     }
 
     // -------------------------------------------------
@@ -97,6 +102,14 @@ public class Category implements Serializable {
 
     public void setAliment(Aliment_Type aliment) {
         this.aliment = aliment;
+    }
+
+    public Integer getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(Integer posizione) {
+        this.posizione = posizione;
     }
 
     // -------------------------------------------------

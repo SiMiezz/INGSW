@@ -10,9 +10,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +30,13 @@ public class CategoryController {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @PutMapping("/update")
+    public void update(@RequestBody CategoryDTO categoryDTO){
+        Category category = this.convertEntity(categoryDTO);
+
+        categoryService.update(category);
+    }
 
     @PostMapping("/create")
     public void create(@RequestBody CategoryDTO categoryDTO){

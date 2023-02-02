@@ -11,6 +11,6 @@ public interface CategoryRepository extends CrudRepository<Category,Integer> {
 
     List<Category> findByMenuId(Integer idMenu);
 
-    List<Category> getCategoriesByMenuIdAndAliment(Integer id, Aliment_Type aliment_type);
+    List<Category> findByMenuIdAndAlimentOrderByPosizione(Integer id, Aliment_Type aliment_type);
 
 }

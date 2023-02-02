@@ -19,6 +19,11 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public void update(Category category){
+        categoryRepository.save(category);
+    }
+
+    @Override
     public void create(Category category){
         categoryRepository.save(category);
     }
@@ -40,6 +45,6 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type){
-        return categoryRepository.getCategoriesByMenuIdAndAliment(id, aliment_type);
+        return categoryRepository.findByMenuIdAndAlimentOrderByPosizione(id, aliment_type);
     }
 }
