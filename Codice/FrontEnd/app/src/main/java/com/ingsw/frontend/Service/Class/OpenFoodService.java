@@ -21,30 +21,9 @@ public class OpenFoodService implements IOpenFoodService {
         this.openFoodApi = RetrofitService.getRetrofitFood().create(OpenFoodApi.class);
     }
 
-    /*@Override
-    public void getProductNameList(Callback callback, String name) {
-        openFoodApi.getProductNameList(name)
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new SingleObserver<List<String>>() {
-                    @Override
-                    public void onSubscribe(@NonNull Disposable d) {}
-
-                    @Override
-                    public void onSuccess(@NonNull List<String> strings) {
-                        callback.returnResult(strings);
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-                        callback.returnError(e);
-                    }
-                });
-    }*/
-
     @Override
-    public void getProductName(Callback callback, String name) {
-        openFoodApi.getProductName(name,true,true,"product_name")
+    public void getProductList(Callback callback, String name) {
+        openFoodApi.getProductList(name,true,true,"product_name")
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<String>() {

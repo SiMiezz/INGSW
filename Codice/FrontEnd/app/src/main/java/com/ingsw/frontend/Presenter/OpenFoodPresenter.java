@@ -6,6 +6,7 @@ import com.ingsw.frontend.Service.Class.OpenFoodService;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OpenFoodPresenter {
 
@@ -15,36 +16,46 @@ public class OpenFoodPresenter {
 
     public OpenFoodPresenter(ElementCreateDialog elementCreateDialog) {
         this.elementCreateDialog = elementCreateDialog;
-        openFoodService = new OpenFoodService();
+        this.openFoodService = new OpenFoodService();
     }
 
     public void getProductList(String name){
-        openFoodService.getProductName(new Callback(){
-            @Override
-            public void returnResult(Object o) {
-                /*ArrayList<String> productNameList = (ArrayList<String>) o;
-
-                for (String string: productNameList) {
-                    System.out.println(string);
-                }
-                elementCreateDialog.loadProductNames(productNameList);*/
-            }
-
-            @Override
-            public void returnError(Throwable e) {
-                System.out.println(e);
-            }
-        },name);
-    }
-
-    public void getProduct(String name){
-        openFoodService.getProductName(new Callback(){
+        openFoodService.getProductList(new Callback() {
             @Override
             public void returnResult(Object o) {
                 String string = (String) o;
+                ArrayList<String> productNameList = new ArrayList<>();
 
-                System.out.println("PROVAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA: " + string);
-                //elementCreateDialog.loadProductNames(productNameList);*/
+                int inizio, fine, i=0;
+
+                while(i<string.length()){
+
+                    if (string.charAt(i) == '[') {
+                        i++;
+                        while(string.charAt(i) != ']'){
+                            while(string.charAt(i) != ':') {
+                                i++;
+                            }
+                            inizio = i + 2;
+
+                            while(string.charAt(i) != '}') {
+                                i++;
+                            }
+                            fine = i - 2;
+
+                            String subStr = string.substring(inizio, fine+1);
+                            productNameList.add(subStr);
+
+                            i++;
+                        }
+                        break;
+                    }
+
+                    i++;
+
+                }
+
+                elementCreateDialog.loadProductNames(productNameList);
             }
 
             @Override

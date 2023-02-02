@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -101,6 +103,7 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         });
 
         allergenArrayList = new ArrayList<>();
+        productNameList = new ArrayList<>();
         editTextname = view.findViewById(R.id.acv_element_name);
         editTextTranslateName = view.findViewById(R.id.edit_element_translatename);
         editTextdescription = view.findViewById(R.id.edit_element_description);
@@ -121,11 +124,23 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         allergenAdapter = new AllergenAdapter(getContext(), 0, allergenArrayList);
         spinner.setAdapter(allergenAdapter);
 
-        openFoodPresenter.getProduct("patatine");
+        editTextname.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-        /*openFoodPresenter.getProductList(editTextname.getText().toString());
-        ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,productNameList);
-        editTextname.setAdapter(nameAdapter);*/
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                openFoodPresenter.getProductList(editTextname.getText().toString());
+
+                ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,productNameList);
+                editTextname.setAdapter(nameAdapter);
+
+                nameAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
 
         return dialog;
     }
@@ -155,14 +170,11 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         void createElement(Element element,MenuElementsFragment menuElementsFragment);
     }
 
-
     public void loadAllergens(ArrayList<Allergen> allergens) {
-        for(Allergen allergen : allergens)
-            allergenArrayList.add(allergen);
+        allergenArrayList.addAll(allergens);
     }
 
     public void loadProductNames(ArrayList<String> productNames) {
-        for(String name : productNames)
-            productNameList.add(name);
+        productNameList.addAll(productNames);
     }
 }

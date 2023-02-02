@@ -9,13 +9,9 @@ import retrofit2.http.Query;
 
 public interface OpenFoodApi {
 
-    /*@Headers({"User-Agent: ratatouille23 - Android - Version 1.0"})
-    @GET("/cgi/search.pl?search_terms=name&search_simple=true&json=true&fields=product_name")
-    Single<List<String>> getProductNameList(@Query("name") String name);*/
-
     @Headers({"User-Agent: ratatouille23 - Android - Version 1.0"})
     @GET("/cgi/search.pl")
-    Single<String> getProductName(@Query("search_terms") String search_terms,
+    Single<String> getProductList(@Query("search_terms") String search_terms,
                                   @Query("search_simple") Boolean search_simple,
                                   @Query("json") Boolean json,
                                   @Query("fields") String fields);
