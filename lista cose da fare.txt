@@ -2,8 +2,6 @@ Traduzione automatica element
 
 Visualizzazione traduzione element
 
-Auto completamento open food
-
 Insert order
 
 Statistiche
