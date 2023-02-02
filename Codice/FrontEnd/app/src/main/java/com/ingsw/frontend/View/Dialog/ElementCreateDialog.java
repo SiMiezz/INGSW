@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.ingsw.frontend.Model.Allergen;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Presenter.AllergenPresenter;
+import com.ingsw.frontend.Presenter.OpenFoodPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.AllergenAdapter;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
@@ -26,7 +29,7 @@ import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import java.util.ArrayList;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
-    private EditText editTextname;
+    private AutoCompleteTextView editTextname;
     private EditText editTextTranslateName;
     private EditText editTextdescription;
     private EditText editTextTranslateDescription;
@@ -38,10 +41,13 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     private Spinner spinner;
 
     private ArrayList<Allergen> allergenArrayList;
+    private ArrayList<String> productNameList;
 
     private ElementCreateDialogListener elementCreateDialogListener;
     private MenuElementsFragment menuElementsFragment;
     private AllergenPresenter allergenPresenter = new AllergenPresenter(this);
+    private OpenFoodPresenter openFoodPresenter = new OpenFoodPresenter(this);
+
     private AllergenAdapter allergenAdapter;
 
     public ElementCreateDialog(MenuElementsFragment menuElementsFragment) {
@@ -95,7 +101,7 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         });
 
         allergenArrayList = new ArrayList<>();
-        editTextname = view.findViewById(R.id.edit_element_name);
+        editTextname = view.findViewById(R.id.acv_element_name);
         editTextTranslateName = view.findViewById(R.id.edit_element_translatename);
         editTextdescription = view.findViewById(R.id.edit_element_description);
         editTextTranslateDescription = view.findViewById(R.id.edit_element_translatedescription);
@@ -114,6 +120,12 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         allergenPresenter.getAllAllergens();
         allergenAdapter = new AllergenAdapter(getContext(), 0, allergenArrayList);
         spinner.setAdapter(allergenAdapter);
+
+        openFoodPresenter.getProduct("patatine");
+
+        /*openFoodPresenter.getProductList(editTextname.getText().toString());
+        ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,productNameList);
+        editTextname.setAdapter(nameAdapter);*/
 
         return dialog;
     }
@@ -147,5 +159,10 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
     public void loadAllergens(ArrayList<Allergen> allergens) {
         for(Allergen allergen : allergens)
             allergenArrayList.add(allergen);
+    }
+
+    public void loadProductNames(ArrayList<String> productNames) {
+        for(String name : productNames)
+            productNameList.add(name);
     }
 }
