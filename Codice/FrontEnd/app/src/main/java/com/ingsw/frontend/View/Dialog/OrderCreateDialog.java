@@ -13,11 +13,16 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
 import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Adapter.CategoryAndOrderAdapter;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
+
+import java.util.ArrayList;
 
 public class OrderCreateDialog extends AppCompatDialogFragment {
 
@@ -28,6 +33,10 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private RecyclerView selectedElementsRecyclerView;
     private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
     private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
+
+    private CategoryAndOrderAdapter categoryAndOrderAdapter;
+    private ArrayList<Category> categoryArrayList;
+    private ArrayList<Element> elementArrayList;
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
@@ -46,6 +55,13 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Ok", null)
                 .show();
 
+        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
+        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
+
+        categoryArrayList = new ArrayList<>();
+        elementArrayList = new ArrayList<>();
+
+
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +74,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             }
         });
 
-        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
-        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
+
 
         return dialog;
     }
