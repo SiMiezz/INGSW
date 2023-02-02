@@ -19,6 +19,7 @@ import com.ingsw.frontend.Presenter.TableRestaurantPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.OrderAdapter;
 import com.ingsw.frontend.View.Dialog.BillDialog;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 
 import java.util.ArrayList;
 
@@ -154,7 +155,7 @@ public class TablesSelectedFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openCreateOrderDialog();
             }
         });
 
@@ -219,5 +220,10 @@ public class TablesSelectedFragment extends Fragment {
     public void openDialog(Double sum){
         BillDialog billDialog = new BillDialog(sum);
         billDialog.show(requireActivity().getSupportFragmentManager(),"Bill");
+    }
+
+    public void openCreateOrderDialog(){
+        OrderCreateDialog orderCreateDialog = new OrderCreateDialog(this);
+        orderCreateDialog.show(requireActivity().getSupportFragmentManager(), "Order");
     }
 }
