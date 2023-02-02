@@ -45,9 +45,16 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
 
     private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
+
         ArrayList result = new ArrayList();
 
-
+        for(Category category : categoryArrayList){
+            mergeList.add(category);
+            for(Element element : elementArrayList){
+                if(element.getCategoryId() == category.getId())
+                    mergeList.add(element);
+            }
+        }
 
         return result;
     }
@@ -71,7 +78,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
             holder.category.setText(((Category) mergeList.get(position)).getName());
         }
         else if(mergeList.get(position) instanceof Element){
-            // ...
+            holder.element.setText(((Element) mergeList.get(position)).getName());
         }
 
     }
@@ -98,10 +105,12 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
     public class CategoryAndElementHolder extends RecyclerView.ViewHolder{
 
         private TextView category;
+        private TextView element;
 
         public CategoryAndElementHolder(@NonNull View itemView) {
             super(itemView);
             category = itemView.findViewById(R.id.order_create_category_text);
+            element = itemView.findViewById(R.id.order_create_element_text);
         }
     }
 }
