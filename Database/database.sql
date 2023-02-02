@@ -54,9 +54,10 @@ CREATE TABLE `category` (
   `posizione` int NOT NULL,
   `menu_id` int NOT NULL,
   PRIMARY KEY (`id_category`),
+  UNIQUE KEY `posizione_UNIQUE` (`posizione`,`menu_id`,`aliment`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -355,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-02 11:42:58
+-- Dump completed on 2023-02-02 13:58:13
