@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+CREATE DATABASE  IF NOT EXISTS `ratatouille` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `ratatouille`;
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: ratatouille
 -- ------------------------------------------------------
@@ -49,11 +51,12 @@ CREATE TABLE `category` (
   `id_category` int NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `aliment` enum('food','drink') NOT NULL,
+  `posizione` int NOT NULL,
   `menu_id` int NOT NULL,
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,9 +65,31 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',1),(2,'secondi','food',1),(3,'contorni','food',1),(15,'alcolici','drink',1),(16,'analcolici','drink',1),(17,'nervine','drink',1),(18,'antipasti','food',1),(19,'aaa','food',1),(20,'bbb','food',1),(21,'ccc','food',1),(22,'ddd','food',1),(23,'ok','food',1);
+INSERT INTO `category` VALUES (1,'primi','food',2,1),(2,'secondi','food',3,1),(3,'contorni','food',0,1),(15,'alcolici','drink',0,1),(16,'analcolici','drink',3,1),(17,'nervine','drink',1,1),(18,'antipasti','food',1,1),(24,'drinks','drink',2,1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `category_BEFORE_INSERT` BEFORE INSERT ON `category` FOR EACH ROW BEGIN
+
+SET NEW.posizione = (SELECT AUTO_INCREMENT 
+            FROM information_schema.TABLES 
+            WHERE TABLE_SCHEMA = DATABASE() 
+            AND TABLE_NAME = 'category');
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `client`
@@ -138,6 +163,7 @@ CREATE TABLE `contains` (
 
 LOCK TABLES `contains` WRITE;
 /*!40000 ALTER TABLE `contains` DISABLE KEYS */;
+INSERT INTO `contains` VALUES (20,'clams'),(20,'egg'),(20,'peanuts');
 /*!40000 ALTER TABLE `contains` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,7 +186,7 @@ CREATE TABLE `element` (
   PRIMARY KEY (`id_element`),
   KEY `category_fk_idx` (`category_id`),
   CONSTRAINT `category_fk` FOREIGN KEY (`category_id`) REFERENCES `category` (`id_category`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -169,7 +195,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES (1,'pasta',NULL,10,'asciutta',NULL,0,1),(2,'carne',NULL,20,'scottona',NULL,0,2),(3,'pesce',NULL,30,'spada',NULL,0,2),(4,'mozzarella',NULL,10,'bufala',NULL,1,18),(5,'prosciutto',NULL,5,'parma',NULL,1,18),(6,'vino',NULL,15,'bianco',NULL,1,15),(7,'birra',NULL,3,'peroni',NULL,1,15),(8,'fanta',NULL,2,'lemon',NULL,1,16),(9,'zucchine',NULL,3,'grigliate',NULL,0,3),(10,'aaa',NULL,15.99,'aaadesc',NULL,1,19),(11,'bbb',NULL,15.99,'bbbdesc',NULL,0,19),(12,'ccc',NULL,149.99,'cccdesc',NULL,0,20),(13,'ddd',NULL,13.99,'ddddesc',NULL,1,20);
+INSERT INTO `element` VALUES (1,'pasta',NULL,10,'asciutta',NULL,0,1),(2,'carne',NULL,20,'scottona',NULL,0,2),(3,'pesce',NULL,30,'spada',NULL,0,2),(4,'mozzarella',NULL,10,'bufala',NULL,1,18),(5,'prosciutto',NULL,5,'parma',NULL,1,18),(6,'vino',NULL,15,'bianco',NULL,1,15),(7,'birra',NULL,3,'peroni',NULL,1,15),(8,'fanta',NULL,2,'lemon',NULL,1,16),(9,'zucchine',NULL,3,'grigliate',NULL,0,3),(14,'anaconda','',50,'salmonata','',0,2),(15,'riso','',8,'cantonese','',0,1),(16,'melanzane','',5,'fritte','',0,3),(20,'aa','',12,'bb','',0,1);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +304,7 @@ CREATE TABLE `tablerestaurant` (
 
 LOCK TABLES `tablerestaurant` WRITE;
 /*!40000 ALTER TABLE `tablerestaurant` DISABLE KEYS */;
-INSERT INTO `tablerestaurant` VALUES (1,2,1,'rest'),(2,6,1,'rest'),(3,4,0,'rest'),(4,8,0,'rest'),(5,10,1,'rest'),(6,4,0,'rest'),(7,2,1,'rest'),(8,6,1,'rest');
+INSERT INTO `tablerestaurant` VALUES (1,2,1,'rest'),(2,6,1,'rest'),(3,4,0,'rest'),(4,8,0,'rest'),(5,10,1,'rest'),(6,4,1,'rest'),(7,2,0,'rest'),(8,6,1,'rest');
 /*!40000 ALTER TABLE `tablerestaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -308,9 +334,17 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('admino','ok','dario','francese','admin','risto'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','mario','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('sup1','defpwd','cop','meme','supervisor','rest'),('super','defpwd','copi','raff','supervisor','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
+INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('admino','ok','dario','francese','admin','risto'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','mario','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping events for database 'ratatouille'
+--
+
+--
+-- Dumping routines for database 'ratatouille'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -321,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-31 12:36:56
+-- Dump completed on 2023-02-02 11:42:58

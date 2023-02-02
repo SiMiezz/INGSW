@@ -8,6 +8,8 @@ import java.util.Optional;
 
 public interface ICategoryService {
 
+    void update(Category category);
+
     void create(Category category);
 
     void delete(Category category);

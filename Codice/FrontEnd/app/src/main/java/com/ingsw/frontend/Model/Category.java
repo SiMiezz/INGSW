@@ -22,6 +22,10 @@ public class Category implements Serializable {
     @SerializedName("aliment")
     private Aliment_Type aliment;
 
+    @Expose
+    @SerializedName("posizione")
+    private Integer posizione;
+
     //REFERENCES
     @Expose
     @SerializedName("menuId")
@@ -66,6 +70,14 @@ public class Category implements Serializable {
 
     public void setAliment(Aliment_Type aliment) {
         this.aliment = aliment;
+    }
+
+    public Integer getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(Integer posizione) {
+        this.posizione = posizione;
     }
 
     public Integer getMenuId() {

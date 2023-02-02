@@ -6,6 +6,8 @@ import com.ingsw.frontend.Service.Callback;
 
 public interface ICategoryService {
 
+    void update(Callback callback, Category category);
+
     void create(Callback callback, Category category);
 
     void getByMenuId(Callback callback, Integer id);

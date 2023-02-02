@@ -104,4 +104,18 @@ public class MenuCategoriesPresenter {
             }
         },category);
     }
+
+    public void update(Category category){
+        categoryService.update(new Callback() {
+            @Override
+            public void returnResult(Object o) {
+                getByMenuIdAndAliment(category.getMenuId(),category.getAliment());
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        },category);
+    }
 }

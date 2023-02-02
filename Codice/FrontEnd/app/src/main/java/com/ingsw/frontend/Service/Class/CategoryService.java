@@ -25,6 +25,28 @@ public class CategoryService implements ICategoryService {
     }
 
     @Override
+    public void update(Callback callback, Category category){
+        categoryApi.update(category)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new CompletableObserver() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onComplete() {
+                        callback.returnResult(true);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        System.out.println(e);
+                        callback.returnResult(false);
+                    }
+                });
+    }
+
+    @Override
     public void create(Callback callback, Category category){
         categoryApi.create(category)
                 .observeOn(AndroidSchedulers.mainThread())
