@@ -40,7 +40,6 @@
             android:id="@+id/acv_element_name"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:completionThreshold="2"
             android:textColor="@color/black"
             android:hint="Name"
             android:textColorHint="#808080"

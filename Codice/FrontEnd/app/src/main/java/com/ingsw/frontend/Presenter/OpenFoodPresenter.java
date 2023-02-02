@@ -43,8 +43,13 @@ public class OpenFoodPresenter {
                             }
                             fine = i - 2;
 
-                            String subStr = string.substring(inizio, fine+1);
-                            productNameList.add(subStr);
+                            if(fine>inizio){
+                                String subStr = string.substring(inizio, fine+1);
+                                productNameList.add(subStr);
+                            }
+                            else{
+                                break;
+                            }
 
                             i++;
                         }

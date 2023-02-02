@@ -132,7 +132,8 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 openFoodPresenter.getProductList(editTextname.getText().toString());
 
-                ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_dropdown_item_1line,productNameList);
+                ArrayAdapter<String> nameAdapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,productNameList);
+                nameAdapter.getFilter().filter(editTextname.getText(), editTextname);
                 editTextname.setAdapter(nameAdapter);
 
                 nameAdapter.notifyDataSetChanged();
