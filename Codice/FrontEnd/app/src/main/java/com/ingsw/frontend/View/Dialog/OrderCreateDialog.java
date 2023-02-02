@@ -42,18 +42,20 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Ok", null)
                 .show();
 
-        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
-        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Order order = new Order();
 
+                orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
+                dialog.dismiss();
             }
         });
 
-
+        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
+        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
 
         return dialog;
     }
@@ -64,8 +66,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         super.onAttach(context);
 
         try {
-            orderCreateDialogListener = (OrderCreateDialog.OrderCreateDialogListener) context;
-        } catch (ClassCastException e){
+            orderCreateDialogListener = (OrderCreateDialogListener) context;
+        }
+        catch (ClassCastException e){
             throw new ClassCastException(context.toString());
         }
     }

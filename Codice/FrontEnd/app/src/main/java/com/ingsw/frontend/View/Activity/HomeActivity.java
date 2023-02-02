@@ -11,10 +11,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Dialog.CategoryCreateDialog;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserCreateDialog;
 import com.ingsw.frontend.View.Dialog.UserUpdateDialog;
 import com.ingsw.frontend.View.Fragment.KitchenFragment;
@@ -29,9 +31,10 @@ import com.ingsw.frontend.View.Fragment.MenuFragment;
 import com.ingsw.frontend.View.Fragment.RestaurantFragment;
 import com.ingsw.frontend.View.Fragment.SectionButtonsFragment;
 import com.ingsw.frontend.View.Fragment.TablesFragment;
+import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 import com.ingsw.frontend.View.Fragment.UserFragment;
 
-public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener {
+public class HomeActivity extends FragmentActivity implements ElementCreateDialog.ElementCreateDialogListener, UserCreateDialog.UserCreateDialogListener, UserUpdateDialog.UserUpdateDialogListener, CategoryCreateDialog.CategoryCreateDialogListener, OrderCreateDialog.OrderCreateDialogListener {
 
     private Intent intent;
     private User user;
@@ -128,5 +131,10 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
         else{
             menuCategoriesDrinkFragment.createCategory(category);
         }
+    }
+
+    @Override
+    public void createOrder(Order order, TablesSelectedFragment tablesSelectedFragment) {
+        tablesSelectedFragment.createOrder(order);
     }
 }

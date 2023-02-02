@@ -35,38 +35,40 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
                 app:cardCornerRadius="10dp"
                 app:strokeColor="#787486"
                 app:strokeWidth="1dp"
                 android:layout_marginRight="8dp"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="3dp">
+                android:paddingVertical="3dp"
+                app:cardBackgroundColor="#f9f9f9">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/create_order_all_elements"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:divider="#787486"
                     android:dividerHeight="1dp"/>
 
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_height="300dp"
                 app:cardCornerRadius="10dp"
                 app:strokeColor="#787486"
                 app:strokeWidth="1dp"
                 android:layout_marginLeft="8dp"
                 android:paddingHorizontal="5dp"
-                android:paddingVertical="3dp">
+                android:paddingVertical="3dp"
+                app:cardBackgroundColor="#f9f9f9">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/create_order_selected_elements"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:divider="#787486"
                     android:dividerHeight="1dp" />
 

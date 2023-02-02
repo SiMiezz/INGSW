@@ -226,4 +226,8 @@ public class TablesSelectedFragment extends Fragment {
         OrderCreateDialog orderCreateDialog = new OrderCreateDialog(this);
         orderCreateDialog.show(requireActivity().getSupportFragmentManager(), "Order");
     }
+
+    public void createOrder(Order order) {
+
+    }
 }
