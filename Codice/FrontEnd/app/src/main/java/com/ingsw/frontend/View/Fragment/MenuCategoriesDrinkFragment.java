@@ -142,6 +142,11 @@ public class MenuCategoriesDrinkFragment extends Fragment {
 
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
 
+            for (Category category:adapter.getArrayList()) {
+                category.setPosizione(adapter.getArrayList().indexOf(category));
+                menuCategoriesPresenter.update(category);
+            }
+
             return false;
         }
 
