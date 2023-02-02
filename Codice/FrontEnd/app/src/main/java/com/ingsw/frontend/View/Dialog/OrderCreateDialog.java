@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.R;
@@ -21,6 +22,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private OrderCreateDialogListener orderCreateDialogListener;
     private TablesSelectedFragment tablesSelectedFragment;
 
+    private RecyclerView allElementsRecyclerView;
+    private RecyclerView selectedElementsRecyclerView;
+
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
     }
@@ -30,13 +34,16 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.category_create_layout, null);
+        View view = inflater.inflate(R.layout.order_create_layout, null);
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
                 .setNegativeButton("Cancel", null)
                 .setPositiveButton("Ok", null)
                 .show();
+
+        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
+        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
