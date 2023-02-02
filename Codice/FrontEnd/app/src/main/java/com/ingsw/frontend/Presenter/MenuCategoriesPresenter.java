@@ -4,6 +4,7 @@ import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.CategoryService;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFragment;
@@ -15,6 +16,7 @@ public class MenuCategoriesPresenter {
     private MenuCategoriesFragment menuCategoriesFragment;
     private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
     private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
+    private OrderCreateDialog orderCreateDialog;
     private CategoryService categoryService;
 
     // CONSTRUCTOR
@@ -31,6 +33,11 @@ public class MenuCategoriesPresenter {
 
     public MenuCategoriesPresenter(MenuCategoriesDrinkFragment menuCategoriesDrinkFragment) {
         this.menuCategoriesDrinkFragment = menuCategoriesDrinkFragment;
+        categoryService = new CategoryService();
+    }
+
+    public MenuCategoriesPresenter(OrderCreateDialog orderCreateDialog){
+        this.orderCreateDialog = orderCreateDialog;
         categoryService = new CategoryService();
     }
 

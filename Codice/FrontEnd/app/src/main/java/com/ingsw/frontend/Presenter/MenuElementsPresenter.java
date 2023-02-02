@@ -3,17 +3,24 @@ package com.ingsw.frontend.Presenter;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.ElementService;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 import java.util.ArrayList;
 
 public class MenuElementsPresenter {
     
-    private final MenuElementsFragment menuElementsFragment;
+    private MenuElementsFragment menuElementsFragment;
+    private OrderCreateDialog orderCreateDialog;
     private ElementService elementService;
 
     public MenuElementsPresenter(MenuElementsFragment menuElementsFragment) {
         this.menuElementsFragment = menuElementsFragment;
+        elementService = new ElementService();
+    }
+
+    public MenuElementsPresenter(OrderCreateDialog orderCreateDialog){
+        this.orderCreateDialog = orderCreateDialog;
         elementService = new ElementService();
     }
     

@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.Order;
+import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
+import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
@@ -24,6 +26,8 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
     private RecyclerView allElementsRecyclerView;
     private RecyclerView selectedElementsRecyclerView;
+    private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
+    private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
