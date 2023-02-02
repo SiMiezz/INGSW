@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +24,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
     public CategoryAndOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
+        mergeList = mergeCategoryAndElementList(categoryArrayList, elementArrayList);
     }
 
     public ArrayList<Category> getCategoryArrayList() {
@@ -41,6 +43,15 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
         this.elementArrayList = elementArrayList;
     }
 
+
+    private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
+        ArrayList result = new ArrayList();
+
+
+
+        return result;
+    }
+
     @NonNull
     @Override
     public CategoryAndOrderAdapter.CategoryAndElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,7 +68,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
     public void onBindViewHolder(@NonNull CategoryAndOrderAdapter.CategoryAndElementHolder holder, int position) {
 
         if(mergeList.get(position) instanceof Category){
-            // ...
+            holder.category.setText(((Category) mergeList.get(position)).getName());
         }
         else if(mergeList.get(position) instanceof Element){
             // ...
@@ -67,7 +78,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mergeList.size();
     }
 
     @Override
@@ -86,8 +97,11 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
     public class CategoryAndElementHolder extends RecyclerView.ViewHolder{
 
+        private TextView category;
+
         public CategoryAndElementHolder(@NonNull View itemView) {
             super(itemView);
+            category = itemView.findViewById(R.id.order_create_category_text);
         }
     }
 }
