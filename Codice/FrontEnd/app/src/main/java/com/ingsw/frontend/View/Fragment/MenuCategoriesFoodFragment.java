@@ -123,6 +123,12 @@ public class MenuCategoriesFoodFragment extends Fragment {
                     itemTouchHelper.attachToRecyclerView(foodView);
                 } else if(CategoryAdapter.currentLayout == -3){
                     CategoryAdapter.currentLayout = -1;
+
+                    for (Category category:adapter.getArrayList()) {
+                        category.setPosizione(adapter.getArrayList().indexOf(category));
+                        menuCategoriesPresenter.update(category);
+                    }
+
                     adapter.notifyDataSetChanged();
                     itemTouchHelper.attachToRecyclerView(null);
                 }
@@ -141,11 +147,6 @@ public class MenuCategoriesFoodFragment extends Fragment {
             Collections.swap(adapter.getArrayList(), fromPosition, toPosition);
 
             recyclerView.getAdapter().notifyItemMoved(fromPosition, toPosition);
-
-            for (Category category:adapter.getArrayList()) {
-                category.setPosizione(adapter.getArrayList().indexOf(category));
-                menuCategoriesPresenter.update(category);
-            }
 
             return false;
         }
