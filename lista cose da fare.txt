@@ -6,8 +6,6 @@ Auto completamento open food
 
 Insert order
 
-Posizione category
-
 Statistiche
 
 Qrcode
