@@ -17,13 +17,13 @@ import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
 
-public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrderAdapter.CategoryAndElementHolder> {
+public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<CategoryAndElementCreateOrderAdapter.CategoryAndElementHolder> {
 
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
     private ArrayList mergeList = new ArrayList();
 
-    public CategoryAndOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList){
+    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
     }
@@ -45,7 +45,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
     @NonNull
     @Override
-    public CategoryAndOrderAdapter.CategoryAndElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CategoryAndElementCreateOrderAdapter.CategoryAndElementHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View categoryList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_create_order_category, parent, false);
         View elementList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_create_order_element, parent, false);
 
@@ -56,7 +56,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CategoryAndOrderAdapter.CategoryAndElementHolder holder, int position) {
+    public void onBindViewHolder(@NonNull CategoryAndElementCreateOrderAdapter.CategoryAndElementHolder holder, int position) {
 
         if(mergeList.get(position) instanceof Category){
             if(((Category) mergeList.get(position)).getAliment() == Aliment_Type.food)

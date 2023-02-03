@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,7 +22,8 @@ import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Presenter.CreateOrderPresenter;
 import com.ingsw.frontend.R;
-import com.ingsw.frontend.View.Adapter.CategoryAndOrderAdapter;
+import com.ingsw.frontend.View.Adapter.CategoryAndElementCreateOrderAdapter;
+import com.ingsw.frontend.View.Adapter.SelectedElementOrderAdapter;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import java.util.ArrayList;
@@ -35,12 +37,21 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private RecyclerView selectedElementsRecyclerView;
     private CreateOrderPresenter createOrderPresenter = new CreateOrderPresenter(this);
 
-    private CategoryAndOrderAdapter categoryAndOrderAdapter;
+    private CategoryAndElementCreateOrderAdapter categoryAndElementCreateOrderAdapter;
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
 
+    private ArrayList<Element> selectedElementArrayList;
+    private SelectedElementOrderAdapter selectedElementOrderAdapter;
+
     private Intent intent;
     private Menu menu;
+
+    private ImageButton removeButton;
+    private ImageButton backButton;
+    private ImageButton addButton;
+    private ImageButton confirmButton;
+
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
@@ -59,18 +70,20 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                 .setPositiveButton("Ok", null)
                 .show();
 
+
+
+        // **************************************** inizio prima recycler view
         allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
-        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
 
         categoryArrayList = new ArrayList<>();
         elementArrayList = new ArrayList<>();
 
-        categoryAndOrderAdapter = new CategoryAndOrderAdapter(getContext(), categoryArrayList, elementArrayList);
+        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         allElementsRecyclerView.setLayoutManager(linearLayoutManager);
-        allElementsRecyclerView.setAdapter(categoryAndOrderAdapter);
+        allElementsRecyclerView.setAdapter(categoryAndElementCreateOrderAdapter);
 
         intent = getActivity().getIntent();
 
@@ -79,7 +92,78 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
         createOrderPresenter.getElementByMenuId(menu.getId());
 
+        // **************************************** inizio seconda recycler view
 
+        selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
+        removeButton = view.findViewById(R.id.remove_selected_element_order_button);
+        backButton = view.findViewById(R.id.back_selected_element_order_button);
+        addButton = view.findViewById(R.id.add_selected_element_order_button);
+        confirmButton = view.findViewById(R.id.confirm_selected_element_order_button);
+
+
+        selectedElementArrayList = new ArrayList<>();
+        selectedElementOrderAdapter = new SelectedElementOrderAdapter(getContext(), selectedElementArrayList);
+
+
+        LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
+        linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
+        selectedElementsRecyclerView.setLayoutManager(linearLayoutManager1);
+        selectedElementsRecyclerView.setAdapter(selectedElementOrderAdapter);
+
+        selectedElementArrayList.add(new Element());
+        selectedElementArrayList.add(new Element());
+        selectedElementArrayList.add(new Element());
+
+        for(Element element : selectedElementArrayList)
+            element.setName("a");
+
+        removeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectedElementOrderAdapter.getCurrentLayout() == -1){
+                    selectedElementOrderAdapter.setCurrentLayout(-2);
+                    selectedElementOrderAdapter.notifyDataSetChanged();
+                }
+
+                removeButton.setVisibility(View.INVISIBLE);
+                backButton.setVisibility(View.VISIBLE);
+
+                addButton.setVisibility(View.INVISIBLE);
+                confirmButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(selectedElementOrderAdapter.getCurrentLayout() == -2){
+                    selectedElementOrderAdapter.setCurrentLayout(-1);
+                    selectedElementOrderAdapter.notifyDataSetChanged();
+                }
+
+                backButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                addButton.setVisibility(View.VISIBLE);
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        // ****************************************
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -123,17 +207,17 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     }
 
     public void loadCategory(ArrayList<Category> categoryArrayList){
-        categoryAndOrderAdapter.clearCategory();
-        categoryAndOrderAdapter.setCategoryArrayList(categoryArrayList);
-        categoryAndOrderAdapter.notifyDataSetChanged();
+        categoryAndElementCreateOrderAdapter.clearCategory();
+        categoryAndElementCreateOrderAdapter.setCategoryArrayList(categoryArrayList);
+        categoryAndElementCreateOrderAdapter.notifyDataSetChanged();
     }
 
     public void loadElement(ArrayList<Element> elementArrayList){
-        categoryAndOrderAdapter.clearElement();
-        categoryAndOrderAdapter.setElementArrayList(elementArrayList);
-        categoryAndOrderAdapter.notifyDataSetChanged();
+        categoryAndElementCreateOrderAdapter.clearElement();
+        categoryAndElementCreateOrderAdapter.setElementArrayList(elementArrayList);
+        categoryAndElementCreateOrderAdapter.notifyDataSetChanged();
 
-        categoryAndOrderAdapter.setMergeList(categoryAndOrderAdapter.getCategoryArrayList(), categoryAndOrderAdapter.getElementArrayList());
+        categoryAndElementCreateOrderAdapter.setMergeList(categoryAndElementCreateOrderAdapter.getCategoryArrayList(), categoryAndElementCreateOrderAdapter.getElementArrayList());
     }
 
 }
