@@ -47,4 +47,9 @@ public class CategoryService implements ICategoryService {
     public List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type){
         return categoryRepository.findByMenuIdAndAlimentOrderByPosizione(id, aliment_type);
     }
+
+    @Override
+    public List<Category> getCategoryByMenuIdOrderByAlimentAndPosition(Integer id) {
+        return categoryRepository.findCategoryByMenuIdOrderByAlimentAndPosition(id);
+    }
 }

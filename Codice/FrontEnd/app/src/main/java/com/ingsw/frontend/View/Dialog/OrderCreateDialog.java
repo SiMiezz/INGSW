@@ -19,8 +19,7 @@ import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Order;
-import com.ingsw.frontend.Presenter.MenuCategoriesPresenter;
-import com.ingsw.frontend.Presenter.MenuElementsPresenter;
+import com.ingsw.frontend.Presenter.CreateOrderPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAndOrderAdapter;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
@@ -34,8 +33,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
     private RecyclerView allElementsRecyclerView;
     private RecyclerView selectedElementsRecyclerView;
-    private MenuCategoriesPresenter menuCategoriesPresenter = new MenuCategoriesPresenter(this);
-    private MenuElementsPresenter menuElementsPresenter = new MenuElementsPresenter(this);
+    private CreateOrderPresenter createOrderPresenter = new CreateOrderPresenter(this);
 
     private CategoryAndOrderAdapter categoryAndOrderAdapter;
     private ArrayList<Category> categoryArrayList;
@@ -69,18 +67,19 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         categoryAndOrderAdapter = new CategoryAndOrderAdapter(getContext(), categoryArrayList, elementArrayList);
 
-        intent = getActivity().getIntent();
-
-        menu = (Menu) intent.getSerializableExtra("menu");
-
-        //presenters + andrebbe fatta la divisione food/drink con un tab layout
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         allElementsRecyclerView.setLayoutManager(linearLayoutManager);
         allElementsRecyclerView.setAdapter(categoryAndOrderAdapter);
 
+        intent = getActivity().getIntent();
 
+        menu = (Menu) intent.getSerializableExtra("menu");
+
+        createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
+        createOrderPresenter.getElementByMenuId(menu.getId());
+
+        
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -122,4 +121,19 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     public interface OrderCreateDialogListener{
         void createOrder(Order order, TablesSelectedFragment tablesSelectedFragment);
     }
+
+    public void loadCategory(ArrayList<Category> categoryArrayList){
+        categoryAndOrderAdapter.clearCategory();
+        categoryAndOrderAdapter.setCategoryArrayList(categoryArrayList);
+        categoryAndOrderAdapter.notifyDataSetChanged();
+    }
+
+    public void loadElement(ArrayList<Element> elementArrayList){
+        categoryAndOrderAdapter.clearElement();
+        categoryAndOrderAdapter.setElementArrayList(elementArrayList);
+        categoryAndOrderAdapter.notifyDataSetChanged();
+
+        categoryAndOrderAdapter.setMergeList(categoryAndOrderAdapter.getCategoryArrayList(), categoryAndOrderAdapter.getElementArrayList());
+    }
+
 }

@@ -19,12 +19,7 @@ public class MenuElementsPresenter {
         elementService = new ElementService();
     }
 
-    public MenuElementsPresenter(OrderCreateDialog orderCreateDialog){
-        this.orderCreateDialog = orderCreateDialog;
-        elementService = new ElementService();
-    }
-    
-    
+
     // GETTER AND SETTER
     public MenuElementsFragment getMenuElementsFragment() {
         return menuElementsFragment;

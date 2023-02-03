@@ -32,4 +32,9 @@ public class ElementService implements IElementService {
     public List<Element> getByCategoryId(Integer id){
         return elementRepository.findByCategoryIdOrderByName(id);
     }
+
+    @Override
+    public List<Element> getElementByMenuId(Integer id) {
+        return elementRepository.findElementByMenuId(id);
+    }
 }

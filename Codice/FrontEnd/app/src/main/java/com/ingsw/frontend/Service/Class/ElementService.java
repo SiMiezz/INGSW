@@ -87,4 +87,25 @@ public class ElementService implements IElementService {
                     }
                 });
     }
+
+    @Override
+    public void getElementByMenuId(Callback callback, Integer id) {
+        elementApi.getElementByMenuId(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Element>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Element> elementList) {
+                        callback.returnResult(elementList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }

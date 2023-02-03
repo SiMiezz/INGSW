@@ -76,6 +76,18 @@ public class CategoryController {
         return categoryDTOS;
     }
 
+    @GetMapping("get/{id}/order")
+    public List<CategoryDTO> getCategoryByMenuIdOrderByAlimentAndPosition(@PathVariable Integer id){
+        List<Category> categoryList = categoryService.getCategoryByMenuIdOrderByAlimentAndPosition(id);
+
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
+        for (Category category: categoryList) {
+            categoryDTOS.add(convertDTO(category));
+        }
+
+        return  categoryDTOS;
+    }
+
     private CategoryDTO convertDTO(Category category) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);

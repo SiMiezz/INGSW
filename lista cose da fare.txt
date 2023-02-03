@@ -8,9 +8,5 @@ Statistiche
 
 Qrcode
 
-Fix dialog
-
-Fix velocità degli scroll
-
 Feedback selezione
 

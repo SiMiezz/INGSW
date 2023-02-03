@@ -11,4 +11,6 @@ public interface IElementService {
     void delete(Element element);
 
     List<Element> getByCategoryId(Integer id);
+
+    List<Element> getElementByMenuId(Integer id);
 }

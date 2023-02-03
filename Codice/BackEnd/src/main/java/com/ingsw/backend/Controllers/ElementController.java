@@ -58,6 +58,18 @@ public class ElementController {
         return elementDTOS;
     }
 
+    @GetMapping("/get/{id}/order")
+    public List<ElementDTO> getElementByMenuId(@PathVariable Integer id){
+        List<Element> elementList = elementService.getElementByMenuId(id);
+
+        List<ElementDTO> elementDTOS = new ArrayList<>();
+        for (Element element: elementList) {
+            elementDTOS.add(convertDTO(element));
+        }
+
+        return elementDTOS;
+    }
+
     private ElementDTO convertDTO(Element element) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);

@@ -129,4 +129,26 @@ public class CategoryService implements ICategoryService {
                     }
                 });
     }
+
+    @Override
+    public void getCategoryByMenuIdOrderByAlimentAndPosition(Callback callback, Integer id) {
+        categoryApi.getCategoryByMenuIdOrderByAlimentAndPosition(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<List<Category>>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull List<Category> categoryList) {
+                        callback.returnResult(categoryList);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+
+    }
 }

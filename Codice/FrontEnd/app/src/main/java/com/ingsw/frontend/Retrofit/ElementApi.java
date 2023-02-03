@@ -7,7 +7,6 @@ import java.util.List;
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Single;
 import retrofit2.http.Body;
-import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.HTTP;
 import retrofit2.http.POST;
@@ -23,4 +22,7 @@ public interface ElementApi {
 
     @GET("/element/get/{id}")
     Single<List<Element>> getByCategoryId(@Path("id") Integer id);
+
+    @GET("/element/get/{id}/order")
+    Single<List<Element>> getElementByMenuId(@Path("id") Integer id);
 }

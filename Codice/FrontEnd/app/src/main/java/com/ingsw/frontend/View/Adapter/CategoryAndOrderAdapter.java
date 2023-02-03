@@ -19,40 +19,22 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
-    private ArrayList mergeList;
+    private ArrayList mergeList = new ArrayList();
 
     public CategoryAndOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
-        mergeList = mergeCategoryAndElementList(categoryArrayList, elementArrayList);
     }
-
-    public ArrayList<Category> getCategoryArrayList() {
-        return categoryArrayList;
-    }
-
-    public void setCategoryArrayList(ArrayList<Category> categoryArrayList) {
-        this.categoryArrayList = categoryArrayList;
-    }
-
-    public ArrayList<Element> getElementArrayList() {
-        return elementArrayList;
-    }
-
-    public void setElementArrayList(ArrayList<Element> elementArrayList) {
-        this.elementArrayList = elementArrayList;
-    }
-
 
     private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
 
         ArrayList result = new ArrayList();
 
         for(Category category : categoryArrayList){
-            mergeList.add(category);
+            result.add(category);
             for(Element element : elementArrayList){
                 if(element.getCategoryId() == category.getId())
-                    mergeList.add(element);
+                    result.add(element);
             }
         }
 
@@ -96,6 +78,39 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
             return 1;
         else
             return -1;
+    }
+
+
+    public ArrayList<Category> getCategoryArrayList() {
+        return categoryArrayList;
+    }
+
+    public void setCategoryArrayList(ArrayList<Category> categoryArrayList) {
+        this.categoryArrayList = categoryArrayList;
+    }
+
+    public ArrayList<Element> getElementArrayList() {
+        return elementArrayList;
+    }
+
+    public void setElementArrayList(ArrayList<Element> elementArrayList) {
+        this.elementArrayList = elementArrayList;
+    }
+
+    public ArrayList getMergeList() {
+        return mergeList;
+    }
+
+    public void setMergeList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
+        this.mergeList = mergeCategoryAndElementList(categoryArrayList, elementArrayList);
+    }
+
+    public void clearCategory(){
+        categoryArrayList.clear();
+    }
+
+    public void clearElement(){
+        elementArrayList.clear();
     }
 
 

@@ -10,4 +10,6 @@ public interface IElementService {
     void delete(Callback callback, Element element);
 
     void getByCategoryId(Callback callback, Integer id);
+
+    void getElementByMenuId(Callback callback, Integer id);
 }

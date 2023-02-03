@@ -20,4 +20,5 @@ public interface ICategoryService {
 
     List<Category> getByMenuIdAndAliment(Integer id, Aliment_Type aliment_type);
 
+    List<Category> getCategoryByMenuIdOrderByAlimentAndPosition(Integer id);
 }

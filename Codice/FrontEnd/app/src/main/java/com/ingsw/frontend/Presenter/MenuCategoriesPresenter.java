@@ -36,11 +36,6 @@ public class MenuCategoriesPresenter {
         categoryService = new CategoryService();
     }
 
-    public MenuCategoriesPresenter(OrderCreateDialog orderCreateDialog){
-        this.orderCreateDialog = orderCreateDialog;
-        categoryService = new CategoryService();
-    }
-
     // GETTER AND SETTER
 
     public MenuCategoriesFragment getMenuCategoriesFragment() {
