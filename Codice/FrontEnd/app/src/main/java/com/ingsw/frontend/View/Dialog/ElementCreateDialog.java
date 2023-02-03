@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -136,6 +137,13 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                 nameAdapter.getFilter().filter(editTextname.getText(), editTextname);
                 editTextname.setAdapter(nameAdapter);
 
+                editTextname.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        openFoodPresenter.getDescription(editTextname.getText().toString());
+                    }
+                });
+
                 nameAdapter.notifyDataSetChanged();
             }
 
@@ -177,5 +185,9 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
 
     public void loadProductNames(ArrayList<String> productNames) {
         productNameList.addAll(productNames);
+    }
+
+    public void loadDescription(String productDescription) {
+        editTextdescription.setText(productDescription);
     }
 }

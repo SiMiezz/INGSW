@@ -41,4 +41,25 @@ public class OpenFoodService implements IOpenFoodService {
                     }
                 });
     }
+
+    @Override
+    public void getDescription(Callback callback, String name) {
+        openFoodApi.getProductList(name,true,true,"product_name,generic_name")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull String string) {
+                        callback.returnResult(string);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }
