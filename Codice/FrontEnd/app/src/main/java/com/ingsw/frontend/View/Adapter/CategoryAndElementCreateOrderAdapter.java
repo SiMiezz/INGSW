@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.Category;
@@ -68,6 +69,16 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
         else if(mergeList.get(position) instanceof Element)
             holder.element.setText(((Element) mergeList.get(position)).getName().toUpperCase());
 
+        if(holder.cardView != null){
+            holder.cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println(((Element) mergeList.get(holder.getAdapterPosition())).getName());
+                }
+            });
+
+        }
+
     }
 
     @Override
@@ -126,12 +137,13 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
 
         private TextView category;
         private TextView element;
-        private TextView aliment;
+        private CardView cardView;
 
         public CategoryAndElementHolder(@NonNull View itemView) {
             super(itemView);
             category = itemView.findViewById(R.id.order_create_category_text);
             element = itemView.findViewById(R.id.order_create_element_text);
+            cardView = itemView.findViewById(R.id.row_clickable_item);
         }
     }
 }

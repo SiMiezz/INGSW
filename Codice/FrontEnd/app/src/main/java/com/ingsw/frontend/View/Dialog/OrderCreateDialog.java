@@ -72,7 +72,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
 
 
-        // **************************************** inizio prima recycler view
+        // **************************************** prima recycler view
         allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
 
         categoryArrayList = new ArrayList<>();
@@ -92,7 +92,12 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
         createOrderPresenter.getElementByMenuId(menu.getId());
 
-        // **************************************** inizio seconda recycler view
+        // ****************************************
+
+
+
+
+        // **************************************** seconda recycler view
 
         selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
         removeButton = view.findViewById(R.id.remove_selected_element_order_button);
@@ -164,6 +169,8 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         });
 
         // ****************************************
+
+
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
