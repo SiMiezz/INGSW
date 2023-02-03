@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,10 +21,18 @@ public class LoginDefaultDialog extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.login_default_layout, null);
 
+        Button btnDefault = (Button) view.findViewById(R.id.loginDefault_btn);
+
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setPositiveButton("OK",null)
                 .show();
+
+        btnDefault.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
 
         return dialog;
     }
@@ -31,7 +40,7 @@ public class LoginDefaultDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=1200;
+        getDialog().getWindow().getAttributes().width=1175;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }

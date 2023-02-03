@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textTitleBill"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="BILL"
             android:textSize="20sp"
@@ -45,9 +45,22 @@
             android:layout_height="35dp"
             android:textColor="@color/black"
             android:hint="Price"
+            android:enabled="false"
             android:textColorHint="#808080"
             android:background="@drawable/shape_edit_text_popup"
             android:paddingLeft="5dp"/>
+
+        <Button
+            android:id="@+id/Bill_btn"
+            android:layout_width="125dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@drawable/shape_positive_button"
+            android:layout_marginTop="15dp"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

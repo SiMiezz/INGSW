@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/view_translatename"
-            android:text="Translate Name : "
+            android:text="Translate Name "
             android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
 
         <TextView
             android:id="@+id/view_translatedescription"
-            android:text="Translate Description : "
+            android:text="Translate Description "
             android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_width="wrap_content"
@@ -171,6 +171,43 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="#808080"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/elementCreateCancel_btn"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_login_button"
+                android:text="CANCEL"
+                android:textAllCaps="false"
+                android:textSize="15sp"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/elementCreateOk_btn"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_positive_button"
+                android:text="OK"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
 
 
         </LinearLayout>

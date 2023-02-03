@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textLoginTitle"
-            android:layout_width="match_parent"
+            android:layout_width="525dp"
             android:layout_height="wrap_content"
             android:text="WAIT!"
             android:textSize="20sp"
@@ -38,6 +38,18 @@
             android:textColor="@color/black"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="3dp"/>
+
+        <Button
+            android:id="@+id/loginDefault_btn"
+            android:layout_width="125dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@drawable/shape_login_button"
+            android:layout_marginTop="15dp"
+            android:text="OK"
+            android:textAllCaps="false"
+            android:textSize="15sp"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

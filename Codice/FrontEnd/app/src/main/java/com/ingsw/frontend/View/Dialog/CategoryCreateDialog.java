@@ -20,7 +20,11 @@ import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
 import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 
 public class CategoryCreateDialog extends AppCompatDialogFragment {
+
+    private Button btnCreateOk;
+    private Button btnCreateCancel;
     private EditText editTextname;
+
     private Aliment_Type aliment;
     private Integer idMenu;
 
@@ -46,12 +50,12 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", null)
                 .show();
 
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
+        btnCreateOk = (Button) view.findViewById(R.id.categoryCreateOk_btn);
+        btnCreateCancel = (Button) view.findViewById(R.id.categoryCreateCancel_btn);
+
+        btnCreateOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!editTextname.getText().toString().isEmpty()){
@@ -71,6 +75,13 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
                     categoryCreateDialogListener.createCategory(category,menuCategoriesFoodFragment,menuCategoriesDrinkFragment);
                     dialog.dismiss();
                 }
+            }
+        });
+
+        btnCreateCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
 
@@ -94,7 +105,7 @@ public class CategoryCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=600;
+        getDialog().getWindow().getAttributes().width=700;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }

@@ -32,6 +32,9 @@ import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 import java.util.ArrayList;
 
 public class ElementCreateDialog extends AppCompatDialogFragment {
+
+    private Button btnCreateOk;
+    private Button btnCreateCancel;
     private AutoCompleteTextView editTextname;
     private EditText editTextTranslateName;
     private EditText editTextdescription;
@@ -65,12 +68,12 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", null)
                 .show();
 
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
+        btnCreateOk = (Button) view.findViewById(R.id.elementCreateOk_btn);
+        btnCreateCancel = (Button) view.findViewById(R.id.elementCreateCancel_btn);
+
+        btnCreateOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!(editTextname.getText().toString().isEmpty() || editTextprice.getText().toString().isEmpty())){
@@ -103,6 +106,13 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
             }
         });
 
+        btnCreateCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
         allergenArrayList = new ArrayList<>();
         productNameList = new ArrayList<>();
         editTextname = view.findViewById(R.id.acv_element_name);
@@ -117,6 +127,8 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
         viewTranslateDescription = view.findViewById(R.id.view_translatedescription);
 
         if(!menuElementsFragment.getRestaurant().isTouristic()){
+            editTextTranslateName.setBackgroundResource(R.drawable.shape_edit_text_popuplock);
+            editTextTranslateDescription.setBackgroundResource(R.drawable.shape_edit_text_popuplock);
             editTextTranslateDescription.setEnabled(false);
             editTextTranslateName.setEnabled(false);
         }

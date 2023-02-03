@@ -48,6 +48,43 @@
                 android:paddingLeft="5dp"
                 />
 
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/categoryCreateCancel_btn"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_login_button"
+                android:text="CANCEL"
+                android:textAllCaps="false"
+                android:textSize="15sp"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/categoryCreateOk_btn"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/shape_positive_button"
+                android:text="OK"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>
+
 
         </LinearLayout>
 

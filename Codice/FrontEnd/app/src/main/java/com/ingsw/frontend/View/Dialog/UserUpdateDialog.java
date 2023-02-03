@@ -17,7 +17,11 @@ import com.ingsw.frontend.Model.User;
 import com.ingsw.frontend.R;
 
 public class UserUpdateDialog extends AppCompatDialogFragment {
+
+    private Button btnUpdateOk;
+    private Button btnUpdateCancel;
     private EditText editTextpwd;
+
     private User user;
 
     private UserUpdateDialogListener userUpdateDialogListener;
@@ -34,12 +38,12 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", null)
                 .show();
 
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
+        btnUpdateOk = (Button) view.findViewById(R.id.userUpdateOk_btn);
+        btnUpdateCancel = (Button) view.findViewById(R.id.userUpdateCancel_btn);
+
+        btnUpdateOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!(editTextpwd.getText().toString().isEmpty())){
@@ -49,6 +53,13 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
                     userUpdateDialogListener.updateUser(user);
                     dialog.dismiss();
                 }
+            }
+        });
+
+        btnUpdateCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
 

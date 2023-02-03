@@ -20,6 +20,9 @@ import com.ingsw.frontend.View.Fragment.MembersSupervisorsFragment;
 import com.ingsw.frontend.View.Fragment.MembersWaitersFragment;
 
 public class UserCreateDialog extends AppCompatDialogFragment {
+
+    private Button btnCreateOk;
+    private Button btnCreateCancel;
     private EditText editTextname;
     private EditText editTextsurname;
     private EditText editTextemail;
@@ -55,12 +58,12 @@ public class UserCreateDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", null)
                 .show();
 
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
+        btnCreateOk = (Button) view.findViewById(R.id.userCreateOk_btn);
+        btnCreateCancel = (Button) view.findViewById(R.id.userCreateCancel_btn);
+
+        btnCreateOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!(editTextname.getText().toString().isEmpty() || editTextemail.getText().toString().isEmpty())){
@@ -86,6 +89,13 @@ public class UserCreateDialog extends AppCompatDialogFragment {
                     userCreateDialogListener.createUser(user,membersSupervisorsFragment,membersWaitersFragment,membersChefsFragment);
                     dialog.dismiss();
                 }
+            }
+        });
+
+        btnCreateCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
 
