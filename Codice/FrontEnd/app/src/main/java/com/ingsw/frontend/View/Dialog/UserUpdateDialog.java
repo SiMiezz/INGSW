@@ -72,7 +72,7 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=500;
+        getDialog().getWindow().getAttributes().width=700;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }

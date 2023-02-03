@@ -31,7 +31,7 @@ public class LoginFailDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=700;
+        getDialog().getWindow().getAttributes().width=800;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
