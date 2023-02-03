@@ -1,6 +1,7 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
+import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
@@ -57,11 +59,14 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
     public void onBindViewHolder(@NonNull CategoryAndOrderAdapter.CategoryAndElementHolder holder, int position) {
 
         if(mergeList.get(position) instanceof Category){
-            holder.category.setText(((Category) mergeList.get(position)).getName());
+            if(((Category) mergeList.get(position)).getAliment() == Aliment_Type.food)
+                holder.category.setTextColor(Color.parseColor("#4CDB21"));
+            else
+                holder.category.setTextColor(Color.BLUE);
+            holder.category.setText(((Category) mergeList.get(position)).getName().toUpperCase());
         }
-        else if(mergeList.get(position) instanceof Element){
-            holder.element.setText(((Element) mergeList.get(position)).getName());
-        }
+        else if(mergeList.get(position) instanceof Element)
+            holder.element.setText(((Element) mergeList.get(position)).getName().toUpperCase());
 
     }
 
@@ -121,6 +126,7 @@ public class CategoryAndOrderAdapter extends RecyclerView.Adapter<CategoryAndOrd
 
         private TextView category;
         private TextView element;
+        private TextView aliment;
 
         public CategoryAndElementHolder(@NonNull View itemView) {
             super(itemView);

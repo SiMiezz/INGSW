@@ -10,3 +10,5 @@ Qrcode
 
 Feedback selezione
 
+Mostrare elementi che compongono l'ordine nella schermata di tavolo selezionato
+

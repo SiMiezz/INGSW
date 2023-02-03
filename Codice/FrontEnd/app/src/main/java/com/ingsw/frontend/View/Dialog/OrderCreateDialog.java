@@ -79,7 +79,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
         createOrderPresenter.getElementByMenuId(menu.getId());
 
-        
+
 
         Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
         positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +113,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart(){
         super.onStart();
-        getDialog().getWindow().getAttributes().width=800;
+        getDialog().getWindow().getAttributes().width=1000;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
