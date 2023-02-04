@@ -54,10 +54,9 @@ CREATE TABLE `category` (
   `posizione` int NOT NULL,
   `menu_id` int NOT NULL,
   PRIMARY KEY (`id_category`),
-  UNIQUE KEY `posizione_UNIQUE` (`posizione`,`menu_id`,`aliment`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +65,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',2,1),(2,'secondi','food',3,1),(3,'contorni','food',0,1),(15,'alcolici','drink',0,1),(16,'analcolici','drink',3,1),(17,'nervine','drink',1,1),(18,'antipasti','food',1,1),(24,'drinks','drink',2,1);
+INSERT INTO `category` VALUES (1,'primi','food',1,1),(2,'secondi','food',2,1),(3,'contorni','food',3,1),(15,'alcolici','drink',2,1),(16,'analcolici','drink',1,1),(17,'nervine','drink',0,1),(18,'antipasti','food',0,1),(24,'drinks','drink',3,1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -242,7 +241,7 @@ CREATE TABLE `ordine` (
   PRIMARY KEY (`id_order`),
   KEY `table_fk1_idx` (`table_id`),
   CONSTRAINT `table_fk1` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -251,7 +250,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (7,'2023-01-01',2,1);
+INSERT INTO `ordine` VALUES (20,'2018-08-09',123,2);
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,7 +304,7 @@ CREATE TABLE `tablerestaurant` (
 
 LOCK TABLES `tablerestaurant` WRITE;
 /*!40000 ALTER TABLE `tablerestaurant` DISABLE KEYS */;
-INSERT INTO `tablerestaurant` VALUES (1,2,1,'rest'),(2,6,1,'rest'),(3,4,0,'rest'),(4,8,0,'rest'),(5,10,1,'rest'),(6,4,1,'rest'),(7,2,0,'rest'),(8,6,1,'rest');
+INSERT INTO `tablerestaurant` VALUES (1,2,1,'rest'),(2,6,0,'rest'),(3,4,1,'rest'),(4,8,0,'rest'),(5,10,1,'rest'),(6,4,1,'rest'),(7,2,0,'rest'),(8,6,1,'rest');
 /*!40000 ALTER TABLE `tablerestaurant` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +334,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('admino','ok','dario','francese','admin','risto'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','mario','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
+INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('admino','ok','dario','francese','admin','risto'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','defpwd','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,4 +355,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-02 13:58:13
+-- Dump completed on 2023-02-04 11:11:07
