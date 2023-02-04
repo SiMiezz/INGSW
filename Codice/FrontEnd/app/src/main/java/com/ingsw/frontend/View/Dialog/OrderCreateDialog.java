@@ -52,6 +52,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private ImageButton backButton;
     private View separatorView;
 
+    private Button cancelButton;
+    private Button okButton;
+
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
@@ -66,8 +69,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         AlertDialog dialog = new AlertDialog.Builder(getActivity())
                 .setView(view)
-                .setNegativeButton("Cancel", null)
-                .setPositiveButton("Ok", null)
                 .show();
 
 
@@ -161,19 +162,27 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         // ****************************************
 
+        cancelButton = view.findViewById(R.id.order_create_cancel_button);
+        okButton = view.findViewById(R.id.order_create_ok_button);
 
-
-        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
-        positiveButton.setOnClickListener(new View.OnClickListener() {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Order order = new Order();
-
-                orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
                 dialog.dismiss();
             }
         });
 
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                creazione ordine
+//                Order order = new Order();
+//                orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
+
+                dialog.dismiss();
+            }
+        });
 
 
         return dialog;
