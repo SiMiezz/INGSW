@@ -154,7 +154,12 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(Element element : selectedElementOrderAdapter.getToRemoveSelectedElementArrayList())
+                    selectedElementOrderAdapter.getSelectedElementArrayList().remove(element);
 
+                selectedElementOrderAdapter.getGroupedSelectedElementArrayList().clear();
+
+                selectedElementOrderAdapter.notifyDataSetChanged();
 
             }
         });

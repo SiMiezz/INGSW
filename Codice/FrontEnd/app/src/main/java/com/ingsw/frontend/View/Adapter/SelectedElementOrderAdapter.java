@@ -22,6 +22,7 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
     private ArrayList<Element> selectedElementArrayList;
     private ArrayList<Element> groupedSelectedElementArrayList = new ArrayList<>();
+    private ArrayList<Element> toRemoveSelectedElementArrayList = new ArrayList<>();
 
     public static int currentLayout = -1;
 
@@ -43,6 +44,22 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
     public static void setCurrentLayout(int currentLayout) {
         SelectedElementOrderAdapter.currentLayout = currentLayout;
+    }
+
+    public ArrayList<Element> getGroupedSelectedElementArrayList() {
+        return groupedSelectedElementArrayList;
+    }
+
+    public void setGroupedSelectedElementArrayList(ArrayList<Element> groupedSelectedElementArrayList) {
+        this.groupedSelectedElementArrayList = groupedSelectedElementArrayList;
+    }
+
+    public ArrayList<Element> getToRemoveSelectedElementArrayList() {
+        return toRemoveSelectedElementArrayList;
+    }
+
+    public void setToRemoveSelectedElementArrayList(ArrayList<Element> toRemoveSelectedElementArrayList) {
+        this.toRemoveSelectedElementArrayList = toRemoveSelectedElementArrayList;
     }
 
     @NonNull
@@ -76,6 +93,8 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
         for(Element element : groupedSelectedElementArrayList){
             element.setQuantityOrdered(Collections.frequency(selectedElementArrayList, element));
+
+
         }
 
         if(groupedSelectedElementArrayList.size() > 0){
@@ -98,7 +117,28 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
         }
         else if(currentLayout == -2){
-            holder.textView.setText(selectedElementArrayList.get(position).getName().toUpperCase());
+
+            Element temp = selectedElementArrayList.get(holder.getAdapterPosition());
+
+            holder.textView.setText(temp.getName().toUpperCase());
+            holder.checkBox.setChecked(false);
+
+            holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    temp.setChecked(holder.checkBox.isChecked());
+
+                    if(temp.getChecked() == true)
+                        toRemoveSelectedElementArrayList.add(temp);
+                    else if ((temp.getChecked() == false) && !(selectedElementArrayList.contains(temp)))
+                        toRemoveSelectedElementArrayList.remove(temp);
+                }
+            });
+
+            if(temp.getChecked() == true)
+                holder.checkBox.setChecked(true);
+            else
+                holder.checkBox.setChecked(false);
         }
 
 
