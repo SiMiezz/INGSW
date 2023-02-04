@@ -15,6 +15,7 @@ import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 
 import java.util.ArrayList;
 
@@ -23,10 +24,12 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
     private ArrayList mergeList = new ArrayList();
+    private OrderCreateDialog orderCreateDialog;
 
-    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList){
+    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList, OrderCreateDialog orderCreateDialog){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
+        this.orderCreateDialog = orderCreateDialog;
     }
 
     private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
@@ -73,7 +76,8 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println(((Element) mergeList.get(holder.getAdapterPosition())).getName());
+                    orderCreateDialog.getSelectedElementArrayList().add( (Element) mergeList.get(holder.getAdapterPosition()) );
+                    orderCreateDialog.refreshSelectedElementList();
                 }
             });
 

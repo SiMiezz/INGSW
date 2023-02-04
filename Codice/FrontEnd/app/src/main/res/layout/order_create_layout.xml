@@ -35,7 +35,7 @@
             android:layout_marginTop="10dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="250dp"
+                android:layout_width="400dp"
                 android:layout_height="450dp"
                 app:cardCornerRadius="10dp"
                 app:strokeColor="#787486"
@@ -55,7 +55,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="250dp"
+                android:layout_width="400dp"
                 android:layout_height="450dp"
                 app:cardCornerRadius="10dp"
                 app:strokeColor="#787486"
@@ -78,78 +78,60 @@
                         android:dividerHeight="1dp" />
 
                     <View
-                        android:layout_width="match_parent"
+                        android:layout_width="wrap_content"
                         android:layout_height="1dp"
-                        android:background="#787486"/>
+                        android:background="#787486" />
 
-                    <LinearLayout
+
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_gravity="bottom|center_vertical"
-                        android:layout_weight="0.1"
-                        android:orientation="horizontal"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                        android:layout_height="match_parent">
 
-                        <FrameLayout
-                            android:layout_width="124.5dp"
-                            android:layout_height="match_parent">
+                        <ImageButton
+                            android:id="@+id/remove_selected_element_order_button"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/white"
+                            android:src="@drawable/icon_minus"
+                            android:foreground="?android:attr/selectableItemBackground"/>
 
-                            <ImageButton
-                                android:id="@+id/remove_selected_element_order_button"
-                                android:layout_width="124.5dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
-                                android:background="@color/white"
-                                android:src="@drawable/icon_minus"
-                                android:foreground="?android:attr/selectableItemBackground"/>
-
-                            <ImageButton
-                                android:id="@+id/back_selected_element_order_button"
-                                android:layout_width="124.5dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
-                                android:background="@color/white"
-                                android:src="@drawable/icon_back"
-                                android:visibility="invisible"
-                                android:foreground="?android:attr/selectableItemBackground"/>
-
-                        </FrameLayout>
-
-
+                        <ImageButton
+                            android:id="@+id/back_selected_element_order_button"
+                            android:layout_width="199.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/white"
+                            android:src="@drawable/icon_back"
+                            android:visibility="invisible"
+                            android:foreground="?android:attr/selectableItemBackground"/>
 
                         <View
+                            android:id="@+id/separator_view"
                             android:layout_width="1dp"
-                            android:layout_height="wrap_content"
-                            android:background="#787486" />
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="199.5dp"
+                            android:background="#787486"
+                            android:visibility="invisible"/>
 
-                        <FrameLayout
-                            android:layout_width="124.5dp"
-                            android:layout_height="match_parent">
+                        <ImageButton
+                            android:id="@+id/confirm_selected_element_order_button"
+                            android:layout_width="199.5dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/white"
+                            android:src="@drawable/icon_confirm"
+                            android:visibility="invisible"
+                            android:foreground="?android:attr/selectableItemBackground"
+                            android:layout_marginLeft="200.5dp"/>
 
-                            <ImageButton
-                                android:id="@+id/add_selected_element_order_button"
-                                android:layout_width="124.5dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
-                                android:background="@color/white"
-                                android:src="@drawable/icon_plus"
-                                android:foreground="?android:attr/selectableItemBackground"></ImageButton>
+                    </FrameLayout>
 
-                            <ImageButton
-                                android:id="@+id/confirm_selected_element_order_button"
-                                android:layout_width="124.5dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center_vertical"
-                                android:background="@color/white"
-                                android:src="@drawable/icon_confirm"
-                                android:foreground="?android:attr/selectableItemBackground"
-                                android:visibility="invisible"/>
 
-                        </FrameLayout>
 
-                    </LinearLayout>
                 </LinearLayout>
+
+
 
 
 
@@ -160,6 +142,8 @@
 
 
     </LinearLayout>
+
+
 
 
 

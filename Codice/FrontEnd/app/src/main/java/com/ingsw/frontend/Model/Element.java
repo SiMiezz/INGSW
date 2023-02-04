@@ -2,7 +2,6 @@ package com.ingsw.frontend.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.ingsw.frontend.Model.Enumerations.Aliment_Type;
 
 import java.io.Serializable;
 import java.util.List;
@@ -149,5 +148,15 @@ public class Element implements Serializable {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
+    }
+
+    private Integer quantityOrdered = 0;
+
+    public Integer getQuantityOrdered() {
+        return quantityOrdered;
+    }
+
+    public void setQuantityOrdered(Integer quantityOrdered) {
+        this.quantityOrdered = quantityOrdered;
     }
 }

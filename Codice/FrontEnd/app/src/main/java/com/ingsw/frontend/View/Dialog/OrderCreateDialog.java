@@ -48,9 +48,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private Menu menu;
 
     private ImageButton removeButton;
-    private ImageButton backButton;
-    private ImageButton addButton;
     private ImageButton confirmButton;
+    private ImageButton backButton;
+    private View separatorView;
 
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
@@ -78,7 +78,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         categoryArrayList = new ArrayList<>();
         elementArrayList = new ArrayList<>();
 
-        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList);
+        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -101,9 +101,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
         removeButton = view.findViewById(R.id.remove_selected_element_order_button);
-        backButton = view.findViewById(R.id.back_selected_element_order_button);
-        addButton = view.findViewById(R.id.add_selected_element_order_button);
         confirmButton = view.findViewById(R.id.confirm_selected_element_order_button);
+        backButton = view.findViewById(R.id.back_selected_element_order_button);
+        separatorView = view.findViewById(R.id.separator_view);
 
 
         selectedElementArrayList = new ArrayList<>();
@@ -115,12 +115,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         selectedElementsRecyclerView.setLayoutManager(linearLayoutManager1);
         selectedElementsRecyclerView.setAdapter(selectedElementOrderAdapter);
 
-        selectedElementArrayList.add(new Element());
-        selectedElementArrayList.add(new Element());
-        selectedElementArrayList.add(new Element());
 
-        for(Element element : selectedElementArrayList)
-            element.setName("a");
+
+
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,9 +129,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
                 removeButton.setVisibility(View.INVISIBLE);
                 backButton.setVisibility(View.VISIBLE);
-
-                addButton.setVisibility(View.INVISIBLE);
                 confirmButton.setVisibility(View.VISIBLE);
+                separatorView.setVisibility(View.VISIBLE);
+
             }
         });
 
@@ -146,18 +143,10 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                     selectedElementOrderAdapter.notifyDataSetChanged();
                 }
 
-                backButton.setVisibility(View.INVISIBLE);
-                removeButton.setVisibility(View.VISIBLE);
-
                 confirmButton.setVisibility(View.INVISIBLE);
-                addButton.setVisibility(View.VISIBLE);
-            }
-        });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+                removeButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.INVISIBLE);
+                separatorView.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -165,8 +154,10 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
+
             }
         });
+
 
         // ****************************************
 
@@ -204,7 +195,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart(){
         super.onStart();
-        getDialog().getWindow().getAttributes().width=1000;
+        getDialog().getWindow().getAttributes().width=1400;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
@@ -227,4 +218,15 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         categoryAndElementCreateOrderAdapter.setMergeList(categoryAndElementCreateOrderAdapter.getCategoryArrayList(), categoryAndElementCreateOrderAdapter.getElementArrayList());
     }
 
+    public ArrayList<Element> getSelectedElementArrayList() {
+        return selectedElementArrayList;
+    }
+
+    public void setSelectedElementArrayList(ArrayList<Element> selectedElementArrayList) {
+        this.selectedElementArrayList = selectedElementArrayList;
+    }
+
+    public void refreshSelectedElementList(){
+        selectedElementOrderAdapter.notifyDataSetChanged();
+    }
 }
