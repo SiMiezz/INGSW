@@ -32,7 +32,6 @@ public class WebController {
         List<Category> categoryList = categoryService.getCategoryByMenuIdOrderByAlimentAndPosition(id);
         List<Element> elementListTotal = new ArrayList<>();
 
-        model.addAttribute("id",id);
         model.addAttribute("categories",categoryList);
 
         for (Category category: categoryList) {

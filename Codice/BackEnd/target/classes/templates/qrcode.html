@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>QrCode</title>
+  <style>
+    h1 {text-align: center;}
+  </style>
+  <h1> Menu </h1>
 </head>
 <body>
-  <h1> QrCode </h1>
-  <p th:text="'Menu: ' + ${id}"></p>
 
   <table>
     <tbody>
 
-    <div th:each="category: ${categories}">
-      <div th:text="${category.name}"></div>
+    <div class="w3-container" th:each="category: ${categories}">
+      <h2><div th:text="${category.name}"></div></h2>
       <ul>
         <div th:each="element: ${elements}">
-          <li th:if="${category.id} == ${element.category.id}" th:text="${element.name}" />
+          <h3><li th:if="${category.id} == ${element.category.id}" th:text="${element.name}" /></h3>
         </div>
       </ul>
     </div>
