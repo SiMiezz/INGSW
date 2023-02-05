@@ -39,7 +39,7 @@ public class OrderDTO {
     //GETTERS AND SETTERS
 
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

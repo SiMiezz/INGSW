@@ -2,8 +2,6 @@ Traduzione automatica element
 
 Visualizzazione traduzione element
 
-Insert order
-
 Statistiche
 
 Qrcode

@@ -228,6 +228,6 @@ public class TablesSelectedFragment extends Fragment {
     }
 
     public void createOrder(Order order) {
-
+        orderPresenter.create(order);
     }
 }

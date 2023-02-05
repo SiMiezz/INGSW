@@ -109,7 +109,7 @@ public class OrderController {
         List<Element> elementList = new ArrayList<>();
 
         if(orderDTO.getElements() != null){
-            for (ElementDTO elementDTO:orderDTO.getElements()) {
+            for (ElementDTO elementDTO : orderDTO.getElements()) {
                 elementList.add(convertElementEntity(elementDTO));
             }
         }
