@@ -60,7 +60,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
 
         holder.orderElement.setText(elements);
 
-        holder.orderPrice.setText(String.valueOf(temp.getPrice()));
+        holder.orderPrice.setText("€ " + String.valueOf(temp.getPrice()));
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
