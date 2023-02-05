@@ -105,7 +105,7 @@ public class ElementController {
         List<Allergen> allergenList = new ArrayList<>();
 
         if(elementDTO.getAllergens() != null){
-            for (AllergenDTO allergenDTO:elementDTO.getAllergens()) {
+            for (AllergenDTO allergenDTO : elementDTO.getAllergens()) {
                 allergenList.add(convertAllergenEntity(allergenDTO));
             }
         }

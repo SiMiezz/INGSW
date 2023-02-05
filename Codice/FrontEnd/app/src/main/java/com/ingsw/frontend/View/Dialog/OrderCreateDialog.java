@@ -55,6 +55,8 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private Button cancelButton;
     private Button okButton;
 
+    private Integer tableId;
+
 
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
@@ -181,9 +183,10 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
-//                creazione ordine
-//                Order order = new Order();
-//                orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
+                Order order = new Order(computeTotalPrice(selectedElementArrayList), String.valueOf(java.time.LocalDate.now()), tablesSelectedFragment.getTableId(), selectedElementArrayList);
+
+                if(selectedElementArrayList.size() > 0)
+                    orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
 
                 dialog.dismiss();
             }
@@ -242,5 +245,24 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
     public void refreshSelectedElementList(){
         selectedElementOrderAdapter.notifyDataSetChanged();
+    }
+
+    public Integer getTableId() {
+        return tableId;
+    }
+
+    public void setTableId(Integer tableId) {
+        this.tableId = tableId;
+    }
+
+    public Double computeTotalPrice(ArrayList<Element> elementArrayList){
+        double result = 0.0;
+
+        for(Element element : elementArrayList){
+            result = result + element.getPrice();
+        }
+
+        return result;
+
     }
 }

@@ -2,13 +2,10 @@ Traduzione automatica element
 
 Visualizzazione traduzione element
 
-Insert order
-
 Statistiche
 
 Qrcode
 
 Feedback selezione
 
-Mostrare elementi che compongono l'ordine nella schermata di tavolo selezionato
 

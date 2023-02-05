@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.R;
 
@@ -46,9 +47,18 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         Order temp = orderArrayList.get(holder.getAdapterPosition());
 
         holder.checkBox.setChecked(false);
+        
+        String elements = "";
 
-        holder.orderElement.setText(String.valueOf(temp.getId()));
-        holder.orderPrice.setText(String.valueOf(temp.getPrice()));
+        for(Element element : temp.getElements())
+            elements = elements + element.getName().toUpperCase() + ", ";
+
+        if(elements.length() > 0)
+            elements = elements.substring(0, elements.length() - 2);
+
+        holder.orderElement.setText(elements);
+
+        holder.orderPrice.setText("€ " + String.valueOf(temp.getPrice()));
 
         holder.checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
