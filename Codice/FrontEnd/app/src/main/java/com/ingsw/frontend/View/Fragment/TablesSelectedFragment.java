@@ -185,6 +185,7 @@ public class TablesSelectedFragment extends Fragment {
             public void onClick(View v) {
                 tableRestaurantPresenter.setTablesAllFragment(getTablesAllFragment());
                 tableRestaurantPresenter.updateById(getTableId());
+                orderAdapter.notifyDataSetChanged();
             }
         });
 
@@ -230,4 +231,13 @@ public class TablesSelectedFragment extends Fragment {
     public void createOrder(Order order) {
         orderPresenter.create(order);
     }
+
+    public Button getLibera_occupaButton() {
+        return libera_occupaButton;
+    }
+
+    public void setLibera_occupaButton(Button libera_occupaButton) {
+        this.libera_occupaButton = libera_occupaButton;
+    }
+
 }

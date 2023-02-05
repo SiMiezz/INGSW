@@ -70,5 +70,13 @@ public class TableRestaurant implements Serializable {
         this.restaurantName = restaurantName;
     }
 
+    private boolean clicked = false;
 
+    public boolean isClicked() {
+        return clicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
+    }
 }

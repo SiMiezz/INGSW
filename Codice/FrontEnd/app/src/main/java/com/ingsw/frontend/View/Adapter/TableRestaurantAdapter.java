@@ -1,6 +1,8 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,6 +60,11 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
     @Override
     public void onBindViewHolder(@NonNull TableRestaurantAdapter.TableRestaurantHolder holder, int position) {
 
+        if(tableRestaurantArrayList.get(holder.getAdapterPosition()).isClicked())
+            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#c5c5c5")));
+        else
+            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+
         if(tableRestaurantArrayList.get(position).isFree()){
             holder.freeOccupiedTextView.setText("Free");
             switch (tableRestaurantArrayList.get(position).getSeats()){
@@ -111,6 +118,11 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
                     tablesSelectedFragment.setTablesAllFragment(tablesAllFragment);
                     tablesSelectedFragment.setTableId(temp.getId());
                     tablesSelectedFragment.getInfoTableFromClick(temp.getId());
+
+                    tablesAllFragment.clickEffect(tableRestaurantArrayList.get(holder.getAdapterPosition()));
+
+
+
                 }
             });
 

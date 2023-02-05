@@ -101,7 +101,7 @@ public class MenuCategoriesDrinkFragment extends Fragment {
         drinkView = getView().findViewById(R.id.category_drink_listview);
         sortDrinkButton = getView().findViewById(R.id.sort_category_drink_button);
 
-        adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment);
+        adapter = new CategoryAdapter(getContext(), new ArrayList<Category>(), menuElementsFragment, null, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -189,5 +189,14 @@ public class MenuCategoriesDrinkFragment extends Fragment {
 
     public void setSortDrinkButton(FloatingActionButton sortDrinkButton) {
         this.sortDrinkButton = sortDrinkButton;
+    }
+
+    public void clickEffect(Category category) {
+        for(Category category1 : adapter.getArrayList())
+            category1.setClicked(false);
+
+        category.setClicked(true);
+
+        adapter.notifyDataSetChanged();
     }
 }
