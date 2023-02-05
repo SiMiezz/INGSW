@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8">
   <title>QrCode</title>
 </head>
 <body>
-  <p th:text="'Hello, ' + ${id} + '!'"></p>
+  <h1> QrCode </h1>
+  <p th:text="'Menu: ' + ${id}"></p>
+
+  <table>
+    <tbody>
+
+    <div th:each="category: ${categories}">
+      <div th:text="${category.name}"></div>
+      <ul>
+        <div th:each="element: ${elements}">
+          <li th:if="${category.id} == ${element.category.id}" th:text="${element.name}" />
+        </div>
+      </ul>
+    </div>
+
+    </tbody>
+  </table>
+
 </body>
 </html>

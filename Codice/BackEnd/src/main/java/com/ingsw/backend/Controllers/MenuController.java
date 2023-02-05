@@ -1,16 +1,13 @@
 package com.ingsw.backend.Controllers;
 
 import com.ingsw.backend.Model.DTO.MenuDTO;
-import com.ingsw.backend.Model.DTO.UserDTO;
 import com.ingsw.backend.Model.Menu;
-import com.ingsw.backend.Model.User;
 import com.ingsw.backend.Service.Interface.IMenuService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -38,13 +35,6 @@ public class MenuController {
         MenuDTO menuDTO = convertDTO(menu.get());
 
         return menuDTO;
-    }
-
-    @GetMapping("/get/qrcode")
-    public String getById(@RequestParam(name = "id") Integer id, Model model){
-        model.addAttribute("id",id);
-
-        return "qrcode";
     }
 
     private MenuDTO convertDTO(Menu menu) {
