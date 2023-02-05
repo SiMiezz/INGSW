@@ -97,4 +97,14 @@ public class Category implements Serializable {
     public void setChecked(Boolean checked) {
         this.checked = checked;
     }
+
+    private boolean clicked = false;
+
+    public boolean isClicked() {
+        return clicked;
+    }
+
+    public void setClicked(boolean clicked) {
+        this.clicked = clicked;
+    }
 }

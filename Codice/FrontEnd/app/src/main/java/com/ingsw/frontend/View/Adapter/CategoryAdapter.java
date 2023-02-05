@@ -1,6 +1,8 @@
 package com.ingsw.frontend.View.Adapter;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.R;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesDrinkFragment;
+import com.ingsw.frontend.View.Fragment.MenuCategoriesFoodFragment;
 import com.ingsw.frontend.View.Fragment.MenuElementsFragment;
 
 import java.util.ArrayList;
@@ -26,11 +30,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public static Integer currentId;
 
     private MenuElementsFragment menuElementsFragment;
+    private MenuCategoriesFoodFragment menuCategoriesFoodFragment;
+    private MenuCategoriesDrinkFragment menuCategoriesDrinkFragment;
 
 
-    public CategoryAdapter(Context context, ArrayList<Category> arrayList, MenuElementsFragment menuElementsFragment){
+    public CategoryAdapter(Context context, ArrayList<Category> arrayList, MenuElementsFragment menuElementsFragment, MenuCategoriesFoodFragment menuCategoriesFoodFragment, MenuCategoriesDrinkFragment menuCategoriesDrinkFragment){
         this.arrayList = arrayList;
         this.menuElementsFragment = menuElementsFragment;
+        this.menuCategoriesFoodFragment = menuCategoriesFoodFragment;
+        this.menuCategoriesDrinkFragment = menuCategoriesDrinkFragment;
     }
 
     public ArrayList<Category> getArrayList(){
@@ -79,6 +87,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
 
+        if(arrayList.get(holder.getAdapterPosition()).isClicked())
+            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#c5c5c5")));
+        else
+            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+
+
         holder.textView.setText(arrayList.get(position).getName().toUpperCase());
         holder.checkBox.setChecked(false);
 
@@ -111,6 +125,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                     currentId = temp.getId();
                     menuElementsFragment.setCategoryId(temp.getId());
                     menuElementsFragment.getElementFromClick(temp.getId());
+
+                    if(menuCategoriesFoodFragment != null)
+                        menuCategoriesFoodFragment.clickEffect(arrayList.get(holder.getAdapterPosition()));
+                    else if(menuCategoriesDrinkFragment != null)
+                        menuCategoriesDrinkFragment.clickEffect(arrayList.get(holder.getAdapterPosition()));
+
+
             }
         });
 

@@ -99,4 +99,14 @@ public class TablesAllFragment extends Fragment {
         tableRestaurantAdapter.setTableRestaurantArrayList(tableRestaurantArrayList);
         tableRestaurantAdapter.notifyDataSetChanged();
     }
+
+
+    public void clickEffect(TableRestaurant tableRestaurant) {
+        for(TableRestaurant table : tableRestaurantAdapter.getTableRestaurantArrayList())
+            table.setClicked(false);
+
+        tableRestaurant.setClicked(true);
+
+        tableRestaurantAdapter.notifyDataSetChanged();
+    }
 }

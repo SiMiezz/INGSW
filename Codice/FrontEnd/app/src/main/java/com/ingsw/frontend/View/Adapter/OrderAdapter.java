@@ -47,7 +47,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderHolder>
         Order temp = orderArrayList.get(holder.getAdapterPosition());
 
         holder.checkBox.setChecked(false);
-        
+
         String elements = "";
 
         for(Element element : temp.getElements())

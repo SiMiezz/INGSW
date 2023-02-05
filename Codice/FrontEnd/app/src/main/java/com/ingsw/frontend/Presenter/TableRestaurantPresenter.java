@@ -122,6 +122,10 @@ public class TableRestaurantPresenter {
                 TableRestaurant result = (TableRestaurant) o;
                 tablesSelectedFragment.setSeatsNumber(result);
                 tablesSelectedFragment.getOrderRecyclerView(result);
+                if(result.isFree())
+                    tablesSelectedFragment.getLibera_occupaButton().setText("OCCUPA");
+                else
+                    tablesSelectedFragment.getLibera_occupaButton().setText("LIBERA");
             }
 
             @Override
@@ -141,11 +145,13 @@ public class TableRestaurantPresenter {
                 if(table.isFree()){
                     table.setFree(false);
                     update(table);
+                    tablesSelectedFragment.getLibera_occupaButton().setText("LIBERA");
                 }
                 else{
                     orderPresenter.sumPriceByTableId(table.getId());
                     table.setFree(true);
                     update(table);
+                    tablesSelectedFragment.getLibera_occupaButton().setText("OCCUPA");
                 }
                 countTotalByRestaurantName(table.getRestaurantName());
             }
