@@ -21,6 +21,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.mlkit.common.model.DownloadConditions;
+import com.google.mlkit.nl.translate.TranslateLanguage;
+import com.google.mlkit.nl.translate.Translation;
+import com.google.mlkit.nl.translate.Translator;
+import com.google.mlkit.nl.translate.TranslatorOptions;
 import com.ingsw.frontend.Model.Allergen;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Presenter.AllergenPresenter;
@@ -153,6 +160,63 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         openFoodPresenter.getDescription(editTextname.getText().toString());
+
+                        if(menuElementsFragment.getRestaurant().isTouristic()){
+                            TranslatorOptions options =
+                                    new TranslatorOptions.Builder()
+                                            .setSourceLanguage(TranslateLanguage.ITALIAN)
+                                            .setTargetLanguage(TranslateLanguage.ENGLISH)
+                                            .build();
+
+                            final Translator itaEngTranslator = Translation.getClient(options);
+                            getLifecycle().addObserver(itaEngTranslator);
+
+                            DownloadConditions conditions = new DownloadConditions.Builder()
+                                    .requireWifi()
+                                    .build();
+
+                            itaEngTranslator.downloadModelIfNeeded(conditions)
+                                    .addOnSuccessListener(
+                                            new OnSuccessListener() {
+                                                @Override
+                                                public void onSuccess(Object o) {
+                                                    itaEngTranslator.translate(editTextname.getText().toString())
+                                                            .addOnSuccessListener(
+                                                                    new OnSuccessListener() {
+                                                                        @Override
+                                                                        public void onSuccess(Object o) {
+                                                                            String translatedName = (String) o;
+
+                                                                            editTextTranslateName.setText(translatedName);
+                                                                        }
+                                                                    });
+
+                                                    editTextdescription.addTextChangedListener(new TextWatcher() {
+                                                        @Override
+                                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                                                        @Override
+                                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                            if(!editTextdescription.getText().toString().isEmpty()){
+                                                                itaEngTranslator.translate(editTextdescription.getText().toString())
+                                                                        .addOnSuccessListener(
+                                                                                new OnSuccessListener() {
+                                                                                    @Override
+                                                                                    public void onSuccess(Object o) {
+                                                                                        String translatedDescription = (String) o;
+
+                                                                                        editTextTranslateDescription.setText(translatedDescription);
+                                                                                    }
+                                                                                });
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void afterTextChanged(Editable s) {}
+                                                    });
+                                                }
+                                            });
+                        }
                     }
                 });
 
