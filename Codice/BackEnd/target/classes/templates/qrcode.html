@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>QrCode</title>
-  <style>
-    h1 {text-align: center;}
-  </style>
-  <h1> Menu </h1>
+  <link rel="stylesheet" href="qrcode.css" type="text/css">
 </head>
+
 <body>
-
-  <table>
-    <tbody>
-
-    <div class="w3-container" th:each="category: ${categories}">
-      <h2><div th:text="${category.name}"></div></h2>
-      <ul>
-        <div th:each="element: ${elements}">
-          <h3><li th:if="${category.id} == ${element.category.id}" th:text="${element.name}" /></h3>
-        </div>
-      </ul>
-    </div>
-
-    </tbody>
-  </table>
+<h1>Welcome</h1>
 
 </body>
 </html>

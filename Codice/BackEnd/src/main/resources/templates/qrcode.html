@@ -1,29 +1,74 @@
 <!DOCTYPE html>
 <html lang="en" >
+
 <head>
   <meta charset="UTF-8">
   <title>QrCode</title>
   <style>
-    h1 {text-align: center;}
+
+    h1{
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: xxx-large;
+    }
+
+    h2{
+      font-size: x-large;
+      text-transform: uppercase;
+      padding-left: 5px;
+    }
+
+    .element_tag{
+      text-transform: capitalize;
+    }
+
+    .price_tag{
+      font-weight: lighter;
+      align-content: end;
+    }
+
+    .euro_symbol{
+      padding-left: 15px;
+      font-weight: lighter;
+    }
+
+    .description_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+    }
+
   </style>
-  <h1> Menu </h1>
 </head>
+
+
 <body>
+
+  <h1> Menu </h1>
 
   <table>
     <tbody>
-
     <div class="w3-container" th:each="category: ${categories}">
-      <h2><div th:text="${category.name}"></div></h2>
+      <h2><div class="category_tag" th:text="${category.name}"></div></h2>
       <ul>
         <div th:each="element: ${elements}">
-          <h3><li th:if="${category.id} == ${element.category.id}" th:text="${element.name}" /></h3>
+          <h3>
+            <li th:if="${category.id} == ${element.category.id}">
+              <span class="element_tag" th:text="${element.name}"/>
+              <span class="euro_symbol" th:text="&#8364"/>
+              <span class="price_tag" th:text="${element.price}" />
+            </li>
+          </h3>
+          <h4 th:if="${category.id} == ${element.category.id}">
+              <span class="description_tag" th:text="${element.description}"/>
+          </h4>
         </div>
       </ul>
     </div>
-
     </tbody>
   </table>
 
 </body>
+
 </html>
