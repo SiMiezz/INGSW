@@ -1,12 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 <head>
+  <meta charset="UTF-8">
   <title>QrCode</title>
-  <link rel="stylesheet" href="qrcode.css" type="text/css">
+  <style>
+
+    h1{
+      text-align: center;
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: xxx-large;
+    }
+
+    h2{
+      font-size: x-large;
+      text-transform: uppercase;
+      padding-left: 5px;
+      padding-top: 25px;
+    }
+
+    .element_tag{
+      text-transform: capitalize;
+    }
+
+    .element_translate_tag{
+      text-transform: capitalize;
+    }
+
+    .price_tag{
+      font-weight: lighter;
+      align-content: end;
+    }
+
+    .euro_symbol{
+      padding-left: 15px;
+      font-weight: lighter;
+    }
+
+    .description_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+      display: block;
+    }
+
+    .description_translate_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+      display: block;
+    }
+
+    .allergen_tag{
+      text-transform: capitalize;
+      font-weight: normal;
+      font-style: italic;
+      display: block;
+    }
+
+  </style>
 </head>
 
+
 <body>
-<h1>Welcome</h1>
+
+  <h1> Menu </h1>
+
+  <table>
+    <tbody>
+    <div class="w3-container" th:each="category: ${categories}">
+      <h2><div class="category_tag" th:text="${category.name}"></div></h2>
+      <ul>
+        <div th:each="element: ${elements}">
+          <h3>
+            <li th:if="${category.id} == ${element.category.id}">
+              <span class="element_tag" th:text="${element.name}"/>
+              <span class="element_translate_tag" th:text="${element.translateName}"/>
+              <span class="euro_symbol" th:text="&#8364"/>
+              <span class="price_tag" th:text="${element.price}" />
+            </li>
+          </h3>
+          <h4 th:if="${category.id} == ${element.category.id}">
+
+              <p> Descrizione
+                <span class="description_tag" th:text="${element.description}"/>
+              </p>
+
+              <p> Description
+                <span class="description_translate_tag" th:text="${element.translateDescription}" />
+              </p>
+
+            <p>
+              <div th:each="allergen: ${allergens}">
+                <div th:if="${element.allergenList.contains(allergen)}">
+                  <span class="allergen_tag" th:text="${allergen.getName()}"/>
+                </div>
+              </div>
+            </p>
+
+
+          </h4>
+        </div>
+      </ul>
+    </div>
+    </tbody>
+  </table>
 
 </body>
+
 </html>

@@ -1,7 +1,9 @@
 package com.ingsw.backend.Controllers;
 
+import com.ingsw.backend.Model.Allergen;
 import com.ingsw.backend.Model.Category;
 import com.ingsw.backend.Model.Element;
+import com.ingsw.backend.Service.Interface.IAllergenService;
 import com.ingsw.backend.Service.Interface.ICategoryService;
 import com.ingsw.backend.Service.Interface.IElementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,10 @@ public class WebController {
     @Qualifier("mainElementService")
     private IElementService elementService;
 
+    @Autowired
+    @Qualifier("mainAllergenService")
+    private IAllergenService allergenService;
+
     @GetMapping("/qrcode")
     public String getById(@RequestParam(name = "id") Integer id, Model model){
         List<Category> categoryList = categoryService.getCategoryByMenuIdOrderByAlimentAndPosition(id);
@@ -40,6 +46,13 @@ public class WebController {
         }
 
         model.addAttribute("elements",elementListTotal);
+
+        List<Allergen> allergenList = allergenService.getAll();
+
+        for(Allergen allergen : allergenList)
+            System.out.println(allergen.getName());
+
+        model.addAttribute("allergens", allergenList);
 
         return "qrcode";
     }
