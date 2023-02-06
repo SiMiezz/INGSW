@@ -87,12 +87,13 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryHolder holder, int position) {
 
-        if(arrayList.get(holder.getAdapterPosition()).isClicked())
-            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#c5c5c5")));
-        else
-            holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
-
-
+        if(holder.cardView != null){
+            if(arrayList.get(holder.getAdapterPosition()).isClicked())
+                holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#c5c5c5")));
+            else
+                holder.cardView.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#ffffff")));
+        }
+        
         holder.textView.setText(arrayList.get(position).getName().toUpperCase());
         holder.checkBox.setChecked(false);
 
