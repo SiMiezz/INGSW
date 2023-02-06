@@ -63,6 +63,7 @@ public class TableRestaurantPresenter {
                 ArrayList<TableRestaurant> tableRestaurantArrayList = (ArrayList<TableRestaurant>) o;
 
                 tablesAllFragment.loadTableRestaurant(tableRestaurantArrayList);
+                countTotalByRestaurantName(restaurantName);
             }
 
             @Override
@@ -153,7 +154,6 @@ public class TableRestaurantPresenter {
                     update(table);
                     tablesSelectedFragment.getLibera_occupaButton().setText("OCCUPA");
                 }
-                countTotalByRestaurantName(table.getRestaurantName());
             }
 
             @Override

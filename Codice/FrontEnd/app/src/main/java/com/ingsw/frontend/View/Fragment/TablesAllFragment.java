@@ -42,8 +42,9 @@ public class TablesAllFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment) {
+    public TablesAllFragment(TablesSelectedFragment tablesSelectedFragment,TablesNumberFragment tablesNumberFragment) {
         this.tablesSelectedFragment = tablesSelectedFragment;
+        this.tablesNumberFragment = tablesNumberFragment;
     }
 
     public static TablesAllFragment newInstance(String param1, String param2) {

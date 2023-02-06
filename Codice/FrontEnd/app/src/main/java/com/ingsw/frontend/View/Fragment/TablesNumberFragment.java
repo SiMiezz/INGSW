@@ -63,12 +63,6 @@ public class TablesNumberFragment extends Fragment {
 
         tableRestaurantPresenter = new TableRestaurantPresenter(null,this, null);
 
-        intent = getActivity().getIntent();
-
-        restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
-
-        countTables(restaurant.getName());
-
         return rootView;
     }
 
@@ -84,7 +78,4 @@ public class TablesNumberFragment extends Fragment {
         occupiedNumber.setText(String.valueOf(total));
     }
 
-    public void countTables(String restaurantName){
-        tableRestaurantPresenter.countTotalByRestaurantName(restaurantName);
-    }
 }

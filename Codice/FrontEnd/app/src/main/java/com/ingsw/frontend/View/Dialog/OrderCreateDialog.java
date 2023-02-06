@@ -41,7 +41,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
 
-    private ArrayList<Element> selectedElementArrayList;
     private SelectedElementOrderAdapter selectedElementOrderAdapter;
 
     private Intent intent;
@@ -74,32 +73,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                 .show();
 
 
-
-        // **************************************** prima recycler view
-        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
-
-        categoryArrayList = new ArrayList<>();
-        elementArrayList = new ArrayList<>();
-
-        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList, this);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        allElementsRecyclerView.setLayoutManager(linearLayoutManager);
-        allElementsRecyclerView.setAdapter(categoryAndElementCreateOrderAdapter);
-
-        intent = getActivity().getIntent();
-
-        menu = (Menu) intent.getSerializableExtra("menu");
-
-        createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
-        createOrderPresenter.getElementByMenuId(menu.getId());
-
-        // ****************************************
-
-
-
-
         // **************************************** seconda recycler view
 
         selectedElementsRecyclerView = view.findViewById(R.id.create_order_selected_elements);
@@ -108,19 +81,12 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         backButton = view.findViewById(R.id.back_selected_element_order_button);
         separatorView = view.findViewById(R.id.separator_view);
 
-
-        selectedElementArrayList = new ArrayList<>();
-        selectedElementOrderAdapter = new SelectedElementOrderAdapter(getContext(), selectedElementArrayList);
-
+        selectedElementOrderAdapter = new SelectedElementOrderAdapter(getContext(), null);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
         selectedElementsRecyclerView.setLayoutManager(linearLayoutManager1);
         selectedElementsRecyclerView.setAdapter(selectedElementOrderAdapter);
-
-
-
-
 
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +132,25 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             }
         });
 
+        // **************************************** prima recycler view
+        allElementsRecyclerView = view.findViewById(R.id.create_order_all_elements);
+
+        categoryArrayList = new ArrayList<>();
+        elementArrayList = new ArrayList<>();
+
+        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList, selectedElementOrderAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        allElementsRecyclerView.setLayoutManager(linearLayoutManager);
+        allElementsRecyclerView.setAdapter(categoryAndElementCreateOrderAdapter);
+
+        intent = getActivity().getIntent();
+
+        menu = (Menu) intent.getSerializableExtra("menu");
+
+        createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
+        createOrderPresenter.getElementByMenuId(menu.getId());
 
         // ****************************************
 
@@ -183,9 +168,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
-                Order order = new Order(computeTotalPrice(selectedElementArrayList), String.valueOf(java.time.LocalDate.now()), tablesSelectedFragment.getTableId(), selectedElementArrayList);
+                Order order = new Order(computeTotalPrice(selectedElementOrderAdapter.getSelectedElementArrayList()), String.valueOf(java.time.LocalDate.now()), tablesSelectedFragment.getTableId(), selectedElementOrderAdapter.getSelectedElementArrayList());
 
-                if(selectedElementArrayList.size() > 0)
+                if(selectedElementOrderAdapter.getSelectedElementArrayList().size() > 0)
                     orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
 
                 dialog.dismiss();
@@ -212,7 +197,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     @Override
     public void onStart(){
         super.onStart();
-        getDialog().getWindow().getAttributes().width=1400;
+        getDialog().getWindow().getAttributes().width=1800;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
@@ -233,18 +218,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         categoryAndElementCreateOrderAdapter.notifyDataSetChanged();
 
         categoryAndElementCreateOrderAdapter.setMergeList(categoryAndElementCreateOrderAdapter.getCategoryArrayList(), categoryAndElementCreateOrderAdapter.getElementArrayList());
-    }
-
-    public ArrayList<Element> getSelectedElementArrayList() {
-        return selectedElementArrayList;
-    }
-
-    public void setSelectedElementArrayList(ArrayList<Element> selectedElementArrayList) {
-        this.selectedElementArrayList = selectedElementArrayList;
-    }
-
-    public void refreshSelectedElementList(){
-        selectedElementOrderAdapter.notifyDataSetChanged();
     }
 
     public Integer getTableId() {

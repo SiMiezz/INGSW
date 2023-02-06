@@ -120,17 +120,18 @@ public class TablesSelectedFragment extends Fragment {
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!numberOfSeats.getText().equals("X")){
+                    if(orderAdapter.getCurrentLayout() == -1){
+                        orderAdapter.setCurrentLayout(-2);
+                        orderAdapter.notifyDataSetChanged();
+                    }
 
-                if(orderAdapter.getCurrentLayout() == -1){
-                    orderAdapter.setCurrentLayout(-2);
-                    orderAdapter.notifyDataSetChanged();
+                    removeButton.setVisibility(View.INVISIBLE);
+                    backButton.setVisibility(View.VISIBLE);
+
+                    addButton.setVisibility(View.INVISIBLE);
+                    confirmButton.setVisibility(View.VISIBLE);
                 }
-
-                removeButton.setVisibility(View.INVISIBLE);
-                backButton.setVisibility(View.VISIBLE);
-
-                addButton.setVisibility(View.INVISIBLE);
-                confirmButton.setVisibility(View.VISIBLE);
             }
         });
 
@@ -155,7 +156,9 @@ public class TablesSelectedFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openCreateOrderDialog();
+                if(getLibera_occupaButton().getText().equals("LIBERA")){
+                    openCreateOrderDialog();
+                }
             }
         });
 

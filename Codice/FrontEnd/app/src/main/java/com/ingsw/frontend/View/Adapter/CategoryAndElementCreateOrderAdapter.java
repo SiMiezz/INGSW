@@ -24,12 +24,14 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
     private ArrayList<Category> categoryArrayList;
     private ArrayList<Element> elementArrayList;
     private ArrayList mergeList = new ArrayList();
-    private OrderCreateDialog orderCreateDialog;
 
-    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList, OrderCreateDialog orderCreateDialog){
+    private SelectedElementOrderAdapter selectedElementOrderAdapter;
+    private ArrayList<Element> selectedElementArrayList = new ArrayList<>();
+
+    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList, SelectedElementOrderAdapter selectedElementOrderAdapter){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
-        this.orderCreateDialog = orderCreateDialog;
+        this.selectedElementOrderAdapter = selectedElementOrderAdapter;
     }
 
     private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
@@ -76,8 +78,10 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    orderCreateDialog.getSelectedElementArrayList().add( (Element) mergeList.get(holder.getAdapterPosition()) );
-                    orderCreateDialog.refreshSelectedElementList();
+                    selectedElementArrayList.add((Element) mergeList.get(holder.getAdapterPosition()));
+                    selectedElementOrderAdapter.setSelectedElementArrayList(selectedElementArrayList);
+                    selectedElementOrderAdapter.notifyDataSetChanged();
+
                 }
             });
 
