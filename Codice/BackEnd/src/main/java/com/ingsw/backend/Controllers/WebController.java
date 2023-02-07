@@ -47,13 +47,6 @@ public class WebController {
 
         model.addAttribute("elements",elementListTotal);
 
-        List<Allergen> allergenList = allergenService.getAll();
-
-        for(Allergen allergen : allergenList)
-            System.out.println(allergen.getName());
-
-        model.addAttribute("allergens", allergenList);
-
         return "qrcode";
     }
 }

@@ -92,6 +92,10 @@
       font-size: 20px;
     }
 
+    .table{
+      alignment: center;
+    }
+
   </style>
 </head>
 
@@ -100,7 +104,7 @@
 
   <h1> Menu </h1>
 
-  <table>
+  <table class="table">
     <tbody>
     <div class="w3-container" th:each="category: ${categories}">
       <h2>
@@ -122,13 +126,15 @@
             <span class="description_tag" th:text="${element.description}"/>
             <span class="description_translate_tag" th:text="${element.translateDescription}" />
 
-            <p style="margin-bottom: 0; font-family: 'Antonio', sans-serif; font-size: 25px" > Allergeni
-              <div th:each="allergen: ${allergens}">
-                <div th:if="${element.allergenList.contains(allergen)}">
+            <div th:if="${element.allergenList.size() > 0}">
+              <p style="margin-bottom: 0; font-family: 'Antonio', sans-serif; font-size: 25px" > Allergeni
+              <div th:each="allergen: ${element.getAllergenList()}">
                   <span class="allergen_tag" th:text="${allergen.getName()}"/>
                 </div>
               </div>
-            </p>
+              </p>
+            </div>
+
 
 
           </h4>
