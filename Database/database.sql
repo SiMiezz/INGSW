@@ -310,7 +310,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ok','simi','giordi','admin','rest'),('admino','ok','dario','francese','admin','risto'),('cinque','ok','cinque','cognome','waiter','rest'),('due','ok','due','cognome','supervisor','rest'),('mario','defpwd','mario','francese','waiter','risto'),('quattro','ok','quattro','cognome','waiter','rest'),('renato','ok','renato','antuneri','chef','risto'),('sei','ok','sei','cognome','chef','rest'),('sette','ok','sette','cognome','chef','rest'),('tre','ok','tre','cognome','supervisor','rest'),('uno','ok','uno','cognome','admin','rest'),('wait','ok','luis','star','chef','rest'),('waiter','ok','kekko','cotugn','waiter','rest');
+INSERT INTO `user` VALUES ('admin','ok','admin','admin','admin','rest'),('chef','ok','chef','chef','chef','rest'),('gianmarcoaddati','ok','gian marco','addati','admin','rest'),('simonegiordano','ok','simone','giordano','admin','rest'),('supervisor','ok','supervisor','supervisor','supervisor','rest'),('waiter','ok','waiter','waiter','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -323,4 +323,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-07 11:18:23
+-- Dump completed on 2023-02-07 11:26:53
