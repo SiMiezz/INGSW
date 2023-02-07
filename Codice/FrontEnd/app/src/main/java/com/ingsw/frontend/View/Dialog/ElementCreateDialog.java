@@ -156,30 +156,44 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                 nameAdapter.getFilter().filter(editTextname.getText(), editTextname);
                 editTextname.setAdapter(nameAdapter);
 
+                nameAdapter.notifyDataSetChanged();
+
                 editTextname.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         openFoodPresenter.getDescription(editTextname.getText().toString());
+                    }
+                });
+            }
 
-                        if(menuElementsFragment.getRestaurant().isTouristic()){
-                            TranslatorOptions options =
-                                    new TranslatorOptions.Builder()
-                                            .setSourceLanguage(TranslateLanguage.ITALIAN)
-                                            .setTargetLanguage(TranslateLanguage.ENGLISH)
-                                            .build();
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
 
-                            final Translator itaEngTranslator = Translation.getClient(options);
-                            getLifecycle().addObserver(itaEngTranslator);
+        editTextname.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus){
+                    if(menuElementsFragment.getRestaurant().isTouristic()){
+                        TranslatorOptions options =
+                                new TranslatorOptions.Builder()
+                                        .setSourceLanguage(TranslateLanguage.ITALIAN)
+                                        .setTargetLanguage(TranslateLanguage.ENGLISH)
+                                        .build();
 
-                            DownloadConditions conditions = new DownloadConditions.Builder()
-                                    .requireWifi()
-                                    .build();
+                        final Translator itaEngTranslator = Translation.getClient(options);
+                        getLifecycle().addObserver(itaEngTranslator);
 
-                            itaEngTranslator.downloadModelIfNeeded(conditions)
-                                    .addOnSuccessListener(
-                                            new OnSuccessListener() {
-                                                @Override
-                                                public void onSuccess(Object o) {
+                        DownloadConditions conditions = new DownloadConditions.Builder()
+                                .requireWifi()
+                                .build();
+
+                        itaEngTranslator.downloadModelIfNeeded(conditions)
+                                .addOnSuccessListener(
+                                        new OnSuccessListener() {
+                                            @Override
+                                            public void onSuccess(Object o) {
+                                                if(!editTextname.getText().toString().isEmpty()){
                                                     itaEngTranslator.translate(editTextname.getText().toString())
                                                             .addOnSuccessListener(
                                                                     new OnSuccessListener() {
@@ -190,13 +204,15 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                                                                             editTextTranslateName.setText(translatedName);
                                                                         }
                                                                     });
+                                                }
+                                                else{
+                                                    editTextTranslateName.setText("");
+                                                }
 
-                                                    editTextdescription.addTextChangedListener(new TextWatcher() {
-                                                        @Override
-                                                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                                                        @Override
-                                                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                editTextdescription.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                                                    @Override
+                                                    public void onFocusChange(View v, boolean hasFocus) {
+                                                        if(!hasFocus){
                                                             if(!editTextdescription.getText().toString().isEmpty()){
                                                                 itaEngTranslator.translate(editTextdescription.getText().toString())
                                                                         .addOnSuccessListener(
@@ -209,22 +225,17 @@ public class ElementCreateDialog extends AppCompatDialogFragment {
                                                                                     }
                                                                                 });
                                                             }
+                                                            else{
+                                                                editTextTranslateDescription.setText("");
+                                                            }
                                                         }
-
-                                                        @Override
-                                                        public void afterTextChanged(Editable s) {}
-                                                    });
-                                                }
-                                            });
-                        }
+                                                    }
+                                                });
+                                            }
+                                        });
                     }
-                });
-
-                nameAdapter.notifyDataSetChanged();
+                }
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {}
         });
 
         return dialog;
