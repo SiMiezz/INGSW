@@ -81,7 +81,9 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         backButton = view.findViewById(R.id.back_selected_element_order_button);
         separatorView = view.findViewById(R.id.separator_view);
 
-        selectedElementOrderAdapter = new SelectedElementOrderAdapter(getContext(), null);
+        ArrayList<Element> selectedElementArrayList = new ArrayList<>();
+
+        selectedElementOrderAdapter = new SelectedElementOrderAdapter(getContext(), selectedElementArrayList);
 
         LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(getContext());
         linearLayoutManager1.setOrientation(LinearLayoutManager.VERTICAL);
@@ -138,7 +140,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         categoryArrayList = new ArrayList<>();
         elementArrayList = new ArrayList<>();
 
-        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList, selectedElementOrderAdapter);
+        categoryAndElementCreateOrderAdapter = new CategoryAndElementCreateOrderAdapter(getContext(), categoryArrayList, elementArrayList, this);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -220,6 +222,11 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         categoryAndElementCreateOrderAdapter.setMergeList(categoryAndElementCreateOrderAdapter.getCategoryArrayList(), categoryAndElementCreateOrderAdapter.getElementArrayList());
     }
 
+    public void loadSelectedElement(ArrayList<Element> elementArrayList){
+        selectedElementOrderAdapter.setSelectedElementArrayList(elementArrayList);
+        selectedElementOrderAdapter.notifyDataSetChanged();
+    }
+
     public Integer getTableId() {
         return tableId;
     }
@@ -237,5 +244,13 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         return result;
 
+    }
+
+    public SelectedElementOrderAdapter getSelectedElementOrderAdapter() {
+        return selectedElementOrderAdapter;
+    }
+
+    public void setSelectedElementOrderAdapter(SelectedElementOrderAdapter selectedElementOrderAdapter) {
+        this.selectedElementOrderAdapter = selectedElementOrderAdapter;
     }
 }

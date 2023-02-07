@@ -68,8 +68,9 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
         View normalList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_create_order_selected_element_nonclickable, parent,false);
         View selectionList = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_list_selection, parent,false);
 
-        if(getItemViewType(0) == -1)
+        if(getItemViewType(0) == -1){
             return new SelectedElementOrderAdapter.SelectedElementOrderHolder(normalList);
+        }
         else
             return  new SelectedElementOrderAdapter.SelectedElementOrderHolder(selectionList);
     }
@@ -93,8 +94,6 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
         for(Element element : groupedSelectedElementArrayList){
             element.setQuantityOrdered(Collections.frequency(selectedElementArrayList, element));
-
-
         }
 
         if(groupedSelectedElementArrayList.size() > 0){
@@ -148,15 +147,20 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
 
     @Override
     public int getItemCount() {
-        if(currentLayout == -1)
-            return groupedSelectedElementArrayList.size();
+        if(currentLayout == -1){
+            if(groupedSelectedElementArrayList.size() > 0){
+                return groupedSelectedElementArrayList.size();
+            }
+            else{
+                return selectedElementArrayList.size();
+            }
+        }
         else
             return selectedElementArrayList.size();
     }
 
     @Override
     public int getItemViewType(int position){
-
         return currentLayout;
     }
 

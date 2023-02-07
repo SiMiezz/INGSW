@@ -25,13 +25,13 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
     private ArrayList<Element> elementArrayList;
     private ArrayList mergeList = new ArrayList();
 
-    private SelectedElementOrderAdapter selectedElementOrderAdapter;
+    private OrderCreateDialog orderCreateDialog;
     private ArrayList<Element> selectedElementArrayList = new ArrayList<>();
 
-    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList, SelectedElementOrderAdapter selectedElementOrderAdapter){
+    public CategoryAndElementCreateOrderAdapter(Context context, ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList, OrderCreateDialog orderCreateDialog){
         this.categoryArrayList = categoryArrayList;
         this.elementArrayList = elementArrayList;
-        this.selectedElementOrderAdapter = selectedElementOrderAdapter;
+        this.orderCreateDialog = orderCreateDialog;
     }
 
     private ArrayList mergeCategoryAndElementList(ArrayList<Category> categoryArrayList, ArrayList<Element> elementArrayList) {
@@ -79,9 +79,7 @@ public class CategoryAndElementCreateOrderAdapter extends RecyclerView.Adapter<C
                 @Override
                 public void onClick(View view) {
                     selectedElementArrayList.add((Element) mergeList.get(holder.getAdapterPosition()));
-                    selectedElementOrderAdapter.setSelectedElementArrayList(selectedElementArrayList);
-                    selectedElementOrderAdapter.notifyDataSetChanged();
-
+                    orderCreateDialog.loadSelectedElement(selectedElementArrayList);
                 }
             });
 
