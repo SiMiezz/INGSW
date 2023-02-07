@@ -25,21 +25,23 @@
     h2{
       font-size: xx-large;
       text-transform: uppercase;
-      padding-left: 5px;
       padding-top: 25px;
       font-size: 50px;
       color: red;
       font-family: 'Bebas Neue', cursive;
+      text-align: center;
     }
 
     h4{
       padding-bottom: 40px;
+      text-align: center;
     }
 
     .element_tag{
       text-transform: capitalize;
       font-family: 'Bebas Neue', cursive;
       font-size: 40px;
+      text-align: center;
     }
 
     .element_translate_tag{
@@ -49,6 +51,7 @@
       font-style: italic;
       font-size: 30px;
       display: block;
+      text-align: center;
     }
 
     .price_tag{
@@ -56,6 +59,7 @@
       align-content: end;
       font-family: 'Bebas Neue', cursive;
       font-size: 40px;
+      text-align: center;
     }
 
     .euro_symbol{
@@ -63,6 +67,7 @@
       font-weight: lighter;
       font-family: 'Bebas Neue', cursive;
       font-size: 40px;
+      text-align: center;
     }
 
     .description_tag{
@@ -72,6 +77,7 @@
       display: block;
       font-size: 25px;
       padding-bottom: 5px;
+      text-align: center;
     }
 
     .description_translate_tag{
@@ -81,6 +87,7 @@
       font-family: 'Antonio', sans-serif;
       display: block;
       font-size: 20px;
+      text-align: center;
     }
 
     .allergen_tag{
@@ -90,10 +97,7 @@
       display: block;
       font-family: 'Antonio', sans-serif;
       font-size: 20px;
-    }
-
-    .table{
-      alignment: center;
+      text-align: center;
     }
 
   </style>
@@ -104,22 +108,22 @@
 
   <h1> Menu </h1>
 
-  <table class="table">
+  <table>
     <tbody>
     <div class="w3-container" th:each="category: ${categories}">
-      <h2>
+      <h2 style="text-align: center">
         <div class="category_tag" th:text="${category.name}"></div>
       </h2>
       <ul>
         <div th:each="element: ${elements}">
           <h3>
-            <li th:if="${category.id} == ${element.category.id}">
+            <p th:if="${category.id} == ${element.category.id}" style="text-align: center">
               <span class="element_tag" th:text="${element.name}"/>
               <span class="euro_symbol" th:text="&#8364"/>
               <span class="price_tag" th:text="${element.price}" />
               <span class="element_translate_tag" th:text="${element.translateName}"/>
 
-            </li>
+            </p>
           </h3>
           <h4 th:if="${category.id} == ${element.category.id}">
 
@@ -130,14 +134,13 @@
               <p style="margin-bottom: 0; font-family: 'Antonio', sans-serif; font-size: 25px" > Allergeni
               <div th:each="allergen: ${element.getAllergenList()}">
                   <span class="allergen_tag" th:text="${allergen.getName()}"/>
-                </div>
               </div>
               </p>
             </div>
-
-
-
           </h4>
+
+            </div>
+
         </div>
       </ul>
     </div>

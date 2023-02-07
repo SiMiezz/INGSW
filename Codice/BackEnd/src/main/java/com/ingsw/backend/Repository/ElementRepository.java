@@ -14,6 +14,8 @@ public interface ElementRepository extends CrudRepository<Element,Integer> {
 
     List<Element> findByCategoryIdOrderByName(Integer id);
 
+    List<Element> findByCategoryIdOrderByPrice(Integer id);
+
     @Query(value = "SELECT e.* " +
                    "FROM element AS e JOIN category AS c ON e.category_id = c.id_category " +
                    "WHERE c.menu_id = :id", nativeQuery = true)

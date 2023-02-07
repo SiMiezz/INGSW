@@ -117,13 +117,13 @@
       <ul>
         <div th:each="element: ${elements}">
           <h3>
-            <li th:if="${category.id} == ${element.category.id}" style="text-align: center">
+            <p th:if="${category.id} == ${element.category.id}" style="text-align: center">
               <span class="element_tag" th:text="${element.name}"/>
               <span class="euro_symbol" th:text="&#8364"/>
               <span class="price_tag" th:text="${element.price}" />
               <span class="element_translate_tag" th:text="${element.translateName}"/>
 
-            </li>
+            </p>
           </h3>
           <h4 th:if="${category.id} == ${element.category.id}">
 

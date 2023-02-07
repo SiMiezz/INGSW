@@ -41,7 +41,7 @@ public class WebController {
         model.addAttribute("categories",categoryList);
 
         for (Category category: categoryList) {
-            List<Element> elementList = elementService.getByCategoryId(category.getId());
+            List<Element> elementList = elementService.getByCategoryIdOrderByPrice(category.getId());
             elementListTotal.addAll(elementList);
         }
 
