@@ -37,4 +37,9 @@ public class ElementService implements IElementService {
     public List<Element> getElementByMenuId(Integer id) {
         return elementRepository.findElementByMenuId(id);
     }
+
+    @Override
+    public List<Element> getByCategoryIdOrderByPrice(Integer id){
+        return elementRepository.findByCategoryIdOrderByPrice(id);
+    }
 }

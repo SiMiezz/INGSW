@@ -13,4 +13,6 @@ public interface IElementService {
     List<Element> getByCategoryId(Integer id);
 
     List<Element> getElementByMenuId(Integer id);
+
+    List<Element> getByCategoryIdOrderByPrice(Integer id);
 }
