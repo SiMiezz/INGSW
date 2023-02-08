@@ -243,7 +243,15 @@
                 android:background="@drawable/shape_section_buttons"
                 android:backgroundTint="@color/white"
                 app:strokeColor="#787486"
-                app:strokeWidth="1dp" />
+                app:strokeWidth="1dp">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/bar_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </com.google.android.material.card.MaterialCardView>
+
+
 
         </LinearLayout>
 

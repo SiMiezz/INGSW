@@ -10,7 +10,12 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.data.BarEntry;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.R;
+
+import java.util.ArrayList;
 
 public class RestaurantStatsFragment extends Fragment {
 
@@ -23,6 +28,7 @@ public class RestaurantStatsFragment extends Fragment {
     private Button searchButton;
     private Button fromButton;
     private Button toButton;
+    private BarChart barChart;
 
     public RestaurantStatsFragment() {
         // Required empty public constructor
@@ -55,6 +61,14 @@ public class RestaurantStatsFragment extends Fragment {
         searchButton = rootView.findViewById(R.id.restaurant_stats_search_button);
         fromButton = rootView.findViewById(R.id.restaurant_stats_from_button);
         toButton = rootView.findViewById(R.id.restaurant_stats_to_button);
+        barChart = rootView.findViewById(R.id.bar_chart);
+
+        ArrayList<Element> elements = new ArrayList<>();
+        //elements = presenter.getelements
+        ArrayList<BarEntry> data = new ArrayList<>();
+
+
+
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
