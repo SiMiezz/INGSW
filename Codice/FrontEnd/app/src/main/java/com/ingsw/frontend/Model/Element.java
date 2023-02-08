@@ -159,4 +159,15 @@ public class Element implements Serializable {
     public void setQuantityOrdered(Integer quantityOrdered) {
         this.quantityOrdered = quantityOrdered;
     }
+
+
+    public int quantityStats = 0;
+
+    public int getQuantityStats() {
+        return quantityStats;
+    }
+
+    public void setQuantityStats(int quantityStats) {
+        this.quantityStats = quantityStats;
+    }
 }

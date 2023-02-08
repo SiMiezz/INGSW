@@ -129,4 +129,25 @@ public class OrderService implements IOrderService {
                     }
                 });
     }
+
+    @Override
+    public void getCountElementOrdered(Callback callback, Integer id) {
+        orderApi.getCountElementOrdered(id)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new SingleObserver<Integer>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {}
+
+                    @Override
+                    public void onSuccess(@NonNull Integer sum) {
+                        callback.returnResult(sum);
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        callback.returnError(e);
+                    }
+                });
+    }
 }

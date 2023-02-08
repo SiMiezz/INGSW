@@ -16,4 +16,6 @@ public interface IOrderService {
 
     void delete(Order order);
 
+    Integer getCountElementOrdered(Integer id);
+
 }

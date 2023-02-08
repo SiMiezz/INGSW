@@ -15,4 +15,5 @@ public interface IOrderService {
 
     void delete(Callback callback, Order order);
 
+    void getCountElementOrdered(Callback callback, Integer id);
 }

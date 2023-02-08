@@ -30,4 +30,6 @@ public interface OrderApi {
     @HTTP(method = "DELETE", path = "/order/delete", hasBody = true)
     Completable delete(@Body Order order);
 
+    @GET("/order/count/element/{id}")
+    Single<Integer> getCountElementOrdered(@Path("id") Integer id);
 }

@@ -23,4 +23,6 @@ public interface OrderRepository extends CrudRepository<Order,Integer> {
             "WHERE o.table_id = :id", nativeQuery = true)
     Long countByTableId(@PathVariable("id") Integer id);
 
+    @Query(value = "SELECT COUNT(*) FROM composed AS c WHERE c.element_id = :id", nativeQuery = true)
+    Integer getCountElementOrdered(@PathVariable("id") Integer id);
 }

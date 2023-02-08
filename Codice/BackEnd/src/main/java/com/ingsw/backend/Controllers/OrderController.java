@@ -66,6 +66,15 @@ public class OrderController {
         orderService.delete(order);
     }
 
+    @GetMapping("/count/element/{id}")
+    public Integer getCountElementOrdered(@PathVariable Integer id){
+        Integer result = 0;
+
+        result = orderService.getCountElementOrdered(id);
+
+        return result;
+    }
+
     private OrderDTO convertDTO(Order order) {
         modelMapper.getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.LOOSE);

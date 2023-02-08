@@ -40,4 +40,9 @@ public class OrderService implements IOrderService {
     public void delete(Order order) {
         orderRepository.delete(order);
     }
+
+    @Override
+    public Integer getCountElementOrdered(Integer id) {
+        return orderRepository.getCountElementOrdered(id);
+    }
 }
