@@ -2,7 +2,9 @@ Visualizzazione traduzione element
 
 Statistiche
 
-Qrcode
+Qrcode(manca lato db)
 
+test junit
 
+server aws
 
