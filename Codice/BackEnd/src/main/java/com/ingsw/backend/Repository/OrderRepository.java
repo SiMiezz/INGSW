@@ -25,4 +25,15 @@ public interface OrderRepository extends CrudRepository<Order,Integer> {
 
     @Query(value = "SELECT COUNT(*) FROM composed AS c WHERE c.element_id = :id", nativeQuery = true)
     Integer getCountElementOrdered(@PathVariable("id") Integer id);
+
+
+
+    // QUERY DA IMPLEMENTARE DOPO (testata e funzionante su mysql)
+
+//    @Query(value = "SELECT COUNT(*) FROM composed AS c join ordine AS o ON c.order_id=o.id_order " +
+//            "WHERE c.element_id = :id AND (o.datecreate BETWEEN :date_from AND :date_to" , nativeQuery = true)
+//    Integer getCountElementOrdered(
+//    @PathVariable("id") Integer id, @PathVariable("date_from") Date date_from, @PathVariable("date_to") Date date_to);
+    
+
 }
