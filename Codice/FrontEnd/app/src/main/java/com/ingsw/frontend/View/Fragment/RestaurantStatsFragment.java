@@ -198,6 +198,7 @@ public class RestaurantStatsFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1);
         xAxis.setGranularityEnabled(true);
+        xAxis.setDrawGridLines(false);
 
 
     }
