@@ -11,8 +11,6 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.ingsw.frontend.R;
 
-import java.sql.Date;
-
 public class RestaurantFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -59,11 +57,4 @@ public class RestaurantFragment extends Fragment {
         return rootView;
     }
 
-    public void replaceStats(Date from, Date to){
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-        fragmentTransaction.replace(R.id.stats_restaurant_container, new RestaurantStatsFragment());
-        fragmentTransaction.commit();
-    }
 }
