@@ -197,10 +197,8 @@ public class RestaurantStatsFragment extends Fragment {
         int i = 0;
 
         for(Element element : elementArrayList){
-            if(element.getQuantityStats() > 0){
                 barEntryArrayList.add(new BarEntry(i, element.getQuantityStats(), element));
                 i += 1;
-            }
         }
 
 
@@ -242,16 +240,8 @@ public class RestaurantStatsFragment extends Fragment {
         return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
-    }
-
     public Date getToDate() {
         return toDate;
-    }
-
-    public void setToDate(Date toDate) {
-        this.toDate = toDate;
     }
 
 }
