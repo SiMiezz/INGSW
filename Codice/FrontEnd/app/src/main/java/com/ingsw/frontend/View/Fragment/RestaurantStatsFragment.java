@@ -173,7 +173,7 @@ public class RestaurantStatsFragment extends Fragment {
         barDataSet = new BarDataSet(barEntryArrayList, "11111111");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
-        barDataSet.setValueTextSize(16f);
+        barDataSet.setValueTextSize(20f);
 
         barData = new BarData(barDataSet);
         barChart.setFitBars(true);
