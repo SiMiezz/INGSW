@@ -21,11 +21,9 @@ public class StatsPresenter {
     }
 
     public void getElementByMenuId(Integer id){
-        System.out.println("------------------------------");
         elementService.getElementByMenuId(new Callback() {
             @Override
             public void returnResult(Object o) {
-                System.out.println("*********************");
                 ArrayList<Element> elements = (ArrayList<Element>) o;
                 restaurantStatsFragment.setElements(elements);
             }
@@ -37,18 +35,23 @@ public class StatsPresenter {
         }, id);
     }
 
-    public void getQuantityOrdered(Element element, Integer id) {
-        orderService.getCountElementOrdered(new Callback() {
-            @Override
-            public void returnResult(Object o) {
-                Integer resultCount = (Integer) o;
-                element.setQuantityStats(resultCount);
-            }
+    public void getQuantityOrdered(ArrayList<Element> elements){
+        for (Element element : elements){
+            orderService.getCountElementOrdered(new Callback() {
+                @Override
+                public void returnResult(Object o) {
+                    Integer resultCount = (Integer) o;
+                    element.setQuantityStats(resultCount);
+                }
 
-            @Override
-            public void returnError(Throwable e) {
+                @Override
+                public void returnError(Throwable e) {
 
-            }
-        }, id);
+                }
+            }, element.getId()); //vanno passate le due date
+        }
     }
+
+
+
 }

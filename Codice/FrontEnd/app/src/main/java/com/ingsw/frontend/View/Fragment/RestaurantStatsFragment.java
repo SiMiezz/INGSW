@@ -3,6 +3,7 @@ package com.ingsw.frontend.View.Fragment;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +15,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Presenter.StatsPresenter;
 import com.ingsw.frontend.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class RestaurantStatsFragment extends Fragment {
 
@@ -38,6 +47,10 @@ public class RestaurantStatsFragment extends Fragment {
     private StatsPresenter statsPresenter;
     private Intent intent;
     private Menu menu;
+
+    private ArrayList<BarEntry> barEntryArrayList;
+    private BarDataSet barDataSet;
+    private BarData barData;
 
     public RestaurantStatsFragment() {
         // Required empty public constructor
@@ -77,7 +90,9 @@ public class RestaurantStatsFragment extends Fragment {
         searchButton = getView().findViewById(R.id.restaurant_stats_search_button);
         fromButton = getView().findViewById(R.id.restaurant_stats_from_button);
         toButton = getView().findViewById(R.id.restaurant_stats_to_button);
+
         barChart = getView().findViewById(R.id.bar_chart);
+        barEntryArrayList = new ArrayList<>();
 
         statsPresenter = new StatsPresenter(this);
 
@@ -89,17 +104,12 @@ public class RestaurantStatsFragment extends Fragment {
 
         statsPresenter.getElementByMenuId(menu.getId());
 
-        System.out.println("##################");
-
-        for(Element element : elements){
-            statsPresenter.getQuantityOrdered(element, element.getId());
-        }
 
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                createChart(elements);
             }
         });
 
@@ -123,8 +133,73 @@ public class RestaurantStatsFragment extends Fragment {
     }
 
 
-    public void setElements(ArrayList<Element> elements) {
-        this.elements = elements;
-        System.out.println("@@@@@@@@@@@@@@@@@@@@");
+    public void setElements(ArrayList<Element> elementArrayList) {
+        elements = elementArrayList;
+
+//        for(Element element : elements){
+//            statsPresenter.getQuantityOrdered(element, element.getId());
+//        }
+
+        statsPresenter.getQuantityOrdered(elements); //vanno aggiunti i parametri per la data
+
+//        createChart(elements);
     }
+
+    public void createChart(ArrayList<Element> elementArrayList) {
+
+        Collections.sort(elementArrayList, new Comparator<Element>() {
+            @Override
+            public int compare(Element element1, Element element2) {
+                if(element1.getQuantityStats() > element2.getQuantityStats())
+                    return -1;
+                else if(element1.getQuantityStats() < element2.getQuantityStats())
+                    return 1;
+                else
+                    return 0;
+            }
+        });
+
+        int i = 0;
+
+        for(Element element : elementArrayList){
+            if(element.getQuantityStats() > 0){
+                barEntryArrayList.add(new BarEntry(i, element.getQuantityStats(), element));
+                i += 1;
+            }
+        }
+
+
+
+        barDataSet = new BarDataSet(barEntryArrayList, "11111111");
+        barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(16f);
+
+        barData = new BarData(barDataSet);
+        barChart.setFitBars(true);
+        barChart.setData(barData);
+        barChart.animateY(2000);
+        barChart.animateY(2000);
+        barChart.getDescription().setText("");
+
+        barChart.setDragEnabled(true);
+        barChart.setVisibleXRangeMaximum(2);
+
+
+        ArrayList<String> elementNames = new ArrayList<>();
+        for(Element element : elementArrayList)
+            elementNames.add(element.getName().toUpperCase());
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(elementNames));
+        xAxis.setCenterAxisLabels(false);
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setGranularity(1);
+        xAxis.setGranularityEnabled(true);
+
+
+    }
+
+
+
 }
