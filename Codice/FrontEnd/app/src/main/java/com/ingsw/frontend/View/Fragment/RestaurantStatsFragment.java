@@ -19,6 +19,7 @@ import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.formatter.DefaultValueFormatter;
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.ingsw.frontend.Model.Element;
@@ -174,6 +175,7 @@ public class RestaurantStatsFragment extends Fragment {
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(20f);
+        barDataSet.setValueFormatter(new DefaultValueFormatter(0));
 
         barData = new BarData(barDataSet);
         barChart.setFitBars(true);
