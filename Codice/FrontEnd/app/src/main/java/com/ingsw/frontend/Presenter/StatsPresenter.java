@@ -6,6 +6,7 @@ import com.ingsw.frontend.Service.Class.ElementService;
 import com.ingsw.frontend.Service.Class.OrderService;
 import com.ingsw.frontend.View.Fragment.RestaurantStatsFragment;
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class StatsPresenter {
@@ -25,7 +26,7 @@ public class StatsPresenter {
             @Override
             public void returnResult(Object o) {
                 ArrayList<Element> elements = (ArrayList<Element>) o;
-                restaurantStatsFragment.setElements(elements);
+                restaurantStatsFragment.setElements(elements, restaurantStatsFragment.getFromDate(), restaurantStatsFragment.getToDate());
             }
 
             @Override
@@ -35,20 +36,21 @@ public class StatsPresenter {
         }, id);
     }
 
-    public void getQuantityOrdered(ArrayList<Element> elements){
+    public void getQuantityStats(ArrayList<Element> elements, Date fromDate, Date toDate){
         for (Element element : elements){
-            orderService.getCountElementOrdered(new Callback() {
+            orderService.getCountElementOrderedStats(new Callback() {
                 @Override
                 public void returnResult(Object o) {
                     Integer resultCount = (Integer) o;
                     element.setQuantityStats(resultCount);
+                    System.out.println(o);
                 }
 
                 @Override
                 public void returnError(Throwable e) {
-
+                    element.setQuantityStats(0);
                 }
-            }, element.getId()); //vanno passate le due date
+            }, element.getId(), fromDate, toDate);
         }
     }
 

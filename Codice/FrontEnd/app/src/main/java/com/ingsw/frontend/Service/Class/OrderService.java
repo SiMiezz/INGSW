@@ -6,6 +6,7 @@ import com.ingsw.frontend.Retrofit.RetrofitService;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Interface.IOrderService;
 
+import java.sql.Date;
 import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -131,8 +132,8 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public void getCountElementOrdered(Callback callback, Integer id) {
-        orderApi.getCountElementOrdered(id)
+    public void getCountElementOrderedStats(Callback callback, Integer id, Date fromDate, Date toDate) {
+        orderApi.getCountElementOrderedStats(id, fromDate, toDate)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new SingleObserver<Integer>() {

@@ -3,6 +3,8 @@ package com.ingsw.frontend.Service.Interface;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Service.Callback;
 
+import java.sql.Date;
+
 public interface IOrderService {
 
     void create(Callback callback,  Order order);
@@ -15,5 +17,5 @@ public interface IOrderService {
 
     void delete(Callback callback, Order order);
 
-    void getCountElementOrdered(Callback callback, Integer id);
+    void getCountElementOrderedStats(Callback callback, Integer id, Date fromDate, Date toDate);
 }

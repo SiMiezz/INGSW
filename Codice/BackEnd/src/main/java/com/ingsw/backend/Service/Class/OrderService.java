@@ -6,6 +6,7 @@ import com.ingsw.backend.Service.Interface.IOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service("mainOrderService")
@@ -42,7 +43,7 @@ public class OrderService implements IOrderService {
     }
 
     @Override
-    public Integer getCountElementOrdered(Integer id) {
-        return orderRepository.getCountElementOrdered(id);
+    public Integer getCountElementOrdered(Integer id, Date from, Date to) {
+        return orderRepository.getCountElementOrdered(id, from, to);
     }
 }

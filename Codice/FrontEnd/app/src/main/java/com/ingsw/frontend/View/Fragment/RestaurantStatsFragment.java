@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Presenter.StatsPresenter;
 import com.ingsw.frontend.R;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -53,8 +55,16 @@ public class RestaurantStatsFragment extends Fragment {
     private BarDataSet barDataSet;
     private BarData barData;
 
+    private Date fromDate;
+    private Date toDate;
+
     public RestaurantStatsFragment() {
         // Required empty public constructor
+    }
+
+    public RestaurantStatsFragment(Date fromDate, Date toDate){
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
 
     public static RestaurantStatsFragment newInstance(String param1, String param2) {
@@ -105,11 +115,17 @@ public class RestaurantStatsFragment extends Fragment {
 
         statsPresenter.getElementByMenuId(menu.getId());
 
+        java.util.Date fromCurrentDate = new java.util.Date();
+        fromDate = new Date(fromCurrentDate.getTime());
 
+        java.util.Date toCurrentDate = new java.util.Date();
+        toDate = new Date(toCurrentDate.getTime());
 
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                setElements(elements, fromDate, toDate);
                 createChart(elements);
             }
         });
@@ -119,6 +135,17 @@ public class RestaurantStatsFragment extends Fragment {
             public void onClick(View view) {
                 DatePickerDialog fromDatePicker = new DatePickerDialog(getContext(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                 fromDatePicker.show();
+                fromDatePicker.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        Date date = new Date(fromDatePicker.getDatePicker().getYear() - 1900, //restituisce anno+1900 (?), così è corretto
+                                             fromDatePicker.getDatePicker().getMonth(),
+                                             fromDatePicker.getDatePicker().getDayOfMonth());
+
+                        fromDate = date;
+
+                    }
+                });
             }
         });
 
@@ -127,6 +154,17 @@ public class RestaurantStatsFragment extends Fragment {
             public void onClick(View view) {
                 DatePickerDialog fromDatePicker = new DatePickerDialog(getContext(), AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
                 fromDatePicker.show();
+                fromDatePicker.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        Date date = new Date(fromDatePicker.getDatePicker().getYear() - 1900, //restituisce anno+1900 (?), così è corretto
+                                fromDatePicker.getDatePicker().getMonth(),
+                                fromDatePicker.getDatePicker().getDayOfMonth());
+
+                        toDate = date;
+
+                    }
+                });
             }
         });
 
@@ -134,19 +172,15 @@ public class RestaurantStatsFragment extends Fragment {
     }
 
 
-    public void setElements(ArrayList<Element> elementArrayList) {
+    public void setElements(ArrayList<Element> elementArrayList, Date fromDate, Date toDate) {
         elements = elementArrayList;
+        statsPresenter.getQuantityStats(elements, fromDate, toDate); //vanno aggiunti i parametri per la data
 
-//        for(Element element : elements){
-//            statsPresenter.getQuantityOrdered(element, element.getId());
-//        }
-
-        statsPresenter.getQuantityOrdered(elements); //vanno aggiunti i parametri per la data
-
-//        createChart(elements);
     }
 
     public void createChart(ArrayList<Element> elementArrayList) {
+
+        barEntryArrayList.clear();
 
         Collections.sort(elementArrayList, new Comparator<Element>() {
             @Override
@@ -171,7 +205,7 @@ public class RestaurantStatsFragment extends Fragment {
 
 
 
-        barDataSet = new BarDataSet(barEntryArrayList, "11111111");
+        barDataSet = new BarDataSet(barEntryArrayList, "");
         barDataSet.setColors(ColorTemplate.MATERIAL_COLORS);
         barDataSet.setValueTextColor(Color.BLACK);
         barDataSet.setValueTextSize(20f);
@@ -204,5 +238,20 @@ public class RestaurantStatsFragment extends Fragment {
     }
 
 
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
 
 }

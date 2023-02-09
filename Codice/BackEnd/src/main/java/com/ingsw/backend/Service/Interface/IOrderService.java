@@ -2,6 +2,7 @@ package com.ingsw.backend.Service.Interface;
 
 import com.ingsw.backend.Model.Order;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface IOrderService {
@@ -16,6 +17,6 @@ public interface IOrderService {
 
     void delete(Order order);
 
-    Integer getCountElementOrdered(Integer id);
+    Integer getCountElementOrdered(Integer id, Date from, java.sql.Date to);
 
 }

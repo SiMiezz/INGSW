@@ -66,11 +66,11 @@ public class OrderController {
         orderService.delete(order);
     }
 
-    @GetMapping("/count/element/{id}")
-    public Integer getCountElementOrdered(@PathVariable Integer id){
+    @GetMapping("/count/element/{id}/{from}/{to}")
+    public Integer getCountElementOrdered(@PathVariable Integer id, @PathVariable Date from, @PathVariable Date to){
         Integer result = 0;
 
-        result = orderService.getCountElementOrdered(id);
+        result = orderService.getCountElementOrdered(id, from, to);
 
         return result;
     }

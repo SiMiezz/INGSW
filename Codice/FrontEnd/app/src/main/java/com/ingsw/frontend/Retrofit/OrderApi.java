@@ -2,6 +2,7 @@ package com.ingsw.frontend.Retrofit;
 
 import com.ingsw.frontend.Model.Order;
 
+import java.sql.Date;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
@@ -30,6 +31,6 @@ public interface OrderApi {
     @HTTP(method = "DELETE", path = "/order/delete", hasBody = true)
     Completable delete(@Body Order order);
 
-    @GET("/order/count/element/{id}")
-    Single<Integer> getCountElementOrdered(@Path("id") Integer id);
+    @GET("/order/count/element/{id}/{from}/{to}")
+    Single<Integer> getCountElementOrderedStats(@Path("id") Integer id, @Path("from") Date fromDate, @Path("to") Date toDate);
 }
