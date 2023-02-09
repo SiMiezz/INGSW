@@ -20,7 +20,7 @@ import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Menu;
 import com.ingsw.frontend.Model.Order;
-import com.ingsw.frontend.Presenter.CreateOrderPresenter;
+import com.ingsw.frontend.Presenter.OrderPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.CategoryAndElementCreateOrderAdapter;
 import com.ingsw.frontend.View.Adapter.SelectedElementOrderAdapter;
@@ -35,7 +35,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
     private RecyclerView allElementsRecyclerView;
     private RecyclerView selectedElementsRecyclerView;
-    private CreateOrderPresenter createOrderPresenter = new CreateOrderPresenter(this);
+    private OrderPresenter orderPresenter = new OrderPresenter(this);
 
     private CategoryAndElementCreateOrderAdapter categoryAndElementCreateOrderAdapter;
     private ArrayList<Category> categoryArrayList;
@@ -151,8 +151,8 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
         menu = (Menu) intent.getSerializableExtra("menu");
 
-        createOrderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
-        createOrderPresenter.getElementByMenuId(menu.getId());
+        orderPresenter.getCategoryByMenuIdOrderByAlimentAndPosition(menu.getId());
+        orderPresenter.getElementByMenuId(menu.getId());
 
         // ****************************************
 

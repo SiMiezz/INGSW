@@ -1,20 +1,35 @@
 package com.ingsw.frontend.Presenter;
 
+import com.ingsw.frontend.Model.Category;
+import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
 import com.ingsw.frontend.Service.Callback;
+import com.ingsw.frontend.Service.Class.CategoryService;
+import com.ingsw.frontend.Service.Class.ElementService;
 import com.ingsw.frontend.Service.Class.OrderService;
+import com.ingsw.frontend.View.Dialog.OrderCreateDialog;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import java.util.ArrayList;
 
 public class OrderPresenter {
 
-    private OrderService orderService;
     private TablesSelectedFragment tablesSelectedFragment;
+    private OrderCreateDialog orderCreateDialog;
+
+    private OrderService orderService;
+    private CategoryService categoryService;
+    private ElementService elementService;
 
     public OrderPresenter(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
         orderService = new OrderService();
+    }
+
+    public OrderPresenter(OrderCreateDialog orderCreateDialog){
+        this.orderCreateDialog = orderCreateDialog;
+        categoryService = new CategoryService();
+        elementService = new ElementService();
     }
 
     public void getOrdersByTableId(Integer tableId){
@@ -97,5 +112,45 @@ public class OrderPresenter {
                 System.out.println(e);
             }
         }, order);
+    }
+
+    public OrderCreateDialog getOrderCreateDialog() {
+        return orderCreateDialog;
+    }
+
+    public void setOrderCreateDialog(OrderCreateDialog orderCreateDialog) {
+        this.orderCreateDialog = orderCreateDialog;
+    }
+
+    public void getCategoryByMenuIdOrderByAlimentAndPosition(Integer id){
+        categoryService.getCategoryByMenuIdOrderByAlimentAndPosition(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                ArrayList<Category> categoryArrayList = (ArrayList<Category>) o;
+                orderCreateDialog.loadCategory(categoryArrayList);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, id);
+    }
+
+    public void getElementByMenuId(Integer id){
+        elementService.getElementByMenuId(new Callback(){
+
+            @Override
+            public void returnResult(Object o) {
+                ArrayList<Element> elementArrayList = (ArrayList<Element>) o;
+                orderCreateDialog.loadElement(elementArrayList);
+            }
+
+            @Override
+            public void returnError(Throwable e) {
+                System.out.println(e);
+            }
+        }, id);
     }
 }
