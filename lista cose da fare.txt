@@ -1,7 +1,3 @@
-Visualizzazione traduzione element
-
-Statistiche
-
 Qrcode(manca lato db)
 
 test junit
