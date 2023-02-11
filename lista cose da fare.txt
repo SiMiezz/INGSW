@@ -1,5 +1,3 @@
-Qrcode(manca lato db)
-
 test junit
 
 server aws
