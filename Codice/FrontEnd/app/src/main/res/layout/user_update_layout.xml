@@ -48,6 +48,29 @@
             android:paddingLeft="5dp"
             android:layout_marginBottom="10dp"/>
 
+        <TextView
+            android:text="Confirm Password : "
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="3dp"/>
+
+        <EditText
+            android:id="@+id/confirm_user_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:hint="Password"
+            android:textColorHint="#808080"
+            android:background="@drawable/shape_edit_text_popup"
+            android:paddingLeft="5dp"
+            android:layout_marginBottom="10dp"/>
+
+
+
     <LinearLayout
         android:layout_marginTop="5dp"
         android:orientation="horizontal"

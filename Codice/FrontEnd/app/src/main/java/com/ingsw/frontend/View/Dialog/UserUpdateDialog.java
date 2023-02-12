@@ -21,6 +21,7 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
     private Button btnUpdateOk;
     private Button btnUpdateCancel;
     private EditText editTextpwd;
+    private EditText confirmTextpwd;
 
     private User user;
 
@@ -47,11 +48,13 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View v) {
                 if(!(editTextpwd.getText().toString().isEmpty())){
-                    String pwd = editTextpwd.getText().toString();
-                    user.setPwd(pwd);
+                    if(editTextpwd.getText().toString().equals(confirmTextpwd.getText().toString())){
+                        String pwd = editTextpwd.getText().toString();
+                        user.setPwd(pwd);
 
-                    userUpdateDialogListener.updateUser(user);
-                    dialog.dismiss();
+                        userUpdateDialogListener.updateUser(user);
+                        dialog.dismiss();
+                    }
                 }
             }
         });
@@ -64,6 +67,8 @@ public class UserUpdateDialog extends AppCompatDialogFragment {
         });
 
         editTextpwd = view.findViewById(R.id.edit_user_pwd);
+        confirmTextpwd = view.findViewById(R.id.confirm_user_pwd);
+
 
         return dialog;
     }

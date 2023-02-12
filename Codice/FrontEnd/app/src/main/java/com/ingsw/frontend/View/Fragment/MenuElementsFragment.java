@@ -19,6 +19,7 @@ import com.ingsw.frontend.Presenter.MenuElementsPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Adapter.ElementAdapter;
 import com.ingsw.frontend.View.Dialog.ElementCreateDialog;
+import com.ingsw.frontend.View.Dialog.ErrorDialog;
 
 import java.util.ArrayList;
 
@@ -152,6 +153,11 @@ public class MenuElementsFragment extends Fragment {
             public void onClick(View view) {
                 if(getCategoryId()!=null){
                     openDialog();
+                }
+                else{
+                    ErrorDialog errorDialog = new ErrorDialog("You must select a category first!");
+                    errorDialog.show(requireActivity().getSupportFragmentManager(), "Category NOT Selected!");
+
                 }
             }
         });

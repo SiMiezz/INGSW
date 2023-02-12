@@ -8,9 +8,6 @@ public class MenuDTO {
     //REFERENCES
     private String restaurantName;
 
-    // ATTRIBUTES
-    private String qrCode;
-
     //CONSTRUCTORS
 
     public MenuDTO() {
@@ -19,7 +16,6 @@ public class MenuDTO {
     public MenuDTO(Integer id, String restaurantName, String qrCode) {
         this.id = id;
         this.restaurantName = restaurantName;
-        this.qrCode = qrCode;
     }
 
     // -------------------------------------------------
@@ -33,14 +29,6 @@ public class MenuDTO {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
     }
 
     public String getRestaurantName() {

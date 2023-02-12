@@ -32,9 +32,6 @@ public class Menu implements Serializable {
 
     // ATTRIBUTES
 
-    @Column(name = "qrcode")
-    private String qrCode;
-
     //CONSTRUCTORS
     public Menu() {
     }
@@ -42,7 +39,6 @@ public class Menu implements Serializable {
     public Menu(Integer id, Restaurant restaurant, String qrCode) {
         this.id = id;
         this.restaurant = restaurant;
-        this.qrCode = qrCode;
     }
 
     // -------------------------------------------------
@@ -56,14 +52,6 @@ public class Menu implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getQrCode() {
-        return qrCode;
-    }
-
-    public void setQrCode(String qrCode) {
-        this.qrCode = qrCode;
     }
 
     public List<Category> getCategoryList() {
