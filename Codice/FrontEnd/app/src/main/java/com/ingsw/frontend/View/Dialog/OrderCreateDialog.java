@@ -54,9 +54,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     private Button cancelButton;
     private Button okButton;
 
-    private Integer tableId;
-
-
     public OrderCreateDialog(TablesSelectedFragment tablesSelectedFragment){
         this.tablesSelectedFragment = tablesSelectedFragment;
     }
@@ -172,10 +169,11 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
 
                 Order order = new Order(computeTotalPrice(selectedElementOrderAdapter.getSelectedElementArrayList()), String.valueOf(java.time.LocalDate.now()), tablesSelectedFragment.getTableId(), selectedElementOrderAdapter.getSelectedElementArrayList());
 
-                if(selectedElementOrderAdapter.getSelectedElementArrayList().size() > 0)
+                if(selectedElementOrderAdapter.getSelectedElementArrayList().size() > 0){
                     orderCreateDialogListener.createOrder(order, tablesSelectedFragment);
+                    dialog.dismiss();
+                }
 
-                dialog.dismiss();
             }
         });
 
@@ -208,6 +206,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
         void createOrder(Order order, TablesSelectedFragment tablesSelectedFragment);
     }
 
+
     public void loadCategory(ArrayList<Category> categoryArrayList){
         categoryAndElementCreateOrderAdapter.clearCategory();
         categoryAndElementCreateOrderAdapter.setCategoryArrayList(categoryArrayList);
@@ -225,14 +224,6 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
     public void loadSelectedElement(ArrayList<Element> elementArrayList){
         selectedElementOrderAdapter.setSelectedElementArrayList(elementArrayList);
         selectedElementOrderAdapter.notifyDataSetChanged();
-    }
-
-    public Integer getTableId() {
-        return tableId;
-    }
-
-    public void setTableId(Integer tableId) {
-        this.tableId = tableId;
     }
 
     public Double computeTotalPrice(ArrayList<Element> elementArrayList){
