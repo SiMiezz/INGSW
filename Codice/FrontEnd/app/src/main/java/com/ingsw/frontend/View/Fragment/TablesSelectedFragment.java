@@ -160,6 +160,10 @@ public class TablesSelectedFragment extends Fragment {
                 if(getLibera_occupaButton().getText().equals("LIBERA")){
                     openCreateOrderDialog();
                 }
+                else if(getLibera_occupaButton().getText().equals("Libera/Occupa")){
+                    ErrorDialog errorDialog = new ErrorDialog("You must select a table first!");
+                    errorDialog.show(requireActivity().getSupportFragmentManager(), "Table NOT Selected!");
+                }
                 else{
                     ErrorDialog errorDialog = new ErrorDialog("You must occupy this table first!");
                     errorDialog.show(requireActivity().getSupportFragmentManager(), "Table NOT Selected!");
@@ -191,9 +195,11 @@ public class TablesSelectedFragment extends Fragment {
         libera_occupaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tableRestaurantPresenter.setTablesAllFragment(getTablesAllFragment());
-                tableRestaurantPresenter.updateById(getTableId());
-                orderAdapter.notifyDataSetChanged();
+                if(getTableId()!=null){
+                    tableRestaurantPresenter.setTablesAllFragment(getTablesAllFragment());
+                    tableRestaurantPresenter.updateById(getTableId());
+                    orderAdapter.notifyDataSetChanged();
+                }
             }
         });
 

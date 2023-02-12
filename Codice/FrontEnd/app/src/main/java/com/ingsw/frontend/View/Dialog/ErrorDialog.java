@@ -52,7 +52,7 @@ public class ErrorDialog extends AppCompatDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        getDialog().getWindow().getAttributes().width=775;
+        getDialog().getWindow().getAttributes().width=650;
         getDialog().getWindow().setAttributes(
                 getDialog().getWindow().getAttributes());
     }
