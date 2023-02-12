@@ -59,6 +59,22 @@ public class TablesSelectedFragment extends Fragment {
         this.tableId = tableId;
     }
 
+    public ImageButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public void setRemoveButton(ImageButton removeButton) {
+        this.removeButton = removeButton;
+    }
+
+    public ImageButton getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(ImageButton addButton) {
+        this.addButton = addButton;
+    }
+
     public TablesAllFragment getTablesAllFragment() {
         return tablesAllFragment;
     }
@@ -118,6 +134,11 @@ public class TablesSelectedFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(orderAdapter);
 
+        if(getTableId() == null){
+            addButton.setVisibility(View.INVISIBLE);
+            removeButton.setVisibility(View.INVISIBLE);
+        }
+
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -159,10 +180,6 @@ public class TablesSelectedFragment extends Fragment {
             public void onClick(View view) {
                 if(getLibera_occupaButton().getText().equals("LIBERA")){
                     openCreateOrderDialog();
-                }
-                else{
-                    ErrorDialog errorDialog = new ErrorDialog("You must occupy this table first!");
-                    errorDialog.show(requireActivity().getSupportFragmentManager(), "Table NOT Selected!");
                 }
             }
         });

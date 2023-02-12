@@ -65,6 +65,22 @@ public class MenuElementsFragment extends Fragment {
         this.categoryId = categoryId;
     }
 
+    public ImageButton getRemoveButton() {
+        return removeButton;
+    }
+
+    public void setRemoveButton(ImageButton removeButton) {
+        this.removeButton = removeButton;
+    }
+
+    public ImageButton getAddButton() {
+        return addButton;
+    }
+
+    public void setAddButton(ImageButton addButton) {
+        this.addButton = addButton;
+    }
+
     public static MenuElementsFragment newInstance(String param1, String param2) {
         MenuElementsFragment fragment = new MenuElementsFragment();
         Bundle args = new Bundle();
@@ -113,6 +129,11 @@ public class MenuElementsFragment extends Fragment {
         intent = getActivity().getIntent();
         restaurant = (Restaurant) intent.getSerializableExtra("restaurant");
 
+        if(getCategoryId() == null){
+            addButton.setVisibility(View.INVISIBLE);
+            removeButton.setVisibility(View.INVISIBLE);
+        }
+
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -153,11 +174,6 @@ public class MenuElementsFragment extends Fragment {
             public void onClick(View view) {
                 if(getCategoryId()!=null){
                     openDialog();
-                }
-                else{
-                    ErrorDialog errorDialog = new ErrorDialog("You must select a category first!");
-                    errorDialog.show(requireActivity().getSupportFragmentManager(), "Category NOT Selected!");
-
                 }
             }
         });

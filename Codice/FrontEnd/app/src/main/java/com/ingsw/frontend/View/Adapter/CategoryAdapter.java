@@ -124,6 +124,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
                 @Override
                 public void onClick(View view) {
                     currentId = temp.getId();
+                    menuElementsFragment.getAddButton().setVisibility(View.VISIBLE);
+                    menuElementsFragment.getRemoveButton().setVisibility(View.VISIBLE);
                     menuElementsFragment.setCategoryId(temp.getId());
                     menuElementsFragment.getElementFromClick(temp.getId());
 
