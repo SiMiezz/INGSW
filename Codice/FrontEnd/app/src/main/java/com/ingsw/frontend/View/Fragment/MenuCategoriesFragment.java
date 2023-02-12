@@ -79,6 +79,9 @@ public class MenuCategoriesFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_menu_categories, container, false);
 
+
+
+
         return rootView;
     }
 
@@ -201,8 +204,6 @@ public class MenuCategoriesFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0){
-                    menuElementsFragment.getAddButton().setVisibility(View.INVISIBLE);
-                    menuElementsFragment.getRemoveButton().setVisibility(View.INVISIBLE);
                     menuElementsFragment.setCategoryId(null);
                     menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -210,8 +211,6 @@ public class MenuCategoriesFragment extends Fragment {
                     fragmentTransaction.commit();
                 }
                 else{
-                    menuElementsFragment.getAddButton().setVisibility(View.INVISIBLE);
-                    menuElementsFragment.getRemoveButton().setVisibility(View.INVISIBLE);
                     menuElementsFragment.setCategoryId(null);
                     menuElementsFragment.setEmptyList();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

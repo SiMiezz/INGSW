@@ -1,7 +1,5 @@
 package com.ingsw.frontend.Presenter;
 
-import android.view.View;
-
 import com.ingsw.frontend.Model.TableRestaurant;
 import com.ingsw.frontend.Service.Callback;
 import com.ingsw.frontend.Service.Class.TableRestaurantService;
@@ -148,16 +146,12 @@ public class TableRestaurantPresenter {
                 if(table.isFree()){
                     table.setFree(false);
                     update(table);
-                    tablesSelectedFragment.getAddButton().setVisibility(View.VISIBLE);
-                    tablesSelectedFragment.getRemoveButton().setVisibility(View.VISIBLE);
                     tablesSelectedFragment.getLibera_occupaButton().setText("LIBERA");
                 }
                 else{
                     orderPresenter.sumPriceByTableId(table.getId());
                     table.setFree(true);
                     update(table);
-                    tablesSelectedFragment.getAddButton().setVisibility(View.INVISIBLE);
-                    tablesSelectedFragment.getRemoveButton().setVisibility(View.INVISIBLE);
                     tablesSelectedFragment.getLibera_occupaButton().setText("OCCUPA");
                 }
             }

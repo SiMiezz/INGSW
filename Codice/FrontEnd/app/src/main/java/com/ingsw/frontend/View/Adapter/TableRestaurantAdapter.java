@@ -115,19 +115,14 @@ public class TableRestaurantAdapter extends RecyclerView.Adapter<TableRestaurant
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(temp.isFree()){
-                        tablesSelectedFragment.getAddButton().setVisibility(View.INVISIBLE);
-                        tablesSelectedFragment.getRemoveButton().setVisibility(View.INVISIBLE);
-                    }
-                    else{
-                        tablesSelectedFragment.getAddButton().setVisibility(View.VISIBLE);
-                        tablesSelectedFragment.getRemoveButton().setVisibility(View.VISIBLE);
-                    }
                     tablesSelectedFragment.setTablesAllFragment(tablesAllFragment);
                     tablesSelectedFragment.setTableId(temp.getId());
                     tablesSelectedFragment.getInfoTableFromClick(temp.getId());
 
                     tablesAllFragment.clickEffect(tableRestaurantArrayList.get(holder.getAdapterPosition()));
+
+
+
                 }
             });
 
