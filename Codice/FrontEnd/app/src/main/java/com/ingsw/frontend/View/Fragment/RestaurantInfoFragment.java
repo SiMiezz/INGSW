@@ -2,11 +2,17 @@ package com.ingsw.frontend.View.Fragment;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,6 +27,10 @@ import com.ingsw.frontend.Model.Restaurant;
 import com.ingsw.frontend.Presenter.RestaurantPresenter;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.Retrofit.RetrofitService;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class RestaurantInfoFragment extends Fragment {
 
@@ -40,6 +50,7 @@ public class RestaurantInfoFragment extends Fragment {
     private TextView localityRestaurant;
     private TextView touristicRestaurant;
     private ImageView qrCodeImage;
+    private ImageButton printQrCodeButton;
 
     public RestaurantInfoFragment() {
         // Required empty public constructor
@@ -73,6 +84,7 @@ public class RestaurantInfoFragment extends Fragment {
         localityRestaurant = rootView.findViewById(R.id.info_locality_restaurant_text);
         touristicRestaurant = rootView.findViewById(R.id.info_touristic_restaurant_text);
         qrCodeImage = rootView.findViewById(R.id.qrCodeimageView);
+        printQrCodeButton = rootView.findViewById(R.id.print_qr_button);
 
         restaurantPresenter = new RestaurantPresenter(this);
 
@@ -85,6 +97,50 @@ public class RestaurantInfoFragment extends Fragment {
         restaurantPresenter.getByName(restaurant.getName());
 
         generateQrCode(RetrofitService.getBaseUrl() + "/web/qrcode?id=" + menu.getId());
+
+        printQrCodeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                BitmapDrawable drawable = (BitmapDrawable) qrCodeImage.getDrawable();
+                Bitmap bitmap = drawable.getBitmap();
+
+                PdfDocument pdfDocument = new PdfDocument();
+                PdfDocument.PageInfo pageInfo = new PdfDocument.PageInfo.Builder(bitmap.getWidth() + 100, bitmap.getHeight() + 100,1).create();
+
+                PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+
+                Canvas canvas = page.getCanvas();
+                Paint paint = new Paint();
+                paint.setColor(Color.RED);
+                paint.setTextSize(48);
+                canvas.drawText(restaurant.getName().toUpperCase(), (canvas.getWidth()/2) - 50, 100 , paint);
+
+                bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(), true);
+                canvas.drawBitmap(bitmap, 50, 100, paint);
+                pdfDocument.finishPage(page);
+
+                String folder = "IngswPdfQrcode";
+
+                File root = new File(Environment.getExternalStorageDirectory(), folder);
+
+                if(!root.exists()){
+                    root.mkdirs();
+                }
+
+                File file = new File(root, "qrcode.pdf");
+                try {
+                    FileOutputStream fileOutputStream = new FileOutputStream(file);
+                    pdfDocument.writeTo(fileOutputStream);
+                } catch (IOException e){
+                    e.printStackTrace();
+                }
+
+                pdfDocument.close();
+
+
+            }
+        });
 
         return rootView;
     }
