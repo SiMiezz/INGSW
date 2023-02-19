@@ -233,7 +233,7 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
             result = result + element.getPrice();
         }
 
-        return result;
+        return Math.floor((result*100) / 100);
 
     }
 
