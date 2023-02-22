@@ -104,20 +104,17 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             public void onClick(View view) {
                temp.setChecked(holder.checkBox.isChecked());
 
-                if(temp.getChecked() == true){
+                if(temp.getChecked()){
                     selectedItemsArrayList.add(temp);
                 }
-                else if(temp.getChecked() == false && !(arrayList.contains(temp))){
+                else{
                     selectedItemsArrayList.remove(temp);
                 }
             }
         });
 
 
-        if(temp.getChecked() == true)
-            holder.checkBox.setChecked(true);
-        else
-            holder.checkBox.setChecked(false);
+        holder.checkBox.setChecked(temp.getChecked());
 
         if(holder.cardView != null)
             holder.cardView.setOnClickListener(new View.OnClickListener() {

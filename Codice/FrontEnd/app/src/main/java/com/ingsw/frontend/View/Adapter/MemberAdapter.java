@@ -78,20 +78,17 @@ public class MemberAdapter extends RecyclerView.Adapter<MemberAdapter.MemberHold
             public void onClick(View view) {
                 temp.setChecked(holder.checkBox.isChecked());
 
-                if(temp.getChecked() == true){
+                if(temp.getChecked()){
                     selectedItemsArrayList.add(temp);
                 }
-                else if(temp.getChecked() == false && !(userArrayList.contains(temp))){
+                else{
                     selectedItemsArrayList.remove(temp);
                 }
             }
         });
 
 
-        if(temp.getChecked() == true)
-            holder.checkBox.setChecked(true);
-        else
-            holder.checkBox.setChecked(false);
+        holder.checkBox.setChecked(temp.getChecked());
 
     }
 

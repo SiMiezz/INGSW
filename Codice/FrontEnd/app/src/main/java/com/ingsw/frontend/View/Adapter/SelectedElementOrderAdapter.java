@@ -105,11 +105,11 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
             });
         }
 
-
         if(currentLayout == -1){
             try{
                 holder.textView.setText(groupedSelectedElementArrayList.get(holder.getAdapterPosition()).getName().toUpperCase());
                 holder.quantity.setText("x "+groupedSelectedElementArrayList.get(holder.getAdapterPosition()).getQuantityOrdered());
+
             } catch (Exception e){
                 System.out.println(e);
             }
@@ -117,32 +117,25 @@ public class SelectedElementOrderAdapter extends RecyclerView.Adapter<SelectedEl
         }
         else if(currentLayout == -2){
 
-            Element temp = selectedElementArrayList.get(holder.getAdapterPosition());
-
-            holder.textView.setText(temp.getName().toUpperCase());
+            holder.textView.setText(selectedElementArrayList.get(holder.getAdapterPosition()).getName().toUpperCase());
             holder.checkBox.setChecked(false);
+
+            Element temp = selectedElementArrayList.get(holder.getAdapterPosition());
 
             holder.checkBox.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     temp.setChecked(holder.checkBox.isChecked());
 
-                    if(temp.getChecked() == true)
+                    if(temp.getChecked())
                         toRemoveSelectedElementArrayList.add(temp);
-                    else if ((temp.getChecked() == false) && !(selectedElementArrayList.contains(temp)))
+                    else {
                         toRemoveSelectedElementArrayList.remove(temp);
+                    }
+
                 }
             });
-
-            if(temp.getChecked() == true)
-                holder.checkBox.setChecked(true);
-            else
-                holder.checkBox.setChecked(false);
         }
-
-
-
-
     }
 
     @Override

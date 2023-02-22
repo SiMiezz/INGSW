@@ -189,6 +189,10 @@ public class MenuCategoriesFragment extends Fragment {
 
                 if(CategoryAdapter.currentLayout == -2){
                     CategoryAdapter.currentLayout = -1;
+                    if(menuCategoriesFoodFragment.getAdapter() != null)
+                        menuCategoriesFoodFragment.getAdapter().notifyDataSetChanged();
+                    if(menuCategoriesDrinkFragment.getAdapter() != null)
+                        menuCategoriesDrinkFragment.getAdapter().notifyDataSetChanged();
                 }
 
                 backButton.setVisibility(View.INVISIBLE);

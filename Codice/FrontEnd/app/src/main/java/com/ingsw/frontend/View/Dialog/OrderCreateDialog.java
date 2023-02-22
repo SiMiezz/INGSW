@@ -27,6 +27,7 @@ import com.ingsw.frontend.View.Adapter.SelectedElementOrderAdapter;
 import com.ingsw.frontend.View.Fragment.TablesSelectedFragment;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class OrderCreateDialog extends AppCompatDialogFragment {
 
@@ -124,10 +125,23 @@ public class OrderCreateDialog extends AppCompatDialogFragment {
                 for(Element element : selectedElementOrderAdapter.getToRemoveSelectedElementArrayList())
                     selectedElementOrderAdapter.getSelectedElementArrayList().remove(element);
 
-                selectedElementOrderAdapter.getGroupedSelectedElementArrayList().clear();
+                selectedElementOrderAdapter.getToRemoveSelectedElementArrayList().clear();
 
-                selectedElementOrderAdapter.notifyDataSetChanged();
+                for(Element element : selectedElementOrderAdapter.getGroupedSelectedElementArrayList()){
+                    element.setQuantityOrdered(Collections.frequency(selectedElementOrderAdapter.getSelectedElementArrayList(), element));
+                }
 
+                selectedElementOrderAdapter.getGroupedSelectedElementArrayList().removeIf(element -> element.getQuantityOrdered() == 0);
+
+                if(selectedElementOrderAdapter.getCurrentLayout() == -2){
+                    selectedElementOrderAdapter.setCurrentLayout(-1);
+                    selectedElementOrderAdapter.notifyDataSetChanged();
+                }
+
+                confirmButton.setVisibility(View.INVISIBLE);
+                removeButton.setVisibility(View.VISIBLE);
+                backButton.setVisibility(View.INVISIBLE);
+                separatorView.setVisibility(View.INVISIBLE);
             }
         });
 
