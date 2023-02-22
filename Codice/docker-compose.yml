@@ -1,0 +1,22 @@
+version: "3"
+services:
+  mysqldb:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ratatouille
+    networks:
+      ratatouille-mysql:
+
+  ratatouille-jdbc:
+    image: ratatouille-jdbc
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    networks:
+      ratatouille-mysql:
+    restart: on-failure
+
+networks:
+  ratatouille-mysql: 

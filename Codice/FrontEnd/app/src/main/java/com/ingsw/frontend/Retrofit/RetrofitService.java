@@ -12,7 +12,7 @@ public class RetrofitService {
     private static Retrofit retrofit;
     private static Retrofit retrofitFood;
 
-    private static final String BASE_URL = "http://192.168.1.248:8080";//inserire ip server macchina
+    private static final String BASE_URL = "http://34.232.70.49:8080";//inserire ip server macchina
     private static final String OpenFood_URL = "https://it.openfoodfacts.org";
 
 
