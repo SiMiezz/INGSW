@@ -3,21 +3,34 @@
 \begin{table}[]
 \begin{tabular}{|l|lll|}
 \hline
-\textbf{Use Case \#02}         & \multicolumn{3}{l|}{Order Registration}                                                         \\ \hline
-\textbf{Goal in Context}       & \multicolumn{3}{l|}{Taking Order}                                                               \\ \hline
-\textbf{Preconditions}                & \multicolumn{3}{l|}{A Table must be Selected and Occupied}                                    \\ \hline
-\textbf{Success End Condition} & \multicolumn{3}{l|}{Order Sent}                                                                 \\ \hline
-\textbf{Failed End Condition}  & \multicolumn{3}{l|}{Order Unsent}                                                               \\ \hline
-\textbf{Primary Actor}         & \multicolumn{3}{l|}{Waiter}                                                                     \\ \hline
-\textbf{Trigger}               & \multicolumn{3}{l|}{Actor clicks on "Edit Orders" bar}                                          \\ \hline
-\multirow{9}{*}{\textbf{DESCRIPTION}} & \multicolumn{1}{l|}{\textbf{Step n°}} & \multicolumn{1}{l|}{\textbf{Actor}} & \textbf{System} \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{1} & \multicolumn{1}{l|}{Clicks on "+"}         &                           \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{2} & \multicolumn{1}{l|}{}                      & Opens "Add Order" Window  \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{3} & \multicolumn{1}{l|}{}                      & Insert Selected Table ID  \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{4} & \multicolumn{1}{l|}{Add Elements to Order} &                           \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{5} & \multicolumn{1}{l|}{Clicks on "Confirm"}   &                           \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{6} & \multicolumn{1}{l|}{}                      & Closes "Add Order" Window \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{7} & \multicolumn{1}{l|}{}                      & Save Order                \\ \cline{2-4} 
-                               & \multicolumn{1}{l|}{8} & \multicolumn{1}{l|}{}                      & Return to Step 1 (Main)   \\ \hline
+\textbf{Use Case \#02}         & \multicolumn{3}{l|}{Order Registration}                                                                            \\ \hline
+\textbf{Goal in Context}       & \multicolumn{3}{l|}{Taking Order}                                                                                  \\ \hline
+\textbf{Preconditions}         & \multicolumn{3}{l|}{A Table must be Selected and Occupied}                                                         \\ \hline
+\textbf{Success End Condition} & \multicolumn{3}{l|}{Order Sent}                                                                                    \\ \hline
+\textbf{Failed End Condition}  & \multicolumn{3}{l|}{Order Unsent}                                                                                  \\ \hline
+\textbf{Primary Actor}         & \multicolumn{3}{l|}{Waiter}                                                                                        \\ \hline
+\textbf{Trigger}               & \multicolumn{3}{l|}{Actor clicks on "Edit Orders" bar}                                                             \\ \hline
+\multirow{11}{*}{\textbf{DESCRIPTION}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Actor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{1}   & \multicolumn{1}{l|}{Clicks on Table}       &                                            \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{2}   & \multicolumn{1}{l|}{}                      & Loads clicked Table info                   \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{3}   & \multicolumn{1}{l|}{Clicks on "+"}         &                                            \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4}   & \multicolumn{1}{l|}{}                      & Opens "Add Order" Window                   \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{5}   & \multicolumn{1}{l|}{}                      & Insert Selected Table ID                   \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{6}   & \multicolumn{1}{l|}{Add Elements to Order} &                                            \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{7}   & \multicolumn{1}{l|}{Clicks on "Confirm"}   &                                            \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{8}   & \multicolumn{1}{l|}{}                      & Closes "Add Order" Window                  \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{9}   & \multicolumn{1}{l|}{}                      & Save Order                                 \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{10}  & \multicolumn{1}{l|}{}                      & Return to Step 1 (Main)                    \\ \hline
+\multirow{5}{*}{\textbf{\begin{tabular}[c]{@{}l@{}}EXTENSIONS \#1\\ \\ \\ "Table not Selected"\end{tabular}}} &
+  \multicolumn{1}{l|}{\textbf{Step n°}} &
+  \multicolumn{1}{l|}{\textbf{Actor}} &
+  \textbf{System} \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{4.a} & \multicolumn{1}{l|}{}                      & Opens "Error : Table not selected" Window  \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{5.a} & \multicolumn{1}{l|}{Clicks on "Ok"}        &                                            \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{6.a} & \multicolumn{1}{l|}{}                      & Closes "Error : Table not selected" Window \\ \cline{2-4} 
+                               & \multicolumn{1}{l|}{7.a} & \multicolumn{1}{l|}{}                      & Return to Step 1 (Main)                    \\ \hline
 \end{tabular}
 \end{table}
