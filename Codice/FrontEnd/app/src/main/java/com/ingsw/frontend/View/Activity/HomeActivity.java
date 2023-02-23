@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.Model.Category;
 import com.ingsw.frontend.Model.Element;
 import com.ingsw.frontend.Model.Order;
@@ -38,11 +39,14 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
     private Intent intent;
     private User user;
+    private FirebaseAnalytics firebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

@@ -6,14 +6,19 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.R;
 
 public class MainActivity extends FragmentActivity {
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

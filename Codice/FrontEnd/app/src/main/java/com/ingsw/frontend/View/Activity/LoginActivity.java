@@ -5,15 +5,25 @@ import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.R;
 import com.ingsw.frontend.View.Fragment.LoginFragment;
 
 public class LoginActivity extends FragmentActivity {
 
+    private FirebaseAnalytics firebaseAnalytics;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this);
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata di Login");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "LoginActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
 
         getSupportFragmentManager().beginTransaction().add(R.id.login_container, new LoginFragment()).commit();
 
