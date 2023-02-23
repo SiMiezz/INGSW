@@ -68,7 +68,7 @@ public class OrderController {
 
     @GetMapping("/count/element/{id}/{from}/{to}")
     public Integer getCountElementOrdered(@PathVariable Integer id, @PathVariable Date from, @PathVariable Date to){
-        Integer result = 0;
+        Integer result;
 
         result = orderService.getCountElementOrdered(id, from, to);
 
