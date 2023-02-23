@@ -48,6 +48,12 @@ public class HomeActivity extends FragmentActivity implements ElementCreateDialo
 
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Home");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "HomeActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 

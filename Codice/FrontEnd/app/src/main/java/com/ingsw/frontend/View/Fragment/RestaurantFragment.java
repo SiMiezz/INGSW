@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.R;
 
 public class RestaurantFragment extends Fragment {
@@ -46,6 +47,13 @@ public class RestaurantFragment extends Fragment {
         fragmentTransaction.replace(R.id.info_restaurant_container, new RestaurantInfoFragment());
         fragmentTransaction.replace(R.id.stats_restaurant_container, new RestaurantStatsFragment());
         fragmentTransaction.commit();
+
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Info");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "RestaurantFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 
     @Override

@@ -20,6 +20,12 @@ public class MainActivity extends FragmentActivity {
 
         firebaseAnalytics = FirebaseAnalytics.getInstance(this);
 
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Main");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "MainActivity");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
