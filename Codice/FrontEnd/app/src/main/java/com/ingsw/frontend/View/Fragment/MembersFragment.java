@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.R;
 
 public class MembersFragment extends Fragment {
@@ -18,6 +19,8 @@ public class MembersFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     public MembersFragment() {
         // Required empty public constructor
@@ -40,6 +43,13 @@ public class MembersFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Members");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "MembersFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
 
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();

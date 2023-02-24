@@ -20,6 +20,8 @@ public class RestaurantFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private FirebaseAnalytics firebaseAnalytics;
+
 
     public RestaurantFragment() {
         // Required empty public constructor
@@ -41,6 +43,15 @@ public class RestaurantFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Restaurant");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "RestaurantFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
+
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -48,12 +59,6 @@ public class RestaurantFragment extends Fragment {
         fragmentTransaction.replace(R.id.stats_restaurant_container, new RestaurantStatsFragment());
         fragmentTransaction.commit();
 
-        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
-        Bundle bundle = new Bundle();
-        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Info");
-        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "RestaurantFragment");
-        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
-        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 
     @Override

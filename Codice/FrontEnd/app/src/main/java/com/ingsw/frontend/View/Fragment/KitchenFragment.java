@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.ingsw.frontend.R;
 
 public class KitchenFragment extends Fragment {
@@ -16,6 +17,8 @@ public class KitchenFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
+
+    private FirebaseAnalytics firebaseAnalytics;
 
     public KitchenFragment() {
         // Required empty public constructor
@@ -37,6 +40,14 @@ public class KitchenFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        firebaseAnalytics = FirebaseAnalytics.getInstance(getContext());
+
+        Bundle bundle = new Bundle();
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata Kitchen");
+        bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "KitchenFragment");
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
     }
 
     @Override

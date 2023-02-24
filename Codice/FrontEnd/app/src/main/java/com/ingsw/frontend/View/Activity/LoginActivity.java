@@ -24,6 +24,7 @@ public class LoginActivity extends FragmentActivity {
         bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, "Schermata di Login");
         bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, "LoginActivity");
         firebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+        firebaseAnalytics.setAnalyticsCollectionEnabled(true);
 
         getSupportFragmentManager().beginTransaction().add(R.id.login_container, new LoginFragment()).commit();
 
