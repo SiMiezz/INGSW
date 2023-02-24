@@ -56,7 +56,7 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id_category`),
   KEY `menu_fk_idx` (`menu_id`),
   CONSTRAINT `menu_fk` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id_menu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'primi','food',2,1),(2,'secondi','food',3,1),(3,'contorni','food',1,1),(4,'vino','drink',2,1),(5,'analcolici','drink',1,1),(6,'birra','drink',0,1),(7,'antipasti','food',0,1),(8,'cocktails','drink',3,1),(9,'pizze','food',34,1),(10,'dessert','food',34,1);
+INSERT INTO `category` VALUES (1,'primi','food',2,1),(2,'secondi','food',3,1),(3,'contorni','food',1,1),(4,'vino','drink',2,1),(5,'analcolici','drink',1,1),(6,'birra','drink',0,1),(7,'antipasti','food',0,1),(8,'cocktails','drink',3,1),(9,'pizze','food',4,1);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -116,6 +116,7 @@ CREATE TABLE `composed` (
 
 LOCK TABLES `composed` WRITE;
 /*!40000 ALTER TABLE `composed` DISABLE KEYS */;
+INSERT INTO `composed` VALUES (32,25),(32,25),(32,22),(32,22),(33,24),(33,24),(33,22),(33,22);
 /*!40000 ALTER TABLE `composed` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +143,7 @@ CREATE TABLE `contains` (
 
 LOCK TABLES `contains` WRITE;
 /*!40000 ALTER TABLE `contains` DISABLE KEYS */;
-INSERT INTO `contains` VALUES (1,'milk'),(2,'milk'),(4,'milk'),(5,'milk'),(14,'milk'),(15,'milk'),(20,'milk'),(24,'milk'),(26,'milk'),(27,'milk'),(30,'clams'),(1,'egg'),(3,'egg'),(14,'egg'),(26,'fruit'),(1,'wheat'),(20,'wheat'),(30,'wheat'),(24,'wheat'),(25,'wheat');
+INSERT INTO `contains` VALUES (1,'milk'),(2,'milk'),(4,'milk'),(5,'milk'),(14,'milk'),(15,'milk'),(20,'milk'),(24,'milk'),(30,'clams'),(1,'egg'),(3,'egg'),(14,'egg'),(1,'wheat'),(20,'wheat'),(30,'wheat'),(24,'wheat'),(25,'wheat');
 /*!40000 ALTER TABLE `contains` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,7 +175,7 @@ CREATE TABLE `element` (
 
 LOCK TABLES `element` WRITE;
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
-INSERT INTO `element` VALUES (1,'spaghetti alla carbonara','spaghetti carbonara',9.99,'uova, guanciale, pecorino','eggs, bacon, pecorino cheese',0,1),(2,'filetto di manzo','beef',20.99,'manzo, rucola, pomodoro, parmigiano','beef, rucola, tomato, parmesan',0,2),(3,'pollo fritto','fried chicken',14.99,'pollo, patatine fritte','chicken, fries',0,2),(4,'mozzarella','mozzarella',9.99,'mozzarella di bufala','bufala mozzarella',0,7),(5,'tagliere di salumi e formaggi','salami and cheese',14.99,'prosciutto cotto, prosciutto crudo, salame, parmigiano, formaggio stagionato','baked ham, ham, salami, parmesan,  aged cheese ',0,7),(6,'chianti','chianti',19.99,'vino rosso','red wine',1,4),(7,'prosecco','prosecco',17.99,'vino bianco frizzante','white sparkling wine',1,4),(8,'coca cola','coca cola',2.49,'bibita gassata','sparkling drink',1,5),(9,'verdure grigliate','grilled vegetables',4.99,'melanzane, peperoni, zucchine, funghi','eggplant, peppers, zucchini,, mushrooms',0,3),(14,'parmigiana di melanzane','eggplant parmigiana',15.99,'melanzana, mozzarella, pomodoro, parmigiano','eggplant, mozzarella, tomato, parmesan',0,2),(15,'risotto allo zafferano','saffron risotto',12.99,'zafferano, parmigiano, cipolla','saffron, parmesan, onion',0,1),(16,'patate al forno','baked potatoes',5.99,'patate, rosmarino','potatoes, rosemary',0,3),(20,'pennette alla norma','pennette norma',11.99,'melanzane, pomodoro, ricotta salata','eggplants, tomato, ricotta',0,1),(21,'sprite','sprite',2.49,'bibita gassata','sparkling drink',1,5),(22,'peroni','peroni',2.99,'birra chiara','blonde beer',1,6),(23,'franziskaner','franziskaner',3.49,'birra scura','dark beer',1,6),(24,'margherita','margherita',5.99,'mozzarella, pomodoro, basilico','mozzarella, tomato, basil',0,9),(25,'marinara','marinara',5.49,'pomodoro, aglio, origano','tomato, garlic, origan',0,9),(26,'cheesecake','cheesecake',6.99,'formaggio, biscotti, marmellata di frutta','cheese, biscuits, fruit jam',0,10),(27,'tiramisu','tiramisu',6.99,'formaggio, caffè, biscotti','cheese, coffee, biscuits',0,10),(28,'aperol spritz','aperol spritz',7.99,'aperol, prosecco, acqua tonica','aperol, prosecco, sparkling water',0,8),(29,'negroni','negroni',8.99,'gin, campari, vermouth','gin, campari, vermouth',0,8),(30,'spaghetti ai frutti di mare','spaghetti with clams',15.99,'frutti di mare, prezzemolo, aglio','clams, parsley, garlic',0,1);
+INSERT INTO `element` VALUES (1,'spaghetti alla carbonara','spaghetti carbonara',9.99,'uova, guanciale, pecorino','eggs, bacon, pecorino cheese',0,1),(2,'filetto di manzo','beef',20.99,'manzo, rucola, pomodoro, parmigiano','beef, rucola, tomato, parmesan',0,2),(3,'pollo fritto','fried chicken',14.99,'pollo, patatine fritte','chicken, fries',0,2),(4,'mozzarella','mozzarella',9.99,'mozzarella di bufala','bufala mozzarella',0,7),(5,'tagliere di salumi e formaggi','salami and cheese',14.99,'prosciutto cotto, prosciutto crudo, salame, parmigiano, formaggio stagionato','baked ham, ham, salami, parmesan,  aged cheese ',0,7),(6,'chianti','chianti',19.99,'vino rosso','red wine',1,4),(7,'prosecco','prosecco',17.99,'vino bianco frizzante','white sparkling wine',1,4),(8,'coca cola','coca cola',2.49,'bibita gassata','sparkling drink',1,5),(9,'verdure grigliate','grilled vegetables',4.99,'melanzane, peperoni, zucchine, funghi','eggplant, peppers, zucchini,, mushrooms',0,3),(14,'parmigiana di melanzane','eggplant parmigiana',15.99,'melanzana, mozzarella, pomodoro, parmigiano','eggplant, mozzarella, tomato, parmesan',0,2),(15,'risotto allo zafferano','saffron risotto',12.99,'zafferano, parmigiano, cipolla','saffron, parmesan, onion',0,1),(16,'patate al forno','baked potatoes',5.99,'patate, rosmarino','potatoes, rosemary',0,3),(20,'pennette alla norma','pennette norma',11.99,'melanzane, pomodoro, ricotta salata','eggplants, tomato, ricotta',0,1),(21,'sprite','sprite',2.49,'bibita gassata','sparkling drink',1,5),(22,'peroni','peroni',2.99,'birra chiara','blonde beer',1,6),(23,'franziskaner','franziskaner',3.49,'birra scura','dark beer',1,6),(24,'margherita','margherita',5.99,'mozzarella, pomodoro, basilico','mozzarella, tomato, basil',0,9),(25,'marinara','marinara',5.49,'pomodoro, aglio, origano','tomato, garlic, origan',0,9),(28,'aperol spritz','aperol spritz',7.99,'aperol, prosecco, acqua tonica','aperol, prosecco, sparkling water',0,8),(29,'negroni','negroni',8.99,'gin, campari, vermouth','gin, campari, vermouth',0,8),(30,'spaghetti ai frutti di mare','spaghetti with clams',15.99,'frutti di mare, prezzemolo, aglio','clams, parsley, garlic',0,1);
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -191,7 +192,7 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`id_menu`),
   KEY `restaurant_fk3_idx` (`restaurant_name`),
   CONSTRAINT `restaurant_fk3` FOREIGN KEY (`restaurant_name`) REFERENCES `restaurant` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -243,7 +244,7 @@ CREATE TABLE `ordine` (
   PRIMARY KEY (`id_order`),
   KEY `table_fk1_idx` (`table_id`),
   CONSTRAINT `table_fk1` FOREIGN KEY (`table_id`) REFERENCES `tablerestaurant` (`id_table`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -252,7 +253,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (20,'2018-08-09',123,2);
+INSERT INTO `ordine` VALUES (32,'2023-02-19',16,1),(33,'2023-02-20',17,3);
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +357,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES ('admin','ok','admin','admin','admin','rest'),('chef','ok','chef','chef','chef','rest'),('gianmarcoaddati','ok','gian marco','addati','admin','rest'),('simonegiordano','ok','simone','giordano','admin','rest'),('supervisor','ok','supervisor','supervisor','supervisor','rest'),('waiter','ok','waiter','waiter','waiter','rest');
+INSERT INTO `user` VALUES ('a','ok','a','a','supervisor','rest'),('admin','ok','admin','admin','admin','rest'),('chef','ok','chef','chef','chef','rest'),('gianmarcoaddati','ok','gian marco','addati','admin','rest'),('simonegiordano','ok','simone','giordano','admin','rest'),('supervisor','ok','supervisor','supervisor','supervisor','rest'),('waiter','ok','waiter','waiter','waiter','rest');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
